@@ -106,6 +106,19 @@
             font-weight: bold;
             margin-top: 10px;
         }
+
+        .guess-container {
+            margin-top: 20px;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .guess-title {
+            font-weight: bold;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -113,10 +126,11 @@
     <h1>Soundmap Artist Guesser Solver</h1>
 
     <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
+    <button onclick="addGuess()">Add Guess</button>
     <div id="searchResults"></div>
 
-    <div id="buttonsContainer" class="button-container">
-        <!-- Buttons will be dynamically added here -->
+    <div id="guessesContainer" class="guess-container">
+        <!-- Guesses will be dynamically added here -->
     </div>
 
     <div id="artistList" class="results-container">
@@ -126,31 +140,29 @@
     <script>
         let artistsData = [];
         let artistInfo = {};
-        let filteredArtists = []; // Holds the filtered artist list based on guesses
-        let selectedOptions = {}; // Stores selected options for each category
+        let filteredArtists = [];
+        let selectedOptions = {};
+        let guessCount = 0;
 
-        // Load the CSV file and parse it
         function loadCSV() {
-            const csvUrl = "https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/MasterArtistList.csv";  // Raw URL from GitHub
+            const csvUrl = "https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/MasterArtistList.csv";
             fetch(csvUrl)
                 .then(response => response.text())
                 .then(csvText => parseCSV(csvText))
                 .catch(error => console.error("Error loading CSV file:", error));
         }
 
-        // Parse CSV and load into artistsData array
         function parseCSV(csvText) {
             const rows = csvText.split("\n");
-            rows.shift(); // Remove header row
+            rows.shift();
             artistsData = rows.map(row => {
                 const [artist, debut, popularity, members, genre, country, gender] = row.split(",");
                 return { artist, debut, popularity, members, genre, country, gender };
             });
-            filteredArtists = [...artistsData]; // Initially show all artists
-            displayArtists(); // Display all artists at the start
+            filteredArtists = [...artistsData];
+            displayArtists();
         }
 
-        // Search for artists based on input
         function searchArtist() {
             const query = document.getElementById("artistSearch").value.toLowerCase();
             const searchResults = document.getElementById("searchResults");
@@ -167,21 +179,19 @@
             }
         }
 
-        // Display the artist's information and generate buttons
         function displayArtistInfo(artistName) {
             const artist = artistsData.find(artist => artist.artist === artistName);
             if (artist) {
-                artistInfo = artist;  // Store the artist's data for later use
-                filteredArtists = [artist]; // Start with the selected artist only
+                artistInfo = artist;
+                filteredArtists = [artist];
                 displayArtists();
                 createButtons(artist);
             }
         }
 
-        // Create the buttons with dropdown and color change functionality
         function createButtons(artist) {
             const buttonsContainer = document.getElementById("buttonsContainer");
-            buttonsContainer.innerHTML = "";  // Clear previous buttons
+            buttonsContainer.innerHTML = "";
 
             const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
             categories.forEach(category => {
@@ -192,11 +202,10 @@
             });
         }
 
-        // Show dropdown for options
         function showDropdown(button, category, value) {
             const dropdown = document.createElement("select");
             const options = getCategoryOptions(category);
-            
+
             const defaultOption = document.createElement("option");
             defaultOption.value = "";
             defaultOption.textContent = "Choose an option";
@@ -217,13 +226,12 @@
                 filterArtists();
             };
 
-            dropdown.size = options.length; // Ensure the dropdown stays open
+            dropdown.size = options.length;
             button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
             button.appendChild(dropdown);
             dropdown.focus();
         }
 
-        // Get the options for each category
         function getCategoryOptions(category) {
             switch (category) {
                 case 'debut':
@@ -240,7 +248,6 @@
             }
         }
 
-        // Change button color based on selected option
         function changeButtonColor(button, option) {
             if (option === 'correct') {
                 button.className = 'green';
@@ -251,37 +258,34 @@
             }
         }
 
-        // Filter the artists based on the options selected
         function filterArtists() {
             filteredArtists = artistsData.filter(artist => {
                 return Object.keys(selectedOptions).every(category => {
                     const option = selectedOptions[category];
                     const artistValue = artist[category];
 
-                    if (!option) return true;  // If no option is selected, exclude it from the filter
+                    if (!option) return true;
 
                     if (option === 'correct') {
                         return artistValue === artistInfo[category];
-                    } else if (option === '') {
-                        return artistValue > artistInfo[category];
-                    } else if (option === 'v') {
-                        return artistValue < artistInfo[category];
+                    } else if (option === 'later ^') {
+                        return parseInt(artistValue) > parseInt(artistInfo[category]);
+                    } else if (option === 'earlier v') {
+                        return parseInt(artistValue) < parseInt(artistInfo[category]);
                     } else if (option === 'close ^') {
-                        const tolerance = 5;  // Tolerance for 'close' option (e.g., 5 years for debut)
-                        const artistValueNum = parseInt(artistValue);
-                        const artistInfoValueNum = parseInt(artistInfo[category]);
-                        return !isNaN(artistValueNum) && !isNaN(artistInfoValueNum) && artistValueNum > artistInfoValueNum && Math.abs(artistValueNum - artistInfoValueNum) <= tolerance;
+                        const tolerance = 5;
+                        return parseInt(artistValue) > parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
                     } else if (option === 'close v') {
-                        const tolerance = 5;  // Tolerance for 'close' option (e.g., 5 years for debut)
-                            return parseInt(artistValue) < parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
-                        } else if (option === '^') {
-                            return parseInt(artistValue) > parseInt(artistInfo[category]);
-                        } else if (option === 'v') {
-                            return parseInt(artistValue) < parseInt(artistInfo[category]);
+                        const tolerance = 5;
+                        return parseInt(artistValue) < parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
+                    } else if (option === 'higher ^') {
+                        return parseInt(artistValue) > parseInt(artistInfo[category]);
+                    } else if (option === 'lower v') {
+                        return parseInt(artistValue) < parseInt(artistInfo[category]);
                     } else if (option === 'wrong') {
                         return artistValue !== artistInfo[category];
                     } else {
-                        return false;  // For other options, return false
+                        return false;
                     }
                 });
             });
@@ -289,18 +293,15 @@
             displayArtists();
         }
 
-        // Display filtered artists with a clean heading format
         function displayArtists() {
             const artistList = document.getElementById("artistList");
             artistList.innerHTML = '';
 
-            // Heading
             const heading = document.createElement("div");
             heading.classList.add("heading");
             heading.innerHTML = `<span>Artist Name</span><span>Debut Year</span><span>Popularity</span><span>Members</span><span>Genre</span><span>Country</span><span>Gender</span>`;
             artistList.appendChild(heading);
 
-            // Artist entries
             filteredArtists.forEach(artist => {
                 const artistItem = document.createElement("div");
                 artistItem.classList.add("artist-item");
@@ -319,7 +320,22 @@
             });
         }
 
-        loadCSV();  // Start loading the CSV data
+        function addGuess() {
+            guessCount++;
+            const guessesContainer = document.getElementById("guessesContainer");
+
+            const guessTitle = document.createElement("div");
+            guessTitle.classList.add("guess-title");
+            guessTitle.textContent = `Guess ${guessCount}`;
+            guessesContainer.appendChild(guessTitle);
+
+            const guessBoxes = document.createElement("div");
+            guessBoxes.classList.add("button-container");
+            guessBoxes.id = `guess${guessCount}Container`;
+            guessesContainer.appendChild(guessBoxes);
+        }
+
+        loadCSV();
     </script>
 
 </body>
