@@ -268,10 +268,16 @@
                         return artistValue < artistInfo[category];
                     } else if (option === 'close ^') {
                         const tolerance = 5;  // Tolerance for 'close' option (e.g., 5 years for debut)
-                        return parseInt(artistValue) > parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
+                        const artistValueNum = parseInt(artistValue);
+                        const artistInfoValueNum = parseInt(artistInfo[category]);
+                        return !isNaN(artistValueNum) && !isNaN(artistInfoValueNum) && artistValueNum > artistInfoValueNum && Math.abs(artistValueNum - artistInfoValueNum) <= tolerance;
                     } else if (option === 'close v') {
                         const tolerance = 5;  // Tolerance for 'close' option (e.g., 5 years for debut)
-                        return parseInt(artistValue) < parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
+                            return parseInt(artistValue) < parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
+                        } else if (option === 'higher ^') {
+                            return parseInt(artistValue) > parseInt(artistInfo[category]);
+                        } else if (option === 'lower v') {
+                            return parseInt(artistValue) < parseInt(artistInfo[category]);
                     } else if (option === 'wrong') {
                         return artistValue !== artistInfo[category];
                     } else {
