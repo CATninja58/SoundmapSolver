@@ -129,7 +129,7 @@
 
         @media (max-width: 600px) {
             .heading, .artist-item {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(7, 1fr);
                 text-align: left;
             }
 
@@ -148,33 +148,6 @@
 
             .guess-container {
                 width: 100%;
-            }
-
-            .artist-item {
-                cursor: pointer;
-            }
-
-            .artist-item span:not(:first-child) {
-                display: none;
-            }
-
-            .artist-item.expanded span {
-                display: inline-block;
-                margin-bottom: 0;
-            }
-
-            .artist-item span:first-child::after {
-                content: " >";
-                font-weight: bold;
-            }
-
-            .artist-item.expanded span:first-child::after {
-                content: " v";
-                font-weight: bold;
-            }
-
-            .artist-item.expanded {
-                text-align: left;
             }
         }
     </style>
