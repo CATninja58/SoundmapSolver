@@ -74,6 +74,17 @@
             padding: 8px;
         }
 
+        .heading, .artist-item {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            width: 100%;
+            text-align: left;
+        }
+
+        .heading span {
+            font-weight: bold;
+        }
+
         .artist-item:last-child {
             border-bottom: none;
         }
@@ -255,9 +266,12 @@
                         return artistValue > artistInfo[category];
                     } else if (option === 'earlier v') {
                         return artistValue < artistInfo[category];
-                    } else if (option === 'close ^' || option === 'close v') {
+                    } else if (option === 'close ^') {
                         const tolerance = 5;  // Tolerance for 'close' option (e.g., 5 years for debut)
-                        return Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
+                        return parseInt(artistValue) > parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
+                    } else if (option === 'close v') {
+                        const tolerance = 5;  // Tolerance for 'close' option (e.g., 5 years for debut)
+                        return parseInt(artistValue) < parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
                     } else if (option === 'wrong') {
                         return artistValue !== artistInfo[category];
                     } else {
