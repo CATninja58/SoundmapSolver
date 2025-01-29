@@ -3,12 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artist Guessing Bot</title>
+    <title>Soundmap Artist Guesser Solver</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        input {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 14px;
+            width: 300px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
         button {
-            width: 150px;
+            width: 120px;
             height: 50px;
-            margin: 10px;
+            margin: 5px;
             font-size: 14px;
         }
 
@@ -27,39 +55,51 @@
             color: white;
         }
 
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        .results-container {
+            width: 80%;
+            margin-top: 40px;
+            padding: 10px;
+            border-top: 2px solid #000;
         }
 
-        .button-container {
+        .artist-item {
             display: flex;
-            flex-direction: column;
-            margin: 10px;
-        }
-
-        input {
-            margin: 10px;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
             padding: 8px;
+        }
+
+        .artist-item:last-child {
+            border-bottom: none;
+        }
+
+        select {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Artist Guessing Bot</h1>
+    <h1>Soundmap Artist Guesser Solver</h1>
 
     <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
     <div id="searchResults"></div>
 
-    <div id="buttonsContainer" class="container">
+    <div id="buttonsContainer" class="button-container">
         <!-- Buttons will be dynamically added here -->
+    </div>
+
+    <div id="artistList" class="results-container">
+        <!-- Artists matching the guess will be displayed here -->
     </div>
 
     <script>
         let artistsData = [];
         let artistInfo = {};
-        
+        let filteredArtists = []; // Holds the filtered artist list based on guesses
+
         // Load the CSV file and parse it
         function loadCSV() {
             const csvUrl = "https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/MasterArtistList.csv";  // Raw URL from GitHub
@@ -77,6 +117,8 @@
                 const [artist, debut, popularity, members, genre, country, gender] = row.split(",");
                 return { artist, debut, popularity, members, genre, country, gender };
             });
+            filteredArtists = [...artistsData]; // Initially show all artists
+            displayArtists(); // Display all artists at the start
         }
 
         // Search for artists based on input
@@ -101,32 +143,24 @@
             const artist = artistsData.find(artist => artist.artist === artistName);
             if (artist) {
                 artistInfo = artist;  // Store the artist's data for later use
-
-                const buttonsContainer = document.getElementById("buttonsContainer");
-                buttonsContainer.innerHTML = "";  // Clear previous buttons
-
-                const buttonContainer = document.createElement("div");
-                buttonContainer.className = "button-container";
-
-                // Create and add buttons
-                createButton(buttonContainer, "Debut Year", artist.debut, "debut");
-                createButton(buttonContainer, "Popularity", artist.popularity, "popularity");
-                createButton(buttonContainer, "Members", artist.members, "members");
-                createButton(buttonContainer, "Genre", artist.genre, "genre");
-                createButton(buttonContainer, "Country", artist.country, "country");
-                createButton(buttonContainer, "Gender", artist.gender, "gender");
-
-                buttonsContainer.appendChild(buttonContainer);
+                filteredArtists = [artist]; // Start with the selected artist only
+                displayArtists();
+                createButtons(artist);
             }
         }
 
-        // Create buttons with dropdown and color change functionality
-        function createButton(container, label, value, category) {
-            const button = document.createElement("button");
-            button.textContent = `${label}: ${value}`;
-            button.id = category;
-            button.onclick = () => showDropdown(button, category, value);
-            container.appendChild(button);
+        // Create the buttons with dropdown and color change functionality
+        function createButtons(artist) {
+            const buttonsContainer = document.getElementById("buttonsContainer");
+            buttonsContainer.innerHTML = "";  // Clear previous buttons
+
+            const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
+            categories.forEach(category => {
+                const button = document.createElement("button");
+                button.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)}: ${artist[category]}`;
+                button.onclick = () => showDropdown(button, category, artist[category]);
+                buttonsContainer.appendChild(button);
+            });
         }
 
         // Show dropdown for options
@@ -140,7 +174,10 @@
                 dropdown.appendChild(optionElement);
             });
 
-            dropdown.onchange = () => changeButtonColor(button, dropdown.value);
+            dropdown.onchange = () => {
+                changeButtonColor(button, dropdown.value);
+                filterArtists(category, value, dropdown.value);
+            };
             button.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)`;
             button.appendChild(dropdown);
         }
@@ -156,7 +193,45 @@
             }
         }
 
-        // Load data when the page is ready
+        // Filter the artists based on the option selected
+        function filterArtists(category, value, option) {
+            filteredArtists = artistsData.filter(artist => {
+                if (option === "correct") {
+                    return artist[category] === value;
+                } else if (option === "later ^") {
+                    return artist[category] > value;
+                } else if (option === "earlier v") {
+                    return artist[category] < value;
+                } else if (option === "close ^" || option === "close v") {
+                    const margin = option === "close ^" || option === "close v" ? 5 : 50;
+                    return Math.abs(artist[category] - value) <= margin;
+                }
+                return true; // If no condition is met, show all
+            });
+            displayArtists();
+        }
+
+        // Display the filtered artists on the screen
+        function displayArtists() {
+            const artistListContainer = document.getElementById("artistList");
+            artistListContainer.innerHTML = ""; // Clear previous list
+            filteredArtists.forEach(artist => {
+                const artistItem = document.createElement("div");
+                artistItem.className = "artist-item";
+                artistItem.innerHTML = `
+                    <span>${artist.artist}</span>
+                    <span>${artist.debut}</span>
+                    <span>${artist.popularity}</span>
+                    <span>${artist.members}</span>
+                    <span>${artist.genre}</span>
+                    <span>${artist.country}</span>
+                    <span>${artist.gender}</span>
+                `;
+                artistListContainer.appendChild(artistItem);
+            });
+        }
+
+        // Load the CSV data on page load
         loadCSV();
     </script>
 
