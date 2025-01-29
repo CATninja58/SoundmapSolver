@@ -332,9 +332,9 @@
             } else if (option === 'lower v') {
             return parseInt(artistValue) > parseInt(guessValue);
             } else if (option === 'close ^') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
-            } else if (option === 'close v') {
             return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
+            } else if (option === 'close v') {
+            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
             } else {
             return false;
             }
