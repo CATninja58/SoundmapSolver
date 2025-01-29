@@ -90,6 +90,11 @@
             display: inline-block;
             margin-bottom: 5px;
         }
+
+        .heading {
+            font-weight: bold;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -180,6 +185,12 @@
         function showDropdown(button, category, value) {
             const dropdown = document.createElement("select");
             const options = getCategoryOptions(category);
+            
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.textContent = "Choose an option";
+            dropdown.appendChild(defaultOption);
+
             options.forEach(option => {
                 const optionElement = document.createElement("option");
                 optionElement.value = option;
@@ -256,29 +267,37 @@
             displayArtists();
         }
 
-        // Display filtered artists
+        // Display filtered artists with a clean heading format
         function displayArtists() {
             const artistList = document.getElementById("artistList");
             artistList.innerHTML = '';
 
+            // Heading
+            const heading = document.createElement("div");
+            heading.classList.add("heading");
+            heading.innerHTML = `<span>Artist Name</span><span>Debut Year</span><span>Popularity</span><span>Members</span><span>Genre</span><span>Country</span><span>Gender</span>`;
+            artistList.appendChild(heading);
+
+            // Artist entries
             filteredArtists.forEach(artist => {
-                const artistDiv = document.createElement("div");
-                artistDiv.classList.add("artist-item");
-                artistDiv.innerHTML = `
+                const artistItem = document.createElement("div");
+                artistItem.classList.add("artist-item");
+
+                artistItem.innerHTML = `
                     <span>${artist.artist}</span>
-                    <span>Debut: ${artist.debut}</span>
-                    <span>Popularity: ${artist.popularity}</span>
-                    <span>Members: ${artist.members}</span>
-                    <span>Genre: ${artist.genre}</span>
-                    <span>Country: ${artist.country}</span>
-                    <span>Gender: ${artist.gender}</span>
+                    <span>${artist.debut}</span>
+                    <span>${artist.popularity}</span>
+                    <span>${artist.members}</span>
+                    <span>${artist.genre}</span>
+                    <span>${artist.country}</span>
+                    <span>${artist.gender}</span>
                 `;
-                artistList.appendChild(artistDiv);
+
+                artistList.appendChild(artistItem);
             });
         }
 
-        // Initialize
-        loadCSV();
+        loadCSV();  // Start loading the CSV data
     </script>
 
 </body>
