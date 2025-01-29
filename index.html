@@ -175,13 +175,17 @@
             searchResults.innerHTML = '';
 
             if (query) {
-                const matches = artistsData.filter(artist => artist.artist.toLowerCase().includes(query));
-                matches.forEach(match => {
-                    const resultDiv = document.createElement("div");
-                    resultDiv.textContent = match.artist;
-                    resultDiv.onclick = () => displayArtistInfo(match.artist);
-                    searchResults.appendChild(resultDiv);
-                });
+            const matches = artistsData.filter(artist => artist.artist.toLowerCase().includes(query));
+            matches.forEach(match => {
+                const resultDiv = document.createElement("div");
+                resultDiv.textContent = match.artist;
+                resultDiv.onclick = () => {
+                displayArtistInfo(match.artist);
+                document.getElementById("artistSearch").value = '';
+                searchResults.innerHTML = '';
+                };
+                searchResults.appendChild(resultDiv);
+            });
             }
         }
 
