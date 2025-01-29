@@ -262,9 +262,9 @@
 
                     if (option === 'correct') {
                         return artistValue === artistInfo[category];
-                    } else if (option === 'later ^') {
+                    } else if (option === '') {
                         return artistValue > artistInfo[category];
-                    } else if (option === 'earlier v') {
+                    } else if (option === 'v') {
                         return artistValue < artistInfo[category];
                     } else if (option === 'close ^') {
                         const tolerance = 5;  // Tolerance for 'close' option (e.g., 5 years for debut)
@@ -274,9 +274,9 @@
                     } else if (option === 'close v') {
                         const tolerance = 5;  // Tolerance for 'close' option (e.g., 5 years for debut)
                             return parseInt(artistValue) < parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
-                        } else if (option === 'higher ^') {
+                        } else if (option === '^') {
                             return parseInt(artistValue) > parseInt(artistInfo[category]);
-                        } else if (option === 'lower v') {
+                        } else if (option === 'v') {
                             return parseInt(artistValue) < parseInt(artistInfo[category]);
                     } else if (option === 'wrong') {
                         return artistValue !== artistInfo[category];
