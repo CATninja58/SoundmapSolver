@@ -31,6 +31,7 @@
             display: flex;
             justify-content: center;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         button {
@@ -50,8 +51,8 @@
             color: white;
         }
 
-        .red {
-            background-color: red;
+        .grey {
+            background-color: grey;
             color: white;
         }
 
@@ -60,11 +61,15 @@
             margin-top: 40px;
             padding: 10px;
             border-top: 2px solid #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .artist-item {
             display: flex;
             justify-content: space-between;
+            width: 100%;
             border-bottom: 1px solid #ddd;
             padding: 8px;
         }
@@ -77,6 +82,11 @@
             margin-top: 10px;
             padding: 5px;
             font-size: 14px;
+        }
+
+        .button-text {
+            display: inline-block;
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -99,6 +109,7 @@
         let artistsData = [];
         let artistInfo = {};
         let filteredArtists = []; // Holds the filtered artist list based on guesses
+        let selectedOptions = {}; // Stores selected options for each category
 
         // Load the CSV file and parse it
         function loadCSV() {
@@ -157,7 +168,7 @@
             const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
             categories.forEach(category => {
                 const button = document.createElement("button");
-                button.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)}: ${artist[category]}`;
+                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${artist[category]}</span>`;
                 button.onclick = () => showDropdown(button, category, artist[category]);
                 buttonsContainer.appendChild(button);
             });
@@ -166,7 +177,7 @@
         // Show dropdown for options
         function showDropdown(button, category, value) {
             const dropdown = document.createElement("select");
-            const options = ["correct", "later ^", "earlier v", "close ^", "close v"];
+            const options = getCategoryOptions(category);
             options.forEach(option => {
                 const optionElement = document.createElement("option");
                 optionElement.value = option;
@@ -175,63 +186,86 @@
             });
 
             dropdown.onchange = () => {
-                changeButtonColor(button, dropdown.value);
-                filterArtists(category, value, dropdown.value);
+                const selectedOption = dropdown.value;
+                selectedOptions[category] = selectedOption;
+                changeButtonColor(button, selectedOption);
+                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${selectedOption})</span>`;
+                filterArtists();
             };
-            button.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)`;
+
+            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
             button.appendChild(dropdown);
+        }
+
+        // Get the options for each category
+        function getCategoryOptions(category) {
+            switch (category) {
+                case 'debut':
+                    return ['correct', 'later ^', 'earlier v', 'close ^', 'close v'];
+                case 'popularity':
+                    return ['correct', 'higher ^', 'lower v', 'close ^', 'close v'];
+                case 'members':
+                case 'genre':
+                case 'country':
+                case 'gender':
+                    return ['correct', 'wrong'];
+                default:
+                    return [];
+            }
         }
 
         // Change button color based on selected option
         function changeButtonColor(button, option) {
-            if (option === "correct") {
-                button.className = "green";
-            } else if (option === "close ^" || option === "close v") {
-                button.className = "orange";
-            } else {
-                button.className = "red";
+            if (option === 'correct') {
+                button.className = 'green';
+            } else if (option === 'close ^' || option === 'close v') {
+                button.className = 'orange';
+            } else if (option === 'wrong') {
+                button.className = 'grey';
             }
         }
 
-        // Filter the artists based on the option selected
-        function filterArtists(category, value, option) {
+        // Filter the artists based on the options selected
+        function filterArtists() {
             filteredArtists = artistsData.filter(artist => {
-                if (option === "correct") {
-                    return artist[category] === value;
-                } else if (option === "later ^") {
-                    return artist[category] > value;
-                } else if (option === "earlier v") {
-                    return artist[category] < value;
-                } else if (option === "close ^" || option === "close v") {
-                    const margin = option === "close ^" || option === "close v" ? 5 : 50;
-                    return Math.abs(artist[category] - value) <= margin;
-                }
-                return true; // If no condition is met, show all
+                return Object.keys(selectedOptions).every(category => {
+                    const option = selectedOptions[category];
+                    const artistValue = artist[category];
+
+                    if (!option) return true;  // If no option is selected, exclude it from the filter
+
+                    if (option === 'correct') {
+                        return artistValue === artistInfo[category];
+                    } else if (option === 'later ^') {
+                        return artistValue > artistInfo[category];
+                    } else if (option === 'earlier v') {
+                        return artistValue < artistInfo[category];
+                    } else if (option === 'close ^' || option === 'close v') {
+                        const tolerance = 5;  // Tolerance for 'close' option (e.g., 5 years for debut)
+                        return Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
+                    } else {
+                        return false;  // For other options, return false
+                    }
+                });
             });
+
             displayArtists();
         }
 
-        // Display the filtered artists on the screen
+        // Display filtered artists
         function displayArtists() {
-            const artistListContainer = document.getElementById("artistList");
-            artistListContainer.innerHTML = ""; // Clear previous list
+            const artistList = document.getElementById("artistList");
+            artistList.innerHTML = '';
+
             filteredArtists.forEach(artist => {
-                const artistItem = document.createElement("div");
-                artistItem.className = "artist-item";
-                artistItem.innerHTML = `
-                    <span>${artist.artist}</span>
-                    <span>${artist.debut}</span>
-                    <span>${artist.popularity}</span>
-                    <span>${artist.members}</span>
-                    <span>${artist.genre}</span>
-                    <span>${artist.country}</span>
-                    <span>${artist.gender}</span>
-                `;
-                artistListContainer.appendChild(artistItem);
+                const artistDiv = document.createElement("div");
+                artistDiv.classList.add("artist-item");
+                artistDiv.innerHTML = `<span>${artist.artist}</span>`;
+                artistList.appendChild(artistDiv);
             });
         }
 
-        // Load the CSV data on page load
+        // Initialize
         loadCSV();
     </script>
 
