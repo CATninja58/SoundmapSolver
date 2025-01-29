@@ -124,6 +124,30 @@
             font-weight: bold;
             margin-top: 20px;
         }
+
+        @media (max-width: 600px) {
+            .heading, .artist-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .heading span, .artist-item span {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            input {
+                width: 90%;
+            }
+
+            .results-container {
+                width: 100%;
+            }
+
+            .guess-container {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -134,11 +158,11 @@
     <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
     <div id="searchResults"></div>
 
-    <div id="guessesContainer" class="guess-container">
+    <div id="guessesContainer" class="guess-container"></div>
         <!-- Guesses will be dynamically added here -->
     </div>
 
-    <div id="artistList" class="results-container">
+    <div id="artistList" class="results-container"></div>
         <!-- Artists matching the guess will be displayed here -->
     </div>
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
@@ -376,5 +400,3 @@
 
 </body>
 </html>
-
-
