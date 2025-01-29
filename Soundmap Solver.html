@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Guessing Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; text-align: center; }
+        input, button, select { margin: 10px; padding: 8px; }
+        .btn-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        #searchResults { margin-top: 10px; text-align: left; padding: 10px; border: 1px solid #ccc; display: none; }
+        #searchResults div { cursor: pointer; padding: 5px; }
+        #searchResults div:hover { background-color: #f0f0f0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="showSuggestions()">
+    <div id="searchResults"></div>
+    <div class="btn-row">
+        <button id="debutBtn">Debut Year</button>
+        <button id="popularityBtn">Popularity</button>
+        <button id="membersBtn">Members</button>
+        <button id="genreBtn">Genre</button>
+        <button id="countryBtn">Country</button>
+        <button id="genderBtn">Gender</button>
+    </div>
+</div>
+
+<script>
+    let artistData = [];
+
+    // Load CSV file
+    async function loadCSV() {
+        const response = await fetch('MasterArtistList.csv'); // Ensure the CSV file is named correctly and in the same directory
+        const data = await response.text();
+        parseCSV(data);
+    }
+
+    // Parse CSV data
+    function parseCSV(csv) {
+        const rows = csv.split("\n").map(row => row.split(","));
+        artistData = rows.slice(1).map(row => ({
+            name: row[0].trim().toLowerCase(),  // Normalize the artist name
+            debut: row[1].trim(),
+            popularity: row[2].trim(),
+            members: row[3].trim(),
+            genre: row[4].trim(),
+            country: row[5].trim(),
+            gender: row[6].trim()
+        }));
+    }
+
+    // Show search suggestions as you type
+    function showSuggestions() {
+        const query = document.getElementById("artistSearch").value.trim().toLowerCase();
+        const resultsContainer = document.getElementById("searchResults");
+        
+        if (query === "") {
+            resultsContainer.style.display = "none";
+            return;
+        }
+
+        // Find matching artists based on the query
+        const matches = artistData.filter(artist => artist.name.startsWith(query));
+        
+        // Show the results
+        resultsContainer.innerHTML = '';
+        matches.forEach(artist => {
+            const div = document.createElement("div");
+            div.textContent = artist.name.charAt(0).toUpperCase() + artist.name.slice(1); // Capitalize the first letter for display
+            div.onclick = () => selectArtist(artist.name);
+            resultsContainer.appendChild(div);
+        });
+
+        // If there are matches, display the results container
+        resultsContainer.style.display = matches.length > 0 ? "block" : "none";
+    }
+
+    // Select an artist from the search suggestions
+    function selectArtist(artistName) {
+        document.getElementById("artistSearch").value = artistName; // Set the text box to the selected name
+        document.getElementById("searchResults").style.display = "none"; // Hide the suggestions
+
+        // Find the selected artist data and update the buttons
+        const artist = artistData.find(a => a.name === artistName.toLowerCase());
+        
+        if (artist) {
+            document.getElementById("debutBtn").innerText = `Debut: ${artist.debut}`;
+            document.getElementById("popularityBtn").innerText = `Popularity: ${artist.popularity}`;
+            document.getElementById("membersBtn").innerText = `Members: ${artist.members}`;
+            document.getElementById("genreBtn").innerText = `Genre: ${artist.genre}`;
+            document.getElementById("countryBtn").innerText = `Country: ${artist.country}`;
+            document.getElementById("genderBtn").innerText = `Gender: ${artist.gender}`;
+        }
+    }
+
+    loadCSV();
+</script>
+
+</body>
+</html>

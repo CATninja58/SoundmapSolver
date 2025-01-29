@@ -1,0 +1,1009 @@
+ARTIST,DEBUT,POPULARITY,MEMBERS,GENRE,COUNTRY,GENDER
+Bruno Mars,2010,1,Solo,Pop,US,Male
+Ariana Grande,2011,2,Solo,Pop,US,Female
+Taylor Swift,2006,3,Solo,Pop,US,Female
+Sabrina Carpenter,2014,4,Solo,Pop,US,Female
+The Weeknd,2011,5,Solo,Pop,CA,Male
+Justin Bieber,2009,6,Solo,Pop,CA,Male
+Lady Gaga,2008,7,Solo,Pop,US,Female
+Shakira,1995,8,Solo,Pop,CO,Female
+Rihanna,2005,9,Solo,Pop,BB,Female
+Ed Sheeran,2009,10,Solo,Pop,GB,Male
+Katy Perry,2007,11,Solo,Pop,US,Female
+Selena Gomez,2011,12,Solo,Pop,US,Female
+Adele,2008,13,Solo,Pop,GB,Female
+Dua Lipa,2015,14,solo,Pop,GB,Female
+Beyoncé,2002,15,Solo,Pop,US,Female
+One Direction,2010,16,Group,Pop,GB,Male
+Chris Brown,2005,17,Solo,Pop,US,Male
+Maroon 5,2002,18,Group,Pop,US,Male
+Jason Derulo,2010,19,Solo,Pop,US,Male
+Olivia Rodrigo,2016,20,Solo,Pop,US,Female
+Michael Jackson,1972,21,Solo,Pop,US,Male
+Mariah Carey,1990,22,Solo,Pop,US,Female
+Shawn Mendes,2015,23,Solo,Pop,CA,Male
+Miley Cyrus,2007,24,Solo,Pop,US,Female
+Sia,2000,25,Solo,Pop,AU,Female
+Pitbull,2004,26,Solo,Pop,US,Male
+Jennifer Lopez,1999,27,Solo,Pop,US,Female
+Harry Styles,2017,28,Solo,Pop,GB,Male
+Doja Cat,2014,29,Solo,Pop,US,Female
+Camila Cabello,2017,30,Solo,Pop,US,Female
+Britney Spears,1999,31,Solo,Pop,US,Female
+Enrique Iglesias,1995,32,Solo,Pop,ES,Male
+Demi Lovato,2008,33,Solo,Pop,US,Female
+Justin Timberlake,2002,34,Solo,Pop,US,Male
+ZAYN,2016,35,Solo,Pop,GB,Male
+Sam Smith,2013,36,Solo,Pop,GB,Male
+Teddy Swims,2019,37,Solo,Pop,US,Male
+Charlie Puth,2015,38,Solo,Pop,US,Male
+Charli xcx,2012,39,Solo,Pop,GB,Female
+Tate McRae,2017,40,Solo,Pop,CA,Female
+OneRepublic,2007,41,Group,Pop,US,Male
+P!nk,2000,42,Solo,Pop,US,Female
+Black Eyed Peas,1998,43,Group,Pop,US,Mixed
+Elton John,1969,44,Solo,Pop,GB,Male
+Halsey,2014,45,Solo,Pop,US,Female
+Ellie Goulding,2010,46,Solo,Pop,GB,Female
+Bebefinn,2022,47,Solo,Pop,US,Male
+Tyla,2019,48,Solo,Pop,ZA,Female
+Benson Boone,2021,49,Solo,Pop,US,Male
+Céline Dion,1984,50,Solo,Pop,CA,Female
+Whitney Houston,1985,51,Solo,Pop,US,Female
+Meghan Trainor,2014,52,solo,Pop,US,Female
+Khalid,2016,53,solo,Pop,US,Male
+Madonna,1983,54,Solo,Pop,US,Female
+The Kid LAROI,2019,55,Solo,Pop,AU,Male
+Michael Buble,2003,56,Solo,Pop,CA,Male
+ABBA,1973,57,Group,Pop,SE,Mixed
+GIMS,2013,58,Solo,Pop,FR,Male
+Liam Payne,2017,59,Solo,Pop,GB,Male
+Kesha,2009,60,Solo,Pop,US,Female
+Christina Aguilera,1999,61,Solo,Pop,US,Female
+James Arthur,2012,62,Solo,Pop,GB,Male
+Wham!,1982,63,Group,Pop,GB,Male
+Backstreet Boys,1996,64,Group,Pop,US,Male
+Niall Horan,2017,65,Solo,Pop,IE,Male
+Little Mix,2012,66,Group,Pop,GB,Female
+Lewis Capaldi,2017,67,Solo,Pop,GB,Male
+Kelly Clarkson,2003,68,Solo,Pop,US,Female
+Jessie J,2011,69,Solo,Pop,GB,Female
+JVKE,2020,70,Solo,Pop,US,Male
+Elvis Presley,1956,71,Solo,Pop,US,Male
+Bebe Rexha,2014,72,Solo,Pop,US,Female
+Ava Max,2018,73,Solo,Pop,US,Female
+Anne-Marie,2015,74,Solo,Pop,GB,Female
+Kiss Of Life,2023,75,Solo,Pop,KR,Female
+Pentatonix,2012,76,Group,Pop,US,Mixed
+Fifth Harmony,2013,77,Group,Pop,US,Female
+Zara Larsson,2012,78,Solo,Pop,SE,Female
+Nelly Furtado,2000,79,Solo,Pop,CA,Female
+Madison Beer,2013,80,Solo,Pop,US,Female
+Bew Gees,1968,81,Group,Pop,AU,Male
+Frank Sinatra,1946,82,Solo,Pop,US,Male
+Stromae,2009,83,Solo,Pop,BE,Male
+Clean Bandit,2013,84,Group,Pop,GB,Mixed
+Boney M,1976,85,Group,Pop,DE,Mixed
+RAYE,2016,86,Solo,Pop,GB,Female
+5 Seconds of Summer,2012,87,Group,Pop,AU,Male
+George Michael,1987,88,Solo,Pop,GB,Male
+Modern Talking,1985,89,Group,Pop,DE,Male
+James Charles,2024,90,Solo,Pop,US,Male
+Mark Ronson,2003,91,Solo,Pop,GB,Male
+*nsync,1997,92,group,Pop,US,male
+Yuridia,2005,93,Solo,Pop,MX,Female
+Rita Ora,2012,94,Solo,Pop,GB,Female
+Calum Scott,2017,95,Solo,Pop,GB,Male
+Myles Smith,2023,96,Solo,Pop,GB,Male
+Gwen Stefani,2004,97,Solo,Pop,US,Female
+Addison Rae,2021,98,Solo,Pop,US,Female
+Labrinth,2010,99,Solo,Pop,GB,Male
+Alessia Cara,2015,100,Solo,Pop,CA,Female
+Nick Jonas,2012,101,Solo,Pop,US,Male
+Carly Rae Jepsen,2008,102,Solo,Pop,CA,Female
+Dean Lewis,2017,103,Solo,Pop,AU,Male
+Lara Campos,2024,104,Solo,Pop,MX,Female
+Jonas Brothers,2006,105,Group,Pop,US,Male
+Alphaville,1984,106,Group,Pop,DE,Male
+INNA,2010,107,Solo,Pop,RO,Female
+Cyndi Lauper,1983,108,Solo,Pop,US,Female
+Diamond Platnumz,2012,109,Solo,Pop,TZ,Male
+Christina Perry,2011,110,Solo,Pop,US,Female
+will.i.am,2001,111,Solo,Pop,US,Male
+XO Team,2021,112,Group,Pop,US,Mixed
+Bing Crosby,1932,113,Solo,Pop,US,Male
+Indila,2014,114,Solo,Pop,FR,Female
+John Mayer,2001,115,Solo,Pop,US,Male
+Lyodra,2017,116,Solo,Pop,ID,Female
+CoComelon,2019,117,Group,Pop,US,Mixed
+James Blunt,2005,118,Solo,Pop,GB,Male
+George Ezra,2013,119,Solo,Pop,GB,Male
+Dove Cameron,2016,120,Solo,Pop,US,Female
+Robbie Williams,1997,121,Solo,Pop,GB,Male
+Kylie Minogue,1987,122,Solo,Pop,GB,Female
+Dean Martin,1950,123,Solo,Pop,US,Male
+Jason Mraz,2002,124,Solo,Pop,US,Male
+Mete Kayagil,2023,125,Solo,Pop,TR,Male
+The Pussycat Dolls,2005,126,Group,Pop,US,Female
+Sofia Carson,2015,127,Solo,Pop,US,Female
+Music Travel Love,2016,128,Group,Pop,CA,Male
+Hailee Steinfeld,2015,129,Solo,Pop,US,Female
+Fergie,2006,130,Solo,Pop,US,Female
+Roxette,1986,131,Group,Pop,SE,Mixed
+Lola Young,2019,132,Solo,Pop,GB,Female
+Bella Poarch,2022,133,Solo,Pop,US,Female
+Laura Pausini,1993,134,Solo,Pop,IT,Female
+benny blanco,2018,135,Solo,Pop,US,Male
+a-ha,1985,136,Group,Pop,NO,Male
+Lukas Graham,2016,137,Group,Pop,DK,Male
+Dido,1999,138,Solo,Pop,GB,Female
+Nicole Scherzinger,2007,139,Solo,Pop,US,Female
+Eros Ramazzotti,1985,140,Solo,Pop,IT,Male
+charli d'amelio,2022,141,Solo,Pop,US,Female
+Lizzo,2014,142,Solo,Pop,US,Female
+Tove Lo.,2014,143,Solo,Pop,SE,Female
+Conor Maynard,2012,144,Solo,Pop,GB,Male
+Cher,1965,145,Solo,Pop,US,Female
+Idina Menzel,1998,146,Solo,Pop,US,Female
+Westlife,1999,147,Group,Pop,IE,Male
+Lyna,2018,148,Solo,Pop,ES,Female
+Aitana,2017,149,Solo,Pop,ES,Female
+Bonnie Tyler,1976,150,Solo,Pop,GB,Female
+,,151,,Pop,,
+Noah Cyrus,2010,152,Solo,Pop,US,Female
+Tina Turner,1974,153,Solo,Pop,US,Female
+Isabel LaRosa,2021,154,Solo,Pop,US,Female
+Boyce Avenue,2009,155,Group,Pop,US,Male
+Squeezie,2019,156,Solo,Pop,FR,Male
+Mike Posner,2009,157,Solo,Pop,US,Male
+Mark Ambor,2019,158,Solo,Pop,US,Male
+Owl City,2007,159,Solo,Pop,US,Male
+Leona Lewis,2007,160,Solo,Pop,GB,Female
+Lasso,2016,161,Solo,Pop,MX,Male
+Dasha,2020,162,Solo,Pop,US,Female
+Spice Girls,1996,163,Group,Pop,GB,Female
+Semicenk,2021,164,Solo,Pop,TR,Male
+Hooplakidz,2018,165,Group,Pop,US,Mixed
+Taio Cruz,2006,166,Solo,Pop,GB,Male
+Julia Michaels,2017,167,Solo,Pop,US,Female
+Jess Glynne,2014,168,Solo,Pop,GB,Female
+Karina y Marina,2019,169,Group,Pop,ES,Female
+RHYDER,2019,170,Solo,Pop,VN,Male
+Olly Murs,2010,171,Solo,Pop,GB,Male
+Big Time Rush,2010,172,Group,Pop,US,Male
+Natasha Bedingfield,2004,173,Solo,Pop,GB,Female
+John Newman,2013,174,Solo,Pop,GB,Male
+Annie Lennox,1990,175,Solo,Pop,GB,Female
+Lindsay Lohan,2004,176,Solo,Pop,US,Female
+Normani,2018,177,Solo,Pop,US,Female
+Zack Tabudlo,2018,178,Solo,Pop,PH,Male
+The Vamps,2014,179,Group,Pop,GB,Male
+Ruth B,2015,180,Solo,Pop,CA,Female
+Victoria Pfeifer,2018,181,Solo,Pop,US,Female
+Raisa,2011,182,Solo,Pop,ID,Female
+Henry Moodie,2023,183,Solo,Pop,GB,Male
+karol sevilla,2019,184,Solo,Pop,MX,female
+Austin Mahone,2012,185,Solo,Pop,US,Male
+RIck Astley,1987,186,Solo,Pop,GB,Male
+Eurythmics,1981,187,Group,Pop,GB,Mixed
+Victoria Justice,2013,188,Solo,Pop,US,Female
+Zuchu,2020,189,Solo,Pop,TZ,Female
+Mattybraps,2016,190,Solo,Pop,US,Male
+Elley Duhe,2017,191,Solo,Pop,US,Female
+FutParódias,2017,192,Group,Pop,BR,Male
+Joe Jonas,2011,193,Solo,Pop,US,Male
+CG5,2016,194,Solo,Pop,US,Male
+James Bay,2014,195,SOlo,Pop,GB,Male
+Ali Gatie,2017,196,Solo,Pop,CA,Male
+Shania Yan,2021,197,Solo,Pop,ID,Female
+Lauren Spencer Smith,2019,198,Solo,Pop,CA,Female
+Hadise,2007,199,Solo,Pop,TR,Female
+Daya,2015,200,Solo,Pop,US,Female
+Mini Pop Kids,2004,201,Group,Pop,CA,Mixed
+Eminem,1996,1,solo,Hip Hop,us,Male
+Drake,2009,2,Solo,Hip Hop,CA,Male
+Travis Scott,2013,3,Solo,Hip Hop,US,Male
+Post Malone,2016,4,Solo,Hip Hop,US,Male
+Kendrick Lamar,2010,5,Solo,Hip Hop,US,Male
+Nicki Minaj,2010,6,Solo,Hip Hop,US,Female
+"Tyler, The Creator",2011,7,solo,Hip Hop,US,Male
+XXXTENTACION,2015,8,Solo,Hip Hop,US,Male
+50 Cent,2003,9,Solo,Hip Hop,US,Male
+Snoop Dogg,1993,10,Solo,Hip Hop,US,Male
+Cardi B,2015,11,Solo,Hip Hop,US,Female
+Future,2011,12,Solo,Hip Hop,US,Male
+Kanye West,2004,13,Solo,Hip Hop,US,Male
+Juice WRLD,2018,14,Solo,Hip Hop,US,Male
+Lil Wayne,1999,15,Solo,Hip Hop,US,Male
+Wiz Khalifa,2006,16,Solo,Hip Hop,US,Male
+Megan Thee Stallion,2017,17,Solo,Hip Hop,US,Female
+21 Savage,2015,18,Solo,Hip Hop,US,Male
+Lil Baby,2017,19,Solo,Hip Hop,US,Male
+J. Cole,2011,20,Solo,Hip Hop,US,Male
+GloRila,2019,21,Solo,Hip Hop,US,Female
+A$AP Rocky,2011,22,Solo,Hip Hop,US,Male
+2Pac,1991,23,Solo,Hip Hop,US,Male
+Metro Boomin,2014,24,Solo,Hip Hop,US,Male
+Nicki Nicole,2019,25,Solo,Hip Hop,AR,Female
+Playboi Carti,2016,26,Solo,Hip Hop,US,Male
+NLE Choppa,2018,27,Solo,Hip Hop,US,Male
+Bizarrap,2018,28,Solo,Hip Hop,AR,Male
+gunna,2016,29,solo,Hip Hop,us,Male
+Dr. Dre,1992,30,Solo,Hip Hop,US,Male
+Tyga,2009,31,Solo,Hip Hop,US,Male
+central cee,2017,32,solo,Hip Hop,gb,Male
+Lil Nas X,2019,33,Solo,Hip Hop,US,Male
+Lil Uzi Vert,2014,34,Solo,Hip Hop,US,Male
+DJ Khaled,2007,35,Solo,Hip Hop,US,Male
+Will Smith,1997,36,Solo,Hip Hop,US,Male
+Lil Peep,2015,37,Solo,Hip Hop,US,Male
+Jelly Roll,2008,38,Solo,Hip Hop,US,Male
+Hungria,2014,39,Solo,Hip Hop,BR,Male
+Don Toliver,2017,40,Solo,Hip Hop,US,Male
+Duki,1996,41,Solo,Hip Hop,AR,Male
+Young Thug,2011,42,Solo,Hip Hop,US,Male
+JAY-Z,1996,43,Solo,Hip Hop,US,Male
+Lil Durk,2012,44,Solo,Hip Hop,US,Male
+YoungBoy Never Broke Again,2016,45,Solo,Hip Hop,US,Male
+Kodak Black,2014,46,Solo,Hip Hop,US,Male
+French Montana,2007,47,Solo,Hip Hop,US,Male
+DaBaby,2016,48,Solo,Hip Hop,US,Male
+Migos,2011,49,Group,Hip Hop,US,Male
+Ice Cube,1990,50,Solo,Hip Hop,US,Male
+Flo Rida,2007,51,Solo,Hip Hop ,US,Male
+Rod Wave,2018,52,Solo,Hip Hop,US,Male
+Childish Gambino,2011,53,Solo,Hip Hop,US,Male
+Pop Smoke,2019,54,Solo,Hip Hop,US,Male
+Ty Dolla $ign,2011,55,Solo,Hip Hop,US,Male
+G-Eazy,2011,56,Solo,Hip Hop,US,Male
+Keemokazi,2020,57,Solo,Hip Hop,US,Male
+Nelly,2000,58,Solo,Hip Hop,US,Male
+The Notorious B.I.G.,1994,59,Solo,Hip Hop,US,Male
+6ix9ine,2017,60,Solo,Hip Hop,US,Male
+SuicideboyS,2014,61,Group,Hip Hop,US,Male
+Mac Miller,2010,62,Solo,Hip Hop,US,Male
+Polo G,2018,63,Solo,Hip Hop,US,Male
+Shubh,2021,64,Solo,Hip Hop,CA,Male
+Trippie Redd,2017,65,Solo,Hip Hop,US,Male
+Jul,2013,66,Solo,Hip Hop,FR,Male
+Tory Lanez,2012,67,Solo,Hip Hop,CA,Male
+Lil Tjay,2018,68,Solo,Hip Hop,US,Male
+Swae Lee,2018,69,Solo,Hip Hop,US,Male
+Roddy Ricch,2018,70,Solo,Hip Hop,US,Male
+Ice Spice,2021,71,solo,Hip Hop,us ,Female
+Macklemore,2005,72,Solo,Hip Hop,US,Male
+Ludacris,2000,73,Solo,Hip Hop,US,Male
+Jack Harlow,2015,74,Solo,Hip Hop,US,Male
+mgk,2010,75,Solo,Hip Hop,US,Male
+Big Sean,2010,76,Solo,Hip Hop,US,Male
+Offset,2015,77,Solo,Hip Hop,US,Male
+NF,2014,78,Solo,Hip Hop,US,Male
+Latto,2016,79,Solo,Hip Hop,US,Female
+Timbaland,1997,80,Solo,Hip Hop,US,Male
+Odetari,2023,81,Solo,Hip Hop,US,Mixed
+Doechii,2019,82,Solo,Hip Hop,US,Female
+Ninho,2017,83,Solo,Hip Hop,FR,Male
+BigXthaPlug,2019,84,Solo,Hip Hop,US,Male
+Gucci Mane,2005,85,Solo,Hip Hop,US,Male
+Quavo,2017,86,Solo,Hip Hop,US,Male
+Moneybagg Yo,2016,87,Solo,Hip Hop,US,Male
+King Von,2018,88,Solo,Hip Hop,US,Male
+YNW Melly,2017,89,Solo,Hip Hop,US,Male
+Rick Ross,2006,90,Solo,Hip Hop,US,Male
+Dax,2017,91,Solo,Hip Hop,US,Male
+Rae Sremmurd,2014,92,Group,Hip Hop,US,Male
+Iggy Azalea,2013,93,Solo,Hip Hop,AU,Female
+,,94,,Hip Hop,,
+Tibo Inshape,2020,95,Solo,Hip Hop,FR,Male
+Meek Mill,2011,96,Solo,Hip Hop,US,Male
+Lil Pump,2017,97,Solo,Hip Hop,US,Male
+Kid Cudi,2009,98,Solo,Hip Hop,US,Male
+Lil Yachty,2015,99,Solo,Hip Hop,US,Male
+A Boogie Wit da Hoodie,2016,100,Solo,Hip Hop,US,Male
+Russ,2012,101,Solo,Hip Hop,US,Male
+Kevin Gates,2009,102,Solo,Hip Hop,US,Male
+Yeat,2018,103,Solo,Hip Hop,US,Male
+Sexyy Red,2019,104,Solo,Hip Hop,US,Female
+2 Chainz,2010,105,Solo,Hip Hop,US,Male
+Prvnci,2018,106,Solo,Hip Hop,US,Male
+Chief Keef,2012,107,Solo,Hip Hop,US,Male
+T.I.,2001,108,SOlo,Hip Hop,US,Male
+Outkast,1993,109,Group,Hip Hop,US,Mixed
+Niska,2015,110,Solo,Hip Hop,FR,Male
+The Game,2003,111,Solo,Hip Hop,US,Male
+SDM,2019,112,Solo,Hip Hop,FR,Male
+,,113,,Hip Hop,,
+Tiakola,2019,114,Solo,Hip Hop,FR,Male
+Tommy Richman,2016,115,Solo,Hip Hop,US,Male
+LL COOL J,1985,116,Solo,Hip Hop,US,Male
+DMX,1993,117,Solo,Hip Hop,US,Male
+PNL,2015,118,Group,Hip Hop,FR,Male
+,,119,,Hip Hop,,
+Connor Price,2018,120,Solo,Hip Hop,CA,Male
+B.o.B.,2008,121,Solo,Hip Hop,US,Male
+Busta Rhymes,1996,122,Solo,Hip Hop,US,Male
+Ken Carson,2018,123,Solo,Hip Hop,US,Male
+Jaden,2014,124,Solo,Hip Hop,US,Male
+Saweetie,2018,125,Solo,Hip Hop,US,Female
+Toosii,2017,126,Solo,Hip Hop,US,Male
+Druski,2024,127,Solo,Hip Hop,US,Male
+JID,2015,128,Solo,Hip Hop,US,Male
+Pete & Bas,2018,129,Group,Hip Hop,GB,Male
+bbno$,2016,130,Solo,Hip Hop,CA,Male
+Nas,1994,131,Solo,Hip Hop,US,Male
+Diddy,1997,132,Solo,Hip Hop,US,Male
+YG,2010,133,Solo,Hip Hop,US,Male
+Soulja Boy,2007,134,Solo,Hip Hop,US,Male
+Ren,2016,135,Solo,Hip Hop,GB,Male
+Rich The Kid,2014,136,Solo,Hip Hop,US,Male
+Juicy J,2002,137,Solo,Hip Hop,US,Male
+Booba,2002,138,Solo,Hip Hop,FR,Male
+Lacrim,2010,139,Solo,Hip Hop,FR,Male
+Dave,2016,140,Solo,Hip Hop,GB,Male
+Fetty Wap,2015,141,Solo,Hip Hop,US,Male
+ScHoolboy Q,2011,142,Solo,Hip Hop,US,Male
+Chance the Rapper,2012,143,Solo,Hip Hop,US,Male
+Kid Leray,2018,144,Solo,Hip Hop,US,Female
+Tee Grizzley,2017,145,SOlo,Hip Hop,US,Male
+Logic,2014,146,Solo,Hip Hop,US,Male
+Young Dolph,2010,147,Solo,Hip Hop,US,Male
+Coolio,1994,148,Solo,Hip Hop,US,Male
+Baby Keem,2018,149,Solo,Hip Hop,US,Male
+Montell Fish,2016,150,Solo,Hip Hop,US,Male
+Lil Mosey,2018,151,Solo,Hip Hop,US,Male
+BossMan Dlow,2020,152,Soll,Hip Hop,US,Male
+Werenoi,2021,153,Solo,Hip Hop,FR,Male
+Ashnikko,2017,154,Solo,Hip Hop,US,Female
+Jabbawockeez,2011,155,Group,Hip Hop,US,Male
+Sleepy Hallow,2018,156,Solo,Hip Hop,US,Male
+MF DOOM,1999,157,Solo,Hip Hop,GB,Male
+MHD,2016,158,Solo,Hip Hop,FR,Male
+A$AP Ferg,2013,159,Solo,Hip Hop,US,Male
+24kGoldn,2018,160,Solo,Hip Hop,US,Male
+Ja Rule,1999,161,Solo,Hip Hop,US,Male
+Key Glock,2017,162,Solo,Hip Hop,US,Male
+Desiigner,2016,163,Solo,Hip Hop,US,Male
+Maes,2018,164,Solo,Hip Hop,FR,Male
+Missy Elliott,1997,165,Solo,Hip Hop,US,Female
+Jordan Adetunji,2020,166,Solo,Hip Hop,GB,Male
+Jeezy,2003,167,Solo,Hip Hop,US,Male
+Wu-Tang Clan,1992,168,Group,Hip Hop,US,Male
+SCH,2015,169,Solo,Hip Hop,FR,Male
+Mustard,2013,170,Solo,Hip Hop,US,Male
+Lil Jon,1999,171,Solo,Hip Hop,US,Male
+Kid Ink,2010,172,Solo,Hip Hop,US,Male
+Joyner Lucas,2015,173,Solo,Hip Hop,US,Male
+Wale,2008,174,Solo,Hip Hop,US,Male
+Fugees,1994,175,Group,Hip Hop,US,Mixed
+Ski Mask The Slump God,2016,176,Solo,Hip Hop,US,Male
+LACAZETTE,2024,177,Solo,Hip Hop,DE,Male
+Yo Gotti,2006,178,Solo,Hip Hop,US,Male
+Mr. Thank You,2023,179,Solo,Hip Hop,US,Male
+Flo Milli,2019,180,Solo,Hip Hop,US,Female
+,,181,,Hip Hop,,
+Cypress Hill,1991,182,Group,Hip Hop,US,Male
+LUCKI,2013,183,Solo,Hip Hop,US,Male
+Stormzy,2014,184,Solo,Hip Hop,GB,Male
+Soprano,2007,185,Solo,Hip Hop,FR,Female
+BabyChiefDoit,2023,186,Solo,Hip Hop,US,Male
+Stefflon Don,2013,187,Solo,Hip Hop,GB,Female
+La Fouine,2004,188,Solo,Hip Hop,FR,Male
+Powfu,2018,189,Solo,Hip Hop,CA,Male
+Rich Homie Quan,2012,190,Solo,Hip Hop,US,Male
+Naza,2016,191,Solo,Hip Hop,FR,Male
+Bhad Bhabie,2017,192,Solo,Hip Hop,US,Female
+Fat Joe,1993,193,Solo,Hip Hop,US,Male
+Ghostemane,2014,194,Solo,Hip Hop,US,Male
+NAV,2015,195,Solo,Hip Hop,CA,Male
+Nipsey Hussle,2005,196,Solo,Hip Hop,US,Male
+Fabolous,2001,197,Solo,Hip Hop,US,Male
+42 Dugg,2018,198,Solo,Hip Hop,US,Male
+G Herbo,2014,199,Solo,Hip Hop,US,Male
+Tom MacDonald,2014,200,Solo,Hip Hop,US,Male
+Koba LaD,2018,201,Solo,Hip Hop,FR,Male
+Naps,2015,202,Solo,Hip Hop,FR,Male
+Neutro Shorty,2010,203,Solo,Hip Hop,US,Male
+Michou,2020,204,Solo,Hip Hop,FR,Male
+Billie Eilish,2016,1,Solo,Indie,US,Female
+Lana Del Rey,2012,2,Solo,Indie,US,Female
+Chappell Roan,2017,3,Solo,Indie,US,Female
+Gracie Abrams,2019,4,Solo,Indie,US,Female
+Twenty One Pilots,2009,5,Group,Indie,US,Male
+Bernadya,2023,6,Solo,Indie,ID,Female
+Cigarettes After Sex,2012,7,Group,Indie,US,Male
+Conan Gray,2018,8,Solo,Indie,US,Male
+Troye Sivan,2012,9,Solo,Indie,Australia,Male
+Melanie Martinez,2012,10,Solo,Indie,US,Female
+Noah Kahan,2017,11,Solo,Indie,US,Male
+Tom Odell,2012,12,Solo,Indie,GB,Male
+Lorde,2013,13,Solo,Indie,NZ,Female
+TV Girl,2013,14,group,Indie,US,male
+Louis Tomlinson,2017,15,Solo,Indie,GB,Male
+Clairo,2017,16,Solo,Indie,US,Female
+LANY,2015,17,Group,Indie,US,Male
+d4vd,2021,18,Solo,Indie,US,Male
+AURORA,1994,19,Solo,Indie,NO,Female
+Sevdaliza,2015,20,Solo,Indie,NL,Female
+Artemas,2020,21,Solo,Indie,GB,Male
+Julieta Venegas,1998,22,Solo,Indie,MX,Female
+Alex Warren,2021,23,Solo,Indie,US,Male
+Alec Benjamin,2018,24,Solo,Indie,US,Male
+Lauv,2017,25,Solo,Indie,US,Male
+Florence + The Machine,2009,26,Group,Indie,GB,Female
+Glass Animals,2012,27,Group,Indie,GB,Male
+David Kushner,2022,28,Solo,Indie,US,Male
+Carla Morrison,2010,29,Solo,Indie,MX,Female
+The Marías,2017,30,Group,Indie,US,Mixed
+girl in red,2018,31,Solo,Indie,NO,Female
+Empire of Thr Sun,2008,32,Group,Indie,AU,Male
+Foster the People,2011,33,Group,Indie,US,Male
+Natalia Lafourcade,2002,34,Solo,Indie,MX,Femal
+Gigi Perez,2021,35,Solo,Indie,US,Female
+Kevin Kaarl,2018,36,Solo,Indie,MX,Male
+Ben&Ben,2016,37,Group,Indie,PH,Mixed
+Stephen Sanchez,2020,38,Solo,Indie,US,Male
+Nadin Amizah,2018,39,Solo,Indie,ID,Female
+Oliver Tree,2017,40,Solo,Indie,US,Male
+Hindia,2019,41,Solo,Indie,ID,Male
+BoyWithUke,2021,42,Solo,Indie,US,Male
+ANAVITÓRIA,2015,43,Group,Indie,BR,Female
+Vance Joy,2013,44,Solo,Indie,AU,Male
+Gotye,2006,45,Solo,Indie,AU,Male
+PinkPantheress,2021,46,Solo,Indie,GB,Female
+Tones And I,2019,47,Solo,Indie,AU,Female
+Rex Orange County,2016,48,Solo,Indie,GB,Male
+Bon Iver,2008,49,Group,Indie,US,Male
+Ela Taubert,2019,50,Solo,Indie,CO,Female
+AJR,2013,51,Group,Indie,US,Male
+MARINA,2009,52,Solo,Indie,GB,Female
+Forrest Frank,2023,53,Solo,Indie,US,Male
+Belanova,2003,54,Group,Indie,MX,Mixed
+Birdy,2011,55,Solo,Indie,GB,Female
+Imogen Heap,1998,56,Solo,Indie,GB,Female
+FINNEAS,2016,57,Solo,Indie,US,Male
+Dominic Fike,2018,58,Solo,Indie,US,Male
+Danny Go!,2019,59,Solo,Indie,US,Male
+Eyedress,2013,60,Solo,Indie,US,Male
+Melike Şahin,2017,61,Solo,Indie,TR,Female
+Loreen,2011,62,Solo,Indie,SE,Female
+Capital Cities,2010,63,Group,Indie,US,Male
+Sasha Alex Sloan,2018,64,Solo,Indie,US,Female
+Kate Bush,1978,65,Solo,Indie,GB,Female
+Enya,1987,66,Solo,Indie,IE,Female
+M83,2001,67,Group,Indie,FR,Mixed
+Latin Mafia,2021,68,Group,Indie,MX,Male
+Ed Maverick,2018,69,Solo,Indie,MX,Male
+Suki Waterhouse,2016,70,Solo,Indie,US,Female
+Sub Urban,2019,71,Solo,Indie,US,Male
+Vū.,2013,72,Solo,Indie,VN,Male
+Alex G,2010,73,Solo,Indie,US,Male
+Olly Alexander (Years And Years),2014,74,Solo,Indie,GB,Male
+Holy Baam,2019,75,Solo,Indie,UA,Male
+Elliot James Reay,2024,76,Solo,Indie,GB,Male
+Of Monsters and Men,2012,77,Group,Indie,IS,Mixed
+Phoebe Bridgers,2017,78,Solo,Indie,US,Female
+Natalie Jane,2021,79,Solo,Indie,US,Female
+Kimbra,2011,80,Solo,Indie,US,Female
+Two Feet,2016,81,Solo,Indie,US,Male
+sanah,2019,82,Solo,Indie,PL,Female
+MO,2013,83,Solo,Indie,DK,Female
+Ricky Montgomery,2014,84,Solo,Indie,US,Male
+Cuco,2016,85,Solo,Indie,US,Male
+Jeremy Zucker,2015,86,Solo,Indie,US,Male
+Mert Demir,2017,87,Solo,Indie,TR,Male
+Matt Hansen,2021,88,Solo,Indie,US,Male
+Andy Grammer,2011,89,Solo,Indie,US,Male
+fun.,2009,90,Group,Indie,US,Male
+Lykke Li,2008,91,Solo,Indie,SE,Female
+Beach House,2006,92,Group,Indie,US,Mixed
+Paris Paloma,2020,93,Solo,Indie,GB,Female
+Pamungkas,2018,94,Solo,Indie,ID,Male
+Jósean Log,2016,95,Solo,Indie,MX,Male
+Neoni,2017,96,Solo,Indie,US,Female
+Rizky Billar,2020,97,Solo,Indie,ID,Male
+Grimes,2010,98,Solo,Indie,CA,Female
+Çilgin Dondurmaci,2021,99,Solo,Indie,TR,Male
+The xx,2009,100,Group,Indie,GB,Mixed
+Cavetown,2015,101,Solo,Indie,GB,Male
+Pomme,2016,102,Solo,Indie,FR,Female
+Faye Webster,2013,103,Solo,Indie,US,Female
+Maggie Rogers,2017,104,Solo,Indie,US,Female
+Walk off the Earth,2007,105,Group,Indie,CA,Mixed
+Khoai Lang Thang,2019,106,Solo,Indie,VN,Male
+Ashe,2017,107,Solo,Indie,US,Female
+Little Big,2014,108,Group,Indie,RU,Mixed
+Adrianne Lenker,2014,109,Solo,Indie,US,Female
+Anggi Marito,2021,110,Solo,Indie,ID,Female
+Rachel Platten,2011,111,Solo,Indie,US,Female
+Jenna Raine,2019,112,Solo,Indie,US,Female
+Woodkid,2013,113,Solo,Indie,FR,Male
+TIAGO IORC,2008,114,Solo,Indie,BR,Male
+Madcon,2004,115,Group,Indie,NO,Male
+Kaifi Khalil,2020,116,Solo,Indie,PK,Male
+Bjork,1990,117,Solo,Indie,IS,Female.
+Nate Ruess,2015,118,Solo,Indie,US,Male
+Phoenix,1999,119,Group,Indie,FR,Male
+Idgitaf,2020,120,Solo,Indie,ID,Female
+inigo quintero,2022,121,Solo,Indie,ES,Male
+St. Vincent,2007,122,Solo,Indie,US,Female
+Lizzy McAlpine,2019,123,Solo,Indie,US,Female
+Renee Rapp,2022,124,Solo,Indie,US,Female
+Em Beihold,2017,125,Solo,Indie,US,female
+Jaymes Young,2013,126,Solo,Indie,US,Male
+Jack Stauber,2013,127,Solo,Indie,US,Male
+Julien Doré,2007,128,Solo,Indie,FR,Male
+Declan McKenna,2015,129,Solo,Indie,GB,Male
+Men I Trust,2014,130,Group,Indie,CA,Mixed
+John Michael Howell,2019,131,Solo,Indie,US,Male
+Maris Racal,2018,132,Solo,Indie,PH,Female
+Juan Karlos,2017,133,Solo,Indie,PH,Male
+Belle Mariano,2021,134,Solo,Indie,PH,Female
+Monde des Titounis,2017,135,Group,Indie,FR,Mixed
+Astrid S,2014,136,Solo,Indie,NO,Female
+hannah bahng,2023,137,Solo,Indie,AU,Female
+SYML,2016,138,Solo,Indie,US,Male
+Rosa Linn,2021,139,Solo,Indie,AM,Female
+London Grammar,2014,140,Group,Indie,GB,Female
+Iniko,2018,141,Solo,Indie,US,Male
+Sushant KC,2016,142,Solo,Indie,NP,Male
+Royel Otis,2021,143,Group,Indie,AU,Male
+Sufjan Stevens,2003,144,Solo,Indie,US,Male
+Dhruv,2020,145,Solo,Indie,GB,Male
+Novo Amor,2014,146,Solo,Indie,GB,Male
+Beach Weather,2016,147,Group,Indie,US,Male
+Lyn Lapid,2020,148,Solo,Indie,US,Female
+BENEE,2017,149,Solo,Indie,NZ,Female
+Jain,2016,150,Solo,Indie,FR,Female
+Casey Lowry,2017,151,Solo,Indie,GB,Male
+Payung Teduh,2010,152,Group,Indie,ID,Male
+Patrick Watson,2003,153,Solo,Indie,CA,Male
+Chance Peña,2015,154,Solo,Indie,US,Male
+mxmtoon,2017,155,Solo,Indie,US,Female
+Bleachers,2014,156,Solo,Indie,US,Male
+Cults,2011,157,Group,Indie,US,Mixed
+Gabriela Bee,2019,158,Solo,Indie,US,Female
+Fourtwnty,2015,159,Group,Indie,ID,Male
+Rizwan Fadilah,2023,160,Solo,Indie,ID,Male
+A Great Big World,2014,161,Group,Indie,US,Male
+Bronski Beat,1984,162,Group,Indie,GB,Male
+SOFIA ISELLA,2022,163,Solo,Indie,US,Female
+Rio Romeo,2018,164,Solo,Indie,US,Male
+Vanessa Carlton,2002,165,Solo,Indie,US,Female
+Adie,2020,166,Solo,Indie,PH,Female
+Stellar,2020,167,Solo,Indie,US,Female
+Soft Cell,1981,168,Group,Indie,GB,Male
+Takagi & Ketra,2017,169,Group,Indie,IT,Male
+,,170,,Indie,,
+Wilbur Soot,2020,171,Solo,Indie,GB,Male
+Paolo Nutini,2007,172,Solo,Indie,GB,Male
+Yoko Ono,1970,173,Solo,Indie,US,Female
+Lilly Wood and the Prick,2010,174,Group,Indie,FR,Mixed
+ROLE MODEL,2017,175,Solo,Indie,US,Male
+New West,2019,176,Group,Indie,CA,Male
+Magdalena Bay,2017,177,Group,Indie,US,Female
+Bakar,2017,178,Solo,Indie,GB,Male
+HAIM,2012,179,Group,Indie,US,Female
+Oh Wonder,2015,180,Group,Indie,GB,Mixed
+Rainbow Kitten Surprise,2013,181,Group,Indie,US,Mixed
+Raim Laode,2018,182,Solo,Indie,ID,Male
+Zeeba,2016,183,Solo,Indie,BR,Male
+Kina,2018,184,Solo,Indie,US,Female
+IV Of Spades,2016,185,Group,Indie,PH,Male
+Jon Dretto,2023,186,Solo,Indie,US,Male
+Laura Shigihara,2010,187,Solo,Indie,US,Female
+sombr,2021,188,Solo,Indie,US,Male
+Dennis Lloyd,2015,189,Solo,Indie,IL,Male
+Jaloliddin Ahmadaliyev,2021,190,Solo,Indie,UZ,male
+Pequeño Pez,2018,191,Solo,Indie,AR,Male
+Bishop Briggs,2016,192,Solo,Indie,US,Female
+Caloncho,2015,193,Solo,Indie,MX,Male
+Zaho de Sagazan,2022,194,Solo,Indie,FR,Female
+Risa Saraswati,2017,195,Solo,Indie,ID,Female
+HONNE,2015,196,Group,Indie,GB,Male
+OXLEE,2019,197,Solo,Indie,AU,Male
+Norma Jean Martine,2015,198,Solo,Indie,US,Female
+Au/Ra,2016,199,Solo,Indie,US,Female
+Monetochka,2016,200,Solo,Indie,RU,Female
+Santigold,2008,201,Solo,Indie,US,Female
+Coldplay,1999,1,Group,Rock,GB,male
+Linkin Park,2000,2,Group,Rock,US,mixed
+Imagine Dragons,2009,3,Group,Rock,US,Male
+Queen,1973,4,Group,Rock,GB,Male
+AC/DC,1976,5,Group,Rock,AU,Male
+Guns N' Roses,1987,6,Group,Rock,US,Male
+Arctic Monkeys,2005,7,Group,Rock,GB,Male
+The Beatles,1963,8,Group,Rock,GB,Male
+Red Hot Chili Peppers,1984,9,Group,Rock,US,Male
+Bon Jovi,1984,10,Group,Rock,US,Male
+Nirvana,1989,11,Group,Rock,US,Male
+Pink Floyd,1967,12,Group,Rock,GB,Male
+Radiohead,1992,13,Group,Rock,GB,Male
+Gorillaz,2001,14,Group,Rock,GB,Male
+The Neighbourhood,2012,15,Group,Rock,US,Male
+Maná,1990,16,Group,Rock,MX,Male
+Fleetwood Mac,1968,17,Group,Rock,US,mixed
+Oasis,1994,18,Group,Rock,GB,Male
+beabadoobee,2017,19,Solo,Rock,GB,Female
+Aerosmith,1973,20,Group,Rock,US,male
+U2,1980,21,Group,Rock,IE,Male
+Maneskin,2017,22,Group,Rock,IT,Mixed
+Creedence Clearwater Revival,1968,23,Group,Rock,US,Male
+Bryan Adams,1980,24,Solo,Rock,CA,Male
+Evanescence,2003,25,Group,Rock,US,Mixed
+Fall Out Boy,2003,26,Group,Rock,US,Male
+Phil Colins,1981,27,Solo,Rock,GB,Male
+Led Zeppelin,1969,28,Group,Rock,GB,Male
+Foo Fighters,1995,29,Group,Rock,us,Male
+My Chemical Romance,2002,30,Group,Rock,us,Male
+Nickelback,1996,31,Group,Rock,CA,Male
+Bruce Springsteen,1973,32,Solo,Rock,US,Male
+The Cranberries,1990,33,Group,Rock,IE,Female
+Paramore,2005,34,Group,Rock,us,mixed
+The Police,1978,35,Group,Rock,GB,Male
+Tame Impala,2008,36,Group,Rock,AU,Male
+Eagles,1972,37,Group,Rock,US,Male
+The Killers,2003,38,Group,Rock,US,male
+Scorpions,1972,39,Group,Rock,DE,Male
+Rod Stewart,1970,40,Solo,Rock,GB,Male
+Disturbed,2000,41,Group,Rock,US,Male
+Dire Straits,1978,42,Group,Rock,GB,Male
+The Cure,1979,43,Group,Rock,GB,Male
+Billy Joel,1971,44,Solo,Rock,US,Male
+Journey,1975,45,Group,Rock,US,Male
+KISS,1974,46,Group,Rock,us,male
+David Bowie,1967,47,Solo,Rock,GB,male
+Three Days Grace,2003,48,Group,Rock,CA,male
+Panic! At The Disco,2005,49,Group,Rock,US,Male
+Muse,1999,50,Group,Rock,GB,male
+TOTO,1978,51,Group,Rock,US,Mixed
+Pearl Jam,1991,52,Group,Rock,US,Male
+Depeche Mode,1981,53,Group,Rock,GB,Male
+Keane,2004,54,Group,Rock,GB,Male
+Paul McCarthy,1967,55,Solo,Rock,GB,Male
+Tears For Fears,1983,56,Group,Rock,GB,Male
+Crash Adams,2019,57,Group,Rock,CA,Male
+The Smiths,1984,58,Group,Rock,GB,Male
+Kings of Leon,2003,59,Group,Rock,us,male
+Lenny Kravitz,1989,60,Solo,Rock,US,Male
+Bastille,2012,61,Group,Rock,GB,Male
+Train,1998,62,Group,Rock,US,Male
+The Doors,1967,63,Group,Rock,US,Male
+John Lennon,1968,64,Solo,Rock,GB,Male
+Weezer,1996,65,Group,Rock,US ,Male
+The 1975,2012,66,Group,Rock,GB,Male
+Sting,1985,67,Solo,Rock,GB,Male
+The Strokes,2001,68,group,Rock,US,male
+Alice In Chains,1990,69,Group,Rock,US,Male
+Passenger,2007,70,Solo,Rock,GB,male
+Skillet,1996,71,Group,Rock,US,Mixed
+Creed,1997,72,Group,Rock,US,Male
+The Smashing Pumpkins,1991,73,Group,Rock,US,Mixed
+3 Doors Down,2000,74,Group,Rock,US,Male
+R.E.M,1981,75,Group,Rock,US,Male
+The Goo Goo Dolls,1987,76,Group,Rock,US,Male
+Mac DeMarco,2012,77,Solo,Rock,US,Male
+Bob Dylan,1962,78,Solo,Rock,US,Male
+Marilyn Manson,1994,79,Solo,Rock,US,Male
+The Lumineers,2012,80,Group,Rock,US,Mixed
+Lynyrd Skynyrd,1973,81,Group,Rock,US,Male
+Air Supply,1976,82,Group,Rock,AU,Male
+MGMT,2005,83,Group,Rock,US,Male
+Cage The Elephant,2009,84,Group,Rock,US,Male
+Van Halen,1978,85,Group,Rock,US,Male
+Thirty Seconds To Mars,2002,86,Group,Rock,US,Male
+Rage Against The Machine,1992,87,Group,Rock,US,Male
+Lord Huron,2010,88,Group,Rock,US,Male
+Simon & Garfunkel,1964,89,Group,Rock,US,Male
+Duran Duran,1981,90,Group,Rock,GB,Male
+WILLOW,2010,91,Solo,Rock,US,Female
+The Beach Boys,1962,92,Group,Rock,US,Male
+Theo Von,2017,93,Solo,Rock,US,Male
+Def Leppard,1979,94,Group,Rock,GB,Male
+Jimi Hendrix,1967,95,Solo,Rock,US,Male
+Jack Johnson,2003,96,Solo,Rock,US,Male
+Foreigner,1977,97,Group,Rock,US,Male
+Blondie,1976,98,group,Rock,US,mixed
+Mötley Crue,1981,99,Group,Rock,US,Male
+No Doubt,1992,100,Group,Rock,US,Mixed
+Electric Light Orchestra,1971,101,Group,Rock,GB,Male
+Pierce The Veil,2007,102,Group,Rock,US,Male
+Breaking Benjamin,2002,103,Group,Rock,US,Male
+Mumford & Sons,2009,104,Group,Rock,GB,Male
+Djo,2019,105,Solo,Rock,US,Male
+Audioslave,2002,106,Group,Rock,US,Male
+LP,2007,107,Solo,Rock,US,Female
+Daryl Hall & John Oates,1970,108,Group,Rock,US,Male
+George Harrison,1968,109,Solo,Rock,GB,Male
+TOOL,1992,110,Group,Rock,US,Male
+YUNGBLUD,2018,111,Solo,Rock,GB,Male
+Survivor,1979,112,Group,Rock,US,Female
+The White Stripes,1998,113,group,Rock,us,mixed
+Heart,1975,114,Group,Rock,US,Female
+Van Morrison,1967,115,Solo,Rock,GB,Male
+Milky Chance,2013,116,Group,Rock,DE,Male
+X Ambasssdors,2013,117,Group,Rock,US,Male
+The Black Keys,2002,118,Group,Rock,US,Male
+Blur,1991,119,Group,Rock,GB,Male
+The Verve,1992,120,Group,Rock,GB,Male
+Soundgarden,1989,121,group,Rock,us,male
+Chicago,1969,122,Group,Rock,US,Male
+Shinedown,2003,123,Group,Rock,US,Male
+Deep Purple,1968,124,Group,Rock,GB,Male
+Snow Patrol,1998,125,Group,Rock,GB,Male
+Men at Work,1981,126,group,Rock,AU,male
+INXS,1980,127,Group,Rock,AU,Male
+John Denver,1966,128,Solo,Rock,US,Male
+for KING & COUNTRY,2012,129,Group,Rock,US,Male
+Alanis Morissette,1995,130,Solo,Rock,CA,Female
+Chuck Berry,1957,131,Solo,Rock,US,Male
+Mother Mother,2007,132,Group,Rock,CA,Mixed
+Hoobastank,2001,133,Group,Rock,US,Male
+Incubus,1997,134,Group,Rock,US,Male
+alt-J,2012,135,Group,Rock,GB,Male
+The Who,1965,136,Group,Rock,GB,Male
+Crowded House,1986,137,Group,Rock,AU,Male
+The Fray,2005,138,Group,Rock,US,Male
+Genesis,1969,139,Group,Rock,GB,Male
+Pixies,1987,140,Group,Rock,US,mixed
+Queens of the Stone Age,1998,141,Group,Rock,US,Male
+Neil Diamond,1966,142,Solo,Rock,US,Male
+Wallows,2017,143,Group,Rock,US,Male
+Stevie Nicks,1981,144,Solo,Rock,US,Female
+Franz Ferdinand,2003,145,group,Rock,GB,Male
+Yeah Yeah Yeahs,2002,146,group,Rock,US,mixed
+Surf Curse,2015,147,Group,Rock,US,Male
+Supertramp,1974,148,Group,Rock,GB,Male
+Neil Young,1969,149,Solo,Rock,CA,Male
+Stone Temple Pilots,1992,150,Group,Rock,US,Male
+Two Door Cinema Club,2009,151,Group,Rock,GB,Male
+Simple Minds,1979,152,group,Rock,GB,mixed
+Freddie Mercury,2012,153,Solo,Rock,GB,Male
+WALK THE MOON,2012,154,Group,Rock,US,Male
+AnnenMayKantereit,2015,155,Group,Rock,DE,Male
+The Outfield,1985,156,Group,Rock,GB,Male
+Jimmy Eat World,1996,157,Group,Rock,US,Male
+Daughtry,2006,158,Solo,Rock,US,Male
+Leonard Cohen,1967,159,Solo,Rock,CA,Male
+Alice Cooper,1969,160,Solo,Rock,US,Male
+Kansas,1974,161,Group,Rock,US,Male
+The All American Rejects,2002,162,Group,Rock,US,Male
+Staind,1999,163,Group,Rock,US,Male
+Matchbox Twenty,1996,164,Group,Rock,US,Male
+Kenny Loggins,1977,165,Solo,Rock,US,Male
+America,1972,166,Group,Rock,US,Male
+Hotel Ugly,2020,167,Group,Rock,US,Male
+All TIme Low,2006,168,Group,Rock,US,Male
+Tokio Hotel,2006,169,Group,Rock,DE,Male
+Paul Simon,1965,170,Solo,Rock,US,Male
+David Gilmour,1978,171,Solo,Rock,GB,Male
+Nine Inch Nails,1989,172,Group,Rock,US,Male
+The Doobie Brothers,1971,173,Group,Rock,US,Male
+Talking Heads,1977,174,Group,Rock,US,Mixed
+Counting Crows,1996,175,Group,Rock,US,Male
+Poppy,2016,176,Solo,Rock,US,Female
+The Kooks,2006,177,Group,Rock,GB,Male
+REO Speedwagon,1971,178,Group,Rock,US,Male
+Bob Seger,1969,179,Solo,Rock,US,Male
+Portugal. The Man,2006,180,Group,Rock,US,Male
+Steve Miller Band,1968,181,Group,Rock,US,Male
+Sixpence None The Richer,1995,182,Group,Rock,US,mixed
+Boston,1976,183,Group,Rock,US,Male
+Smash Mouth,1997,184,Group,Rock,US,Male
+Poison,1986,185,Group,Rock,US,Mixed
+Black Veil Brides,2010,186,Group,Rock,US,Male
+,,187,,Rock,,
+Whitesnake,1978,188,Group,Rock,GB,Male
+Sam Fender,2017,189,Solo,Rock,GB,Male
+Vacations,2015,190,Group,Rock,AU,Male
+Daryl Hall,1980,191,Solo,Rock,US,Male
+Dave Stewart,1990,192,Solo,Rock,GB,Male
+The Walters,2014,193,Grou,Rock,US,Male
+Chris Rea,1978,194,Solo,Rock,GB,Male
+Rush,1974,195,group,Rock,CA,Male
+Janis Joplin,1969,196,Solo,Rock,US,Female
+Mazzy Star,1990,197,Group,Rock,US,Mixed
+Sleeping With Sirens,2010,198,Group,Rock,US,Male
+Treaty Oak Revival,2021,199,Group,Rock,US,Male
+Lifehouse,2000,200,Group,Rock,US,Male
+Blue Man Group,1999,201,Group,Rock,US,Male 
+SZA,2014,1,Solo,R&B,US,Female
+Akon,2004,2,Solo,R&B,US,Male
+USHER,1994,3,Solo,R&B,US,Male
+Alicia Keys,2001,4,Solo,R&B,US,Female
+Hozier,2013,5,Solo,R&B,IE,Male
+Ne-Yo,2005,6,Solo,R&B,US,Male
+John Legend,2003,7,Solo,R&B,US,Male
+Pharrell Williams,2005,8,Solo,R&B,US,Male
+Frank Ocean,2011,9,Solo,R&B,US,Male
+Daniel Caesar,2015,10,Solo,R&B,CA,Male
+Ciara,2004,11,Solo,R&B,US,Female
+T-Pain,2005,12,Solo,R&B,US,Male
+PARTYNEXTDOOR,2013,13,Solo,R&B,CA,Male
+Bryson Tiller,2015,14,Solo,R&B,US,Male
+Kali Uchis,2015,15,Solo,R&B,CO,Female
+Steve Lacy,2015,16,Solo,R&B,US,Male
+Summer Walker,2018,17,Solo,R&B,US,Female
+Amy Winehouse,2003,18,Solo,R&B,GB,Female
+Chase Atlantic,2014,19,Group,R&B,AU,Male
+Jhene Aiko,2003,20,Solo,R&B,US,Female
+Kehlani,2014,21,Solo,R&B,US,Female
+Miguel,2010,22,Solo,R&B,US,Male
+NXCRE,2018,23,Group,R&B,US,Male
+Brent Faiyaz,2015,24,Solo,R&B,US,Male
+"Earth, Wind, & Fire",1971,25,Group,R&B,US,Male
+Mary J. Blige,1992,26,Solo,R&B,US,Female
+Dadju,2017,27,Solo,R&B,FR,Male
+Joji,2017,28,Solo,R&B,US,Male
+Sade,1984,29,Solo,R&B,GB,Female
+Stevie Wonder,1962,30,Solo,R&B,US,Male
+Tems,2018,31,Solo,R&B,NG,Female
+Jeremih,2009,32,Solo,R&B,US,Male
+H.E.R.,2017,33,Solo,R&B,US,Female
+Giveon,2018,34,Solo,R&B,US,Male
+IZA,2016,35,Solo,R&B,BR,Female
+Trey Songz,2005,36,Solo,R&B,US,Male
+RM,2017,37,Solo,R&B,KR,Male
+Destiny's Child,1998,38,Group,R&B,US,Female
+Ella Mai,2016,39,Solo,R&B,GB,Female
+Cynthia Erivo,2015,40,Solo,R&B,GB,Female
+Jessie Murph,2021,41,SOlo,R&B,US,Female
+Tinashe,2014,42,Solo,R&B,US,Female
+Marvin Gaye,1961,43,Solo,R&B,US,Male
+Kelly Rowland,2002,44,Solo,R&B,US,Female
+Keyshia Cole,2004,45,Solo,R&B,US,Female
+Keshi,2017,46,Solo,R&B,US,Male
+Lionel Richie,1982,47,Solo,R&B,US,Male
+Prince,1978,48,Solo,R&B,US,Male
+Rag'n'Bone Man,2012,49,Solo,R&B,GB,Male
+Boyz II Men,1994,50,Group,R&B,US,Male
+blackbear,2013,51,Solo,R&B,Us,Male
+Tayc,2017,52,Solo,R&B,FR,Male
+Toni Braxton,1993,53,Solo,R&B,US,Female
+Anderson .Paak,2014,54,Solo,R&B,US,Male
+Jacquees,2014,55,Solo,R&B,US,Male
+Mario,1982,56,Solo,R&B,US,Male
+6LACK,2016,57,Solo,R&B,US,Male
+TLC,1992,58,Group,R&B,US,Female
+Ms. Lauryn Hill,1998,59,Solo,R&B,US,Female
+Janet Jackson,1982,60,Solo,R&B,US,Female
+Ashanti,2002,61,Solo,R&B,US,Female
+Jay Sean,2004,62,Solo,R&B,GB,Male
+Monica,1994,63,SOlo,R&B,US,Female
+Jamiroquai,1993,64,Group,R&B,GB,Male
+Aretha Franklin,1956,65,Solo,R&B,US,Female
+Brandy,1994,66,Solo,R&B,US,Female
+Queen Naija,2018,67,Solo,R&B,US,Female
+Luther Vandross,1979,68,Solo,R&B,US,Male
+Bill Withers,1971,69,Solo,R&B,US,Male
+Jungle,2013,70,Group,R&B,GB,Male
+Bazzi,2016,71,Solo,R&B,US,Male
+Kool & The Gang,1970,72,Group,R&B,US,Male
+Muni Long,2020,73,Solo,R&B,US,Female
+Chris Grey,2018,74,Solo,R&B,CA,Male
+Jorja Smith,2016,75,Solo,R&B,GB,Female
+Joe Dwet File,2018,76,Solo,R&B,FR,Male
+,,77,,R&B,,
+Teyana Taylor,2008,78,Solo,R&B,US,Female
+Erykah Badu,1996,79,Solo,R&B,US,Female
+The Temptations,1964,80,Group,R&B,US,Male
+Coco Jones,2011,81,Solo,R&B,US,Female
+88rising,2018,82,Group,R&B,US,Mixed
+Victoria Monet,2014,83,Solo,R&B,US,Female
+Nina Simone,1959,84,Solo,R&B,US ,Female
+Ray Charles,1957,85,Solo,R&B,US,Male
+Brenda Lee,1959,86,Solo,R&B,US,Female
+Michael Bolton,1983,87,Solo,R&B,US,Male
+J Maine,2018,88,Solo,R&B,US,Male
+Mariah the Scientist,2019,89,Solo,R&B,US,Female
+Omarion,2005,90,Solo,R&B,US,Male
+James Brown,1962,91,Solo,R&B,US,Male
+Aaliyah,1994,92,Solo,R&B,US,Female
+Keri Hilson,2008,93,Solo,R&B,US,Female
+Otis Redding,1964,94,Solo,R&B,US,Male
+Halle,2023,95,Solo,R&B,US,Female
+Craig David,2000,96,Solo,R&B,GB,Male
+Lloyd,2004,97,Solo,R&B,US,Male
+Jacob Collier,2013,98,Solo,R&B,GB,Male
+Etta James,1960,99,Solo,R&B,US,Female
+Fantasia,2003,100,Solo,R&B,US,Female
+Cassie,2006,101,Solo,R&B,US,f
+August Alsina,2013,102,Solo,R&B,US,Male
+Diana Ross,1970,103,Solo,R&B,US,Female
+Tyrese,1998,104,Solo,R&B,US,Male
+Barry White,1973,105,Solo,R&B,US,Male
+Michael Kiwanuka,2012,106,Solo,R&B,GB,Male
+Jessie Reyez,2017,107,Solo,R&B,CA,Female
+Yseult,2014,108,Solo,R&B,FR,Female
+Leon Bridges,2015,109,Solo,R&B,US,Male
+Jennifer Hudson,2008,110,Solo,R&B,US,Female
+Nya,2017,111,Solo,R&B,US,Female
+Masego,2016,112,Solo,R&B,US,Male
+Matthew Ifield,1968,113,Solo,R&B,AU,Male
+Chloe,2021,114,Solo,R&B,US,Female
+Brian McKnight,1992,115,Solo,R&B,US,Male
+Keke Palmer,2006,116,Solo,R&B,US,Female
+Olivia Dean ,2019,117,Solo,R&B,GB,Female
+Billy Ocean,1976,118,Solo,R&B,GB,Male
+Bryant Barnes,2023,119,Solo,R&B,US,Male
+Sonder,2017,120,Group,R&B,US,Male
+Fridayy,2022,121,Solo,R&B,US,Male
+Seal,1991,122,Solo,R&B,GB,Male
+Al Green,1967,123,Solo,R&B,US,Male
+Lay Bankz,2020,124,Solo,R&B,US,Male
+Keith Sweat,1987,125,Solo,R&B,US,Male
+Chaka Khan,1978,126,Solo,R&B,US,Female
+R. Kelly,1992,127,Solo,R&B,US,Male
+Maxwell,1996,128,Solo,R&B,US,male
+Ben E. King,1961,129,Solo,R&B,US,Male
+Pink Sweat$,2018,130,Solo,R&B,US,Male
+Jagged Edge,1997,131,Group,R&B,US,Male
+Aloe Blacc,2006,132,Solo,R&B,US,Male
+Thundercat,2011,133,Solo,R&B,US,Male
+Imen Es,2018,134,Solo,R&B,FR,Female
+Commodores,1974,135,Group,R&B,US,Male
+Janelle Monáe,2006,136,Solo,R&B,US,Female
+FKA twigs,2012,137,Solo,R&B,GB,Female
+The Jacksons,1976,138,Group,R&B,US,Male
+KC & The Sunshine Band,1974,139,Group,R&B,US,Mixed
+4batz,2023,140,Solo,R&B,US,Male
+Ginuwine,1996,141,Solo,R&B,US,Male
+Donna Summer,1974,142,Solo,R&B,US,Female
+SWV,1992,143,Group,R&B,US,Female
+Anthony Hamilton,2003,144,Solo,R&B,US,Male
+Dionne Warwick,1963,145,Solo,R&B,US,Female
+Kelis,1999,146,Solo,R&B,US,Female
+FLO,2022,147,Group,R&B,GB,Female
+Tamia,1998,148,Solo,R&B,CA,Female
+Black Pumas,2019,149,Group,R&B,US,Male
+K. Michelle,2009,150,Solo,R&B,US,Female
+Gloria Gaynor,1975,151,Solo,R&B,US,Female
+Solange,2002,152,Solo,R&B,US,Female
+Justine Skye,2013,153,Solo,R&B,US,Female
+Chloe x Halle,2013,154,Group,R&B,US,Female
+Kaash Paige,2019,155,Solo,R&B,US,Female
+Christina Millian,2001,156,Solo,R&B,US,Female
+Omar Apollo,2017,157,Solo,R&B,US,Male
+Trinidad Cardona,2017,158,Solo,R&B,US,Male
+The Isley Brothers,1959,159,Group,R&B,US,Male
+William Singe,2015,160,Solo,R&B,AU,Male
+Musiq Soulchild,2000,161,Solo,R&B,US,Male
+Faith Evans,1995,162,Solo,R&B,US,Female
+Vedo,2013,163,Solo,R&B,US,Male
+Majid Jordan,2014,164,Group,R&B,CA,Male
+Blackstreet,1993,165,Group,R&B,US,Male
+Mýa,1998,166,Solo,R&B,US,Female
+Celeste,2017,167,Solo,R&B,GB,Female
+CeeLo Green,2002,168,Solo,R&B,US,Male
+Charlie Wilson,1992,169,Solo,R&B,US,Male
+Ari Lennox,2014,170,Solo,R&B,US,Female
+Leon Thomas,2018,171,Solo,R&B,US,Male
+Avant,2000,172,Solo,R&B,US,Male
+Jill Scott,2000,173,Solo,R&B,US,Female
+Redbone,1970,174,Group,R&B,US,Male
+Tamar Braxton,2000,175,Solo,R&B,US,Female
+Daecolm,2017,176,Solo,R&B,GB,Male
+K-Ci & JoJo,1997,177,Group,R&B,US,Male
+New Edition,1982,178,Group,R&B,US,Male
+Estelle,2004,179,Solo,R&B,GB,Female
+Joe,1993,180,Solo,R&B,US,Male
+Cat Burns,2016,181,Solo,R&B,GB,Female
+The Pointer Sisters,1973,182,Group,R&B,US,Female
+Gnarls Barkley,2006,183,Group,R&B,US,Male
+Rotimi,2009,184,Solo,R&B,US,Male
+Kiana Ledé,2012,185,Solo,R&B,US,Female
+Kira Kosarin,2019,186,Solo,R&B,US,Female
+Sevyn Streeter,2012,187,Solo,R&B,US,Female
+Lucky Daye,2019,188,Solo,R&B,US,Male
+The Drifters,1954,189,Group,R&B,US,Male
+Hatik,2018,190,Solo,R&B,FR,Male
+October London,2016,191,Solo,R&B,US,Male
+Quincy Jones,1954,192,Solo,R&B,US,Male
+The Platters,1956,193,Group,R&B,US,Mixed
+SiR,2015,194,Solo,R&B,US,Male
+Thee Sacred Souls,2020,195,Group,R&B,US,Male
+Four Tops,1965,196,Group,R&B,US,Male
+Rick James,1978,197,Solo,R&B,US,Male
+Jodeci,1991,198,Group,R&B,US,Male
+Eric Bellinger,2013,199,Solo,R&B,US,Male
+DJ FKU,2023,200,SOlo,R&B,US,Male
+King George,2020,201,Solo,R&B,US,Male
