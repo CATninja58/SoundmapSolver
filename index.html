@@ -283,39 +283,61 @@
 
         function filterArtists() {
             filteredArtists = artistsData.filter(artist => {
-                return guesses.every(guess => {
-                    return Object.keys(guess.selectedOptions).every(category => {
-                        const option = guess.selectedOptions[category];
-                        const artistValue = artist[category];
+            return guesses.every(guess => {
+                return Object.keys(guess.selectedOptions).every(category => {
+                const option = guess.selectedOptions[category];
+                const artistValue = artist[category];
 
-                        if (!option) return true;
+                if (!option) return true;
 
-                        if (option === 'correct') {
-                            return artistValue === guess.artist[category];
-                        } else if (option === 'later ^') {
-                            return parseInt(artistValue) > parseInt(guess.artist[category]);
-                        } else if (option === 'earlier v') {
-                            return parseInt(artistValue) < parseInt(guess.artist[category]);
-                        } else if (option === 'close ^') {
-                            const tolerance = category === 'popularity' ? 50 : 5;
-                            return parseInt(artistValue) < parseInt(guess.artist[category]) && Math.abs(parseInt(artistValue) - parseInt(guess.artist[category])) <= tolerance;
-                        } else if (option === 'close v') {
-                            const tolerance = category === 'popularity' ? 50 : 5;
-                            return parseInt(artistValue) > parseInt(guess.artist[category]) && Math.abs(parseInt(artistValue) - parseInt(guess.artist[category])) <= tolerance;
-                        } else if (option === 'higher ^') {
-                            return parseInt(artistValue) < parseInt(guess.artist[category]);
-                        } else if (option === 'lower v') {
-                            return parseInt(artistValue) > parseInt(guess.artist[category]);
-                        } else if (option === 'wrong') {
-                            return artistValue !== guess.artist[category];
-                        } else {
-                            return false;
-                        }
-                    });
+                if (option === 'correct') {
+                    return artistValue === guess.artist[category];
+                } else if (category === 'debut') {
+                    return filterDebut(option, artistValue, guess.artist[category]);
+                } else if (category === 'popularity') {
+                    return filterPopularity(option, artistValue, guess.artist[category]);
+                } else if (option === 'wrong') {
+                    return artistValue !== guess.artist[category];
+                } else {
+                    return false;
+                }
                 });
+            });
             });
 
             displayArtists();
+        }
+
+        function filterDebut(option, artistValue, guessValue) {
+            if (option === 'correct') {
+            return artistValue === guessValue;
+            } else if (option === 'later ^') {
+            return parseInt(artistValue) > parseInt(guessValue);
+            } else if (option === 'earlier v') {
+            return parseInt(artistValue) < parseInt(guessValue);
+            } else if (option === 'close ^') {
+            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
+            } else if (option === 'close v') {
+            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
+            } else {
+            return false;
+            }
+        }
+
+        function filterPopularity(option, artistValue, guessValue) {
+            if (option === 'correct') {
+            return artistValue === guessValue;
+            } else if (option === 'higher ^') {
+            return parseInt(artistValue) < parseInt(guessValue);
+            } else if (option === 'lower v') {
+            return parseInt(artistValue) > parseInt(guessValue);
+            } else if (option === 'close ^') {
+            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
+            } else if (option === 'close v') {
+            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
+            } else {
+            return false;
+            }
         }
 
         function displayArtists() {
