@@ -274,32 +274,32 @@
         function filterArtists() {
             filteredArtists = artistsData.filter(artist => {
             return Object.keys(selectedOptions).every(category => {
-                const option = selectedOptions[category];
-                const artistValue = artist[category];
+            const option = selectedOptions[category];
+            const artistValue = artist[category];
 
-                if (!option) return true;
+            if (!option) return true;
 
-                if (option === 'correct') {
-                return artistValue === artistInfo[category];
-                } else if (option === 'later ^') {
-                return parseInt(artistValue) > parseInt(artistInfo[category]);
-                } else if (option === 'earlier v') {
-                return parseInt(artistValue) < parseInt(artistInfo[category]);
-                } else if (option === 'close ^') {
-                const tolerance = category === 'popularity' ? 50 : 5;
-                return parseInt(artistValue) > parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
-                } else if (option === 'close v') {
-                const tolerance = category === 'popularity' ? 50 : 5;
-                return parseInt(artistValue) < parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
-                } else if (option === 'higher ^') {
-                return parseInt(artistValue) < parseInt(artistInfo[category]);
-                } else if (option === 'lower v') {
-                return parseInt(artistValue) > parseInt(artistInfo[category]);
-                } else if (option === 'wrong') {
-                return artistValue !== artistInfo[category];
-                } else {
-                return false;
-                }
+            if (option === 'correct') {
+            return artistValue === artistInfo[category];
+            } else if (option === 'later ^') {
+            return parseInt(artistValue) > parseInt(artistInfo[category]);
+            } else if (option === 'earlier v') {
+            return parseInt(artistValue) < parseInt(artistInfo[category]);
+            } else if (option === 'close ^') {
+            const tolerance = category === 'popularity' ? 50 : 5;
+            return parseInt(artistValue) < parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
+            } else if (option === 'close v') {
+            const tolerance = category === 'popularity' ? 50 : 5;
+            return parseInt(artistValue) > parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
+            } else if (option === 'higher ^') {
+            return parseInt(artistValue) < parseInt(artistInfo[category]);
+            } else if (option === 'lower v') {
+            return parseInt(artistValue) > parseInt(artistInfo[category]);
+            } else if (option === 'wrong') {
+            return artistValue !== artistInfo[category];
+            } else {
+            return false;
+            }
             });
             });
 
