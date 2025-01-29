@@ -140,7 +140,7 @@
         let artistsData = [];
         let artistInfo = {};
         let filteredArtists = [];
-        let selectedOptions = {};
+        let guesses = [];
         let guessCount = 0;
 
         function loadCSV() {
@@ -202,20 +202,23 @@
             guessBoxes.id = `guess${guessCount}Container`;
             guessesContainer.appendChild(guessBoxes);
 
-            createButtons(artist, guessBoxes);
+            const guess = { artist, selectedOptions: {} };
+            guesses.push(guess);
+
+            createButtons(artist, guessBoxes, guess);
         }
 
-        function createButtons(artist, container) {
+        function createButtons(artist, container, guess) {
             const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
             categories.forEach(category => {
                 const button = document.createElement("button");
                 button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${artist[category]}</span>`;
-                button.onclick = () => showDropdown(button, category, artist[category]);
+                button.onclick = () => showDropdown(button, category, artist[category], guess);
                 container.appendChild(button);
             });
         }
 
-        function showDropdown(button, category, value) {
+        function showDropdown(button, category, value, guess) {
             const dropdown = document.createElement("select");
             const options = getCategoryOptions(category);
 
@@ -233,7 +236,7 @@
 
             dropdown.onchange = () => {
                 const selectedOption = dropdown.value;
-                selectedOptions[category] = selectedOption;
+                guess.selectedOptions[category] = selectedOption;
                 changeButtonColor(button, selectedOption);
                 button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${selectedOption})</span>`;
                 filterArtists();
@@ -273,34 +276,36 @@
 
         function filterArtists() {
             filteredArtists = artistsData.filter(artist => {
-            return Object.keys(selectedOptions).every(category => {
-            const option = selectedOptions[category];
-            const artistValue = artist[category];
+                return guesses.every(guess => {
+                    return Object.keys(guess.selectedOptions).every(category => {
+                        const option = guess.selectedOptions[category];
+                        const artistValue = artist[category];
 
-            if (!option) return true;
+                        if (!option) return true;
 
-            if (option === 'correct') {
-            return artistValue === artistInfo[category];
-            } else if (option === 'later ^') {
-            return parseInt(artistValue) > parseInt(artistInfo[category]);
-            } else if (option === 'earlier v') {
-            return parseInt(artistValue) < parseInt(artistInfo[category]);
-            } else if (option === 'close ^') {
-            const tolerance = category === 'popularity' ? 50 : 5;
-            return parseInt(artistValue) < parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
-            } else if (option === 'close v') {
-            const tolerance = category === 'popularity' ? 50 : 5;
-            return parseInt(artistValue) > parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
-            } else if (option === 'higher ^') {
-            return parseInt(artistValue) < parseInt(artistInfo[category]);
-            } else if (option === 'lower v') {
-            return parseInt(artistValue) > parseInt(artistInfo[category]);
-            } else if (option === 'wrong') {
-            return artistValue !== artistInfo[category];
-            } else {
-            return false;
-            }
-            });
+                        if (option === 'correct') {
+                            return artistValue === guess.artist[category];
+                        } else if (option === 'later ^') {
+                            return parseInt(artistValue) > parseInt(guess.artist[category]);
+                        } else if (option === 'earlier v') {
+                            return parseInt(artistValue) < parseInt(guess.artist[category]);
+                        } else if (option === 'close ^') {
+                            const tolerance = category === 'popularity' ? 50 : 5;
+                            return parseInt(artistValue) < parseInt(guess.artist[category]) && Math.abs(parseInt(artistValue) - parseInt(guess.artist[category])) <= tolerance;
+                        } else if (option === 'close v') {
+                            const tolerance = category === 'popularity' ? 50 : 5;
+                            return parseInt(artistValue) > parseInt(guess.artist[category]) && Math.abs(parseInt(artistValue) - parseInt(guess.artist[category])) <= tolerance;
+                        } else if (option === 'higher ^') {
+                            return parseInt(artistValue) < parseInt(guess.artist[category]);
+                        } else if (option === 'lower v') {
+                            return parseInt(artistValue) > parseInt(guess.artist[category]);
+                        } else if (option === 'wrong') {
+                            return artistValue !== guess.artist[category];
+                        } else {
+                            return false;
+                        }
+                    });
+                });
             });
 
             displayArtists();
