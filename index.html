@@ -126,7 +126,6 @@
     <h1>Soundmap Artist Guesser Solver</h1>
 
     <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
-    <button onclick="addGuess()">Add Guess</button>
     <div id="searchResults"></div>
 
     <div id="guessesContainer" class="guess-container">
@@ -185,20 +184,34 @@
                 artistInfo = artist;
                 filteredArtists = [artist];
                 displayArtists();
-                createButtons(artist);
+                addGuess(artist);
             }
         }
 
-        function createButtons(artist) {
-            const buttonsContainer = document.getElementById("buttonsContainer");
-            buttonsContainer.innerHTML = "";
+        function addGuess(artist) {
+            guessCount++;
+            const guessesContainer = document.getElementById("guessesContainer");
 
+            const guessTitle = document.createElement("div");
+            guessTitle.classList.add("guess-title");
+            guessTitle.textContent = `Guess ${guessCount}`;
+            guessesContainer.appendChild(guessTitle);
+
+            const guessBoxes = document.createElement("div");
+            guessBoxes.classList.add("button-container");
+            guessBoxes.id = `guess${guessCount}Container`;
+            guessesContainer.appendChild(guessBoxes);
+
+            createButtons(artist, guessBoxes);
+        }
+
+        function createButtons(artist, container) {
             const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
             categories.forEach(category => {
                 const button = document.createElement("button");
                 button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${artist[category]}</span>`;
                 button.onclick = () => showDropdown(button, category, artist[category]);
-                buttonsContainer.appendChild(button);
+                container.appendChild(button);
             });
         }
 
@@ -318,21 +331,6 @@
 
                 artistList.appendChild(artistItem);
             });
-        }
-
-        function addGuess() {
-            guessCount++;
-            const guessesContainer = document.getElementById("guessesContainer");
-
-            const guessTitle = document.createElement("div");
-            guessTitle.classList.add("guess-title");
-            guessTitle.textContent = `Guess ${guessCount}`;
-            guessesContainer.appendChild(guessTitle);
-
-            const guessBoxes = document.createElement("div");
-            guessBoxes.classList.add("button-container");
-            guessBoxes.id = `guess${guessCount}Container`;
-            guessesContainer.appendChild(guessBoxes);
         }
 
         loadCSV();
