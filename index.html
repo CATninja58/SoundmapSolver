@@ -3,102 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artist Guessing Game</title>
+    <title>Artist Guessing Bot</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .container { max-width: 600px; margin: auto; text-align: center; }
-        input, button, select { margin: 10px; padding: 8px; }
-        .btn-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        #searchResults { margin-top: 10px; text-align: left; padding: 10px; border: 1px solid #ccc; display: none; }
-        #searchResults div { cursor: pointer; padding: 5px; }
-        #searchResults div:hover { background-color: #f0f0f0; }
+        button {
+            width: 150px;
+            height: 50px;
+            margin: 10px;
+            font-size: 14px;
+        }
+
+        .green {
+            background-color: green;
+            color: white;
+        }
+
+        .orange {
+            background-color: orange;
+            color: white;
+        }
+
+        .red {
+            background-color: red;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+        }
+
+        input {
+            margin: 10px;
+            padding: 8px;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="showSuggestions()">
+    <h1>Artist Guessing Bot</h1>
+
+    <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
     <div id="searchResults"></div>
-    <div class="btn-row">
-        <button id="debutBtn">Debut Year</button>
-        <button id="popularityBtn">Popularity</button>
-        <button id="membersBtn">Members</button>
-        <button id="genreBtn">Genre</button>
-        <button id="countryBtn">Country</button>
-        <button id="genderBtn">Gender</button>
+
+    <div id="buttonsContainer" class="container">
+        <!-- Buttons will be dynamically added here -->
     </div>
-</div>
 
-<script>
-    let artistData = [];
-
-    // Load CSV file
-    async function loadCSV() {
-        const response = await fetch('MasterArtistList.csv'); // Ensure the CSV file is named correctly and in the same directory
-        const data = await response.text();
-        parseCSV(data);
-    }
-
-    // Parse CSV data
-    function parseCSV(csv) {
-        const rows = csv.split("\n").map(row => row.split(","));
-        artistData = rows.slice(1).map(row => ({
-            name: row[0].trim().toLowerCase(),  // Normalize the artist name
-            debut: row[1].trim(),
-            popularity: row[2].trim(),
-            members: row[3].trim(),
-            genre: row[4].trim(),
-            country: row[5].trim(),
-            gender: row[6].trim()
-        }));
-    }
-
-    // Show search suggestions as you type
-    function showSuggestions() {
-        const query = document.getElementById("artistSearch").value.trim().toLowerCase();
-        const resultsContainer = document.getElementById("searchResults");
+    <script>
+        let artistsData = [];
+        let artistInfo = {};
         
-        if (query === "") {
-            resultsContainer.style.display = "none";
-            return;
+        // Load the CSV file and parse it
+        function loadCSV() {
+            const csvUrl = "https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/MasterArtistList.csv";  // Raw URL from GitHub
+            fetch(csvUrl)
+                .then(response => response.text())
+                .then(csvText => parseCSV(csvText))
+                .catch(error => console.error("Error loading CSV file:", error));
         }
 
-        // Find matching artists based on the query
-        const matches = artistData.filter(artist => artist.name.startsWith(query));
-        
-        // Show the results
-        resultsContainer.innerHTML = '';
-        matches.forEach(artist => {
-            const div = document.createElement("div");
-            div.textContent = artist.name.charAt(0).toUpperCase() + artist.name.slice(1); // Capitalize the first letter for display
-            div.onclick = () => selectArtist(artist.name);
-            resultsContainer.appendChild(div);
-        });
-
-        // If there are matches, display the results container
-        resultsContainer.style.display = matches.length > 0 ? "block" : "none";
-    }
-
-    // Select an artist from the search suggestions
-    function selectArtist(artistName) {
-        document.getElementById("artistSearch").value = artistName; // Set the text box to the selected name
-        document.getElementById("searchResults").style.display = "none"; // Hide the suggestions
-
-        // Find the selected artist data and update the buttons
-        const artist = artistData.find(a => a.name === artistName.toLowerCase());
-        
-        if (artist) {
-            document.getElementById("debutBtn").innerText = `Debut: ${artist.debut}`;
-            document.getElementById("popularityBtn").innerText = `Popularity: ${artist.popularity}`;
-            document.getElementById("membersBtn").innerText = `Members: ${artist.members}`;
-            document.getElementById("genreBtn").innerText = `Genre: ${artist.genre}`;
-            document.getElementById("countryBtn").innerText = `Country: ${artist.country}`;
-            document.getElementById("genderBtn").innerText = `Gender: ${artist.gender}`;
+        // Parse CSV and load into artistsData array
+        function parseCSV(csvText) {
+            const rows = csvText.split("\n");
+            rows.shift(); // Remove header row
+            artistsData = rows.map(row => {
+                const [artist, debut, popularity, members, genre, country, gender] = row.split(",");
+                return { artist, debut, popularity, members, genre, country, gender };
+            });
         }
-    }
 
-    loadCSV();
-</script>
+        // Search for artists based on input
+        function searchArtist() {
+            const query = document.getElementById("artistSearch").value.toLowerCase();
+            const searchResults = document.getElementById("searchResults");
+            searchResults.innerHTML = '';
+
+            if (query) {
+                const matches = artistsData.filter(artist => artist.artist.toLowerCase().includes(query));
+                matches.forEach(match => {
+                    const resultDiv = document.createElement("div");
+                    resultDiv.textContent = match.artist;
+                    resultDiv.onclick = () => displayArtistInfo(match.artist);
+                    searchResults.appendChild(resultDiv);
+                });
+            }
+        }
+
+        // Display the artist's information and generate buttons
+        function displayArtistInfo(artistName) {
+            const artist = artistsData.find(artist => artist.artist === artistName);
+            if (artist) {
+                artistInfo = artist;  // Store the artist's data for later use
+
+                const buttonsContainer = document.getElementById("buttonsContainer");
+                buttonsContainer.innerHTML = "";  // Clear previous buttons
+
+                const buttonContainer = document.createElement("div");
+                buttonContainer.className = "button-container";
+
+                // Create and add buttons
+                createButton(buttonContainer, "Debut Year", artist.debut, "debut");
+                createButton(buttonContainer, "Popularity", artist.popularity, "popularity");
+                createButton(buttonContainer, "Members", artist.members, "members");
+                createButton(buttonContainer, "Genre", artist.genre, "genre");
+                createButton(buttonContainer, "Country", artist.country, "country");
+                createButton(buttonContainer, "Gender", artist.gender, "gender");
+
+                buttonsContainer.appendChild(buttonContainer);
+            }
+        }
+
+        // Create buttons with dropdown and color change functionality
+        function createButton(container, label, value, category) {
+            const button = document.createElement("button");
+            button.textContent = `${label}: ${value}`;
+            button.id = category;
+            button.onclick = () => showDropdown(button, category, value);
+            container.appendChild(button);
+        }
+
+        // Show dropdown for options
+        function showDropdown(button, category, value) {
+            const dropdown = document.createElement("select");
+            const options = ["correct", "later ^", "earlier v", "close ^", "close v"];
+            options.forEach(option => {
+                const optionElement = document.createElement("option");
+                optionElement.value = option;
+                optionElement.textContent = option;
+                dropdown.appendChild(optionElement);
+            });
+
+            dropdown.onchange = () => changeButtonColor(button, dropdown.value);
+            button.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)`;
+            button.appendChild(dropdown);
+        }
+
+        // Change button color based on selected option
+        function changeButtonColor(button, option) {
+            if (option === "correct") {
+                button.className = "green";
+            } else if (option === "close ^" || option === "close v") {
+                button.className = "orange";
+            } else {
+                button.className = "red";
+            }
+        }
+
+        // Load data when the page is ready
+        loadCSV();
+    </script>
 
 </body>
 </html>
