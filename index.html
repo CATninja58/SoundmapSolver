@@ -127,13 +127,13 @@
 
         @media (max-width: 600px) {
             .heading, .artist-item {
-                grid-template-columns: 1fr;
-                text-align: center;
+                grid-template-columns: repeat(7, 1fr);
+                text-align: left;
             }
 
             .heading span, .artist-item span {
-                display: block;
-                margin-bottom: 5px;
+                display: inline-block;
+                margin-bottom: 0;
             }
 
             input {
