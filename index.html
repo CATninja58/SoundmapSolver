@@ -258,6 +258,8 @@
                     } else if (option === 'close ^' || option === 'close v') {
                         const tolerance = 5;  // Tolerance for 'close' option (e.g., 5 years for debut)
                         return Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
+                    } else if (option === 'wrong') {
+                        return artistValue !== artistInfo[category];
                     } else {
                         return false;  // For other options, return false
                     }
