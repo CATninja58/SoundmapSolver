@@ -291,10 +291,16 @@
                     } else if (option === 'close v') {
                         const tolerance = 5;
                         return parseInt(artistValue) < parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
-                    } else if (option === 'higher ^') {
-                        return parseInt(artistValue) > parseInt(artistInfo[category]);
-                    } else if (option === 'lower v') {
+                    } else if (option === 'higher v') {
                         return parseInt(artistValue) < parseInt(artistInfo[category]);
+                    } else if (option === 'lower ^') {
+                        return parseInt(artistValue) > parseInt(artistInfo[category]);
+                    } else if (option === 'close ^') {
+                        const tolerance = 50;
+                        return parseInt(artistValue) < parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
+                    } else if (option === 'close v') {
+                        const tolerance = 50;
+                        return parseInt(artistValue) > parseInt(artistInfo[category]) && Math.abs(parseInt(artistValue) - parseInt(artistInfo[category])) <= tolerance;
                     } else if (option === 'wrong') {
                         return artistValue !== artistInfo[category];
                     } else {
