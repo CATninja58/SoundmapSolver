@@ -1,4 +1,4 @@
-ARTIST,DEBUT,POPULARITY,MEMBERS,GENRE,COUNTRY,GENDER
+ARTIST,DEBUT,PopULARITY,MEMBERS,GENRE,COUNTRY,GENDER
 Bruno Mars,2010,1,Solo,Pop,US,Male
 Ariana Grande,2011,2,Solo,Pop,US,Female
 Taylor Swift,2006,3,Solo,Pop,US,Female
@@ -12,7 +12,7 @@ Ed Sheeran,2009,10,Solo,Pop,GB,Male
 Katy Perry,2007,11,Solo,Pop,US,Female
 Selena Gomez,2011,12,Solo,Pop,US,Female
 Adele,2008,13,Solo,Pop,GB,Female
-Dua Lipa,2015,14,solo,Pop,GB,Female
+Dua Lipa,2015,14,Solo,Pop,GB,Female
 Beyoncé,2002,15,Solo,Pop,US,Female
 One Direction,2010,16,Group,Pop,GB,Male
 Chris Brown,2005,17,Solo,Pop,US,Male
@@ -50,8 +50,8 @@ Tyla,2019,48,Solo,Pop,ZA,Female
 Benson Boone,2021,49,Solo,Pop,US,Male
 Céline Dion,1984,50,Solo,Pop,CA,Female
 Whitney Houston,1985,51,Solo,Pop,US,Female
-Meghan Trainor,2014,52,solo,Pop,US,Female
-Khalid,2016,53,solo,Pop,US,Male
+Meghan Trainor,2014,52,Solo,Pop,US,Female
+Khalid,2016,53,Solo,Pop,US,Male
 Madonna,1983,54,Solo,Pop,US,Female
 The Kid LAROI,2019,55,Solo,Pop,AU,Male
 Michael Buble,2003,56,Solo,Pop,CA,Male
@@ -182,7 +182,7 @@ Ruth B,2015,180,Solo,Pop,CA,Female
 Victoria Pfeifer,2018,181,Solo,Pop,US,Female
 Raisa,2011,182,Solo,Pop,ID,Female
 Henry Moodie,2023,183,Solo,Pop,GB,Male
-karol sevilla,2019,184,Solo,Pop,MX,female
+karol sevilla,2019,184,Solo,Pop,MX,Female
 Austin Mahone,2012,185,Solo,Pop,US,Male
 RIck Astley,1987,186,Solo,Pop,GB,Male
 Eurythmics,1981,187,Group,Pop,GB,Mixed
@@ -193,20 +193,20 @@ Elley Duhe,2017,191,Solo,Pop,US,Female
 FutParódias,2017,192,Group,Pop,BR,Male
 Joe Jonas,2011,193,Solo,Pop,US,Male
 CG5,2016,194,Solo,Pop,US,Male
-James Bay,2014,195,SOlo,Pop,GB,Male
+James Bay,2014,195,Solo,Pop,GB,Male
 Ali Gatie,2017,196,Solo,Pop,CA,Male
 Shania Yan,2021,197,Solo,Pop,ID,Female
 Lauren Spencer Smith,2019,198,Solo,Pop,CA,Female
 Hadise,2007,199,Solo,Pop,TR,Female
 Daya,2015,200,Solo,Pop,US,Female
 Mini Pop Kids,2004,201,Group,Pop,CA,Mixed
-Eminem,1996,1,solo,Hip Hop,us,Male
+Eminem,1996,1,Solo,Hip Hop,us,Male
 Drake,2009,2,Solo,Hip Hop,CA,Male
 Travis Scott,2013,3,Solo,Hip Hop,US,Male
 Post Malone,2016,4,Solo,Hip Hop,US,Male
 Kendrick Lamar,2010,5,Solo,Hip Hop,US,Male
 Nicki Minaj,2010,6,Solo,Hip Hop,US,Female
-Tyler The Creator,2011,7,solo,Hip Hop,US,Male
+Tyler The Creator,2011,7,Solo,Hip Hop,US,Male
 XXXTENTACION,2015,8,Solo,Hip Hop,US,Male
 50 Cent,2003,9,Solo,Hip Hop,US,Male
 Snoop Dogg,1993,10,Solo,Hip Hop,US,Male
@@ -228,10 +228,10 @@ Nicki Nicole,2019,25,Solo,Hip Hop,AR,Female
 Playboi Carti,2016,26,Solo,Hip Hop,US,Male
 NLE Choppa,2018,27,Solo,Hip Hop,US,Male
 Bizarrap,2018,28,Solo,Hip Hop,AR,Male
-gunna,2016,29,solo,Hip Hop,us,Male
+gunna,2016,29,Solo,Hip Hop,us,Male
 Dr. Dre,1992,30,Solo,Hip Hop,US,Male
 Tyga,2009,31,Solo,Hip Hop,US,Male
-central cee,2017,32,solo,Hip Hop,gb,Male
+central cee,2017,32,Solo,Hip Hop,gb,Male
 Lil Nas X,2019,33,Solo,Hip Hop,US,Male
 Lil Uzi Vert,2014,34,Solo,Hip Hop,US,Male
 DJ Khaled,2007,35,Solo,Hip Hop,US,Male
@@ -270,7 +270,7 @@ Tory Lanez,2012,67,Solo,Hip Hop,CA,Male
 Lil Tjay,2018,68,Solo,Hip Hop,US,Male
 Swae Lee,2018,69,Solo,Hip Hop,US,Male
 Roddy Ricch,2018,70,Solo,Hip Hop,US,Male
-Ice Spice,2021,71,solo,Hip Hop,us ,Female
+Ice Spice,2021,71,Solo,Hip Hop,us ,Female
 Macklemore,2005,72,Solo,Hip Hop,US,Male
 Ludacris,2000,73,Solo,Hip Hop,US,Male
 Jack Harlow,2015,74,Solo,Hip Hop,US,Male
@@ -307,7 +307,7 @@ Sexyy Red,2019,104,Solo,Hip Hop,US,Female
 2 Chainz,2010,105,Solo,Hip Hop,US,Male
 Prvnci,2018,106,Solo,Hip Hop,US,Male
 Chief Keef,2012,107,Solo,Hip Hop,US,Male
-T.I.,2001,108,SOlo,Hip Hop,US,Male
+T.I.,2001,108,Solo,Hip Hop,US,Male
 Outkast,1993,109,Group,Hip Hop,US,Mixed
 Niska,2015,110,Solo,Hip Hop,FR,Male
 The Game,2003,111,Solo,Hip Hop,US,Male
@@ -344,7 +344,7 @@ Fetty Wap,2015,141,Solo,Hip Hop,US,Male
 ScHoolboy Q,2011,142,Solo,Hip Hop,US,Male
 Chance the Rapper,2012,143,Solo,Hip Hop,US,Male
 Kid Leray,2018,144,Solo,Hip Hop,US,Female
-Tee Grizzley,2017,145,SOlo,Hip Hop,US,Male
+Tee Grizzley,2017,145,Solo,Hip Hop,US,Male
 Logic,2014,146,Solo,Hip Hop,US,Male
 Young Dolph,2010,147,Solo,Hip Hop,US,Male
 Coolio,1994,148,Solo,Hip Hop,US,Male
@@ -528,7 +528,7 @@ inigo quintero,2022,121,Solo,Indie,ES,Male
 St. Vincent,2007,122,Solo,Indie,US,Female
 Lizzy McAlpine,2019,123,Solo,Indie,US,Female
 Renee Rapp,2022,124,Solo,Indie,US,Female
-Em Beihold,2017,125,Solo,Indie,US,female
+Em Beihold,2017,125,Solo,Indie,US,Female
 Jaymes Young,2013,126,Solo,Indie,US,Male
 Jack Stauber,2013,127,Solo,Indie,US,Male
 Julien Doré,2007,128,Solo,Indie,FR,Male
@@ -846,7 +846,7 @@ RM,2017,37,Solo,R&B,KR,Male
 Destiny's Child,1998,38,Group,R&B,US,Female
 Ella Mai,2016,39,Solo,R&B,GB,Female
 Cynthia Erivo,2015,40,Solo,R&B,GB,Female
-Jessie Murph,2021,41,SOlo,R&B,US,Female
+Jessie Murph,2021,41,Solo,R&B,US,Female
 Tinashe,2014,42,Solo,R&B,US,Female
 Marvin Gaye,1961,43,Solo,R&B,US,Male
 Kelly Rowland,2002,44,Solo,R&B,US,Female
@@ -868,7 +868,7 @@ Ms. Lauryn Hill,1998,59,Solo,R&B,US,Female
 Janet Jackson,1982,60,Solo,R&B,US,Female
 Ashanti,2002,61,Solo,R&B,US,Female
 Jay Sean,2004,62,Solo,R&B,GB,Male
-Monica,1994,63,SOlo,R&B,US,Female
+Monica,1994,63,Solo,R&B,US,Female
 Jamiroquai,1993,64,Group,R&B,GB,Male
 Aretha Franklin,1956,65,Solo,R&B,US,Female
 Brandy,1994,66,Solo,R&B,US,Female
@@ -1005,5 +1005,5 @@ Four Tops,1965,196,Group,R&B,US,Male
 Rick James,1978,197,Solo,R&B,US,Male
 Jodeci,1991,198,Group,R&B,US,Male
 Eric Bellinger,2013,199,Solo,R&B,US,Male
-DJ FKU,2023,200,SOlo,R&B,US,Male
+DJ FKU,2023,200,Solo,R&B,US,Male
 King George,2020,201,Solo,R&B,US,Male
