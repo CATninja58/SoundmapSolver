@@ -71,6 +71,11 @@
             align-items: center;
         }
 
+        .artist-list-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
         .artist-item {
             display: flex;
             justify-content: space-between;
@@ -156,6 +161,10 @@
             .guess-container {
                 width: 100%;
             }
+
+            .artist-list-wrapper {
+                overflow-x: auto;
+            }
         }
 
         /* Modal styles */
@@ -223,13 +232,16 @@
         <!-- Guesses will be dynamically added here -->
     </div>
 
-    <div id="artistList" class="results-container"></div>
+    <div class="results-container">
+        <div class="artist-list-wrapper">
+            <div id="artistList"></div>
+        </div>
         <!-- Artists matching the guess will be displayed here -->
     </div>
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
 
     <!-- Modal structure -->
-    <div id="myModal" class="modal">
+    <div id="myModal" class="modal"></div>
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="modalOptions"></div>
