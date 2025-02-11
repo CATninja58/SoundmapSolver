@@ -76,29 +76,21 @@
             overflow-x: auto;
         }
 
-        .artist-item {
-            display: flex;
-            justify-content: space-between;
+        table {
             width: 100%;
-            border-bottom: 1px solid #ddd;
-            padding: 8px;
-            color: #f4f4f4; /* Artist item text color */
+            table-layout: fixed;
+            border-collapse: collapse;
         }
 
-        .heading, .artist-item {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            width: 100%;
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: #f4f4f4; /* Text color */
             text-align: left;
         }
 
-        .heading span {
+        th {
             font-weight: bold;
-            color: #f4f4f4; /* Heading text color */
-        }
-
-        .artist-item:last-child {
-            border-bottom: none;
         }
 
         select {
@@ -112,11 +104,6 @@
         .button-text {
             display: inline-block;
             margin-bottom: 5px;
-        }
-
-        .heading {
-            font-weight: bold;
-            margin-top: 10px;
         }
 
         .guess-container {
@@ -140,16 +127,6 @@
         }
 
         @media (max-width: 600px) {
-            .heading, .artist-item {
-                grid-template-columns: repeat(7, 1fr);
-                text-align: left;
-            }
-
-            .heading span, .artist-item span {
-                display: inline-block;
-                margin-bottom: 0;
-            }
-
             input {
                 width: 90%;
             }
@@ -234,7 +211,20 @@
 
     <div class="results-container">
         <div class="artist-list-wrapper">
-            <div id="artistList"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Artist</th>
+                        <th>Debut</th>
+                        <th>Popularity</th>
+                        <th>Members</th>
+                        <th>Genre</th>
+                        <th>Country</th>
+                        <th>Gender</th>
+                    </tr>
+                </thead>
+                <tbody id="artistList"></tbody>
+            </table>
         </div>
         <!-- Artists matching the guess will be displayed here -->
     </div>
@@ -500,23 +490,17 @@
             const artistList = document.getElementById("artistList");
             artistList.innerHTML = '';
 
-            const heading = document.createElement("div");
-            heading.classList.add("heading");
-            heading.innerHTML = `<span>Artist</span><span>Debut</span><span> # </span><span>Members</span><span>Genre</span><span>Country</span><span>Gender</span>`;
-            artistList.appendChild(heading);
-
             filteredArtists.forEach(artist => {
-                const artistItem = document.createElement("div");
-                artistItem.classList.add("artist-item");
+                const artistItem = document.createElement("tr");
 
                 artistItem.innerHTML = `
-                    <span>${artist.artist}</span>
-                    <span>${artist.debut}</span>
-                    <span>${artist.popularity}</span>
-                    <span>${artist.members}</span>
-                    <span>${artist.genre}</span>
-                    <span>${artist.country}</span>
-                    <span>${artist.gender}</span>
+                    <td>${artist.artist}</td>
+                    <td>${artist.debut}</td>
+                    <td>${artist.popularity}</td>
+                    <td>${artist.members}</td>
+                    <td>${artist.genre}</td>
+                    <td>${artist.country}</td>
+                    <td>${artist.gender}</td>
                 `;
 
                 artistList.appendChild(artistItem);
