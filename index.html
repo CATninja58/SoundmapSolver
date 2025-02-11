@@ -89,12 +89,25 @@
             border-bottom: none;
         }
 
-        select {
+        .custom-dropdown {
             margin-top: 10px;
             padding: 5px;
             font-size: 14px;
             position: absolute;
             z-index: 10;
+            background-color: white;
+            border: 1px solid #ccc;
+            display: none;
+            flex-direction: column;
+        }
+
+        .custom-dropdown-option {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .custom-dropdown-option:hover {
+            background-color: #f0f0f0;
         }
 
         .button-text {
@@ -241,32 +254,29 @@
             guesses.push(guess);
 
             createButtons(artist, guessBoxes, guess);
-        }
-
-        function createButtons(artist, container, guess) {
-            const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
-            categories.forEach(category => {
-                const button = document.createElement("button");
-                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${artist[category]}</span>`;
-                button.onclick = () => showDropdown(button, category, artist[category], guess);
-                container.appendChild(button);
-            });
-        }
-
-        function showDropdown(button, category, value, guess) {
-            const dropdown = document.createElement("select");
-            const options = getCategoryOptions(category);
-
-            const defaultOption = document.createElement("option");
-            defaultOption.value = "";
-            defaultOption.textContent = "Choose an option";
-            dropdown.appendChild(defaultOption);
+            const dropdown = document.createElement("div");
+            dropdown.classList.add("custom-dropdown");
 
             options.forEach(option => {
-                const optionElement = document.createElement("option");
-                optionElement.value = option;
+                const optionElement = document.createElement("div");
+                optionElement.classList.add("custom-dropdown-option");
                 optionElement.textContent = option;
+                optionElement.onclick = () => {
+                    guess.selectedOptions[category] = option;
+                    changeButtonColor(button, option);
+                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${option})</span>`;
+                    dropdown.style.display = "none";
+                    filterArtists();
+                };
                 dropdown.appendChild(optionElement);
+            });
+
+            button.onclick = () => {
+                dropdown.style.display = dropdown.style.display === "none" ? "flex" : "none";
+            };
+
+            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
+            button.appendChild(dropdown);
             });
 
             dropdown.onchange = () => {
