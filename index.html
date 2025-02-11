@@ -285,27 +285,27 @@
 
         function getCategoryOptions(category) {
             switch (category) {
-                case 'debut':
-                    return ['correct', 'later ^', 'earlier v', 'close ^', 'close v'];
-                case 'popularity':
-                    return ['correct', 'higher ^', 'lower v', 'close ^', 'close v'];
-                case 'members':
-                case 'genre':
-                case 'country':
-                case 'gender':
-                    return ['correct', 'wrong'];
-                default:
-                    return [];
+            case 'debut':
+                return ['correct', 'later ^', 'earlier v', 'close ^', 'close v'];
+            case 'popularity':
+                return ['correct', 'higher ^', 'lower v', 'close ^', 'close v'];
+            case 'members':
+            case 'genre':
+            case 'country':
+            case 'gender':
+                return ['correct', 'wrong'];
+            default:
+                return [];
             }
         }
 
         function changeButtonColor(button, option) {
             if (option === 'correct') {
-                button.className = 'green';
+            button.className = 'green';
             } else if (option === 'close ^' || option === 'close v') {
-                button.className = 'orange';
-            } else if (option === 'wrong') {
-                button.className = 'grey';
+            button.className = 'orange';
+            } else if (option === 'wrong' || option === 'later ^' || option === 'earlier v' || option === 'higher ^' || option === 'lower v') {
+            button.className = 'grey';
             }
         }
 
@@ -340,9 +340,9 @@
             if (option === 'correct') {
             return artistValue === guessValue;
             } else if (option === 'later ^') {
-            return parseInt(artistValue) > parseInt(guessValue);
+            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
             } else if (option === 'earlier v') {
-            return parseInt(artistValue) < parseInt(guessValue);
+            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
             } else if (option === 'close ^') {
             return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
             } else if (option === 'close v') {
@@ -356,9 +356,9 @@
             if (option === 'correct') {
             return artistValue === guessValue;
             } else if (option === 'higher ^') {
-            return parseInt(artistValue) < parseInt(guessValue);
+            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
             } else if (option === 'lower v') {
-            return parseInt(artistValue) > parseInt(guessValue);
+            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
             } else if (option === 'close ^') {
             return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
             } else if (option === 'close v') {
