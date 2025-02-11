@@ -525,7 +525,7 @@
         const bestGuesses = sortedByDebut.filter(artist => artist.debut === middleDebutYear);
         const sortedByPopularity = bestGuesses.sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
         const bestGuess = sortedByPopularity[Math.floor(sortedByPopularity.length / 2)];
-
+        console.log(`Best Next Guess: ${bestGuess.artist}`);
         displayBestNextGuess(bestGuess);
     }
 
