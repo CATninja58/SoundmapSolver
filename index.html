@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soundmap Artist Guesser Solver</title>
     <style>
-        /* Existing styles */
+        /* Updated styles */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -15,11 +15,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            background-color: white; /* Set background color to white */
+            background-color: #121212; /* Set background color to #121212 */
         }
 
         h1 {
             margin-top: 20px;
+            color: #f4f4f4;
         }
 
         input {
@@ -27,35 +28,37 @@
             padding: 10px;
             font-size: 14px;
             width: 300px;
+            background-color: #1c1c1c;
+            color: #f4f4f4;
+            border: none;
         }
 
         .button-container {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
             margin-top: 20px;
-            flex-wrap: wrap;
         }
 
         button {
-            width: 120px;
+            width: 100%;
             height: 50px;
-            margin: 5px;
             font-size: 14px;
+            background-color: #1c1c1c;
+            color: #f4f4f4;
+            border: none;
         }
 
         .green {
-            background-color: green;
-            color: white;
+            background-color: #159643;
         }
 
         .orange {
-            background-color: orange;
-            color: white;
+            background-color: #b19600;
         }
 
         .grey {
             background-color: grey;
-            color: white;
         }
 
         .results-container {
@@ -74,6 +77,7 @@
             width: 100%;
             border-bottom: 1px solid #ddd;
             padding: 8px;
+            color: #f4f4f4;
         }
 
         .heading, .artist-item {
@@ -85,6 +89,7 @@
 
         .heading span {
             font-weight: bold;
+            color: #f4f4f4;
         }
 
         .artist-item:last-child {
@@ -120,11 +125,13 @@
         .guess-title {
             font-weight: bold;
             margin-top: 20px;
+            color: #88888a;
         }
 
         .footer-text {
             font-weight: bold;
             margin-top: 20px;
+            color: #f4f4f4;
         }
 
         @media (max-width: 600px) {
@@ -290,8 +297,13 @@
 
             const guessTitle = document.createElement("div");
             guessTitle.classList.add("guess-title");
-            guessTitle.textContent = `Guess ${guessCount}: ${artist.artist}`;
+            guessTitle.textContent = `Guess #${guessCount}`;
             guessesContainer.appendChild(guessTitle);
+
+            const artistName = document.createElement("div");
+            artistName.textContent = artist.artist;
+            artistName.style.color = "#f4f4f4";
+            guessesContainer.appendChild(artistName);
 
             const guessBoxes = document.createElement("div");
             guessBoxes.classList.add("button-container");
