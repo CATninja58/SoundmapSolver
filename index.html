@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"></html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -206,7 +206,7 @@
     <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
     <div id="searchResults"></div>
 
-    <div id="guessesContainer" class="guess-container">
+    <div id="guessesContainer" class="guess-container"></div>
         <!-- Guesses will be dynamically added here -->
     </div>
 
@@ -233,7 +233,7 @@
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
 
     <!-- Modal structure -->
-    <div id="myModal" class="modal">
+    <div id="myModal" class="modal"></div>
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="modalOptions"></div>
@@ -454,7 +454,6 @@
             });
 
             displayArtists();
-            displayNextBestGuess();
         }
 
         function filterDebut(option, artistValue, guessValue) {
@@ -494,50 +493,24 @@
             artistList.innerHTML = '';
 
             filteredArtists.forEach(artist => {
-            const artistItem = document.createElement("tr");
+                const artistItem = document.createElement("tr");
 
-            artistItem.innerHTML = `
-                <td>${artist.artist}</td>
-                <td>${artist.debut}</td>
-                <td>${artist.popularity}</td>
-                <td>${artist.members}</td>
-                <td>${artist.genre}</td>
-                <td>${artist.country}</td>
-                <td>${artist.gender}</td>
-            `;
+                artistItem.innerHTML = `
+                    <td>${artist.artist}</td>
+                    <td>${artist.debut}</td>
+                    <td>${artist.popularity}</td>
+                    <td>${artist.members}</td>
+                    <td>${artist.genre}</td>
+                    <td>${artist.country}</td>
+                    <td>${artist.gender}</td>
+                `;
 
-            artistList.appendChild(artistItem);
+                artistList.appendChild(artistItem);
             });
         }
 
-        function displayNextBestGuess() {
-            if (filteredArtists.length === 0) return;
-
-            const sortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
-            const middleIndex = Math.floor(sortedByDebut.length / 2);
-            const middleDebutYear = sortedByDebut[middleIndex].debut;
-
-            const bestGuesses = sortedByDebut.filter(artist => artist.debut === middleDebutYear);
-            bestGuesses.sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
-            const bestGuess = bestGuesses[Math.floor(bestGuesses.length / 2)];
-
-            const artistList = document.getElementById("artistList");
-            const nextBestGuessHeading = document.createElement("tr");
-            nextBestGuessHeading.innerHTML = `<th colspan="7" style="color: yellow;">Next Best Guess</th>`;
-            artistList.insertBefore(nextBestGuessHeading, artistList.firstChild);
-
-            const bestGuessItem = document.createElement("tr");
-            bestGuessItem.style.color = "yellow";
-            bestGuessItem.innerHTML = `
-            <td>${bestGuess.artist}</td>
-            <td>${bestGuess.debut}</td>
-            <td>${bestGuess.popularity}</td>
-            <td>${bestGuess.members}</td>
-            <td>${bestGuess.genre}</td>
-            <td>${bestGuess.country}</td>
-            <td>${bestGuess.gender}</td>
-            `;
-            artistList.insertBefore(bestGuessItem, artistList.firstChild);
-        }
-
         loadCSV();
+    </script>
+
+</body>
+</html>
