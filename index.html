@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soundmap Artist Guesser Solver</title>
     <style>
+        /* Existing styles */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -148,6 +149,53 @@
                 width: 100%;
             }
         }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-option {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #ddd;
+            cursor: pointer;
+        }
+
+        .modal-option:hover {
+            background-color: #ccc;
+        }
     </style>
 </head>
 <body>
@@ -166,6 +214,14 @@
         <!-- Artists matching the guess will be displayed here -->
     </div>
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
+
+    <!-- Modal structure -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalOptions"></div>
+        </div>
+    </div>
 
     <script>
         let artistsData = [];
@@ -258,40 +314,71 @@
         }
 
         function showDropdown(button, category, value, guess) {
-            const dropdown = document.createElement("select");
+            if (isAndroid()) {
+                showModal(button, category, value, guess);
+            } else {
+                const dropdown = document.createElement("select");
+                const options = getCategoryOptions(category);
+
+                const defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = "Choose an option";
+                dropdown.appendChild(defaultOption);
+
+                options.forEach(option => {
+                    const optionElement = document.createElement("option");
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    dropdown.appendChild(optionElement);
+                });
+
+                dropdown.onchange = () => {
+                    const selectedOption = dropdown.value;
+                    guess.selectedOptions[category] = selectedOption;
+                    changeButtonColor(button, selectedOption);
+                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${selectedOption})</span>`;
+                    filterArtists();
+                };
+
+                dropdown.size = options.length;
+                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
+                button.appendChild(dropdown);
+                dropdown.focus();
+            }
+        }
+
+        function showModal(button, category, value, guess) {
+            const modal = document.getElementById("myModal");
+            const modalOptions = document.getElementById("modalOptions");
+            modalOptions.innerHTML = '';
+
             const options = getCategoryOptions(category);
-
-            const defaultOption = document.createElement("option");
-            defaultOption.value = "";
-            defaultOption.textContent = "Choose an option";
-            dropdown.appendChild(defaultOption);
-
             options.forEach(option => {
-                const optionElement = document.createElement("option");
-                optionElement.value = option;
-                optionElement.textContent = option;
-                dropdown.appendChild(optionElement);
+                const optionDiv = document.createElement("div");
+                optionDiv.classList.add("modal-option");
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => {
+                    guess.selectedOptions[category] = option;
+                    changeButtonColor(button, option);
+                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${option})</span>`;
+                    filterArtists();
+                    modal.style.display = "none";
+                };
+                modalOptions.appendChild(optionDiv);
             });
 
-            dropdown.onchange = () => {
-                const selectedOption = dropdown.value;
-                guess.selectedOptions[category] = selectedOption;
-                changeButtonColor(button, selectedOption);
-                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${selectedOption})</span>`;
-                filterArtists();
+            modal.style.display = "block";
+
+            const closeModal = document.getElementsByClassName("close")[0];
+            closeModal.onclick = () => {
+                modal.style.display = "none";
             };
 
-            if (isAndroid()) {
-                dropdown.size = 1;
-                dropdown.style.position = 'relative';
-                dropdown.style.zIndex = '1';
-            } else {
-                dropdown.size = options.length;
-            }
-
-            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
-            button.appendChild(dropdown);
-            dropdown.focus();
+            window.onclick = (event) => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
         }
 
         function getCategoryOptions(category) {
