@@ -277,18 +277,7 @@
                 filterArtists();
             };
 
-            // Adjust dropdown size for Android devices
-            if (isAndroid()) {
-                dropdown.size = Math.min(options.length, window.innerWidth < 600 ? 3 : options.length);
-                dropdown.style.position = 'absolute';
-                dropdown.style.left = `${button.getBoundingClientRect().left}px`;
-                dropdown.style.top = `${button.getBoundingClientRect().bottom}px`;
-                dropdown.style.width = `${button.getBoundingClientRect().width}px`;
-                dropdown.style.zIndex = '1000';
-            } else {
-                dropdown.size = options.length;
-            }
-
+            dropdown.size = options.length;
             button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
             button.appendChild(dropdown);
             dropdown.focus();
@@ -404,10 +393,6 @@
 
                 artistList.appendChild(artistItem);
             });
-        }
-
-        function isAndroid() {
-            return /Android/i.test(navigator.userAgent);
         }
 
         loadCSV();
