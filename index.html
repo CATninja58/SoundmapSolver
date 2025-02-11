@@ -17,12 +17,12 @@
             justify-content: flex-start;
             background-color: #121212; /* Background color */
         }
-
+    
         h1 {
             margin-top: 20px;
             color: #f4f4f4; /* Heading color */
         }
-
+    
         input {
             margin-top: 20px;
             padding: 10px;
@@ -32,14 +32,15 @@
             color: #f4f4f4; /* Input text color */
             border: none;
         }
-
+    
         .button-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 5px;
             margin-top: 20px;
+            height: 50px; /* Fixed height for guess boxes */
         }
-
+    
         button {
             width: 100%;
             height: 50px;
@@ -48,19 +49,19 @@
             color: #f4f4f4; /* Button text color */
             border: none;
         }
-
+    
         .green {
             background-color: #159643; /* Correct option color */
         }
-
+    
         .orange {
             background-color: #b19600; /* Close option color */
         }
-
+    
         .grey {
             background-color: grey; /* Wrong option color */
         }
-
+    
         .results-container {
             width: 80%;
             margin-top: 40px;
@@ -70,17 +71,17 @@
             flex-direction: column;
             align-items: center;
         }
-
+    
         .artist-list-wrapper {
             width: 100%;
             overflow-x: auto;
         }
-
+    
         table {
             width: 100%;
             border-collapse: collapse;
         }
-
+    
         th, td {
             padding: 8px;
             border-bottom: 1px solid #ddd;
@@ -88,11 +89,11 @@
             text-align: left;
             word-wrap: break-word;
         }
-
+    
         th {
             font-weight: bold;
         }
-
+    
         select {
             margin-top: 10px;
             padding: 5px;
@@ -100,12 +101,12 @@
             position: absolute;
             z-index: 10;
         }
-
+    
         .button-text {
             display: inline-block;
             margin-bottom: 5px;
         }
-
+    
         .guess-container {
             margin-top: 20px;
             width: 80%;
@@ -113,37 +114,37 @@
             flex-direction: column;
             align-items: center;
         }
-
+    
         .guess-title {
             font-weight: bold;
             margin-top: 20px;
             color: #88888a; /* Guess title color */
         }
-
+    
         .footer-text {
             font-weight: bold;
             margin-top: 20px;
             color: #f4f4f4; /* Footer text color */
         }
-
+    
         @media (max-width: 600px) {
             input {
                 width: 90%;
             }
-
+    
             .results-container {
                 width: 100%;
             }
-
+    
             .guess-container {
                 width: 100%;
             }
-
+    
             .artist-list-wrapper {
                 overflow-x: auto;
             }
         }
-
+    
         /* Modal styles */
         .modal {
             display: none;
@@ -156,7 +157,7 @@
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.4); /* Modal background color */
         }
-
+    
         .modal-content {
             background-color: #fefefe; /* Modal content background color */
             margin: 15% auto;
@@ -165,37 +166,37 @@
             width: 80%;
             max-width: 300px;
         }
-
+    
         .close {
             color: #aaa; /* Close button color */
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
-
+    
         .close:hover,
         .close:focus {
             color: black; /* Close button hover color */
             text-decoration: none;
             cursor: pointer;
         }
-
+    
         .modal-option {
             margin: 10px 0;
             padding: 10px;
             background-color: #ddd; /* Modal option background color */
             cursor: pointer;
         }
-
+    
         .modal-option:hover {
             background-color: #ccc; /* Modal option hover color */
         }
-
+    
         /* Search result styles */
         #searchResults div {
             color: #f4f4f4; /* Search result text color */
         }
-    </style>
+    </style>    
 </head>
 <body>
 
