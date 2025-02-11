@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soundmap Artist Guesser Solver</title>
     <style>
+        /* Updated styles */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -14,10 +15,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
+            background-color: #121212; /* Background color */
         }
 
         h1 {
             margin-top: 20px;
+            color: #f4f4f4; /* Heading color */
         }
 
         input {
@@ -25,35 +28,37 @@
             padding: 10px;
             font-size: 14px;
             width: 300px;
+            background-color: #1c1c1c; /* Input background color */
+            color: #f4f4f4; /* Input text color */
+            border: none;
         }
 
         .button-container {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
             margin-top: 20px;
-            flex-wrap: wrap;
         }
 
         button {
-            width: 120px;
+            width: 100%;
             height: 50px;
-            margin: 5px;
             font-size: 14px;
+            background-color: #1c1c1c; /* Button background color */
+            color: #f4f4f4; /* Button text color */
+            border: none;
         }
 
         .green {
-            background-color: green;
-            color: white;
+            background-color: #159643; /* Correct option color */
         }
 
         .orange {
-            background-color: orange;
-            color: white;
+            background-color: #b19600; /* Close option color */
         }
 
         .grey {
-            background-color: grey;
-            color: white;
+            background-color: grey; /* Wrong option color */
         }
 
         .results-container {
@@ -72,6 +77,7 @@
             width: 100%;
             border-bottom: 1px solid #ddd;
             padding: 8px;
+            color: #f4f4f4; /* Artist item text color */
         }
 
         .heading, .artist-item {
@@ -83,6 +89,7 @@
 
         .heading span {
             font-weight: bold;
+            color: #f4f4f4; /* Heading text color */
         }
 
         .artist-item:last-child {
@@ -118,11 +125,13 @@
         .guess-title {
             font-weight: bold;
             margin-top: 20px;
+            color: #88888a; /* Guess title color */
         }
 
         .footer-text {
             font-weight: bold;
             margin-top: 20px;
+            color: #f4f4f4; /* Footer text color */
         }
 
         @media (max-width: 600px) {
@@ -148,6 +157,58 @@
                 width: 100%;
             }
         }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); /* Modal background color */
+        }
+
+        .modal-content {
+            background-color: #fefefe; /* Modal content background color */
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .close {
+            color: #aaa; /* Close button color */
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black; /* Close button hover color */
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-option {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #ddd; /* Modal option background color */
+            cursor: pointer;
+        }
+
+        .modal-option:hover {
+            background-color: #ccc; /* Modal option hover color */
+        }
+
+        /* Search result styles */
+        #searchResults div {
+            color: #f4f4f4; /* Search result text color */
+        }
     </style>
 </head>
 <body>
@@ -167,12 +228,24 @@
     </div>
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
 
+    <!-- Modal structure -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalOptions"></div>
+        </div>
+    </div>
+
     <script>
         let artistsData = [];
         let artistInfo = {};
         let filteredArtists = [];
         let guesses = [];
         let guessCount = 0;
+
+        function isAndroid() {
+            return /Android/i.test(navigator.userAgent);
+        }
 
         function loadCSV() {
             const csvUrl = "https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/MasterArtistList.csv";
@@ -229,8 +302,13 @@
 
             const guessTitle = document.createElement("div");
             guessTitle.classList.add("guess-title");
-            guessTitle.textContent = `Guess ${guessCount}: ${artist.artist}`;
+            guessTitle.textContent = `Guess #${guessCount}`;
             guessesContainer.appendChild(guessTitle);
+
+            const artistName = document.createElement("div");
+            artistName.textContent = artist.artist;
+            artistName.style.color = "#f4f4f4";
+            guessesContainer.appendChild(artistName);
 
             const guessBoxes = document.createElement("div");
             guessBoxes.classList.add("button-container");
@@ -254,33 +332,71 @@
         }
 
         function showDropdown(button, category, value, guess) {
-            const dropdown = document.createElement("select");
+            if (isAndroid()) {
+                showModal(button, category, value, guess);
+            } else {
+                const dropdown = document.createElement("select");
+                const options = getCategoryOptions(category);
+
+                const defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = "Choose an option";
+                dropdown.appendChild(defaultOption);
+
+                options.forEach(option => {
+                    const optionElement = document.createElement("option");
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    dropdown.appendChild(optionElement);
+                });
+
+                dropdown.onchange = () => {
+                    const selectedOption = dropdown.value;
+                    guess.selectedOptions[category] = selectedOption;
+                    changeButtonColor(button, selectedOption);
+                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${selectedOption})</span>`;
+                    filterArtists();
+                };
+
+                dropdown.size = options.length;
+                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
+                button.appendChild(dropdown);
+                dropdown.focus();
+            }
+        }
+
+        function showModal(button, category, value, guess) {
+            const modal = document.getElementById("myModal");
+            const modalOptions = document.getElementById("modalOptions");
+            modalOptions.innerHTML = '';
+
             const options = getCategoryOptions(category);
-
-            const defaultOption = document.createElement("option");
-            defaultOption.value = "";
-            defaultOption.textContent = "Choose an option";
-            dropdown.appendChild(defaultOption);
-
             options.forEach(option => {
-                const optionElement = document.createElement("option");
-                optionElement.value = option;
-                optionElement.textContent = option;
-                dropdown.appendChild(optionElement);
+                const optionDiv = document.createElement("div");
+                optionDiv.classList.add("modal-option");
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => {
+                    guess.selectedOptions[category] = option;
+                    changeButtonColor(button, option);
+                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${option})</span>`;
+                    filterArtists();
+                    modal.style.display = "none";
+                };
+                modalOptions.appendChild(optionDiv);
             });
 
-            dropdown.onchange = () => {
-                const selectedOption = dropdown.value;
-                guess.selectedOptions[category] = selectedOption;
-                changeButtonColor(button, selectedOption);
-                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${selectedOption})</span>`;
-                filterArtists();
+            modal.style.display = "block";
+
+            const closeModal = document.getElementsByClassName("close")[0];
+            closeModal.onclick = () => {
+                modal.style.display = "none";
             };
 
-            dropdown.size = options.length;
-            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
-            button.appendChild(dropdown);
-            dropdown.focus();
+            window.onclick = (event) => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
         }
 
         function getCategoryOptions(category) {
