@@ -512,45 +512,5 @@
         loadCSV();
     </script>
 
-<script>
-    function findBestNextGuess() {
-        if (filteredArtists.length === 0) return;
-
-        const sortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
-        const middleIndex = Math.floor(sortedByDebut.length / 2);
-        const middleDebutYear = sortedByDebut[middleIndex].debut;
-
-        const bestGuesses = sortedByDebut.filter(artist => artist.debut === middleDebutYear);
-        const sortedByPopularity = bestGuesses.sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
-        const bestGuess = sortedByPopularity[Math.floor(sortedByPopularity.length / 2)];
-        console.log(`Best Next Guess: ${bestGuess.artist}`);
-        displayBestNextGuess(bestGuess);
-    }
-
-    function displayBestNextGuess(artist) {
-        const artistList = document.getElementById("artistList");
-        const bestGuessContainer = document.createElement("tbody");
-        bestGuessContainer.innerHTML = `
-            <tr>
-                <th colspan="7" style="text-align: center; color: #f4f4f4; background-color: #159643;">Next Best Guess</th>
-            </tr>
-            <tr style="background-color: #159643; color: #f4f4f4;">
-                <td>${artist.artist}</td>
-                <td>${artist.debut}</td>
-                <td>${artist.popularity}</td>
-                <td>${artist.members}</td>
-                <td>${artist.genre}</td>
-                <td>${artist.country}</td>
-                <td>${artist.gender}</td>
-            </tr>
-        `;
-        artistList.parentNode.insertBefore(bestGuessContainer, artistList);
-    }
-
-    loadCSV();
-    findBestNextGuess();
-    loadCSV();
-    findBestNextGuess();
-</script>
 </body>
 </html>
