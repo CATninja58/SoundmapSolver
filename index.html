@@ -276,17 +276,17 @@
             searchResults.innerHTML = '';
 
             if (query) {
-            const matches = artistsData.filter(artist => artist.artist.toLowerCase().includes(query));
-            matches.forEach(match => {
-                const resultDiv = document.createElement("div");
-                resultDiv.textContent = match.artist;
-                resultDiv.onclick = () => {
-                displayArtistInfo(match.artist);
-                document.getElementById("artistSearch").value = '';
-                searchResults.innerHTML = '';
-                };
-                searchResults.appendChild(resultDiv);
-            });
+                const matches = artistsData.filter(artist => artist.artist.toLowerCase().includes(query));
+                matches.forEach(match => {
+                    const resultDiv = document.createElement("div");
+                    resultDiv.textContent = match.artist;
+                    resultDiv.onclick = () => {
+                        displayArtistInfo(match.artist);
+                        document.getElementById("artistSearch").value = '';
+                        searchResults.innerHTML = '';
+                    };
+                    searchResults.appendChild(resultDiv);
+                });
             }
         }
 
@@ -405,86 +405,87 @@
 
         function getCategoryOptions(category) {
             switch (category) {
-            case 'debut':
-                return ['correct', 'later ^', 'earlier v', 'close ^', 'close v'];
-            case 'popularity':
-                return ['correct', 'higher ^', 'lower v', 'close ^', 'close v'];
-            case 'members':
-            case 'genre':
-            case 'country':
-            case 'gender':
-                return ['correct', 'wrong'];
-            default:
-                return [];
+                case 'debut':
+                    return ['correct', 'later ^', 'earlier v', 'close ^', 'close v'];
+                case 'popularity':
+                    return ['correct', 'higher ^', 'lower v', 'close ^', 'close v'];
+                case 'members':
+                case 'genre':
+                case 'country':
+                case 'gender':
+                    return ['correct', 'wrong'];
+                default:
+                    return [];
             }
         }
 
         function changeButtonColor(button, option) {
             if (option === 'correct') {
-            button.className = 'green';
+                button.className = 'green';
             } else if (option === 'close ^' || option === 'close v') {
-            button.className = 'orange';
+                button.className = 'orange';
             } else if (option === 'wrong' || option === 'later ^' || option === 'earlier v' || option === 'higher ^' || option === 'lower v') {
-            button.className = 'grey';
+                button.className = 'grey';
             }
         }
 
         function filterArtists() {
             filteredArtists = artistsData.filter(artist => {
-            return guesses.every(guess => {
-                return Object.keys(guess.selectedOptions).every(category => {
-                const option = guess.selectedOptions[category];
-                const artistValue = artist[category];
+                return guesses.every(guess => {
+                    return Object.keys(guess.selectedOptions).every(category => {
+                        const option = guess.selectedOptions[category];
+                        const artistValue = artist[category];
 
-                if (!option) return true;
+                        if (!option) return true;
 
-                if (option === 'correct') {
-                    return artistValue === guess.artist[category];
-                } else if (category === 'debut') {
-                    return filterDebut(option, artistValue, guess.artist[category]);
-                } else if (category === 'popularity') {
-                    return filterPopularity(option, artistValue, guess.artist[category]);
-                } else if (option === 'wrong') {
-                    return artistValue !== guess.artist[category];
-                } else {
-                    return false;
-                }
+                        if (option === 'correct') {
+                            return artistValue === guess.artist[category];
+                        } else if (category === 'debut') {
+                            return filterDebut(option, artistValue, guess.artist[category]);
+                        } else if (category === 'popularity') {
+                            return filterPopularity(option, artistValue, guess.artist[category]);
+                        } else if (option === 'wrong') {
+                            return artistValue !== guess.artist[category];
+                        } else {
+                            return false;
+                        }
+                    });
                 });
-            });
             });
 
             displayArtists();
+            calculateBestGuess();
         }
 
         function filterDebut(option, artistValue, guessValue) {
             if (option === 'correct') {
-            return artistValue === guessValue;
+                return artistValue === guessValue;
             } else if (option === 'later ^') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
+                return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
             } else if (option === 'earlier v') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
+                return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
             } else if (option === 'close ^') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
+                return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
             } else if (option === 'close v') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
+                return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
             } else {
-            return false;
+                return false;
             }
         }
 
         function filterPopularity(option, artistValue, guessValue) {
             if (option === 'correct') {
-            return artistValue === guessValue;
+                return artistValue === guessValue;
             } else if (option === 'higher ^') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
+                return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
             } else if (option === 'lower v') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
+                return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
             } else if (option === 'close ^') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
+                return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
             } else if (option === 'close v') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
+                return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
             } else {
-            return false;
+                return false;
             }
         }
 
@@ -507,6 +508,23 @@
 
                 artistList.appendChild(artistItem);
             });
+        }
+
+        function calculateBestGuess() {
+            if (filteredArtists.length === 0) return;
+
+            const sortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
+            const medianDebutArtist = sortedByDebut[Math.floor(sortedByDebut.length / 2)];
+
+            const sameDebutArtists = sortedByDebut.filter(artist => artist.debut === medianDebutArtist.debut);
+            const sortedByPopularity = sameDebutArtists.sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
+            const medianPopularityArtist = sortedByPopularity[Math.floor(sortedByPopularity.length / 2)];
+
+            const bestGuess = medianPopularityArtist.artist;
+            const bestGuessElement = document.createElement("div");
+            bestGuessElement.textContent = `Best Guess: ${bestGuess}`;
+            bestGuessElement.style.color = "#f4f4f4";
+            document.getElementById("guessesContainer").appendChild(bestGuessElement);
         }
 
         loadCSV();
