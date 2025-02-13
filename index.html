@@ -422,22 +422,22 @@
             dropdown.appendChild(defaultOption);
 
             options.forEach(option => {
-                const optionElement = document.createElement("option");
-                optionElement.value = option;
-                optionElement.textContent = option;
-                dropdown.appendChild(optionElement);
+            const optionElement = document.createElement("option");
+            optionElement.value = option;
+            optionElement.textContent = option;
+            dropdown.appendChild(optionElement);
             });
 
             dropdown.onchange = () => {
-                const selectedOption = dropdown.value;
-                guess.selectedOptions[category] = selectedOption;
-                changeButtonColor(button, selectedOption);
-                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${selectedOption})</span>`;
-                filterArtists();
+            const selectedOption = dropdown.value;
+            guess.selectedOptions[category] = selectedOption;
+            changeButtonColor(button, selectedOption);
+            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(${selectedOption})</span>`;
+            filterArtists();
             };
 
             dropdown.size = options.length;
-            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
+            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(Choose Option)</span>`;
             button.appendChild(dropdown);
             dropdown.focus();
             }
