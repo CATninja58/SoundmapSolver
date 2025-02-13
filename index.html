@@ -274,7 +274,7 @@
         <!-- Best guess will be dynamically added here -->
     </div>
 
-    <button id="bestGuessButton" onclick="makeBestGuessNext()">Click to make <span id="bestGuessName"></span> your next guess</button>
+    <button id="bestGuessButton" onclick="makeBestGuessNext()">Click to make <span id="bestGuessName">best guess</span> your next guess</button>
     <script>
         function updateBestGuessName() {
             const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
@@ -304,6 +304,7 @@
     </script>
     
     <div class="results-container">
+        <div class="footer-text" style="font-size: 16px;">List of possible artists</div>
         <div class="footer-text">Scroll to the right for all the stats on artists</div>
         <div class="artist-list-wrapper">
             <table>
