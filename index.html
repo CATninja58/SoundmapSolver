@@ -32,7 +32,7 @@
             color: #f4f4f4; /* Input text color */
             border: none;
         }
-    
+        
         .button-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -40,28 +40,31 @@
             margin-top: 20px;
             height: 50px; /* Fixed height for guess boxes */
         }
-    
+        
         button {
-            width: 100%;
+            width: 250px; /* Fixed width for buttons */
             height: 50px;
             font-size: 14px;
             background-color: #1c1c1c; /* Button background color */
             color: #f4f4f4; /* Button text color */
             border: none;
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide overflow text */
+            text-overflow: ellipsis; /* Add ellipsis for overflow text */
         }
-    
+        
         .green {
             background-color: #159643; /* Correct option color */
         }
-    
+        
         .orange {
             background-color: #b19600; /* Close option color */
         }
-    
+        
         .grey {
             background-color: grey; /* Wrong option color */
         }
-    
+        
         .results-container {
             width: 80%;
             margin-top: 40px;
