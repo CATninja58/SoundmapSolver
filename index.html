@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -268,6 +268,14 @@
     <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
     <div id="searchResults"></div>
 
+    <!-- Modal structure -->
+    <div id="myModal" class="hidden" class="modal"></div>
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalOptions"></div>
+        </div>
+    </div>
+
     <div id="guessesContainer" class="guess-container" style="margin-top: 40px; margin-bottom: 20px; gap: 20px;">
         <!-- Guesses will be dynamically added here -->
     </div>
@@ -279,33 +287,6 @@
     </div>
 
     <button id="bestGuessButton" class="hidden" onclick="makeBestGuessNext()">Click to make <span id="bestGuessName">best guess</span> your next guess</button>
-    <script>
-        function updateBestGuessName() {
-            const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
-            const bestGuessName = bestGuessElement ? bestGuessElement.textContent.replace("Best Guess: ", "") : "";
-            document.getElementById("bestGuessName").textContent = bestGuessName;
-            document.getElementById("bestGuessButton").innerHTML = `Click to make <span id="bestGuessName">${bestGuessName}</span> your next guess!`;
-        }
-
-        document.addEventListener("DOMContentLoaded", updateBestGuessName);
-    </script>
-
-    <script>
-        function makeBestGuessNext() {
-            if (filteredArtists.length === 0) return;
-
-            const sortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
-            const medianDebutArtist = sortedByDebut[Math.floor(sortedByDebut.length / 2)];
-
-            const sameDebutArtists = sortedByDebut.filter(artist => artist.debut === medianDebutArtist.debut);
-            const sortedByPopularity = sameDebutArtists.sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
-            const medianPopularityArtist = sortedByPopularity[Math.floor(sortedByPopularity.length / 2)];
-
-            const bestGuess = medianPopularityArtist.artist;
-            
-            displayArtistInfo(bestGuess);
-        }
-    </script>
     
     <div class="results-container">
         <div class="footer-text" style="font-size: 16px;">List of possible artists</div>
@@ -329,14 +310,6 @@
         <!-- Artists matching the guess will be displayed here -->
     </div>
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
-
-    <!-- Modal structure -->
-    <div id="myModal" class="modal"></div>
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modalOptions"></div>
-        </div>
-    </div>
 
     <script>
         let artistsData = [];
@@ -432,7 +405,32 @@
             container.appendChild(button);
             });
         }
+
         
+        function updateBestGuessName() {
+            const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
+            const bestGuessName = bestGuessElement ? bestGuessElement.textContent.replace("Best Guess: ", "") : "";
+            document.getElementById("bestGuessName").textContent = bestGuessName;
+            document.getElementById("bestGuessButton").innerHTML = `Click to make <span id="bestGuessName">${bestGuessName}</span> your next guess!`;
+        }
+
+        document.addEventListener("DOMContentLoaded", updateBestGuessName);
+    
+        function makeBestGuessNext() {
+            if (filteredArtists.length === 0) return;
+
+            const sortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
+            const medianDebutArtist = sortedByDebut[Math.floor(sortedByDebut.length / 2)];
+
+            const sameDebutArtists = sortedByDebut.filter(artist => artist.debut === medianDebutArtist.debut);
+            const sortedByPopularity = sameDebutArtists.sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
+            const medianPopularityArtist = sortedByPopularity[Math.floor(sortedByPopularity.length / 2)];
+
+            const bestGuess = medianPopularityArtist.artist;
+            
+            displayArtistInfo(bestGuess);
+        }
+    
         function showDropdown(button, category, value, guess) {
             if (isAndroid()) {
             showModal(button, category, value, guess);
@@ -468,6 +466,7 @@
         }
 
         function showModal(button, category, value, guess) {
+            revealModal();
             const modal = document.getElementById("myModal");
             const modalOptions = document.getElementById("modalOptions");
             modalOptions.innerHTML = '';
@@ -499,6 +498,20 @@
                 modal.style.display = "none";
             }
             };
+            hideModal()
+        }
+
+        function revealModal(){
+            const myModal1 = document.getElementById("myModal");
+
+            // Show the button if a best guess is found
+            myModal1.classList.remove("hidden");
+        }
+
+        function hideModal(){
+            const myModal2 = document.getElementById("myModal");
+
+            myModal2.classList.add("hidden");
         }
 
         function getCategoryOptions(category) {
