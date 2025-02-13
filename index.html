@@ -319,8 +319,6 @@
                         displayArtistInfo(match.artist);
                         document.getElementById("artistSearch").value = '';
                         searchResults.innerHTML = '';
-                        document.getElementById("artistSearch").value = '';
-                        searchResults.innerHTML = '';
                     };
                     searchResults.appendChild(resultDiv);
                 });
@@ -348,8 +346,10 @@
 
             artistName.style.color = "#f4f4f4";
             guessesContainer.appendChild(artistName);
-            const guessBoxes = document.createElement("div");
-            guessBoxes.classList.add("button-container");
+            const artistName = document.createElement("div");
+            artistName.textContent = artist.artist;
+            artistName.style.color = "#f4f4f4";
+            guessesContainer.appendChild(artistName);
             guessBoxes.style.height = "50px"; /* Set fixed height */
             guessBoxes.classList.add("button-container");
             guessBoxes.style.height = "50px"; /* Set fixed height */
