@@ -278,9 +278,9 @@
             const sortedByPopularity = sameDebutArtists.sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
             const medianPopularityArtist = sortedByPopularity[Math.floor(sortedByPopularity.length / 2)];
 
+            const bestGuess = medianPopularityArtist.artist;
             displayArtistInfo(bestGuess);
             updateBestGuessName();
-            displayArtistInfo(bestGuess);
         }
     </script>
     
