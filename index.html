@@ -35,7 +35,7 @@
     
         .button-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 2fr); /* Double the width */
             gap: 5px;
             margin-top: 20px;
             height: 50px; /* Fixed height for guess boxes */
@@ -197,7 +197,7 @@
         #searchResults div {
             color: #f4f4f4; /* Search result text color */
         }
-    </style>    
+    </style>      
 </head>
 <body>
 
@@ -207,6 +207,7 @@
     <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
     <div id="searchResults"></div>
     <div id="guessesContainer" class="guess-container" style="margin-top: 40px; margin-bottom: 20px; gap: 40px;">
+    <div id="guessesContainer" class="guess-container" style="margin-top: 40px; margin-bottom: 20px; gap: 20px;">
         <!-- Guesses will be dynamically added here -->
     </div>
 
