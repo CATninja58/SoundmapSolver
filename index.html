@@ -344,12 +344,12 @@
             guessTitle.textContent = `Guess #${guessCount}`;
             guessesContainer.appendChild(guessTitle);
 
-            artistName.style.color = "#f4f4f4";
-            guessesContainer.appendChild(artistName);
             const artistName = document.createElement("div");
             artistName.textContent = artist.artist;
             artistName.style.color = "#f4f4f4";
             guessesContainer.appendChild(artistName);
+
+            const guessBoxes = document.createElement("div");
             guessBoxes.style.height = "50px"; /* Set fixed height */
             guessBoxes.classList.add("button-container");
             guessBoxes.style.height = "50px"; /* Set fixed height */
