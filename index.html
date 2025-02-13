@@ -124,6 +124,21 @@
             margin-bottom: 10px; /* Add bottom margin to prevent overlap */
             color: #88888a; /* Guess title color */
         }
+
+        .guess-artist {
+            margin-top: 10px; /* Add top margin */
+            margin-bottom: 20px; /* Add bottom margin */
+            color: #f4f4f4; /* Artist name color */
+        }
+
+        .guess-boxes {
+            margin-top: 20px; /* Add top margin */
+            margin-bottom: 5px; /* Add bottom margin */
+        }
+
+        .guess-boxes:last-child {
+            margin-bottom: 20px; /* Add bottom margin */
+        }
     
         .footer-text {
             font-weight: bold; /* Bold text */
@@ -353,10 +368,10 @@
             const artist = artistsData.find(artist => artist.artist === artistName);
             if (artist) {
                 artistInfo = artist;
-                filteredArtists = [artist];
-                displayArtists();
-                addGuess(artist);
-            }
+            const artistName = document.createElement("div");
+            artistName.classList.add("guess-artist");
+            artistName.textContent = artist.artist;
+            guessesContainer.appendChild(artistName);
         }
 
         function addGuess(artist) {
