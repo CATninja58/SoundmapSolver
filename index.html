@@ -368,11 +368,8 @@
             const artist = artistsData.find(artist => artist.artist === artistName);
             if (artist) {
                 artistInfo = artist;
-            const artistName = document.createElement("div");
-            artistName.classList.add("guess-artist");
-            artistName.textContent = artist.artist;
-            guessesContainer.appendChild(artistName);
-        }
+                addGuess(artist);
+            }
         }
 
         function addGuess(artist) {
@@ -393,8 +390,7 @@
             guessBoxes.style.height = "50px"; /* Set fixed height */
             guessBoxes.classList.add("button-container");
             guessBoxes.style.height = "50px"; /* Set fixed height */
-            guessBoxes.classList.add("button-container");
-            guessBoxes.id = `guess${guessCount}Container`;
+            guessBoxes.classList.add("guess-boxes");
             guessesContainer.appendChild(guessBoxes);
 
             const guess = { artist, selectedOptions: {} };
