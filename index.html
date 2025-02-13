@@ -52,6 +52,7 @@
             overflow: hidden; /* Hide overflow text */
             text-overflow: ellipsis; /* Add ellipsis for overflow text */
             padding: 10px; /* Add padding */
+            display: block; /* Ensure options appear on separate lines */
         }
         
         .green {
@@ -163,13 +164,13 @@
             .artist-list-wrapper {
                 overflow-x: auto; /* Enable horizontal scrolling */
             }
-    
             .button-container {
-                grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+                grid-template-columns: 1fr; /* Single column layout */
                 gap: 5px; /* Gap between grid items */
                 margin-top: 20px; /* Add top margin */
                 height: auto; /* Auto height for guess boxes */
             }
+            
     
             button {
                 width: 100%; /* Full width for buttons */
