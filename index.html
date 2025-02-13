@@ -602,8 +602,9 @@
             const guessContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(guessValue));
             const artistContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(artistValue));
             return guessContinent === artistContinent;
+            return artistValue !== guessValue;
             } else if (option === 'wrong') {
-            return artistValue !== Object.keys(continentMap).find(continent => continentMap[continent].includes(artistValue));
+            return artistValue !== guessValue;
             } else {
             return false;
             }
