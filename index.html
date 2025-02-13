@@ -216,8 +216,23 @@
         <!-- Best guess will be dynamically added here -->
     </div>
 
-    
+    <button onclick="makeBestGuessNext()">Click to make {name} your next guess</button>
 
+    <script>
+        function makeBestGuessNext() {
+            if (filteredArtists.length === 0) return;
+
+            const sortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
+            const medianDebutArtist = sortedByDebut[Math.floor(sortedByDebut.length / 2)];
+
+            const sameDebutArtists = sortedByDebut.filter(artist => artist.debut === medianDebutArtist.debut);
+            const sortedByPopularity = sameDebutArtists.sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
+            const medianPopularityArtist = sortedByPopularity[Math.floor(sortedByPopularity.length / 2)];
+
+            const bestGuess = medianPopularityArtist.artist;
+            displayArtistInfo(bestGuess);
+        }
+    </script>
     <div class="results-container">
         <div class="footer-text">Scroll to the right for all the stats on artists</div>
         <div class="artist-list-wrapper">
