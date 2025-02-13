@@ -297,7 +297,6 @@
     <div id="searchResults"></div>
 
     <!-- Modal structure -->
-    <!-- Modal structure -->
     <div id="myModal" class="modal hidden">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -434,7 +433,6 @@
             container.appendChild(button);
             });
         }
-
         
         function updateBestGuessName() {
             const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
@@ -461,7 +459,7 @@
         }
     
         function showDropdown(button, category, value, guess) {
-            /* if (isAndroid()) {
+            if (isAndroid()) {
                 showModal(button, category, value, guess);
             }  else {
                 const dropdown = document.createElement("select");
@@ -492,8 +490,7 @@
                 button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(Choose Option)</span>`;
                 button.appendChild(dropdown);
                 dropdown.focus();
-            } */
-            showModal(button, category, value, guess);
+            }
         }
 
         function showModal(button, category, value, guess) {
