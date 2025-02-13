@@ -262,9 +262,36 @@
         .hidden {
             display: none;
         }
+
+        .help-button {
+            position: fixed; /* Fixed position to keep it at the top right */
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            width: 40px; /* Width of the button */
+            height: 40px; /* Height of the button */
+            background-color: #1c1c1c; /* Background color */
+            color: #f4f4f4; /* Text color */
+            border-radius: 50%; /* Makes the button circular */
+            text-align: center; /* Centers the text horizontally */
+            line-height: 40px; /* Centers the text vertically */
+            font-size: 20px; /* Size of the question mark */
+            text-decoration: none; /* Removes underline from the link */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+            z-index: 1000; /* Ensures the button is above other elements */
+        }
+
+        .help-button:hover {
+            color: #1c1c1c; /* Text color */
+            background-color: #159643; /* Changes color on hover */
+        }
+
     </style>    
 </head>
 <body>
+    <a href="https://github.com/CATninja58/SoundmapSolver/blob/main/README.md" class="help-button">?</a>
+
+    <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
+    <h1>Soundmap Artist Guesser Solver</h1>
 
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
     <h1>Soundmap Artist Guesser Solver</h1>
