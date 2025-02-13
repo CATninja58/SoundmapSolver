@@ -184,6 +184,10 @@
     }
 
         /* Modal styles */
+        .hidden {
+            display: none;
+        }
+
         .modal {
             display: none; /* Hide modal by default */
             position: fixed; /* Fixed positioning */
@@ -195,7 +199,7 @@
             overflow: auto; /* Enable scrolling */
             background-color: rgba(0, 0, 0, 0.4); /* Modal background color */
         }
-    
+
         .modal-content {
             background-color: #fefefe; /* Modal content background color */
             margin: 15% auto; /* Center align */
@@ -204,28 +208,28 @@
             width: 80%; /* Set width */
             max-width: 300px; /* Max width */
         }
-    
+
         .close {
             color: #aaa; /* Close button color */
             float: right; /* Float to right */
             font-size: 28px; /* Set font size */
             font-weight: bold; /* Bold text */
         }
-    
+
         .close:hover,
         .close:focus {
             color: black; /* Close button hover color */
             text-decoration: none; /* Remove text decoration */
             cursor: pointer; /* Pointer cursor */
         }
-    
+
         .modal-option {
             margin: 10px 0; /* Add vertical margin */
             padding: 10px; /* Add padding */
             background-color: #ddd; /* Modal option background color */
             cursor: pointer; /* Pointer cursor */
         }
-    
+
         .modal-option:hover {
             background-color: #ccc; /* Modal option hover color */
         }
@@ -269,7 +273,8 @@
     <div id="searchResults"></div>
 
     <!-- Modal structure -->
-    <div id="myModal" class="hidden" class="modal"></div>
+    <!-- Modal structure -->
+    <div id="myModal" class="modal hidden">
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="modalOptions"></div>
@@ -433,72 +438,71 @@
     
         function showDropdown(button, category, value, guess) {
             if (isAndroid()) {
-            showModal(button, category, value, guess);
+                showModal(button, category, value, guess);
             } else {
-            const dropdown = document.createElement("select");
-            const options = getCategoryOptions(category);
+                const dropdown = document.createElement("select");
+                const options = getCategoryOptions(category);
 
-            const defaultOption = document.createElement("option");
-            defaultOption.value = "";
-            defaultOption.textContent = "Choose an option";
-            dropdown.appendChild(defaultOption);
+                const defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = "Choose an option";
+                dropdown.appendChild(defaultOption);
 
-            options.forEach(option => {
-            const optionElement = document.createElement("option");
-            optionElement.value = option;
-            optionElement.textContent = option;
-            dropdown.appendChild(optionElement);
-            });
+                options.forEach(option => {
+                    const optionElement = document.createElement("option");
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    dropdown.appendChild(optionElement);
+                });
 
-            dropdown.onchange = () => {
-            const selectedOption = dropdown.value;
-            guess.selectedOptions[category] = selectedOption;
-            changeButtonColor(button, selectedOption);
-            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(${selectedOption})</span>`;
-            filterArtists();
-            };
+                dropdown.onchange = () => {
+                    const selectedOption = dropdown.value;
+                    guess.selectedOptions[category] = selectedOption;
+                    changeButtonColor(button, selectedOption);
+                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(${selectedOption})</span>`;
+                    filterArtists();
+                    button.removeChild(dropdown); // Remove the dropdown after selection
+                };
 
-            dropdown.size = options.length;
-            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(Choose Option)</span>`;
-            button.appendChild(dropdown);
-            dropdown.focus();
+                dropdown.size = options.length;
+                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(Choose Option)</span>`;
+                button.appendChild(dropdown);
+                dropdown.focus();
             }
         }
 
         function showModal(button, category, value, guess) {
-            revealModal();
             const modal = document.getElementById("myModal");
             const modalOptions = document.getElementById("modalOptions");
             modalOptions.innerHTML = '';
 
             const options = getCategoryOptions(category);
             options.forEach(option => {
-            const optionDiv = document.createElement("div");
-            optionDiv.classList.add("modal-option");
-            optionDiv.textContent = option;
-            optionDiv.onclick = () => {
-                guess.selectedOptions[category] = option;
-                changeButtonColor(button, option);
-                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${option})</span>`;
-                filterArtists();
-                modal.style.display = "none";
-            };
-            modalOptions.appendChild(optionDiv);
+                const optionDiv = document.createElement("div");
+                optionDiv.classList.add("modal-option");
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => {
+                    guess.selectedOptions[category] = option;
+                    changeButtonColor(button, option);
+                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${option})</span>`;
+                    filterArtists();
+                    modal.classList.add("hidden"); // Hide the modal after selection
+                };
+                modalOptions.appendChild(optionDiv);
             });
 
-            modal.style.display = "block";
+            modal.classList.remove("hidden"); // Show the modal
 
             const closeModal = document.getElementsByClassName("close")[0];
             closeModal.onclick = () => {
-            modal.style.display = "none";
+                modal.classList.add("hidden");
             };
 
             window.onclick = (event) => {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+                if (event.target == modal) {
+                    modal.classList.add("hidden");
+                }
             };
-            hideModal()
         }
 
         function revealModal(){
