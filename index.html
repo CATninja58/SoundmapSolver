@@ -206,7 +206,7 @@
     <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
     <div id="searchResults"></div>
 
-    <div id="guessesContainer" class="guess-container" style="margin-top: 40px; margin-bottom: 20px;">
+    <div id="guessesContainer" class="guess-container" style="margin-top: 40px; margin-bottom: 20px; gap: 20px;">
         <!-- Guesses will be dynamically added here -->
     </div>
 
@@ -216,12 +216,13 @@
         <!-- Best guess will be dynamically added here -->
     </div>
 
-    <button onclick="makeBestGuessNext()">Click to make <span id="bestGuessName"></span> your next guess</button>
+    <button id="bestGuessButton" onclick="makeBestGuessNext()">Click to make <span id="bestGuessName"></span> your next guess</button>
     <script>
         function updateBestGuessName() {
             const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
             const bestGuessName = bestGuessElement ? bestGuessElement.textContent.replace("Best Guess: ", "") : "";
             document.getElementById("bestGuessName").textContent = bestGuessName;
+            document.getElementById("bestGuessButton").innerHTML = `Click to make <span id="bestGuessName">${bestGuessName}</span> your next guess!`;
         }
 
         document.addEventListener("DOMContentLoaded", updateBestGuessName);
@@ -238,7 +239,8 @@
             const sortedByPopularity = sameDebutArtists.sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
             const medianPopularityArtist = sortedByPopularity[Math.floor(sortedByPopularity.length / 2)];
 
-            const bestGuess = medianPopularityArtist.artist;
+            displayArtistInfo(bestGuess);
+            updateBestGuessName();
             displayArtistInfo(bestGuess);
         }
     </script>
@@ -346,7 +348,8 @@
             artistName.textContent = artist.artist;
             artistName.style.color = "#f4f4f4";
             guessesContainer.appendChild(artistName);
-
+            guessBoxes.classList.add("button-container");
+            guessBoxes.style.height = "50px"; /* Set fixed height */
             const guessBoxes = document.createElement("div");
             guessBoxes.classList.add("button-container");
             guessBoxes.id = `guess${guessCount}Container`;
