@@ -254,6 +254,10 @@
         .guess-boxes:last-child {
             margin-bottom: 20px; /* Add bottom margin */
         }
+
+        .hidden {
+            display: none;
+        }
     </style>    
 </head>
 <body>
@@ -274,7 +278,7 @@
         <!-- Best guess will be dynamically added here -->
     </div>
 
-    
+    <button id="bestGuessButton" class="hidden" onclick="makeBestGuessNext()">Click to make <span id="bestGuessName">best guess</span> your next guess</button>
     <script>
         function updateBestGuessName() {
             const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
@@ -633,7 +637,14 @@
         }
 
         function calculateBestGuess() {
-            if (filteredArtists.length === 0) return;
+            const bestGuessButton = document.getElementById("bestGuessButton");
+            const bestGuessContainer = document.getElementById("bestGuessContainer");
+
+            if (filteredArtists.length === 0) {
+                bestGuessButton.classList.add("hidden");
+                bestGuessContainer.innerHTML = '';
+                return;
+            }
 
             const sortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
             const medianDebutArtist = sortedByDebut[Math.floor(sortedByDebut.length / 2)];
@@ -644,16 +655,18 @@
 
             const bestGuess = medianPopularityArtist.artist;
             const bestGuessElement = document.createElement("div");
-            if (filteredArtists.length === 1){
+            if (filteredArtists.length === 1) {
                 bestGuessElement.textContent = `Correct Artist: ${bestGuess}`;
             } else {
                 bestGuessElement.textContent = `Best Guess: ${bestGuess}`;
             }
             bestGuessElement.style.color = "#f4f4f4";
-            const bestGuessContainer = document.getElementById("bestGuessContainer");
             bestGuessContainer.innerHTML = '';
             bestGuessContainer.appendChild(bestGuessElement);
             updateBestGuessName();
+
+            // Show the button if a best guess is found
+            bestGuessButton.classList.remove("hidden");
         }
 
         loadCSV();
