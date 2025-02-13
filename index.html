@@ -218,7 +218,7 @@
 
         /* Custom spacing for guesses */
         .guess-title {
-            margin-top: 20px; /* Add top margin */
+            margin-top: 40px; /* Add top margin */
             margin-bottom: 10px; /* Add bottom margin */
         }
 
@@ -408,38 +408,37 @@
                 container.appendChild(button);
             });
         }
-
         function showDropdown(button, category, value, guess) {
             if (isAndroid()) {
-                showModal(button, category, value, guess);
+            showModal(button, category, value, guess);
             } else {
-                const dropdown = document.createElement("select");
-                const options = getCategoryOptions(category);
+            const dropdown = document.createElement("select");
+            const options = getCategoryOptions(category);
 
-                const defaultOption = document.createElement("option");
-                defaultOption.value = "";
-                defaultOption.textContent = "Choose an option";
-                dropdown.appendChild(defaultOption);
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.textContent = "Choose an option";
+            dropdown.appendChild(defaultOption);
 
-                options.forEach(option => {
-                    const optionElement = document.createElement("option");
-                    optionElement.value = option;
-                    optionElement.textContent = option;
-                    dropdown.appendChild(optionElement);
-                });
+            options.forEach(option => {
+                const optionElement = document.createElement("option");
+                optionElement.value = option;
+                optionElement.textContent = option;
+                dropdown.appendChild(optionElement);
+            });
 
-                dropdown.onchange = () => {
-                    const selectedOption = dropdown.value;
-                    guess.selectedOptions[category] = selectedOption;
-                    changeButtonColor(button, selectedOption);
-                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${selectedOption})</span>`;
-                    filterArtists();
-                };
+            dropdown.onchange = () => {
+                const selectedOption = dropdown.value;
+                guess.selectedOptions[category] = selectedOption;
+                changeButtonColor(button, selectedOption);
+                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${selectedOption})</span>`;
+                filterArtists();
+            };
 
-                dropdown.size = options.length;
-                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
-                button.appendChild(dropdown);
-                dropdown.focus();
+            dropdown.size = options.length;
+            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
+            button.appendChild(dropdown);
+            dropdown.focus();
             }
         }
 
@@ -450,81 +449,84 @@
 
             const options = getCategoryOptions(category);
             options.forEach(option => {
-                const optionDiv = document.createElement("div");
-                optionDiv.classList.add("modal-option");
-                optionDiv.textContent = option;
-                optionDiv.onclick = () => {
-                    guess.selectedOptions[category] = option;
-                    changeButtonColor(button, option);
-                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${option})</span>`;
-                    filterArtists();
-                    modal.style.display = "none";
-                };
-                modalOptions.appendChild(optionDiv);
+            const optionDiv = document.createElement("div");
+            optionDiv.classList.add("modal-option");
+            optionDiv.textContent = option;
+            optionDiv.onclick = () => {
+                guess.selectedOptions[category] = option;
+                changeButtonColor(button, option);
+                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${option})</span>`;
+                filterArtists();
+                modal.style.display = "none";
+            };
+            modalOptions.appendChild(optionDiv);
             });
 
             modal.style.display = "block";
 
             const closeModal = document.getElementsByClassName("close")[0];
             closeModal.onclick = () => {
-                modal.style.display = "none";
+            modal.style.display = "none";
             };
 
             window.onclick = (event) => {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
             };
         }
 
         function getCategoryOptions(category) {
             switch (category) {
-                case 'debut':
-                    return ['correct', 'later ^', 'earlier v', 'close ^', 'close v'];
-                case 'popularity':
-                    return ['correct', 'higher ^', 'lower v', 'close ^', 'close v'];
-                case 'members':
-                case 'genre':
-                case 'country':
-                case 'gender':
-                    return ['correct', 'wrong'];
-                default:
-                    return [];
+            case 'debut':
+                return ['correct', 'later ^', 'earlier v', 'close ^', 'close v'];
+            case 'popularity':
+                return ['correct', 'higher ^', 'lower v', 'close ^', 'close v'];
+            case 'members':
+            case 'genre':
+            case 'gender':
+                return ['correct', 'wrong'];
+            case 'country':
+                return ['correct', 'wrong', 'close'];
+            default:
+                return [];
             }
         }
 
         function changeButtonColor(button, option) {
             if (option === 'correct') {
-                button.className = 'green';
-            } else if (option === 'close ^' || option === 'close v') {
-                button.className = 'orange';
+            button.className = 'green';
+            } else if (option === 'close ^' || option === 'close v' || option === 'close') {
+            button.className = 'orange';
             } else if (option === 'wrong' || option === 'later ^' || option === 'earlier v' || option === 'higher ^' || option === 'lower v') {
-                button.className = 'grey';
+            button.className = 'grey';
             }
         }
 
         function filterArtists() {
             filteredArtists = artistsData.filter(artist => {
-                return guesses.every(guess => {
-                    return Object.keys(guess.selectedOptions).every(category => {
-                        const option = guess.selectedOptions[category];
-                        const artistValue = artist[category];
+            return guesses.every(guess => {
+                return Object.keys(guess.selectedOptions).every(category => {
+                const option = guess.selectedOptions[category];
+                const artistValue = artist[category];
 
-                        if (!option) return true;
+                if (!option) return true;
 
-                        if (option === 'correct') {
-                            return artistValue === guess.artist[category];
-                        } else if (category === 'debut') {
-                            return filterDebut(option, artistValue, guess.artist[category]);
-                        } else if (category === 'popularity') {
-                            return filterPopularity(option, artistValue, guess.artist[category]);
-                        } else if (option === 'wrong') {
-                            return artistValue !== guess.artist[category];
-                        } else {
-                            return false;
-                        }
-                    });
+                if (option === 'correct') {
+                    return artistValue === guess.artist[category];
+                } else if (category === 'debut') {
+                    return filterDebut(option, artistValue, guess.artist[category]);
+                } else if (category === 'popularity') {
+                    return filterPopularity(option, artistValue, guess.artist[category]);
+                } else if (category === 'country') {
+                    return filterCountry(option, artistValue, guess.artist[category]);
+                } else if (option === 'wrong') {
+                    return artistValue !== guess.artist[category];
+                } else {
+                    return false;
+                }
                 });
+            });
             });
 
             displayArtists();
@@ -533,33 +535,56 @@
 
         function filterDebut(option, artistValue, guessValue) {
             if (option === 'correct') {
-                return artistValue === guessValue;
+            return artistValue === guessValue;
             } else if (option === 'later ^') {
-                return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
+            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
             } else if (option === 'earlier v') {
-                return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
+            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
             } else if (option === 'close ^') {
-                return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
+            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
             } else if (option === 'close v') {
-                return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
+            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
             } else {
-                return false;
+            return false;
             }
         }
 
         function filterPopularity(option, artistValue, guessValue) {
             if (option === 'correct') {
-                return artistValue === guessValue;
+            return artistValue === guessValue;
             } else if (option === 'higher ^') {
-                return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
+            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
             } else if (option === 'lower v') {
-                return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
+            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
             } else if (option === 'close ^') {
-                return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
+            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
             } else if (option === 'close v') {
-                return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
+            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
             } else {
-                return false;
+            return false;
+            }
+        }
+
+        function filterCountry(option, artistValue, guessValue) {
+            const continentMap = {
+            'NA': ['US', 'CA', 'MX', 'GT', 'HN', 'SV', 'NI', 'CR', 'PA', 'BS', 'CU', 'HT', 'DO', 'JM', 'TT', 'BB', 'LC', 'VC', 'GD', 'AG', 'DM', 'KN'],
+            'SA': ['BR', 'AR', 'CL', 'CO', 'VE', 'PE', 'BO', 'PY', 'UY', 'GY', 'SR', 'EC'],
+            'EU': ['UK', 'FR', 'DE', 'IT', 'ES', 'PL', 'RO', 'NL', 'BE', 'GR', 'CZ', 'PT', 'HU', 'SE', 'AT', 'CH', 'BG', 'DK', 'FI', 'SK', 'NO', 'IE', 'HR', 'SI', 'LV', 'EE', 'CY', 'LU', 'MT', 'IS', 'LI', 'MC', 'SM', 'VA', 'RU', 'UA', 'BY', 'MD', 'BA', 'ME', 'MK', 'AL', 'RS', 'XK'],
+            'AS': ['CN', 'JP', 'IN', 'ID', 'PK', 'BD', 'PH', 'VN', 'TR', 'IR', 'TH', 'MM', 'KR', 'IQ', 'SA', 'UZ', 'MY', 'YE', 'NP', 'LK', 'KZ', 'SY', 'KH', 'JO', 'AZ', 'AE', 'IL', 'TJ', 'LA', 'LB', 'KG', 'TM', 'SG', 'OM', 'KW', 'GE', 'MN', 'AM', 'QA', 'BH', 'BT', 'MV', 'BN'],
+            'AF': ['ZA', 'NG', 'EG', 'DZ', 'MA', 'ET', 'TZ', 'KE', 'UG', 'SD', 'GH', 'CM', 'CI', 'ML', 'BF', 'NE', 'MW', 'ZM', 'SN', 'ZW', 'TD', 'SO', 'GN', 'RW', 'BI', 'BJ', 'SL', 'TG', 'SS', 'LY', 'LR', 'MR', 'GA', 'GM', 'GW', 'LS', 'SZ', 'KM', 'CV', 'ST', 'SC', 'DJ', 'ER'],
+            'OC': ['AU', 'NZ', 'FJ', 'PG', 'SB', 'VU', 'NC', 'PF', 'WS', 'KI', 'TO', 'TV', 'NR', 'FM', 'MH', 'PW']
+            };
+
+            if (option === 'correct') {
+            return artistValue === guessValue;
+            } else if (option === 'close') {
+            const guessContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(guessValue));
+            const artistContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(artistValue));
+            return guessContinent === artistContinent;
+            } else if (option === 'wrong') {
+            return artistValue !== guessValue;
+            } else {
+            return false;
             }
         }
 
@@ -568,19 +593,19 @@
             artistList.innerHTML = '';
 
             filteredArtists.forEach(artist => {
-                const artistItem = document.createElement("tr");
+            const artistItem = document.createElement("tr");
 
-                artistItem.innerHTML = `
-                    <td>${artist.artist}</td>
-                    <td>${artist.debut}</td>
-                    <td>${artist.popularity}</td>
-                    <td>${artist.members}</td>
-                    <td>${artist.genre}</td>
-                    <td>${artist.country}</td>
-                    <td>${artist.gender}</td>
-                `;
+            artistItem.innerHTML = `
+                <td>${artist.artist}</td>
+                <td>${artist.debut}</td>
+                <td>${artist.popularity}</td>
+                <td>${artist.members}</td>
+                <td>${artist.genre}</td>
+                <td>${artist.country}</td>
+                <td>${artist.gender}</td>
+            `;
 
-                artistList.appendChild(artistItem);
+            artistList.appendChild(artistItem);
             });
         }
 
