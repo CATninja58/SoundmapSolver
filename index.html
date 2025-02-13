@@ -206,11 +206,11 @@
     <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
     <div id="searchResults"></div>
 
-    <div id="guessesContainer" class="guess-container"></div>
+    <div id="guessesContainer" class="guess-container" style="margin-top: 40px;">
         <!-- Guesses will be dynamically added here -->
     </div>
 
-    <div id="bestGuessContainer" class="guess-container" style="margin-top: 40px;"></div>
+    <div id="bestGuessContainer" class="guess-container" style="margin-top: 40px;">
         <!-- Best guess will be dynamically added here -->
     </div>
 
@@ -528,7 +528,9 @@
             const bestGuessElement = document.createElement("div");
             bestGuessElement.textContent = `Best Guess: ${bestGuess}`;
             bestGuessElement.style.color = "#f4f4f4";
-            document.getElementById("guessesContainer").appendChild(bestGuessElement);
+            const bestGuessContainer = document.getElementById("bestGuessContainer");
+            bestGuessContainer.innerHTML = '';
+            bestGuessContainer.appendChild(bestGuessElement);
         }
 
         loadCSV();
