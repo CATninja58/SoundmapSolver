@@ -319,6 +319,8 @@
                         displayArtistInfo(match.artist);
                         document.getElementById("artistSearch").value = '';
                         searchResults.innerHTML = '';
+                        document.getElementById("artistSearch").value = '';
+                        searchResults.innerHTML = '';
                     };
                     searchResults.appendChild(resultDiv);
                 });
@@ -344,13 +346,13 @@
             guessTitle.textContent = `Guess #${guessCount}`;
             guessesContainer.appendChild(guessTitle);
 
-            const artistName = document.createElement("div");
-            artistName.textContent = artist.artist;
             artistName.style.color = "#f4f4f4";
             guessesContainer.appendChild(artistName);
+            const guessBoxes = document.createElement("div");
             guessBoxes.classList.add("button-container");
             guessBoxes.style.height = "50px"; /* Set fixed height */
-            const guessBoxes = document.createElement("div");
+            guessBoxes.classList.add("button-container");
+            guessBoxes.style.height = "50px"; /* Set fixed height */
             guessBoxes.classList.add("button-container");
             guessBoxes.id = `guess${guessCount}Container`;
             guessesContainer.appendChild(guessBoxes);
