@@ -7,47 +7,47 @@
     <style>
         /* Updated styles */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
+            font-family: Arial, sans-serif; /* Set font family */
+            text-align: center; /* Center align text */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            display: flex; /* Use flexbox layout */
+            flex-direction: column; /* Arrange children in a column */
+            align-items: center; /* Center align items horizontally */
+            justify-content: flex-start; /* Align items to the top */
             background-color: #121212; /* Background color */
         }
     
         h1 {
-            margin-top: 40px;
+            margin-top: 20px; /* Add top margin */
             color: #f4f4f4; /* Heading color */
         }
     
         input {
-            margin-top: 20px;
-            padding: 10px;
-            font-size: 14px;
-            width: 300px;
+            margin-top: 20px; /* Add top margin */
+            padding: 10px; /* Add padding */
+            font-size: 14px; /* Set font size */
+            width: 300px; /* Set width */
             background-color: #1c1c1c; /* Input background color */
             color: #f4f4f4; /* Input text color */
-            border: none;
+            border: none; /* Remove border */
         }
         
         .button-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 5px;
-            margin-top: 20px;
+            display: grid; /* Use grid layout */
+            grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+            gap: 5px; /* Gap between grid items */
+            margin-top: 20px; /* Add top margin */
             height: 50px; /* Fixed height for guess boxes */
         }
         
         button {
             width: 250px; /* Fixed width for buttons */
-            height: 50px;
-            font-size: 14px;
+            height: 50px; /* Fixed height for buttons */
+            font-size: 14px; /* Set font size */
             background-color: #1c1c1c; /* Button background color */
             color: #f4f4f4; /* Button text color */
-            border: none;
+            border: none; /* Remove border */
             white-space: nowrap; /* Prevent text from wrapping */
             overflow: hidden; /* Hide overflow text */
             text-overflow: ellipsis; /* Add ellipsis for overflow text */
@@ -66,129 +66,130 @@
         }
         
         .results-container {
-            width: 80%;
-            margin-top: 40px;
-            padding: 10px;
-            border-top: 2px solid #000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            width: 80%; /* Set width */
+            margin-top: 40px; /* Add top margin */
+            padding: 10px; /* Add padding */
+            border-top: 2px solid #000; /* Top border */
+            display: flex; /* Use flexbox layout */
+            flex-direction: column; /* Arrange children in a column */
+            align-items: center; /* Center align items horizontally */
         }
     
         .artist-list-wrapper {
-            width: 100%;
-            overflow-x: auto;
+            width: 100%; /* Set width */
+            overflow-x: auto; /* Enable horizontal scrolling */
         }
     
         table {
-            width: 100%;
-            border-collapse: collapse;
+            width: 100%; /* Set width */
+            border-collapse: collapse; /* Collapse borders */
         }
     
         th, td {
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
+            padding: 8px; /* Add padding */
+            border-bottom: 1px solid #ddd; /* Bottom border */
             color: #f4f4f4; /* Text color */
-            text-align: left;
-            word-wrap: break-word;
+            text-align: left; /* Left align text */
+            word-wrap: break-word; /* Allow word wrapping */
         }
     
         th {
-            font-weight: bold;
+            font-weight: bold; /* Bold text */
         }
     
         select {
-            margin-top: 10px;
-            padding: 5px;
-            font-size: 14px;
-            position: absolute;
-            z-index: 10;
+            margin-top: 10px; /* Add top margin */
+            padding: 5px; /* Add padding */
+            font-size: 14px; /* Set font size */
+            position: absolute; /* Absolute positioning */
+            z-index: 10; /* Set z-index */
         }
     
         .button-text {
-            display: inline-block;
-            margin-bottom: 5px;
+            display: inline-block; /* Inline block display */
+            margin-bottom: 5px; /* Add bottom margin */
         }
     
         .guess-container {
-            margin-top: 20px;
-            width: 80%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin-top: 20px; /* Add top margin */
+            width: 80%; /* Set width */
+            display: flex; /* Use flexbox layout */
+            flex-direction: column; /* Arrange children in a column */
+            align-items: center; /* Center align items horizontally */
         }
     
         .guess-title {
-            font-weight: bold;
-            margin-top: 20px;
+            font-weight: bold; /* Bold text */
+            margin-top: 20px; /* Add top margin */
+            margin-bottom: 10px; /* Add bottom margin to prevent overlap */
             color: #88888a; /* Guess title color */
         }
     
         .footer-text {
-            font-weight: bold;
-            margin-top: 20px;
+            font-weight: bold; /* Bold text */
+            margin-top: 20px; /* Add top margin */
             color: #f4f4f4; /* Footer text color */
         }
     
         @media (max-width: 600px) {
             input {
-                width: 90%;
+                width: 90%; /* Set width */
             }
     
             .results-container {
-                width: 100%;
+                width: 100%; /* Set width */
             }
     
             .guess-container {
-                width: 100%;
+                width: 100%; /* Set width */
             }
     
             .artist-list-wrapper {
-                overflow-x: auto;
+                overflow-x: auto; /* Enable horizontal scrolling */
             }
         }
     
         /* Modal styles */
         .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
+            display: none; /* Hide modal by default */
+            position: fixed; /* Fixed positioning */
+            z-index: 1000; /* Set z-index */
+            left: 0; /* Align to left */
+            top: 0; /* Align to top */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scrolling */
             background-color: rgba(0, 0, 0, 0.4); /* Modal background color */
         }
     
         .modal-content {
             background-color: #fefefe; /* Modal content background color */
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 300px;
+            margin: 15% auto; /* Center align */
+            padding: 20px; /* Add padding */
+            border: 1px solid #888; /* Border */
+            width: 80%; /* Set width */
+            max-width: 300px; /* Max width */
         }
     
         .close {
             color: #aaa; /* Close button color */
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
+            float: right; /* Float to right */
+            font-size: 28px; /* Set font size */
+            font-weight: bold; /* Bold text */
         }
     
         .close:hover,
         .close:focus {
             color: black; /* Close button hover color */
-            text-decoration: none;
-            cursor: pointer;
+            text-decoration: none; /* Remove text decoration */
+            cursor: pointer; /* Pointer cursor */
         }
     
         .modal-option {
-            margin: 10px 0;
-            padding: 10px;
+            margin: 10px 0; /* Add vertical margin */
+            padding: 10px; /* Add padding */
             background-color: #ddd; /* Modal option background color */
-            cursor: pointer;
+            cursor: pointer; /* Pointer cursor */
         }
     
         .modal-option:hover {
