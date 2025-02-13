@@ -43,7 +43,7 @@
         
         button {
             width: 250px; /* Fixed width for buttons */
-            height: 50px; /* Fixed height for buttons */
+            height: auto; /* Auto height for buttons */
             font-size: 14px; /* Set font size */
             background-color: #1c1c1c; /* Button background color */
             color: #f4f4f4; /* Button text color */
@@ -51,6 +51,7 @@
             white-space: normal; /* Allow text to wrap */
             overflow: hidden; /* Hide overflow text */
             text-overflow: ellipsis; /* Add ellipsis for overflow text */
+            padding: 10px; /* Add padding */
         }
         
         .green {
@@ -124,18 +125,18 @@
             margin-bottom: 10px; /* Add bottom margin to prevent overlap */
             color: #88888a; /* Guess title color */
         }
-
+    
         .guess-artist {
             margin-top: 10px; /* Add top margin */
             margin-bottom: 20px; /* Add bottom margin */
             color: #f4f4f4; /* Artist name color */
         }
-
+    
         .guess-boxes {
             margin-top: 20px; /* Add top margin */
             margin-bottom: 5px; /* Add bottom margin */
         }
-
+    
         .guess-boxes:last-child {
             margin-bottom: 30px; /* Add bottom margin */
         }
@@ -147,41 +148,41 @@
         }
     
         @media (max-width: 600px) {
-        input {
-            width: 90%; /* Set width */
+            input {
+                width: 90%; /* Set width */
+            }
+    
+            .results-container {
+                width: 100%; /* Set width */
+            }
+    
+            .guess-container {
+                width: 100%; /* Set width */
+            }
+    
+            .artist-list-wrapper {
+                overflow-x: auto; /* Enable horizontal scrolling */
+            }
+    
+            .button-container {
+                grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+                gap: 5px; /* Gap between grid items */
+                margin-top: 20px; /* Add top margin */
+                height: auto; /* Auto height for guess boxes */
+            }
+    
+            button {
+                width: 100%; /* Full width for buttons */
+                height: auto; /* Auto height for buttons */
+                font-size: 12px; /* Smaller font size */
+                padding: 5px; /* Add padding */
+                white-space: normal; /* Allow text to wrap */
+            }
+    
+            .button-text {
+                display: block; /* Block display to wrap text */
+            }
         }
-
-        .results-container {
-            width: 100%; /* Set width */
-        }
-
-        .guess-container {
-            width: 100%; /* Set width */
-        }
-
-        .artist-list-wrapper {
-            overflow-x: auto; /* Enable horizontal scrolling */
-        }
-
-        .button-container {
-            grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-            gap: 5px; /* Gap between grid items */
-            margin-top: 20px; /* Add top margin */
-            height: auto; /* Auto height for guess boxes */
-        }
-
-        button {
-            width: 100%; /* Full width for buttons */
-            height: auto; /* Auto height for buttons */
-            font-size: 12px; /* Smaller font size */
-            padding: 5px; /* Add padding */
-            white-space: normal; /* Allow text to wrap */
-        }
-
-        .button-text {
-            display: block; /* Block display to wrap text */
-        }
-    }
     
         /* Modal styles */
         .modal {
@@ -234,27 +235,27 @@
         #searchResults div {
             color: #f4f4f4; /* Search result text color */
         }
-
+    
         /* Custom spacing for guesses */
         .guess-title {
             margin-top: 40px; /* Add top margin */
             margin-bottom: 10px; /* Add bottom margin */
         }
-
+    
         .guess-artist {
             margin-top: 10px; /* Add top margin */
             margin-bottom: 20px; /* Add bottom margin */
         }
-
+    
         .guess-boxes {
             margin-top: 20px; /* Add top margin */
             margin-bottom: 5px; /* Add bottom margin */
         }
-
+    
         .guess-boxes:last-child {
             margin-bottom: 20px; /* Add bottom margin */
         }
-    </style>    
+    </style>       
 </head>
 <body>
 
