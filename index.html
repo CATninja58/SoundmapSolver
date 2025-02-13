@@ -147,6 +147,10 @@
         }
     
         @media (max-width: 600px) { /* mobile version */
+            body {
+            justify-content: center; /* Center align items vertically */
+            }
+
             input {
             width: 90%; /* Set width */
             }
@@ -166,6 +170,7 @@
 
             .button-container {
             grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+            gap: 5px; /* Gap between grid items */
             justify-items: center; /* Center align grid items */
             width: 600px; /* Set width */
             overflow-x: auto; /* Enable horizontal scrolling */
