@@ -601,10 +601,11 @@
             } else if (option === 'close') {
             const guessContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(guessValue));
             const artistContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(artistValue));
-            return guessContinent === artistContinent;
-            return artistValue !== guessValue;
+            return guessContinent === artistContinent && guessValue !== artistValue;
             } else if (option === 'wrong') {
-            return artistValue !== guessValue;
+            const guessContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(guessValue));
+            const artistContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(artistValue));
+            return artistValue !== guessValue && guessContinent !== artistContinent;
             } else {
             return false;
             }
