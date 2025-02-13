@@ -298,7 +298,7 @@
             const medianPopularityArtist = sortedByPopularity[Math.floor(sortedByPopularity.length / 2)];
 
             const bestGuess = medianPopularityArtist.artist;
-            updateBestGuessName();
+            
             displayArtistInfo(bestGuess);
         }
     </script>
@@ -647,6 +647,7 @@
             const bestGuessContainer = document.getElementById("bestGuessContainer");
             bestGuessContainer.innerHTML = '';
             bestGuessContainer.appendChild(bestGuessElement);
+            updateBestGuessName();
         }
 
         loadCSV();
