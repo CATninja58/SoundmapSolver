@@ -274,7 +274,7 @@
         <!-- Best guess will be dynamically added here -->
     </div>
 
-    <button id="bestGuessButton" onclick="makeBestGuessNext()">Click to make <span id="bestGuessName">best guess</span> your next guess</button>
+    
     <script>
         function updateBestGuessName() {
             const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
@@ -644,7 +644,11 @@
 
             const bestGuess = medianPopularityArtist.artist;
             const bestGuessElement = document.createElement("div");
-            bestGuessElement.textContent = `Best Guess: ${bestGuess}`;
+            if (filteredArtists.length === 1){
+                bestGuessElement.textContent = `Correct Artist: ${bestGuess}`;
+            } else {
+                bestGuessElement.textContent = `Best Guess: ${bestGuess}`;
+            }
             bestGuessElement.style.color = "#f4f4f4";
             const bestGuessContainer = document.getElementById("bestGuessContainer");
             bestGuessContainer.innerHTML = '';
