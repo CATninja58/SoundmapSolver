@@ -53,6 +53,7 @@
             text-overflow: ellipsis; /* Add ellipsis for overflow text */
             padding: 10px; /* Add padding */
             display: block; /* Ensure options appear on separate lines */
+            line-height: 1.5; /* Set line height for multiple lines */
         }
         
         .green {
@@ -165,20 +166,28 @@
                 overflow-x: auto; /* Enable horizontal scrolling */
             }
             .button-container {
+                display: grid; /* Use grid layout */
                 grid-template-columns: 1fr; /* Single column layout */
                 gap: 5px; /* Gap between grid items */
                 margin-top: 20px; /* Add top margin */
-                height: auto; /* Auto height for guess boxes */
+                justify-content: center; /* Center align grid items */
             }
             
-    
             button {
                 width: 100%; /* Full width for buttons */
                 height: auto; /* Auto height for buttons */
                 font-size: 12px; /* Smaller font size */
-                padding: 5px; /* Add padding */
+                background-color: #1c1c1c; /* Button background color */
+                color: #f4f4f4; /* Button text color */
+                border: none; /* Remove border */
                 white-space: normal; /* Allow text to wrap */
+                overflow: hidden; /* Hide overflow text */
+                text-overflow: ellipsis; /* Add ellipsis for overflow text */
+                padding: 5px; /* Add padding */
+                display: block; /* Ensure options appear on separate lines */
+                line-height: 1.5; /* Set line height for multiple lines */
             }
+            
     
             .button-text {
                 display: block; /* Block display to wrap text */
