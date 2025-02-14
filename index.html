@@ -444,6 +444,91 @@
         body.light-mode .orange { background-color: #b19600 !important; }
         body.light-mode .grey { background-color: grey !important; }
 
+        /* THIS IS THE PART FOR THE TUTORIAL PART */
+        .help-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+            display: none;
+            color: #f4f4f4;
+        }
+
+        .help-overlay.open {
+            display: block;
+        }
+
+        .help-content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .close-help {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #f4f4f4;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .help-overlay h1,
+        .help-overlay h2,
+        .help-overlay h3 {
+            color: #159643;
+            margin-top: 20px;
+        }
+
+        .help-overlay ul,
+        .help-overlay ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .help-overlay li {
+            margin-bottom: 8px;
+        }
+
+        .help-overlay strong {
+            color: #b19600;
+        }
+
+        /* Light mode adjustments */
+        body.light-mode .help-overlay {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        body.light-mode .help-content {
+            background-color: #ffffff;
+            color: #1c1c1c;
+        }
+
+        body.light-mode .help-overlay h1,
+        body.light-mode .help-overlay h2,
+        body.light-mode .help-overlay h3 {
+            color: #159643;
+        }
+
+        body.light-mode .close-help {
+            color: #1c1c1c;
+        }
+
+        /* Help button indicator */
+        .help-button.open::after {
+            content: " ‹";
+            font-size: 24px;
+            position: relative;
+            left: -5px;
+        }
+
     </style>    
 </head>
 <body>
@@ -466,7 +551,206 @@
         </div>
     </div>
 
-    <a href="https://github.com/CATninja58/SoundmapSolver/blob/main/README.md" class="help-button">?</a>
+    <!-- Changed help button -->
+    <button class="help-button" onclick="toggleHelpOverlay()">?</button>
+
+    <!-- Tutorial Overlay -->
+    <div class="help-overlay" id="helpOverlay">
+        <div class="help-content">
+            <span class="close-help" onclick="toggleHelpOverlay()">&times;</span>
+            <h1>Tutorial</h1>
+            <p>Welcome to the Soundmap Artist Guesser Solver! This tool is designed to help you solve the Artist Guesser game by narrowing down the possible artists based on the feedback you receive after each guess. Below is a step-by-step guide on how to use the solver effectively.</p>
+
+            <h2>How the game works</h2>
+            <p>The Artist Guesser game requires you to guess the correct artist based on feedback in six categories:</p>
+            <ul>
+                <li>Debut Year: The year the artist first made their music.</li>
+                <li>Popularity: A number based on the artist's monthly Spotify streams (compared within their genre).</li>
+                <li>Members: Whether the artist is a solo act or a group.</li>
+                <li>Genre: The artist's music genre (e.g., Hip Hop, Pop, R&B, Indie, Rock).</li>
+                <li>Country: The artist's country of origin (e.g., US, CA, UK).</li>
+                <li>Gender: The artist's gender (Female, Male, or Mixed for groups).</li>
+            </ul>
+            <p>After each guess, the game provides feedback for each category, such as:</p>
+            <ul>
+                <li>Debut Year: "Earlier," "Later," or "Close" (if within 5 years).</li>
+                <li>Popularity: "Higher," "Lower," or "Close" (if within 50 spots).</li>
+                <li>Country: “Correct”, “Wrong” or “Close” (if on the same continent).</li>
+                <li>Members/Genre/Gender: "Correct" or "Wrong."</li>
+            </ul>
+
+            <h2>How to use the Solver</h2>
+            <p>We will give you an example for each step, in the example we assume that the correct artist is Kanye west.</p>
+            <ol>
+                <li>Enter Your First Guess
+                    <ul>
+                        <li>In the Search Bar, type the name of your first guess (e.g., "Alessia Cara").</li>
+                        <li>The solver will display the artist's details in six boxes:
+                            <ul>
+                                <li>Debut Year: 2015</li>
+                                <li>Popularity: 100</li>
+                                <li>Members: Solo</li>
+                                <li>Genre: Pop</li>
+                                <li>Country: CA (Canada)</li>
+                                <li>Gender: Female</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Input Feedback from the Game
+                    <ul>
+                        <li>Click on each box and select the feedback provided by the game:</li>
+                        <li>Debut Year: Select "Earlier v" (since 2015 is later than 2004 but not within 5 years).</li>
+                        <li>Popularity: Select "Lower v" (since 13 is higher up than 100, but not close because it’s not within 50 spots).</li>
+                        <li>Members: Select "Correct" (both are solo).</li>
+                        <li>Genre: Select "Wrong" (Alessia Cara is Pop, but the correct artist is Hip Hop).</li>
+                        <li>Country: Select "Close" (Alessia Cara is from CA correct artist is from the US, and because the US and CA are both in the same continent, its therefor close).</li>
+                        <li>Gender: Select "Wrong" (Alessia is Female, but the correct artist is Male).</li>
+                    </ul>
+                </li>
+                <li>View the Updated List of Possible Artists
+                    <ul>
+                        <li>After inputting the feedback, the solver will update the list of possible artists based on the new constraints.</li>
+                        <li>The solver will also suggest the Best Next Guess (e.g., "Tyga") to help you narrow down the options further.</li>
+                    </ul>
+                </li>
+                <li>Repeat the Process
+                    <ul>
+                        <li>Enter the suggested guess (or your own guess) and input the feedback again.</li>
+                        <li>Continue this process until the solver narrows down the list to one artist—the correct answer!</li>
+                    </ul>
+                </li>
+            </ol>
+            <h2>Explanation of the Websites Layout</h2>
+            <p>The solver's interface is designed to be intuitive and easy to use. Here’s what you’ll see and the terms that will be used in the tutorial:</p>
+            <ol>
+                <li>Header:
+                    <ul>
+                        <li>"Soundmap Artist Guesser Solver"</li>
+                    </ul>
+                </li>
+                <li>Search Bar:
+                    <ul>
+                        <li>Enter the artist's name here (e.g., "Kanye West").</li>
+                    </ul>
+                </li>
+                <li>Guess Section:
+                    <ul>
+                        <li>Each guess is displayed with the artist's name and six boxes for feedback.</li>
+                        <li>Example:
+                            <ul>
+                                <li>Guess #1: Kanye West</li>
+                                <li>Boxes: [Debut Year], [Popularity], [Members], [Genre], [Country], [Gender].</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Best Guess Section:
+                    <ul>
+                        <li>The solver will display the best next guess (e.g., "Best Guess: Snoop Dogg").</li>
+                        <li>A button allows you to make this artist your next guess rather than having to search it up.</li>
+                    </ul>
+                </li>
+                <li>Scrollable Artist List:
+                    <ul>
+                        <li>A table showing all possible artists with their details:
+                            <ul>
+                                <li>Columns: Artist, Debut, Popularity, Members, Genre, Country, Gender.</li>
+                                <li>Example: "Kanye West," "2004," "13," "Solo," "Hip Hop," "US," "Male."</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Settings:
+                    <ul>
+                        <li>At the top left of the website is a settings icon that opens a side bar with all the settings:
+                            <ul>
+                                <li>The light mode switch toggles light mode. Whatever option you select (it will remain dark mode until you change it) will always be the option whenever you revisit the website, so don’t worry about having to re toggle! </li>
+                                <li>The hide best guess option is for anyone that wants to do the solving on their own. If you want to play the game for yourself then you can simply hide the best guess feature (so you don’t get any spoilers), and then you can use the list of possible artists to play :)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            <h2>Tips for Success</h2>
+            <ol>
+                <li><strong>Start with a Diverse Guess:</strong>
+                    <ul>
+                        <li>Choose an artist with a debut year, popularity, and genre that are in the middle of the range. This helps eliminate a large portion of the list. The recommended first guesses are: 
+                            <ul>
+                                <li>Fantasia (R&B)</li>
+                                <li>No Doubt (Rock)</li>
+                                <li>A Boogie Wit da Hoodie (Hip Hop)</li>
+                                <li>Alessia Cara (Pop)</li>
+                                <li>The xx (Indie)</li>
+                            </ul>
+                        </li>
+                        <li>However, if you have already made your first guess (or any amount of guesses for that matter) then that’s ok, because the program should still be able to find the answer within 2-3 guesses.</li>
+                    </ul>
+                </li>
+                <li><strong>Pay Attention to Feedback:</strong>
+                    <ul>
+                        <li>Make sure that the information that you put into the program is exactly what the game has told you, otherwise the right answer cannot be found!</li>
+                    </ul>
+                </li>
+                <li><strong>Use the Best Guess Feature:</strong>
+                    <ul>
+                        <li>The solver’s suggested guess is the most efficient guess, found using an algorithm.</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h2>Example Walkthrough</h2>
+                <ul>
+                    <li>Full example of using the website. In this example the correct artist is Kanye West.</li>
+                    <ol>
+                        <li>You make your first guess, which in this case is Alessia Cara:
+                            <ul>
+                                <li>Debut Year: 2015</li>
+                                <li>Popularity: 100</li>
+                                <li>Members: Solo</li>
+                                <li>Genre: Pop</li>
+                                <li>Country: CA</li>
+                                <li>Gender: Female</li>
+                            </ul>
+                        </li>
+                        <li>You then input the information that the game has told you, which is the following:
+                            <ul>
+                                <li>Debut Year: 2015 "Earlier v”</li>
+                                <li>Popularity: 100 "Higher ^"</li>
+                                <li>Members: Solo "Correct"</li>
+                                <li>Genre: Pop "Wrong"</li>
+                                <li>Country: CA "Close"</li>
+                                <li>Gender: Female "Wrong”</li>
+                            </ul>
+                        </li>
+                        <li>Then the solver will tell you what the best guess is (Tyga), you then go to the game and make the best guess (Tyga) your next guess (you can either search up the best guess or simply click the box below the best guess).
+                            <ul>
+                                <li>Debut Year: 2009</li>
+                                <li>Popularity: 31</li>
+                                <li>Members: Solo</li>
+                                <li>Genre: Hip Hop</li>
+                                <li>Country: US</li>
+                                <li>Gender: Male</li>
+                            </ul>
+                        </li>
+                        <li>Once again you input the information:
+                            <ul>
+                                <li>Debut Year: 2009 "Close v”</li>
+                                <li>Popularity: 31 "Close ^"</li>
+                                <li>Members: Solo "Correct"</li>
+                                <li>Genre: Hip Hop "Correct"</li>
+                                <li>Country: US "Correct"</li>
+                                <li>Gender: Male "Correct”</li>
+                            </ul>
+                        </li>
+                        <li>The solver then tells you that the artist is either Wiz Khalifa or Kanye West. At this stage you either get it right or you don’t depending on who you choose to pick (don’t worry on the next guess you guarantee a win).</li>
+                    </ol>
+                </ul>
+            <h2>Conclusion</h2>
+            <p>The <strong>Soundmap Artist Guesser Solver</strong> is a powerful tool to help you solve the Artist Guesser game efficiently. By following this tutorial, you’ll be able to input feedback, narrow down the list of possible artists, and make the best guesses to find the correct answer quickly. Happy guessing!</p>     
+        </div>
+    </div>
 
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
     <h1>Soundmap Artist Guesser Solver</h1>
@@ -992,6 +1276,13 @@
             document.getElementById('hideBestGuessToggle').checked = isHidden;
             toggleBestGuessVisibility();
         });
+
+        function toggleHelpOverlay() {
+            const overlay = document.getElementById('helpOverlay');
+            const helpButton = document.querySelector('.help-button');
+            overlay.classList.toggle('open');
+            helpButton.classList.toggle('open');
+        }
 
 
         // Initialize light mode preference on page load
