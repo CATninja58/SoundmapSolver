@@ -540,12 +540,39 @@
             margin-bottom: 5px;
         }
 
+
+        /* Add container for tutorial alignment */
+        .tutorial-container {
+            width: 100%;
+            text-align: left;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        .tutorial-box {
+            background-color: var(--box-color);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0; /* Removed auto margin */
+            width: 100%;
+            max-width: 900px;
+            min-height: 500px;
+        }
+
+        /* Keep other sections centered */
+        .centered-section {
+            text-align: center;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
         .tutorial-img {
             width: 100%;
             max-width: 800px;
             margin: 20px 0;
             border-radius: 10px;
             border: 2px solid var(--text-color);
+            display: block; /* Ensures proper image spacing */
         }
 
         /* Light mode adjustments */
