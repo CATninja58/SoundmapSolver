@@ -392,8 +392,8 @@
         body.light-mode td,
         body.light-mode .help-button,
         body.light-mode #searchResults div,
-        body.light-mode .best-guess-text {
-            color: #1c1c1c;
+        body.light-mode #bestGuessContainer div {  /* Added best guess container */
+            color: #1c1c1c !important; /* Added !important */
         }
 
         body.light-mode input,
@@ -440,17 +440,9 @@
         }
 
         /* Ensure guess boxes retain their colors in light mode */
-        body.light-mode .green {
-            background-color: #159643 !important;
-        }
-
-        body.light-mode .orange {
-            background-color: #b19600 !important;
-        }
-
-        body.light-mode .grey {
-            background-color: grey !important;
-        }
+        body.light-mode .green { background-color: #159643 !important; }
+        body.light-mode .orange { background-color: #b19600 !important; }
+        body.light-mode .grey { background-color: grey !important; }
 
     </style>    
 </head>
