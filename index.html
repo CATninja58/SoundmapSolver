@@ -457,6 +457,13 @@
                 <span class="slider"></span>
             </label>
         </div>
+        <div class="toggle-switch">
+            <span>Hide Best Guess</span>
+            <label class="switch">
+                <input type="checkbox" id="hideBestGuessToggle" onchange="toggleBestGuessVisibility()">
+                <span class="slider"></span>
+            </label>
+        </div>
     </div>
 
     <a href="https://github.com/CATninja58/SoundmapSolver/blob/main/README.md" class="help-button">?</a>
@@ -961,6 +968,31 @@
                 document.getElementById('lightModeToggle').checked = true;
             }
         }
+
+        function toggleBestGuessVisibility() {
+            const isHidden = document.getElementById('hideBestGuessToggle').checked;
+            const bestGuessContainer = document.getElementById('bestGuessContainer');
+            const bestGuessButton = document.getElementById('bestGuessButton');
+
+            if (isHidden) {
+                bestGuessContainer.style.display = 'none';
+                bestGuessButton.style.display = 'none';
+            } else {
+                bestGuessContainer.style.display = '';
+                bestGuessButton.style.display = '';
+            }
+
+            // Save preference to local storage
+            localStorage.setItem('hideBestGuess', isHidden);
+        }
+
+        // Check local storage for the toggle state on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const isHidden = localStorage.getItem('hideBestGuess') === 'true';
+            document.getElementById('hideBestGuessToggle').checked = isHidden;
+            toggleBestGuessVisibility();
+        });
+
 
         // Initialize light mode preference on page load
         document.addEventListener('DOMContentLoaded', checkLightModePreference);
