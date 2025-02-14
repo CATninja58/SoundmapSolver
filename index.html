@@ -693,7 +693,7 @@
             const bestGuessElement = document.createElement("div");
 
             if (filteredArtists.length === 2) {//If there is only 2 left then there is no best guess
-                bestGuessElement.textContent = `Either: ${allArtistsSortedByDebut[0]} or ${allArtistsSortedByDebut[1]}`;
+                bestGuessElement.textContent = `Either: ${sortedByPopularity[0].artist} or ${sortedByPopularity[1].artist}`;
                 
                 bestGuessButton.classList.add("hidden");
                 bestGuessContainer.innerHTML = '';
