@@ -691,9 +691,13 @@
             // Step 6: Display the best guess
             const bestGuess = closestArtist.artist;
             const bestGuessElement = document.createElement("div");
-            if (filteredArtists.length === 2) {//If there is only 2 left then there is no best guess
-                bestGuessElement.textContent = `Either: ${filteredArtists[0]} or ${filteredArtists[1]}`;
 
+            if (filteredArtists.length === 2) {//If there is only 2 left then there is no best guess
+                bestGuessElement.textContent = `Either: ${allArtistsSortedByDebut[0]} or ${allArtistsSortedByDebut[1]}`;
+                
+                bestGuessButton.classList.add("hidden");
+                bestGuessContainer.innerHTML = '';
+                
                 bestGuessElement.style.color = "#f4f4f4";
                 bestGuessContainer.innerHTML = '';
                 bestGuessContainer.appendChild(bestGuessElement);
