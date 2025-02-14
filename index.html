@@ -256,6 +256,10 @@
             margin-bottom: 5px; /* Add bottom margin */
         }
 
+        .help-button div {  /* Added best guess container */
+            color: #f4f4f4 !important;
+        }
+
         .guess-boxes:last-child {
             margin-bottom: 20px; /* Add bottom margin */
         }
@@ -501,6 +505,49 @@
             color: #b19600;
         }
 
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --box-color: #f0f0f0;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --box-color: #2d2d2d;
+        }
+
+        .tutorial-box {
+            background-color: var(--box-color);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px auto;
+            width: 95%;
+            max-width: 900px;
+            min-height: 500px;
+            text-align: left;
+        }
+
+        .tutorial-box ul {
+            padding-left: 40px;
+            list-style-type: disc;
+            text-align: left;
+        }
+
+        .artist-name {
+            color: var(--text-color);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .tutorial-img {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid var(--text-color);
+        }
+
         /* Light mode adjustments */
         body.light-mode .help-overlay {
             background-color: rgba(255, 255, 255, 0.95);
@@ -593,6 +640,7 @@
                                 <li>Genre: Pop</li>
                                 <li>Country: CA (Canada)</li>
                                 <li>Gender: Female</li>
+                                <img src="images/1.png" class="tutorial-img" alt="Enter first guess">
                             </ul>
                         </li>
                     </ul>
@@ -606,12 +654,14 @@
                         <li>Genre: Select "Wrong" (Alessia Cara is Pop, but the correct artist is Hip Hop).</li>
                         <li>Country: Select "Close" (Alessia Cara is from CA correct artist is from the US, and because the US and CA are both in the same continent, its therefor close).</li>
                         <li>Gender: Select "Wrong" (Alessia is Female, but the correct artist is Male).</li>
+                        <img src="images/2.png" class="tutorial-img" alt="Input feedback">
                     </ul>
                 </li>
                 <li>View the Updated List of Possible Artists
                     <ul>
                         <li>After inputting the feedback, the solver will update the list of possible artists based on the new constraints.</li>
                         <li>The solver will also suggest the Best Next Guess (e.g., "Tyga") to help you narrow down the options further.</li>
+                        <img src="images/3.png" class="tutorial-img" alt="Updated list">
                     </ul>
                 </li>
                 <li>Repeat the Process
@@ -712,6 +762,7 @@
                                 <li>Genre: Pop</li>
                                 <li>Country: CA</li>
                                 <li>Gender: Female</li>
+                                <img src="images/4.png" class="tutorial-img" alt="First guess">
                             </ul>
                         </li>
                         <li>You then input the information that the game has told you, which is the following:
@@ -722,6 +773,7 @@
                                 <li>Genre: Pop "Wrong"</li>
                                 <li>Country: CA "Close"</li>
                                 <li>Gender: Female "Wrong”</li>
+                                <img src="images/5.png" class="tutorial-img" alt="Information first guess">
                             </ul>
                         </li>
                         <li>Then the solver will tell you what the best guess is (Tyga), you then go to the game and make the best guess (Tyga) your next guess (you can either search up the best guess or simply click the box below the best guess).
@@ -732,6 +784,7 @@
                                 <li>Genre: Hip Hop</li>
                                 <li>Country: US</li>
                                 <li>Gender: Male</li>
+                                <img src="images/6.png" class="tutorial-img" alt="Best guess">
                             </ul>
                         </li>
                         <li>Once again you input the information:
@@ -742,6 +795,7 @@
                                 <li>Genre: Hip Hop "Correct"</li>
                                 <li>Country: US "Correct"</li>
                                 <li>Gender: Male "Correct”</li>
+                                <img src="images/7.png" class="tutorial-img" alt="Information second guess">
                             </ul>
                         </li>
                         <li>The solver then tells you that the artist is either Wiz Khalifa or Kanye West. At this stage you either get it right or you don’t depending on who you choose to pick (don’t worry on the next guess you guarantee a win).</li>
@@ -1282,6 +1336,16 @@
             const helpButton = document.querySelector('.help-button');
             overlay.classList.toggle('open');
             helpButton.classList.toggle('open');
+        }
+
+        // Theme toggle function
+        function toggleTheme() {
+            const body = document.body;
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.setAttribute('data-theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+            }
         }
 
 
