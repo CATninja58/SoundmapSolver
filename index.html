@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soundmap Artist Guesser Solver</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Updated styles */
         body {
@@ -285,11 +286,149 @@
             background-color: #159643; /* Changes color on hover */
         }
 
+        /* New styles for the cog icon and sidebar */
+        .cog-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            color: #f4f4f4;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #1c1c1c;
+            transition: left 0.3s ease;
+            z-index: 999;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar h2 {
+            color: #f4f4f4;
+            margin-bottom: 20px;
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #f4f4f4;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #159643;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Light mode styles */
+        body.light-mode {
+            background-color: #f4f4f4;
+            color: #1c1c1c;
+        }
+
+        body.light-mode h1,
+        body.light-mode .footer-text,
+        body.light-mode .guess-title,
+        body.light-mode .guess-artist,
+        body.light-mode th,
+        body.light-mode td,
+        body.light-mode .help-button {
+            color: #1c1c1c;
+        }
+
+        body.light-mode input,
+        body.light-mode button {
+            background-color: #ffffff;
+            color: #1c1c1c;
+            border: 1px solid #ccc;
+        }
+
+        body.light-mode .sidebar {
+            background-color: #ffffff;
+            color: #1c1c1c;
+        }
+
+        body.light-mode .sidebar h2,
+        body.light-mode .toggle-switch {
+            color: #1c1c1c;
+        }
+
+        body.light-mode .slider {
+            background-color: #ccc;
+        }
+
+        body.light-mode input:checked + .slider {
+            background-color: #159643;
+        }
+
     </style>    
 </head>
 <body>
-    <a href="https://github.com/CATninja58/SoundmapSolver/blob/main/README.md" class="help-button">?</a>
+    <i class="fas fa-cog cog-icon" onclick="toggleSidebar()"></i>
+    <div class="sidebar" id="sidebar">
+        <h2>Settings</h2>
+        <div class="toggle-switch">
+            <span>Light Mode</span>
+            <label class="switch">
+                <input type="checkbox" id="lightModeToggle" onchange="toggleLightMode()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
 
+    <a href="https://github.com/CATninja58/SoundmapSolver/blob/main/README.md" class="help-button">?</a>
+    
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
     <h1>Soundmap Artist Guesser Solver</h1>
 
@@ -693,7 +832,7 @@
             const bestGuessElement = document.createElement("div");
 
             if (filteredArtists.length === 2) {//If there is only 2 left then there is no best guess
-                bestGuessElement.textContent = `Either: ${sortedByPopularity[0].artist} or ${sortedByPopularity[1].artist}`;
+                bestGuessElement.textContent = `Either: ${allArtistsSortedByDebut[0].artist} or ${allArtistsSortedByDebut[1].artist}`;
                 
                 bestGuessButton.classList.add("hidden");
                 bestGuessContainer.innerHTML = '';
@@ -759,6 +898,32 @@
             const bestGuess = closestArtist.artist;
             displayArtistInfo(bestGuess);
         }
+
+        // Function to toggle the sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        // Function to toggle light mode
+        function toggleLightMode() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            const isLightMode = body.classList.contains('light-mode');
+            localStorage.setItem('lightMode', isLightMode);
+        }
+
+        // Check local storage for light mode preference
+        function checkLightModePreference() {
+            const isLightMode = localStorage.getItem('lightMode') === 'true';
+            if (isLightMode) {
+                document.body.classList.add('light-mode');
+                document.getElementById('lightModeToggle').checked = true;
+            }
+        }
+
+        // Initialize light mode preference on page load
+        document.addEventListener('DOMContentLoaded', checkLightModePreference);
 
         loadCSV();
     </script>
