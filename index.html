@@ -295,6 +295,11 @@
             cursor: pointer;
             z-index: 1000;
             color: #f4f4f4;
+            transition: color 0.3s ease;
+        }
+
+        .cog-icon:hover {
+            color: #159643; /* Green on hover */
         }
 
         .sidebar {
@@ -308,10 +313,12 @@
             z-index: 999;
             padding: 20px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            visibility: hidden; /* Hide initially */
         }
 
         .sidebar.open {
             left: 0;
+            visibility: visible; /* Show when open */
         }
 
         .sidebar h2 {
@@ -383,7 +390,9 @@
         body.light-mode .guess-artist,
         body.light-mode th,
         body.light-mode td,
-        body.light-mode .help-button {
+        body.light-mode .help-button,
+        body.light-mode #searchResults div,
+        body.light-mode .best-guess-text {
             color: #1c1c1c;
         }
 
@@ -412,6 +421,37 @@
             background-color: #159643;
         }
 
+        body.light-mode .cog-icon {
+            color: #1c1c1c; /* Black in light mode */
+        }
+
+        body.light-mode .cog-icon:hover {
+            color: #159643; /* Green on hover */
+        }
+
+        body.light-mode .help-button {
+            background-color: #ccc; /* Grey background */
+            color: #1c1c1c; /* Black text */
+        }
+
+        body.light-mode .help-button:hover {
+            background-color: #159643; /* Green on hover */
+            color: #1c1c1c; /* Black text */
+        }
+
+        /* Ensure guess boxes retain their colors in light mode */
+        body.light-mode .green {
+            background-color: #159643 !important;
+        }
+
+        body.light-mode .orange {
+            background-color: #b19600 !important;
+        }
+
+        body.light-mode .grey {
+            background-color: grey !important;
+        }
+
     </style>    
 </head>
 <body>
@@ -428,7 +468,7 @@
     </div>
 
     <a href="https://github.com/CATninja58/SoundmapSolver/blob/main/README.md" class="help-button">?</a>
-    
+
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
     <h1>Soundmap Artist Guesser Solver</h1>
 
@@ -903,6 +943,14 @@
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('open');
+            if (!sidebar.classList.contains('open')) {
+                // Wait for the transition to complete before hiding
+                setTimeout(() => {
+                    sidebar.style.visibility = 'hidden';
+                }, 300); // Match the transition duration
+            } else {
+                sidebar.style.visibility = 'visible';
+            }
         }
 
         // Function to toggle light mode
