@@ -433,30 +433,6 @@
             container.appendChild(button);
             });
         }
-        
-        function updateBestGuessName() {
-            const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
-            const bestGuessName = bestGuessElement ? bestGuessElement.textContent.replace("Best Guess: ", "") : "";
-            document.getElementById("bestGuessName").textContent = bestGuessName;
-            document.getElementById("bestGuessButton").innerHTML = `Click to make <span id="bestGuessName">${bestGuessName}</span> your next guess!`;
-        }
-
-        document.addEventListener("DOMContentLoaded", updateBestGuessName);
-    
-        function makeBestGuessNext() {
-            if (filteredArtists.length === 0) return;
-
-            const sortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
-            const medianDebutArtist = sortedByDebut[Math.floor(sortedByDebut.length / 2)];
-
-            const sameDebutArtists = sortedByDebut.filter(artist => artist.debut === medianDebutArtist.debut);
-            const sortedByPopularity = sameDebutArtists.sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
-            const medianPopularityArtist = sortedByPopularity[Math.floor(sortedByPopularity.length / 2)];
-
-            const bestGuess = medianPopularityArtist.artist;
-            
-            displayArtistInfo(bestGuess);
-        }
     
         function showDropdown(button, category, value, guess) {
             if (isAndroid()) {
@@ -727,6 +703,48 @@
 
             // Show the button if a best guess is found
             bestGuessButton.classList.remove("hidden");
+        }
+
+        function updateBestGuessName() {
+            const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
+            const bestGuessName = bestGuessElement ? bestGuessElement.textContent.replace("Best Guess: ", "") : "";
+            document.getElementById("bestGuessName").textContent = bestGuessName;
+            document.getElementById("bestGuessButton").innerHTML = `Click to make <span id="bestGuessName">${bestGuessName}</span> your next guess!`;
+        }
+
+        document.addEventListener("DOMContentLoaded", updateBestGuessName);
+    
+        function makeBestGuessNext() {
+            if (filteredArtists.length === 0) return;
+
+            // Step 1: Sort all artists by popularity
+            const sortedByPopularity = [...filteredArtists].sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
+
+            // Step 2: Find the median popularity
+            const medianPopularityIndex = Math.floor(sortedByPopularity.length / 2);
+            const medianPopularity = sortedByPopularity[medianPopularityIndex].popularity;
+
+            // Step 3: Filter artists with the median popularity
+            const medianPopularityArtists = sortedByPopularity.filter(artist => artist.popularity === medianPopularity);
+
+            // Step 4: Calculate the median debut year for ALL artists (not just median popularity ones)
+            const allArtistsSortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
+            const medianDebutIndex = Math.floor(allArtistsSortedByDebut.length / 2);
+            const medianDebut = allArtistsSortedByDebut[medianDebutIndex].debut;
+
+            // Step 5: Among the median popularity artists, find the one with the debut year closest to the median debut year
+            let closestArtist = medianPopularityArtists[0];
+            let closestDifference = Math.abs(parseInt(closestArtist.debut) - medianDebut);
+
+            for (let i = 1; i < medianPopularityArtists.length; i++) {
+                const currentDifference = Math.abs(parseInt(medianPopularityArtists[i].debut) - medianDebut);
+                if (currentDifference < closestDifference) {
+                    closestArtist = medianPopularityArtists[i];
+                    closestDifference = currentDifference;
+                }
+            }
+            const bestGuess = closestArtist.artist;
+            displayArtistInfo(bestGuess);
         }
 
         loadCSV();
