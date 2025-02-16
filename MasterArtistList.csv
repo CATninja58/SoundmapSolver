@@ -90,7 +90,7 @@ George Michael,1987,88,Solo,Pop,GB,Male
 Modern Talking,1985,89,Group,Pop,DE,Male
 James Charles,2024,90,Solo,Pop,US,Male
 Mark Ronson,2003,91,Solo,Pop,GB,Male
-*nsync,1997,92,group,Pop,US,male
+*nsync,1997,92,group,Pop,US,Male
 Yuridia,2005,93,Solo,Pop,MX,Female
 Rita Ora,2012,94,Solo,Pop,GB,Female
 Calum Scott,2017,95,Solo,Pop,GB,Male
@@ -417,7 +417,7 @@ Melanie Martinez,2012,10,Solo,Indie,US,Female
 Noah Kahan,2017,11,Solo,Indie,US,Male
 Tom Odell,2012,12,Solo,Indie,GB,Male
 Lorde,2013,13,Solo,Indie,NZ,Female
-TV Girl,2013,14,group,Indie,US,male
+TV Girl,2013,14,group,Indie,US,Male
 Louis Tomlinson,2017,15,Solo,Indie,GB,Male
 Clairo,2017,16,Solo,Indie,US,Female
 LANY,2015,17,Group,Indie,US,Male
@@ -593,7 +593,7 @@ Jon Dretto,2023,186,Solo,Indie,US,Male
 Laura Shigihara,2010,187,Solo,Indie,US,Female
 sombr,2021,188,Solo,Indie,US,Male
 Dennis Lloyd,2015,189,Solo,Indie,IL,Male
-Jaloliddin Ahmadaliyev,2021,190,Solo,Indie,UZ,male
+Jaloliddin Ahmadaliyev,2021,190,Solo,Indie,UZ,Male
 Pequeño Pez,2018,191,Solo,Indie,AR,Male
 Bishop Briggs,2016,192,Solo,Indie,US,Female
 Caloncho,2015,193,Solo,Indie,MX,Male
@@ -605,7 +605,7 @@ Norma Jean Martine,2015,198,Solo,Indie,US,Female
 Au/Ra,2016,199,Solo,Indie,US,Female
 Monetochka,2016,200,Solo,Indie,RU,Female
 Santigold,2008,201,Solo,Indie,US,Female
-Coldplay,1999,1,Group,Rock,GB,male
+Coldplay,1999,1,Group,Rock,GB,Male
 Linkin Park,2000,2,Group,Rock,US,mixed
 Imagine Dragons,2009,3,Group,Rock,US,Male
 Queen,1973,4,Group,Rock,GB,Male
@@ -624,7 +624,7 @@ Maná,1990,16,Group,Rock,MX,Male
 Fleetwood Mac,1968,17,Group,Rock,US,mixed
 Oasis,1994,18,Group,Rock,GB,Male
 beabadoobee,2017,19,Solo,Rock,GB,Female
-Aerosmith,1973,20,Group,Rock,US,male
+Aerosmith,1973,20,Group,Rock,US,Male
 U2,1980,21,Group,Rock,IE,Male
 Maneskin,2017,22,Group,Rock,IT,Mixed
 Creedence Clearwater Revival,1968,23,Group,Rock,US,Male
@@ -642,7 +642,7 @@ Paramore,2005,34,Group,Rock,us,mixed
 The Police,1978,35,Group,Rock,GB,Male
 Tame Impala,2008,36,Group,Rock,AU,Male
 Eagles,1972,37,Group,Rock,US,Male
-The Killers,2003,38,Group,Rock,US,male
+The Killers,2003,38,Group,Rock,US,Male
 Scorpions,1972,39,Group,Rock,DE,Male
 Rod Stewart,1970,40,Solo,Rock,GB,Male
 Disturbed,2000,41,Group,Rock,US,Male
@@ -650,11 +650,11 @@ Dire Straits,1978,42,Group,Rock,GB,Male
 The Cure,1979,43,Group,Rock,GB,Male
 Billy Joel,1971,44,Solo,Rock,US,Male
 Journey,1975,45,Group,Rock,US,Male
-KISS,1974,46,Group,Rock,us,male
-David Bowie,1967,47,Solo,Rock,GB,male
-Three Days Grace,2003,48,Group,Rock,CA,male
+KISS,1974,46,Group,Rock,us,Male
+David Bowie,1967,47,Solo,Rock,GB,Male
+Three Days Grace,2003,48,Group,Rock,CA,Male
 Panic! At The Disco,2005,49,Group,Rock,US,Male
-Muse,1999,50,Group,Rock,GB,male
+Muse,1999,50,Group,Rock,GB,Male
 TOTO,1978,51,Group,Rock,US,Mixed
 Pearl Jam,1991,52,Group,Rock,US,Male
 Depeche Mode,1981,53,Group,Rock,GB,Male
@@ -663,7 +663,7 @@ Paul McCarthy,1967,55,Solo,Rock,GB,Male
 Tears For Fears,1983,56,Group,Rock,GB,Male
 Crash Adams,2019,57,Group,Rock,CA,Male
 The Smiths,1984,58,Group,Rock,GB,Male
-Kings of Leon,2003,59,Group,Rock,us,male
+Kings of Leon,2003,59,Group,Rock,us,Male
 Lenny Kravitz,1989,60,Solo,Rock,US,Male
 Bastille,2012,61,Group,Rock,GB,Male
 Train,1998,62,Group,Rock,US,Male
@@ -672,9 +672,9 @@ John Lennon,1968,64,Solo,Rock,GB,Male
 Weezer,1996,65,Group,Rock,US ,Male
 The 1975,2012,66,Group,Rock,GB,Male
 Sting,1985,67,Solo,Rock,GB,Male
-The Strokes,2001,68,group,Rock,US,male
+The Strokes,2001,68,group,Rock,US,Male
 Alice In Chains,1990,69,Group,Rock,US,Male
-Passenger,2007,70,Solo,Rock,GB,male
+Passenger,2007,70,Solo,Rock,GB,Male
 Skillet,1996,71,Group,Rock,US,Mixed
 Creed,1997,72,Group,Rock,US,Male
 The Smashing Pumpkins,1991,73,Group,Rock,US,Mixed
@@ -725,12 +725,12 @@ X Ambasssdors,2013,117,Group,Rock,US,Male
 The Black Keys,2002,118,Group,Rock,US,Male
 Blur,1991,119,Group,Rock,GB,Male
 The Verve,1992,120,Group,Rock,GB,Male
-Soundgarden,1989,121,group,Rock,us,male
+Soundgarden,1989,121,group,Rock,us,Male
 Chicago,1969,122,Group,Rock,US,Male
 Shinedown,2003,123,Group,Rock,US,Male
 Deep Purple,1968,124,Group,Rock,GB,Male
 Snow Patrol,1998,125,Group,Rock,GB,Male
-Men at Work,1981,126,group,Rock,AU,male
+Men at Work,1981,126,group,Rock,AU,Male
 INXS,1980,127,Group,Rock,AU,Male
 John Denver,1966,128,Solo,Rock,US,Male
 for KING & COUNTRY,2012,129,Group,Rock,US,Male
@@ -933,7 +933,7 @@ Lay Bankz,2020,124,Solo,R&B,US,Male
 Keith Sweat,1987,125,Solo,R&B,US,Male
 Chaka Khan,1978,126,Solo,R&B,US,Female
 R. Kelly,1992,127,Solo,R&B,US,Male
-Maxwell,1996,128,Solo,R&B,US,male
+Maxwell,1996,128,Solo,R&B,US,Male
 Ben E. King,1961,129,Solo,R&B,US,Male
 Pink Sweat$,2018,130,Solo,R&B,US,Male
 Jagged Edge,1997,131,Group,R&B,US,Male
