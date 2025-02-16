@@ -26,8 +26,8 @@ o	Members: Solo
 o	Genre: Pop
 o	Country: CA (Canada)
 o	Gender: Female
+![1](https://github.com/user-attachments/assets/05e7e2de-ef42-4c31-bf86-23c6808e83b9)
 
- 
 2. Input Feedback from the Game
 •	Click on each box and select the feedback provided by the game:
 o	Debut Year: Select "Earlier v" (since 2015 is later than 2004 but not within 5 years).
@@ -36,10 +36,12 @@ o	Members: Select "Correct" (both are solo).
 o	Genre: Select "Wrong" (Alessia Cara is Pop, but the correct artist is Hip Hop).
 o	Country: Select "Close" (Alessia Cara is from CA correct artist is from the US, and because the US and CA are both in the same continent, its therefor close).
 o	Gender: Select "Wrong" (Alessia is Female, but the correct artist is Male).
+![2](https://github.com/user-attachments/assets/15f98f80-45b0-4ac0-9fd8-957758746349)
  
 3. View the Updated List of Possible Artists
 •	After inputting the feedback, the solver will update the list of possible artists based on the new constraints.
 •	The solver will also suggest the Best Next Guess (e.g., "Tyga") to help you narrow down the options further.
+![3](https://github.com/user-attachments/assets/e82fa8ad-aac7-453e-99c2-61c77bd78949)
  
 4. Repeat the Process
 •	Enter the suggested guess (or your own guess) and input the feedback again.
@@ -85,6 +87,7 @@ Full example of using the website. In this example the correct artist is Kanye W
 1.	You make your first guess, which in this case is Alessia Cara:
 Debut Year: 2015	Popularity: 100	Members: Solo
 Genre: Pop	Country: CA	Gender: Female
+![4](https://github.com/user-attachments/assets/73ba6f84-532d-42db-8319-1ffe7868e954)
 
  
 2.	You then input the information that the game has told you, which is the following:
@@ -96,6 +99,7 @@ Genre: Pop
 "Wrong"	Country: CA
 "Close"	Gender: Female
 "Wrong”
+![5](https://github.com/user-attachments/assets/8ed56dc9-fe00-463b-b3d8-20c271587cd3)
 
  
 3.	Then the solver will tell you what the best guess is (Tyga), you then go to the game and make the best guess (Tyga) your next guess (you can either search up the best guess or simply click the box below the best guess).
@@ -106,6 +110,7 @@ Debut Year: 2009
 Genre: Hip Hop
 	Country: US
 	Gender: Male
+![6](https://github.com/user-attachments/assets/3d18a8ba-01b4-4091-b3f3-2e0296d45d76)
 
 
  
@@ -118,6 +123,7 @@ Genre: Hip Hop
 "Correct"	Country: US
 "Correct"	Gender: Male
 "Correct”
+![7](https://github.com/user-attachments/assets/dec8abd7-9ec6-4299-b59b-06b86778098c)
 
  
 5.	The solver then tells you that the artist is either Wiz Khalifa or Kanye West. At this stage you either get it right or you don’t depending on who you choose to pick (don’t worry on the next guess you guarantee a win).
