@@ -5,10 +5,10 @@ How the game works
 The Artist Guesser game requires you to guess the correct artist based on feedback in six categories:
 1.	Debut Year: The year the artist first made their music.
 2.	Popularity: A number based on the artist's monthly Spotify streams (compared within their genre).
-3.	Members: Whether the artist is a solo act or a group.
-4.	Genre: The artist's music genre (e.g., Hip Hop, Pop, R&B, Indie, Rock).
-5.	Country: The artist's country of origin (e.g., US, CA, UK).
-6.	Gender: The artist's gender (Female, Male, or Mixed for groups).
+4.	Members: Whether the artist is a solo act or a group.
+5.	Genre: The artist's music genre (e.g., Hip Hop, Pop, R&B, Indie, Rock).
+6.	Country: The artist's country of origin (e.g., US, CA, UK).
+7.	Gender: The artist's gender (Female, Male, or Mixed for groups).
 
 After each guess, the game provides feedback for each category, such as:
 •	Debut Year: "Earlier," "Later," or "Close" (if within 5 years).
