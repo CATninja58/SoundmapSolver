@@ -1,3 +1,5 @@
+This is a tutorial on how to use the Soundmap Artist Guesser Solver. You can click on the ? at the top right of the website to see this as well.
+
 Tutorial
 Welcome to the Soundmap Artist Guesser Solver! This tool is designed to help you solve the Artist Guesser game by narrowing down the possible artists based on the feedback you receive after each guess. Below is a step-by-step guide on how to use the solver effectively.
 
