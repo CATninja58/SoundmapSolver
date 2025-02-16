@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Updated styles */
+        /* General body styles */
         body {
             font-family: Arial, sans-serif; /* Set font family */
             text-align: center; /* Center align text */
@@ -19,11 +20,13 @@
             background-color: #121212; /* Background color */
         }
         
+        /* Heading styles */
         h1 {
             margin-top: 20px; /* Add top margin */
             color: #f4f4f4; /* Heading color */
         }
         
+        /* Input field styles */
         input {
             margin-top: 20px; /* Add top margin */
             padding: 10px; /* Add padding */
@@ -34,6 +37,7 @@
             border: none; /* Remove border */
         }
         
+        /* Button container styles */
         .button-container {
             display: grid; /* Use grid layout */
             grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
@@ -42,6 +46,7 @@
             height: auto; /* Auto height for guess boxes */
         }
         
+        /* Button styles */
         button {
             width: 250px; /* Fixed width for buttons */
             height: 50px; /* Fixed height for buttons */
@@ -53,18 +58,22 @@
             text-overflow: ellipsis; /* Add ellipsis for overflow text */
         }
         
+        /* Correct option color */
         .green {
             background-color: #159643; /* Correct option color */
         }
         
+        /* Close option color */
         .orange {
             background-color: #b19600; /* Close option color */
         }
         
+        /* Wrong option color */
         .grey {
             background-color: grey; /* Wrong option color */
         }
         
+        /* Results container styles */
         .results-container {
             width: 80%; /* Set width */
             margin-top: 40px; /* Add top margin */
@@ -74,17 +83,20 @@
             flex-direction: column; /* Arrange children in a column */
             align-items: center; /* Center align items horizontally */
         }
-    
+        
+        /* Artist list wrapper styles */
         .artist-list-wrapper {
             width: 100%; /* Set width */
             overflow-x: auto; /* Enable horizontal scrolling */
         }
-    
+        
+        /* Table styles */
         table {
             width: 100%; /* Set width */
             border-collapse: collapse; /* Collapse borders */
         }
-    
+        
+        /* Table header and cell styles */
         th, td {
             padding: 8px; /* Add padding */
             border-bottom: 1px solid #ddd; /* Bottom border */
@@ -92,11 +104,13 @@
             text-align: left; /* Left align text */
             word-wrap: break-word; /* Allow word wrapping */
         }
-    
+        
+        /* Table header styles */
         th {
             font-weight: bold; /* Bold text */
         }
-    
+        
+        /* Dropdown styles */
         select {
             margin-top: 10px; /* Add top margin */
             padding: 5px; /* Add padding */
@@ -104,12 +118,14 @@
             position: absolute; /* Absolute positioning */
             z-index: 10; /* Set z-index */
         }
-    
+        
+        /* Button text styles */
         .button-text {
             display: inline-block; /* Inline block display */
             margin-bottom: 5px; /* Add bottom margin */
         }
-    
+        
+        /* Guess container styles */
         .guess-container {
             margin-top: 20px; /* Add top margin */
             width: 80%; /* Set width */
@@ -117,7 +133,8 @@
             flex-direction: column; /* Arrange children in a column */
             align-items: center; /* Center align items horizontally */
         }
-    
+        
+        /* Guess title styles */
         .guess-title {
             font-weight: bold; /* Bold text */
             margin-top: 20px; /* Add top margin */
@@ -125,12 +142,14 @@
             color: #88888a; /* Guess title color */
         }
 
+        /* Guess artist styles */
         .guess-artist {
             margin-top: 10px; /* Add top margin */
             margin-bottom: 20px; /* Add bottom margin */
             color: #f4f4f4; /* Artist name color */
         }
 
+        /* Guess boxes styles */
         .guess-boxes {
             margin-top: 20px; /* Add top margin */
             margin-bottom: 5px; /* Add bottom margin */
@@ -139,50 +158,53 @@
             gap: 5px; /* Gap between grid items */
         }
 
+        /* Last guess box styles */
         .guess-boxes:last-child {
             margin-bottom: 20px; /* Add bottom margin */
         }
-    
+        
+        /* Footer text styles */
         .footer-text {
             font-weight: bold; /* Bold text */
             margin-top: 20px; /* Add top margin */
             color: #f4f4f4; /* Footer text color */
         }
-    
-        @media (max-width: 800px) { /* mobile version */
-        body {
+        
+        /* Mobile version styles */
+        @media (max-width: 800px) { 
+            body {
             justify-content: center; /* Center align items vertically */
-        }
+            }
 
-        input {
+            input {
             width: 90%; /* Set width */
-        }
-    
-        .results-container {
+            }
+        
+            .results-container {
             width: 100%; /* Set width */
-        }
-    
-        .guess-container {
+            }
+        
+            .guess-container {
             width: 100%; /* Set width */
             align-items: center; /* Center align items horizontally */
-        }
-    
-        .artist-list-wrapper {
+            }
+        
+            .artist-list-wrapper {
             overflow-x: auto; /* Enable horizontal scrolling */
-        }
+            }
 
-        .button-container {
+            .button-container {
             grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
             gap: 2px; /* Gap between grid items */
             justify-items: center; /* Center align grid items */
             width: 100%; /* Set width to 100% */
-        }
+            }
 
-        button {
+            button {
             width: 90%; /* Set width */
             font-size: 11px; /* Set font size */
+            }
         }
-    }
 
         /* Modal styles */
         .hidden {
@@ -234,40 +256,13 @@
         .modal-option:hover {
             background-color: #ccc; /* Modal option hover color */
         }
-    
+        
         /* Search result styles */
         #searchResults div {
             color: #f4f4f4; /* Search result text color */
         }
 
-        /* Custom spacing for guesses */
-        .guess-title {
-            margin-top: 40px; /* Add top margin */
-            margin-bottom: 10px; /* Add bottom margin */
-        }
-
-        .guess-artist {
-            margin-top: 10px; /* Add top margin */
-            margin-bottom: 20px; /* Add bottom margin */
-        }
-
-        .guess-boxes {
-            margin-top: 20px; /* Add top margin */
-            margin-bottom: 5px; /* Add bottom margin */
-        }
-
-        .help-button div {  /* Added best guess container */
-            color: #f4f4f4 !important;
-        }
-
-        .guess-boxes:last-child {
-            margin-bottom: 20px; /* Add bottom margin */
-        }
-
-        .hidden {
-            display: none;
-        }
-
+        /* Help button styles */
         .help-button {
             position: fixed; /* Fixed position to keep it at the top right */
             top: 20px; /* Distance from the top */
@@ -290,7 +285,7 @@
             background-color: #159643; /* Changes color on hover */
         }
 
-        /* New styles for the cog icon and sidebar */
+        /* Cog icon styles */
         .cog-icon {
             position: fixed;
             top: 20px;
@@ -306,6 +301,7 @@
             color: #159643; /* Green on hover */
         }
 
+        /* Sidebar styles */
         .sidebar {
             position: fixed;
             top: 0;
@@ -448,7 +444,12 @@
         body.light-mode .orange { background-color: #b19600 !important; }
         body.light-mode .grey { background-color: grey !important; }
 
-        /* THIS IS THE PART FOR THE TUTORIAL PART */
+        /* Dark mode adjustments for guess artist titles */
+        body:not(.light-mode) .guess-artist {
+            color: #f4f4f4; /* White text color */
+        }
+
+        /* Help overlay styles */
         .help-overlay {
             position: fixed;
             top: 0;
@@ -505,18 +506,21 @@
             color: #b19600;
         }
 
+        /* Root variables for theme colors */
         :root {
             --bg-color: #ffffff;
             --text-color: #000000;
             --box-color: #f0f0f0;
         }
 
+        /* Dark theme variables */
         [data-theme="dark"] {
             --bg-color: #1a1a1a;
             --text-color: #ffffff;
             --box-color: #2d2d2d;
         }
 
+        /* Tutorial box styles */
         .tutorial-box ul {
             padding-left: 40px;
             list-style-type: disc;
@@ -529,9 +533,7 @@
             margin-bottom: 5px;
         }
 
-
-        /* Add container for tutorial alignment */
-        /* Tutorial Container */
+        /* Tutorial container styles */
         .tutorial-container {
             width: 100%;
             text-align: left;
@@ -539,7 +541,7 @@
             padding: 0 20px;
         }
 
-        /* Tutorial Box */
+        /* Tutorial box styles */
         .tutorial-box {
             background-color: var(--box-color);
             border-radius: 15px;
@@ -551,7 +553,7 @@
             text-align: left;
         }
 
-        /* Tutorial Images */
+        /* Tutorial image styles */
         .tutorial-img {
             width: 100%;
             max-width: 800px;
@@ -560,22 +562,6 @@
             border: 2px solid var(--text-color);
             display: block;
         }
-
-        /* Light Mode Styles */
-        body.light-mode {
-            background-color: #f4f4f4;
-            color: #1c1c1c;
-        }
-
-        body.light-mode .tutorial-box {
-            background-color: #ffffff;
-            color: #1c1c1c;
-        }
-
-        body.light-mode .tutorial-img {
-            border-color: #1c1c1c;
-        }
-
 
         /* Light mode adjustments */
         body.light-mode .help-overlay {
@@ -604,8 +590,7 @@
             position: relative;
             left: -5px;
         }
-
-    </style>    
+    </style> 
 </head>
 <body>
     <i class="fas fa-cog cog-icon" onclick="toggleSidebar()"></i>
