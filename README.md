@@ -29,7 +29,7 @@ o	Members: Solo
 o	Genre: Pop
 o	Country: CA (Canada)
 o	Gender: Female
-![1]((https://github.com/CATninja58/SoundmapSolver/blob/main/1.png)
+![1](https://github.com/user-attachments/assets/05e7e2de-ef42-4c31-bf86-23c6808e83b9)
 
 2. Input Feedback from the Game
 •	Click on each box and select the feedback provided by the game:
