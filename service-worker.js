@@ -1,17 +1,17 @@
 const cacheName = 'pwa-cache-v1';
 const assets = [
   '/',
-  'https://github.com/CATninja58/SoundmapSolver/blob/main/index.html',
-  'https://github.com/CATninja58/SoundmapSolver/blob/main/icon-192x192.png',
-  'https://github.com/CATninja58/SoundmapSolver/blob/main/icon-512x512.png',
-  'https://github.com/CATninja58/SoundmapSolver/blob/main/1.png', // Include all your images
-  'https://github.com/CATninja58/SoundmapSolver/blob/main/2.png',
-  'https://github.com/CATninja58/SoundmapSolver/blob/main/3.png',
-  'https://github.com/CATninja58/SoundmapSolver/blob/main/4.png',
-  'https://github.com/CATninja58/SoundmapSolver/blob/main/5.png',
-  'https://github.com/CATninja58/SoundmapSolver/blob/main/6.png',
-  'https://github.com/CATninja58/SoundmapSolver/blob/main/7.png',
-  'https://github.com/CATninja58/SoundmapSolver/blob/main/MasterArtistList.json', // Include your master list of artists if it’s a file
+  'https://catninja58.github.io/SoundmapSolver/index.html',
+  'https://catninja58.github.io/SoundmapSolver/icon-192x192.png',
+  'https://catninja58.github.io/SoundmapSolver/icon-512x512.png',
+  'https://catninja58.github.io/SoundmapSolver/1.png', // Include all your images
+  'https://catninja58.github.io/SoundmapSolver/2.png',
+  'https://catninja58.github.io/SoundmapSolver/3.png',
+  'https://catninja58.github.io/SoundmapSolver/4.png',
+  'https://catninja58.github.io/SoundmapSolver/5.png',
+  'https://catninja58.github.io/SoundmapSolver/6.png',
+  'https://catninja58.github.io/SoundmapSolver/7.png',
+  'https://catninja58.github.io/SoundmapSolver/MasterArtistList.json', // Include your master list of artists if it’s a file
 ];
 
 self.addEventListener('install', (event) => {
