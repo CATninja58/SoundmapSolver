@@ -1397,34 +1397,25 @@
             });
         }
 
-        // Check if the manifest link is present in the page
-        window.addEventListener('load', function() {
-            const manifestLink = document.querySelector('link[rel="manifest"]');
-            if (manifestLink) {
-            console.log('Manifest link is present:', manifestLink.href);
-            } else {
-            console.error('Manifest link not found!');
-            }
         
-            // Check if the manifest is accessible by making an HTTP request
-            const manifestURL = manifestLink ? manifestLink.href : '/SoundmapSolver/manifest.json';
-            fetch(manifestURL)
-            .then(response => {
-                if (response.ok) {
-                console.log('Manifest loaded successfully:', response);
-                } else {
-                console.error('Manifest not found, status code:', response.status);
-                }
-            })
-            .catch(err => {
-                console.error('Error loading manifest:', err);
-            });
-        });
-
         // Initialize light mode preference on page load
         document.addEventListener('DOMContentLoaded', checkLightModePreference);
 
         loadCSV();
+
+        window.addEventListener('load', () => {
+            fetch('/SoundmapSolver/manifest.json')
+            .then(response => {
+                if (response.ok) {
+                console.log('Manifest found:', response);
+                } else {
+                console.error('Manifest not found:', response.status);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching manifest:', error);
+            });
+        });
     </script>
 
 </body>
