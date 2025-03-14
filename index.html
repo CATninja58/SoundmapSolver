@@ -6,7 +6,6 @@
     <title>Soundmap Artist Guesser Solver</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Updated styles */
         /* General body styles */
         body {
             font-family: Arial, sans-serif; /* Set font family */
@@ -510,16 +509,16 @@
 
         /* Root variables for theme colors */
         :root {
-            --bg-color: #2d2d2d;
-            --text-color: #ffffff;
-            --box-color: #1a1a1a;
-        }
-
-        /* Dark theme variables */
-        [data-theme="light"] {
             --bg-color: #ffffff;
             --text-color: #000000;
             --box-color: #f0f0f0;
+        }
+
+        /* Dark theme variables */
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --box-color: #2d2d2d;
         }
 
         /* Tutorial box styles */
@@ -573,9 +572,6 @@
         body.light-mode .help-content {
             background-color: #ffffff;
             color: #1c1c1c;
-            --bg-color: #ffffff;
-            --text-color: #000000;
-            --box-color: #f0f0f0;
         }
 
         body.light-mode .help-overlay h1,
@@ -598,6 +594,7 @@
     </style> 
 </head>
 <body>
+    <link rel="manifest" href="https://github.com/CATninja58/SoundmapSolver/blob/main/manifest.json" />
     <i class="fas fa-cog cog-icon" onclick="toggleSidebar()"></i>
     <div class="sidebar" id="sidebar">
         <h2>Settings</h2>
@@ -835,16 +832,6 @@
                                 </li>
                                 <li>The solver then tells you that the artist is either Wiz Khalifa or Kanye West. At this stage you either get it right or you don’t depending on who you choose to pick (don’t worry on the next guess you guarantee a win).</li>
                             </ol>
-                        </ul>
-                    </div>
-
-                    <h2 onclick="toggleContent(this)">Contact Details</h2>
-                    <div class="collapsible-content">
-                        <ul>
-                            <li>If you found a bug/error, contact me through these links:</li>
-                                <ul>
-                                    <li><a href="https://www.reddit.com/user/CATninja58" target="_blank">Reddit</a></li>
-                                </ul>
                         </ul>
                     </div>
 
@@ -1396,6 +1383,20 @@
                 document.getElementById('lightModeToggle').checked = true;
             }
         }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker
+                .register('https://github.com/CATninja58/SoundmapSolver/blob/main/service-worker.js')
+                .then((registration) => {
+                    console.log('Service Worker registered with scope: ', registration.scope);
+                })
+                .catch((error) => {
+                    console.log('Service Worker registration failed: ', error);
+                });
+            });
+        }
+
 
 
         // Initialize light mode preference on page load
