@@ -2,7 +2,7 @@
     "name": "SoundmapSolver",
     "short_name": "SoundmapSolver",
     "description": "This is an app that solves the Artist Guesser game in Soundmap",
-    "start_url": "https://github.com/CATninja58/SoundmapSolver/blob/main/index.html",
+    "start_url": "https://catninja58.github.io/SoundmapSolver/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
