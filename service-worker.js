@@ -1,6 +1,6 @@
 const cacheName = 'pwa-cache-v1';
 const assets = [
-  '/',
+  'https://catninja58.github.io/SoundmapSolver/',
   'https://catninja58.github.io/SoundmapSolver/index.html',
   'https://catninja58.github.io/SoundmapSolver/icon-192x192.png',
   'https://catninja58.github.io/SoundmapSolver/icon-512x512.png',
