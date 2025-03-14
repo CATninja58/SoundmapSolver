@@ -29,7 +29,7 @@ self.addEventListener('install', event => {
             'https://catninja58.github.io/SoundmapSolver/5.png',
             'https://catninja58.github.io/SoundmapSolver/6.png',
             'https://catninja58.github.io/SoundmapSolver/7.png',
-            'https://catninja58.github.io/SoundmapSolver/MasterArtistList.json'
+            'https://catninja58.github.io/SoundmapSolver/MasterArtistList.csv'
         ];
   
         return cache.addAll(urlsToCache)
