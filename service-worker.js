@@ -11,7 +11,7 @@ const assets = [
   'https://catninja58.github.io/SoundmapSolver/5.png',
   'https://catninja58.github.io/SoundmapSolver/6.png',
   'https://catninja58.github.io/SoundmapSolver/7.png',
-  'https://catninja58.github.io/SoundmapSolver/MasterArtistList.json' // Include your master list of artists if it’s a file
+  'https://catninja58.github.io/SoundmapSolver/MasterArtistList.csv' // Include your master list of artists if it’s a file
 ];
 
 self.addEventListener('install', event => {
