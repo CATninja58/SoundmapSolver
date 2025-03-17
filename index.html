@@ -839,18 +839,18 @@
                     <div class="collapsible-content">
                         <ul>
                             <li>Overview:</li>
-                            <ol>
+                            <ul>
                                 <li>The goal of this algorithm is to choose the best artist guess in an artist guessing game by minimizing the search space after each guess. The algorithm utilizes entropy to evaluate how well each attribute (such as genre, debut year, and popularity) splits the list of possible artists. It then refines the guess by balancing the median values of debut year and popularity within the most common genre.</li>
                                 <li>The primary steps are:
-                                    <ul>
-                                        <li>1.	Calculate entropy for each attribute (genre, debut year, popularity).</li>
-                                        <li>2.	Filter artists by the most common genre.</li>
-                                        <li>3.	Balance the guess based on median debut year and median popularity within that genre.</li>
-                                        <li>4.	Choose the artist closest to both the median debut year and popularity to minimize uncertainty.</li>
-                                        <li>5.	Repeat until the correct artist is guessed.</li>
-                                    </ul>
+                                    <ol>
+                                        <li>Calculate entropy for each attribute (genre, debut year, popularity).</li>
+                                        <li>Filter artists by the most common genre.</li>
+                                        <li>Balance the guess based on median debut year and median popularity within that genre.</li>
+                                        <li>Choose the artist closest to both the median debut year and popularity to minimize uncertainty.</li>
+                                        <li>Repeat until the correct artist is guessed.</li>
+                                    </ol>
                                 </li>
-                            </ol>
+                            </ul>
                             <li>Detailed Steps of the Algorithm:</li>
                             <ol>
                                 <li>Step 1: Calculate Entropy for Each Attribute</li>
