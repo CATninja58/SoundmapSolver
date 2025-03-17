@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soundmap Artist Guesser Solver</title>
@@ -920,24 +922,9 @@
                                     <ul>
                                         <li>Normalize the debut year by calculating the distance between the artist's debut year and the median debut year, relative to the range of debut years in the genre.</li>
                                         <li>Normalize the popularity by calculating the distance between the artist's popularity and the median popularity, relative to the range of popularity in the genre.</li>
-                                    </ul>
-                                </li>
                                 <li>The normalized distance is computed as:
                                     <ul>
-                                        <p><strong>Normalised Distance =
-                                            <math>
-                                                <mfrac bevelled="true">
-                                                    <mfrac>
-                                                        <msup>
-                                                            <mi>Artist Value - Median Value</mi>
-                                                        </msup>
-                                                        <msup>
-                                                            <mi>Range of Values</mi>
-                                                        </msup>
-                                                    </mfrac>
-                                                </mfrac>
-                                            </math>
-                                        </strong></p>
+                                        <p><strong>Normalised Distance =</strong> \( \frac{\text{Artist Value} - \text{Median Value}}{\text{Range of Values}} \)</p>
                                     </ul>
                                 </li>
                                 <li>Where:
@@ -948,35 +935,11 @@
                                 <li>After calculating the normalized distance for both debut year and popularity, we sum the two distances to get a total score for each artist.</li>
                                 <li>The formula is:
                                     <ul>
-                                        <p><strong>Score = 
-                                            <math>
-                                                <mfrac bevelled="true">
-                                                    <mfrac>
-                                                        <msup>
-                                                            <mi>Debut Year - Median Debut Year</mi>
-                                                        </msup>
-                                                        <msup>
-                                                            <mi>Max(Debut Year) - Min(Debut Year)</mi>
-                                                        </msup>
-                                                    </mfrac>
-                                                </mfrac>
-                                            </math>
-                                             + 
-                                            <math>
-                                                <mfrac bevelled="true">
-                                                    <mfrac>
-                                                        <msup>
-                                                            <mi>Popularity - Median Popularity</mi>
-                                                        </msup>
-                                                        <msup>
-                                                            <mi>Max(Popularity) - Min(Popularity)</mi>
-                                                        </msup>
-                                                    </mfrac>
-                                                </mfrac>
-                                            </math>
-                                        </strong></p>
+                                        <p><strong>Score =</strong> \( \frac{\text{Debut Year} - \text{Median Debut Year}}{\text{Max(Debut Year)} - \text{Min(Debut Year)}} \) + \( \frac{\text{Popularity} - \text{Median Popularity}}{\text{Max(Popularity)} - \text{Min(Popularity)}} \)</p>
                                         <li>Lower scores indicate that the artist is closer to both the median debut year and median popularity, making it the best guess.</li>
                                         <li>The artist with the smallest score is selected as the best guess.</li>
+                                    </ul>
+                                </li>
                                     </ul>
                                 </li>
 
