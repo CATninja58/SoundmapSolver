@@ -672,7 +672,7 @@
                                 <ul>
                                     <li>Click on each box and select the feedback provided by the game:</li>
                                     <li>Debut Year: Select "Earlier v" (since 2015 is later than 2004 but not within 5 years).</li>
-                                    <li>Popularity: Select "Lower v" (since 13 is higher up than 100, but not close because it’s not within 50 spots).</li>
+                                    <li>Popularity: Select "Lower v" (since 13 is higher up than 100, but not close because it's not within 50 spots).</li>
                                     <li>Members: Select "Correct" (both are solo).</li>
                                     <li>Genre: Select "Wrong" (Alessia Cara is Pop, but the correct artist is Hip Hop).</li>
                                     <li>Country: Select "Close" (Alessia Cara is from CA correct artist is from the US, and because the US and CA are both in the same continent, its therefor close).</li>
@@ -699,7 +699,7 @@
 
                     <h2 onclick="toggleContent(this)">Explanation of the Websites Layout</h2>
                     <div class="collapsible-content">
-                        <p>The solver's interface is designed to be intuitive and easy to use. Here’s what you’ll see and the terms that will be used in the tutorial:</p>
+                        <p>The solver's interface is designed to be intuitive and easy to use. Here's what you'll see and the terms that will be used in the tutorial:</p>
                         <ol>
                             <li>Header:
                                 <ul>
@@ -742,8 +742,8 @@
                                 <ul>
                                     <li>At the top left of the website is a settings icon that opens a side bar with all the settings:
                                         <ul>
-                                            <li>The light mode switch toggles light mode. Whatever option you select (it will remain dark mode until you change it) will always be the option whenever you revisit the website, so don’t worry about having to re toggle! </li>
-                                            <li>The hide best guess option is for anyone that wants to do the solving on their own. If you want to play the game for yourself then you can simply hide the best guess feature (so you don’t get any spoilers), and then you can use the list of possible artists to play :)</li>
+                                            <li>The light mode switch toggles light mode. Whatever option you select (it will remain dark mode until you change it) will always be the option whenever you revisit the website, so don't worry about having to re toggle! </li>
+                                            <li>The hide best guess option is for anyone that wants to do the solving on their own. If you want to play the game for yourself then you can simply hide the best guess feature (so you don't get any spoilers), and then you can use the list of possible artists to play :)</li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -765,7 +765,7 @@
                                             <li>The xx (Indie)</li>
                                         </ul>
                                     </li>
-                                    <li>However, if you have already made your first guess (or any amount of guesses for that matter) then that’s ok, because the program should still be able to find the answer within 2-3 guesses.</li>
+                                    <li>However, if you have already made your first guess (or any amount of guesses for that matter) then that's ok, because the program should still be able to find the answer within 2-3 guesses.</li>
                                 </ul>
                             </li>
                             <li><strong>Pay Attention to Feedback:</strong>
@@ -775,7 +775,7 @@
                             </li>
                             <li><strong>Use the Best Guess Feature:</strong>
                                 <ul>
-                                    <li>The solver’s suggested guess is the most efficient guess, found using an algorithm.</li>
+                                    <li>The solver's suggested guess is the most efficient guess, found using an algorithm.</li>
                                 </ul>
                             </li>
                         </ol>
@@ -830,13 +830,124 @@
                     <img src="https://github.com/user-attachments/assets/dec8abd7-9ec6-4299-b59b-06b86778098c" class="tutorial-img" alt="Information second guess">
                                     </ul>
                                 </li>
-                                <li>The solver then tells you that the artist is either Wiz Khalifa or Kanye West. At this stage you either get it right or you don’t depending on who you choose to pick (don’t worry on the next guess you guarantee a win).</li>
+                                <li>The solver then tells you that the artist is either Wiz Khalifa or Kanye West. At this stage you either get it right or you don't depending on who you choose to pick (don't worry on the next guess you guarantee a win).</li>
+                            </ol>
+                        </ul>
+                    </div>
+                    
+                    <h2 onclick="toggleContent(this)">How the Algorithms work (complex)</h2>
+                    <div class="collapsible-content">
+                        <ul>
+                            <li>Overview:</li>
+                            <ol>
+                                <li>The goal of this algorithm is to choose the best artist guess in an artist guessing game by minimizing the search space after each guess. The algorithm utilizes entropy to evaluate how well each attribute (such as genre, debut year, and popularity) splits the list of possible artists. It then refines the guess by balancing the median values of debut year and popularity within the most common genre.</li>
+                                <li>The primary steps are:
+                                    <ul>
+                                        <li>1.	Calculate entropy for each attribute (genre, debut year, popularity).</li>
+                                        <li>2.	Filter artists by the most common genre.</li>
+                                        <li>3.	Balance the guess based on median debut year and median popularity within that genre.</li>
+                                        <li>4.	Choose the artist closest to both the median debut year and popularity to minimize uncertainty.</li>
+                                        <li>5.	Repeat until the correct artist is guessed.</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <li>Detailed Steps of the Algorithm:</li>
+                            <ol>
+                                <li>Step 1: Calculate Entropy for Each Attribute</li>
+                                <li>Entropy is a measure of uncertainty or randomness. The attribute with the highest entropy is the one that best divides the dataset into smaller groups. The higher the entropy, the more evenly the dataset is split, which helps the algorithm narrow down the possibilities effectively.</li>
+                                <li>Entropy is calculated as:
+                                    <ul>
+                                        <li>H(x)= - ∑p(x)log<sub>2</sub>p(x)</li>
+                                    </ul>
+                                </li>
+                                <li>Where:
+                                    <ul>
+                                        <li>X is an attribute (such as genre, debut year, or popularity).</li>
+                                        <li>p(x) is the probability of each value occurring (e.g., the fraction of artists belonging to each genre).</li>
+                                    </ul>
+                                </li>
+                                <li>For each attribute, calculate the entropy. For example:
+                                    <ul>
+                                        <li>Genre: Splits artists into categories like Rock, Pop, Jazz, etc.</li>
+                                        <li>Debut Year: Could be split into ranges (before 2000, after 2000).</li>
+                                        <li>Popularity: Splits into ranges (e.g., low, medium, high).</li>
+                                    </ul>
+                                </li>
+
+                                <li>Step 2: Find the Most Common Genre</li>
+                                <li>The first step in narrowing down the artist pool is to filter by genre, since the genre with the highest entropy divides the list of artists most evenly.
+                                    <ul>
+                                        <li>Find the most common genre among the remaining artists.</li>
+                                        <li>Filter the list to include only the artists that belong to that genre.</li>
+                                    </ul>
+                                </li>
+                                <li>Example:
+                                    <ul>
+                                        <li>If the remaining artists are divided into five genres, and Rock is the most common, filter the list to only Rock artists.</li>
+                                    </ul>
+                                </li>
+
+                                <li>Step 3: Find the Median Debut Year and Popularity within the Most Common Genre</li>
+                                <li>Once we've filtered the artists by genre, we need to refine the guess using debut year and popularity.
+                                    <ul>
+                                        <li>Compute the median debut year within the filtered genre. This gives us the central value of debut years for that genre.</li>
+                                        <li>Compute the median popularity within the filtered genre. This gives us the central value of popularity for that genre.</li>
+                                    </ul>
+                                </li>
+
+                                <li>Step 4: Normalize and Compute the Best Guess</li>
+                                <li>Next, we need to find an artist that is closest to both the median debut year and median popularity.</li>
+                                <li>To ensure each attribute contributes equally, we normalize the values to account for different ranges of debut year and popularity.
+                                    <ul>
+                                        <li>Normalize the debut year by calculating the distance between the artist’s debut year and the median debut year, relative to the range of debut years in the genre.</li>
+                                        <li>Normalize the popularity by calculating the distance between the artist’s popularity and the median popularity, relative to the range of popularity in the genre.</li>
+                                    </ul>
+                                </li>
+                                <li>The normalized distance is computed as:
+                                    <ul>
+                                        <li>Normalised Distance = (Artist Value - Median Value) / Range of Values</li>
+                                    </ul>
+                                </li>
+                                <li>Where:
+                                    <ul>
+                                        <li>The range of values is the difference between the maximum and minimum values of debut year or popularity within the genre.</li>
+                                    </ul>
+                                </li>
+                                <li>After calculating the normalized distance for both debut year and popularity, we sum the two distances to get a total score for each artist.</li>
+                                <li>The formula is:
+                                    <ul>
+                                        <li>Score = (Debut Year - Median Debut Year) / (Max(Debut Year) - Min(Debut Year)) + (Popularity - Median Popularity) / (Max(Popularity) - Min(Popularity))</li>
+                                        <li>Lower scores indicate that the artist is closer to both the median debut year and median popularity, making it the best guess.</li>
+                                        <li>The artist with the smallest score is selected as the best guess.</li>
+                                    </ul>
+                                </li>
+
+                                <li>Step 5: Update the List Based on Feedback</li>
+                                <li>Once a guess is made, feedback is received, and the remaining search space is updated:
+                                    <ul>
+                                        <li>If the genre is correct, filter to that genre and use the feedback to narrow down the list further.</li>
+                                        <li>If the debut year or popularity is close, update the search space based on the feedback provided (e.g., "higher debut year" or "lower popularity").</li>
+                                        <li>Repeat the process: Recalculate entropy, find the next best guess, and continue refining the search until the correct artist is found.</li>
+                                    </ul>
+                                </li>
+
+                                <li>Conclusion</li>
+                                <li>This algorithm balances entropy and median values to make the best guess. By filtering artists based on the most common genre and refining the guess based on both debut year and popularity, it quickly narrows down the possibilities. The best guess is the artist closest to both the median debut year and popularity within the most common genre, ensuring that the game progresses efficiently with each guess.</li>
                             </ol>
                         </ul>
                     </div>
 
+                    <h2 onclick="toggleContent(this)">How to contact me (The creator)</h2>
+                    <div class="collapsible-content">
+                        <ul>
+                            <li><a href="https://www.reddit.com/user/CATninja58/" target="_blank">Reddit</a></li>
+                            <li><a href="https://www.tiktok.com/@soundmapsolver" target="_blank">TikTok</a></li>
+
+                        </ul>
+                    </div>
+
                     <h2>Conclusion</h2>
-                    <p>The <strong>Soundmap Artist Guesser Solver</strong> is a powerful tool to help you solve the Artist Guesser game efficiently. By following this tutorial, you’ll be able to input feedback, narrow down the list of possible artists, and make the best guesses to find the correct answer quickly. Happy guessing!</p>     
+                    <p>The <strong>Soundmap Artist Guesser Solver</strong> is a powerful tool to help you solve the Artist Guesser game efficiently. By following this tutorial, you'll be able to input feedback, narrow down the list of possible artists, and make the best guesses to find the correct answer quickly. Happy guessing!</p>     
 
                     <script>
                         function toggleContent(element) {
