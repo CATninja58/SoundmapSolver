@@ -470,11 +470,12 @@
         }
 
         .help-content {
-            max-width: 800px;
-            margin: 20px auto;
+            width: 100%;
+            height: 100%;
+            margin: 0;
             padding: 30px;
             background-color: #1c1c1c;
-            border-radius: 8px;
+            border-radius: 0;
             position: relative;
         }
 
@@ -506,6 +507,26 @@
 
         .help-overlay strong {
             color: #b19600;
+        }
+
+        /* Light mode adjustments */
+        body.light-mode .help-overlay {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        body.light-mode .help-content {
+            background-color: #ffffff;
+            color: #1c1c1c;
+        }
+
+        body.light-mode .help-overlay h1,
+        body.light-mode .help-overlay h2,
+        body.light-mode .help-overlay h3 {
+            color: #159643;
+        }
+
+        body.light-mode .close-help {
+            color: #1c1c1c;
         }
 
         /* Root variables for theme colors */
@@ -905,7 +926,7 @@
                                 </li>
                                 <li>The normalized distance is computed as:
                                     <ul>
-                                        <p>Normalised Distance =
+                                        <p><strong>Normalised Distance =
                                             <math>
                                                 <mfrac bevelled="true">
                                                     <mfrac>
@@ -918,7 +939,7 @@
                                                     </mfrac>
                                                 </mfrac>
                                             </math>
-                                        </p>
+                                        </strong></p>
                                     </ul>
                                 </li>
                                 <li>Where:
@@ -929,7 +950,7 @@
                                 <li>After calculating the normalized distance for both debut year and popularity, we sum the two distances to get a total score for each artist.</li>
                                 <li>The formula is:
                                     <ul>
-                                        <p>Score = 
+                                        <p><strong>Score = 
                                             <math>
                                                 <mfrac bevelled="true">
                                                     <mfrac>
@@ -955,7 +976,7 @@
                                                     </mfrac>
                                                 </mfrac>
                                             </math>
-                                        </p>
+                                        </strong></p>
                                         <li>Lower scores indicate that the artist is closer to both the median debut year and median popularity, making it the best guess.</li>
                                         <li>The artist with the smallest score is selected as the best guess.</li>
                                     </ul>
