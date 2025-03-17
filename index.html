@@ -852,12 +852,12 @@
                                 </li>
                             </ul>
                             <li>Detailed Steps of the Algorithm:</li>
-                            <ol>
+                            <ul>
                                 <li>Step 1: Calculate Entropy for Each Attribute</li>
                                 <li>Entropy is a measure of uncertainty or randomness. The attribute with the highest entropy is the one that best divides the dataset into smaller groups. The higher the entropy, the more evenly the dataset is split, which helps the algorithm narrow down the possibilities effectively.</li>
                                 <li>Entropy is calculated as:
                                     <ul>
-                                        <li>H(x)= - ∑p(x)log<sub>2</sub>p(x)</li>
+                                        <li><strong>H(x)= - ∑p(x)log<sub>2</sub>p(x)</strong></li>
                                     </ul>
                                 </li>
                                 <li>Where:
@@ -916,7 +916,9 @@
                                 <li>After calculating the normalized distance for both debut year and popularity, we sum the two distances to get a total score for each artist.</li>
                                 <li>The formula is:
                                     <ul>
-                                        <li>Score = (Debut Year - Median Debut Year) / (Max(Debut Year) - Min(Debut Year)) + (Popularity - Median Popularity) / (Max(Popularity) - Min(Popularity))</li>
+                                        <li>Score = <span style="display: inline-block; vertical-align: middle;">(Debut Year - Median Debut Year)</span> / <span style="display: inline-block; vertical-align: middle;">(Max(Debut Year) - Min(Debut Year))</span> + <span style="display: inline-block; vertical-align: middle;">(Popularity - Median Popularity)</span> / <span style="display: inline-block; vertical-align: middle;">(Max(Popularity) - Min(Popularity))</span></li>
+                                    </ul>
+                                </li>
                                         <li>Lower scores indicate that the artist is closer to both the median debut year and median popularity, making it the best guess.</li>
                                         <li>The artist with the smallest score is selected as the best guess.</li>
                                     </ul>
@@ -933,7 +935,7 @@
 
                                 <li>Conclusion</li>
                                 <li>This algorithm balances entropy and median values to make the best guess. By filtering artists based on the most common genre and refining the guess based on both debut year and popularity, it quickly narrows down the possibilities. The best guess is the artist closest to both the median debut year and popularity within the most common genre, ensuring that the game progresses efficiently with each guess.</li>
-                            </ol>
+                            </ul>
                         </ul>
                     </div>
 
