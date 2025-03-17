@@ -905,7 +905,20 @@
                                 </li>
                                 <li>The normalized distance is computed as:
                                     <ul>
-                                        <li>Normalised Distance = (Artist Value - Median Value) / Range of Values</li>
+                                        <p>Normalised Distance =
+                                            <math>
+                                                <mfrac bevelled="true">
+                                                    <mfrac>
+                                                        <msup>
+                                                            <mi>Artist Value - Median Value</mi>
+                                                        </msup>
+                                                        <msup>
+                                                            <mi>Range of Values</mi>
+                                                        </msup>
+                                                    </mfrac>
+                                                </mfrac>
+                                            </math>
+                                        </p>
                                     </ul>
                                 </li>
                                 <li>Where:
@@ -916,9 +929,33 @@
                                 <li>After calculating the normalized distance for both debut year and popularity, we sum the two distances to get a total score for each artist.</li>
                                 <li>The formula is:
                                     <ul>
-                                        <li>Score = <span style="display: inline-block; vertical-align: middle;">(Debut Year - Median Debut Year)</span> / <span style="display: inline-block; vertical-align: middle;">(Max(Debut Year) - Min(Debut Year))</span> + <span style="display: inline-block; vertical-align: middle;">(Popularity - Median Popularity)</span> / <span style="display: inline-block; vertical-align: middle;">(Max(Popularity) - Min(Popularity))</span></li>
-                                    </ul>
-                                </li>
+                                        <p>Score = 
+                                            <math>
+                                                <mfrac bevelled="true">
+                                                    <mfrac>
+                                                        <msup>
+                                                            <mi>Debut Year - Median Debut Year</mi>
+                                                        </msup>
+                                                        <msup>
+                                                            <mi>Max(Debut Year) - Min(Debut Year)</mi>
+                                                        </msup>
+                                                    </mfrac>
+                                                </mfrac>
+                                            </math>
+                                             + 
+                                            <math>
+                                                <mfrac bevelled="true">
+                                                    <mfrac>
+                                                        <msup>
+                                                            <mi>Popularity - Median Popularity</mi>
+                                                        </msup>
+                                                        <msup>
+                                                            <mi>Max(Popularity) - Min(Popularity)</mi>
+                                                        </msup>
+                                                    </mfrac>
+                                                </mfrac>
+                                            </math>
+                                        </p>
                                         <li>Lower scores indicate that the artist is closer to both the median debut year and median popularity, making it the best guess.</li>
                                         <li>The artist with the smallest score is selected as the best guess.</li>
                                     </ul>
