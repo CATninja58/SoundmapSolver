@@ -834,7 +834,7 @@
                             </ol>
                         </ul>
                     </div>
-                    
+
                     <h2 onclick="toggleContent(this)">How the Algorithms work (complex)</h2>
                     <div class="collapsible-content">
                         <ul>
@@ -967,6 +967,8 @@
 
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
     <h1>Soundmap Artist Guesser Solver</h1>
+
+    <button onclick="resetSolver()">Reset</button>
 
     <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
     <div id="searchResults"></div>
@@ -1442,6 +1444,28 @@
             }
             const bestGuess = closestArtist.artist;
             displayArtistInfo(bestGuess);
+        }
+
+        function resetSolver() {
+            // Clear the search input
+            document.getElementById("artistSearch").value = '';
+
+            // Clear the search results
+            document.getElementById("searchResults").innerHTML = '';
+
+            // Clear the guesses
+            document.getElementById("guessesContainer").innerHTML = '';
+
+            // Clear the best guess
+            document.getElementById("bestGuessContainer").innerHTML = '';
+
+            // Reset the guesses array and count
+            guesses = [];
+            guessCount = 0;
+
+            // Reset the filtered artists to the full list
+            filteredArtists = [...artistsData];
+            displayArtists();
         }
 
         // Function to toggle the sidebar
