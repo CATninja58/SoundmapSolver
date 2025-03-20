@@ -1384,28 +1384,46 @@
             const bestGuessContainer = document.getElementById("bestGuessContainer");
 
             if (filteredArtists.length === 0) {
-                bestGuessButton.classList.add("hidden");
-                bestGuessContainer.innerHTML = 'Error';
-                return;
+            bestGuessButton.classList.add("hidden");
+            bestGuessContainer.innerHTML = 'Error';
+            return;
             }
 
-            const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
-            let bestInformationGain = -Infinity;
-            let bestCategory = "";
+            // Step 1: Find the most common genre
+            const genreCounts = filteredArtists.reduce((acc, artist) => {
+            acc[artist.genre] = (acc[artist.genre] || 0) + 1;
+            return acc;
+            }, {});
 
-            // Step 1: Find the category with the highest information gain
-            categories.forEach(category => {
-                const infoGain = calculateInformationGain(filteredArtists, category);
-                if (infoGain > bestInformationGain) {
-                    bestInformationGain = infoGain;
-                    bestCategory = category;
-                }
-            });
+            const mostCommonGenre = Object.keys(genreCounts).reduce((a, b) => genreCounts[a] > genreCounts[b] ? a : b);
+            const artistsInMostCommonGenre = filteredArtists.filter(artist => artist.genre === mostCommonGenre);
 
-            // Step 2: Sort artists by the best category (median split for now)
-            const sortedArtists = [...filteredArtists].sort((a, b) => a[bestCategory] - b[bestCategory]);
-            const medianIndex = Math.floor(sortedArtists.length / 2);
-            const bestGuessArtist = sortedArtists[medianIndex];
+            // Step 2: Find the median popularity for all artists
+            const sortedByPopularity = [...filteredArtists].sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
+            const medianPopularityIndex = Math.floor(sortedByPopularity.length / 2);
+            const medianPopularity = sortedByPopularity[medianPopularityIndex].popularity;
+
+            // Step 3: Filter artists with the median popularity within the most common genre
+            const medianPopularityArtists = artistsInMostCommonGenre.filter(artist => artist.popularity === medianPopularity);
+
+            // Step 4: Calculate the median debut year for all artists
+            const allArtistsSortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
+            const medianDebutIndex = Math.floor(allArtistsSortedByDebut.length / 2);
+            const medianDebut = allArtistsSortedByDebut[medianDebutIndex].debut;
+
+            // Step 5: Among the median popularity artists, find the one with the debut year closest to the median debut year
+            let closestArtist = medianPopularityArtists[0];
+            let closestDifference = Math.abs(parseInt(closestArtist.debut) - medianDebut);
+
+            for (let i = 1; i < medianPopularityArtists.length; i++) {
+            const currentDifference = Math.abs(parseInt(medianPopularityArtists[i].debut) - medianDebut);
+            if (currentDifference < closestDifference) {
+                closestArtist = medianPopularityArtists[i];
+                closestDifference = currentDifference;
+            }
+            }
+
+            const bestGuessArtist = closestArtist;
 
             const bestGuessElement = document.createElement("div");
             bestGuessElement.textContent = `Best Guess: ${bestGuessArtist.artist}`;
@@ -1424,30 +1442,27 @@
             document.getElementById("bestGuessButton").innerHTML = `Click to make <span id="bestGuessName">${bestGuessName}</span> your next guess!`;
         }
 
-
-        function updateBestGuessName() {
-            const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
-            const bestGuessName = bestGuessElement ? bestGuessElement.textContent.replace("Best Guess: ", "") : "";
-            document.getElementById("bestGuessName").textContent = bestGuessName;
-            document.getElementById("bestGuessButton").innerHTML = `Click to make <span id="bestGuessName">${bestGuessName}</span> your next guess!`;
-        }
-
-        document.addEventListener("DOMContentLoaded", updateBestGuessName);
-    
         function makeBestGuessNext() {
             if (filteredArtists.length === 0) return;
 
-            // Step 1: Sort all artists by popularity
-            const sortedByPopularity = [...filteredArtists].sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
+            // Step 1: Find the most common genre
+            const genreCounts = filteredArtists.reduce((acc, artist) => {
+            acc[artist.genre] = (acc[artist.genre] || 0) + 1;
+            return acc;
+            }, {});
 
-            // Step 2: Find the median popularity
+            const mostCommonGenre = Object.keys(genreCounts).reduce((a, b) => genreCounts[a] > genreCounts[b] ? a : b);
+            const artistsInMostCommonGenre = filteredArtists.filter(artist => artist.genre === mostCommonGenre);
+
+            // Step 2: Find the median popularity for all artists
+            const sortedByPopularity = [...filteredArtists].sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
             const medianPopularityIndex = Math.floor(sortedByPopularity.length / 2);
             const medianPopularity = sortedByPopularity[medianPopularityIndex].popularity;
 
-            // Step 3: Filter artists with the median popularity
-            const medianPopularityArtists = sortedByPopularity.filter(artist => artist.popularity === medianPopularity);
+            // Step 3: Filter artists with the median popularity within the most common genre
+            const medianPopularityArtists = artistsInMostCommonGenre.filter(artist => artist.popularity === medianPopularity);
 
-            // Step 4: Calculate the median debut year for ALL artists (not just median popularity ones)
+            // Step 4: Calculate the median debut year for all artists
             const allArtistsSortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
             const medianDebutIndex = Math.floor(allArtistsSortedByDebut.length / 2);
             const medianDebut = allArtistsSortedByDebut[medianDebutIndex].debut;
@@ -1457,12 +1472,13 @@
             let closestDifference = Math.abs(parseInt(closestArtist.debut) - medianDebut);
 
             for (let i = 1; i < medianPopularityArtists.length; i++) {
-                const currentDifference = Math.abs(parseInt(medianPopularityArtists[i].debut) - medianDebut);
-                if (currentDifference < closestDifference) {
-                    closestArtist = medianPopularityArtists[i];
-                    closestDifference = currentDifference;
-                }
+            const currentDifference = Math.abs(parseInt(medianPopularityArtists[i].debut) - medianDebut);
+            if (currentDifference < closestDifference) {
+                closestArtist = medianPopularityArtists[i];
+                closestDifference = currentDifference;
             }
+            }
+
             const bestGuess = closestArtist.artist;
             displayArtistInfo(bestGuess);
         }
