@@ -1,4 +1,4 @@
-ARTIST,DEBUT,PopULARITY,MEMBERS,GENRE,COUNTRY,GENDER
+ARTIST,DEBUT,POPULARITY,MEMBERS,GENRE,COUNTRY,GENDER
 Bruno Mars,2010,1,Solo,Pop,US,Male
 Ariana Grande,2011,2,Solo,Pop,US,Female
 Taylor Swift,2006,3,Solo,Pop,US,Female
@@ -830,7 +830,7 @@ Kehlani,2014,21,Solo,R&B,US,Female
 Miguel,2010,22,Solo,R&B,US,Male
 NXCRE,2018,23,Group,R&B,US,Male
 Brent Faiyaz,2015,24,Solo,R&B,US,Male
-"Earth, Wind, & Fire",1971,25,Group,R&B,US,Male
+"Earth Wind & Fire",1971,25,Group,R&B,US,Male
 Mary J. Blige,1992,26,Solo,R&B,US,Female
 Dadju,2017,27,Solo,R&B,FR,Male
 Joji,2017,28,Solo,R&B,US,Male
