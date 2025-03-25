@@ -1336,9 +1336,10 @@
             artistList.innerHTML = '';
 
             filteredArtists.forEach(artist => {
-            const artistItem = document.createElement("tr");
+            if (artist.artist) { // Filter out artists without a name
+                const artistItem = document.createElement("tr");
 
-            artistItem.innerHTML = `
+                artistItem.innerHTML = `
                 <td>${artist.artist}</td>
                 <td>${artist.debut}</td>
                 <td>${artist.popularity}</td>
@@ -1346,9 +1347,10 @@
                 <td>${artist.genre}</td>
                 <td>${artist.country}</td>
                 <td>${artist.gender}</td>
-            `;
+                `;
 
-            artistList.appendChild(artistItem);
+                artistList.appendChild(artistItem);
+            }
             });
         }
 
@@ -1382,9 +1384,8 @@
             } else if (category === 'genre') {
                 const order = ['Pop', 'Hip Hop', 'Indie', 'Rock', 'R&B'];
                 return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
-            } else if (category === 'gender') {
-                const order = ['Male', 'Female', 'Mixed'];
-                return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
+            } else if (category === 'country' || category === 'gender') {
+                return sortOrder[category] === 'asc' ? a[category].localeCompare(b[category]) : b[category].localeCompare(a[category]);
             } else {
                 return sortOrder[category] === 'asc' ? a[category].localeCompare(b[category]) : b[category].localeCompare(a[category]);
             }
