@@ -1384,11 +1384,7 @@
             } else if (category === 'genre') {
                 const order = ['Pop', 'Hip Hop', 'Indie', 'Rock', 'R&B'];
                 return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
-            } else if (category === 'country') {
-                return sortOrder[category] === 'asc' ? a[category] - b[category] : b[category] - a[category];
-            } else if (category === 'gender') {
-                const order = ['Male', 'Female', 'Mixed'];
-                return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
+            
             } else {
                 return sortOrder[category] === 'asc' ? a[category].localeCompare(b[category]) : b[category].localeCompare(a[category]);
             }
