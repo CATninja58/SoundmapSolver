@@ -1014,6 +1014,8 @@
 
     <button id="bestGuessButton" class="hidden" onclick="makeBestGuessNext()">Click to make <span id="bestGuessName">best guess</span> your next guess</button>
     
+    <div id="chanceContainer" class="footer-text" style="margin-top: 20px;"></div>
+
     <div class="results-container">
         <div class="footer-text" style="font-size: 16px;">List of possible artists</div>
         <div class="footer-text">Scroll to the right for all the stats on artists</div>
@@ -1433,6 +1435,7 @@
             updateBestGuessName();
 
             bestGuessButton.classList.remove("hidden");
+            updateChance()
         }
 
         function updateBestGuessName() {
@@ -1440,6 +1443,17 @@
             const bestGuessName = bestGuessElement ? bestGuessElement.textContent.replace("Best Guess: ", "") : "";
             document.getElementById("bestGuessName").textContent = bestGuessName;
             document.getElementById("bestGuessButton").innerHTML = `Click to make <span id="bestGuessName">${bestGuessName}</span> your next guess!`;
+        }
+
+        function updateChance() {
+            const chanceContainer = document.getElementById("chanceContainer");
+            const remainingArtists = filteredArtists.length;
+            if (remainingArtists > 0) {
+                const chance = (1 / remainingArtists) * 100;
+                chanceContainer.textContent = `1 in ${remainingArtists} chance (${chance.toFixed(2)}%)`;
+            } else {
+                chanceContainer.textContent = 'No remaining artists';
+            }
         }
 
         function makeBestGuessNext() {
@@ -1495,6 +1509,9 @@
 
             // Clear the best guess
             document.getElementById("bestGuessContainer").innerHTML = '';
+
+            // Clear the chance container
+            document.getElementById("chanceContainer").innerHTML = '';
 
             // Reset the guesses array and count
             guesses = [];
