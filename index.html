@@ -1385,9 +1385,9 @@
                     const order = ['Pop', 'Hip Hop', 'Indie', 'Rock', 'R&B'];
                     return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
                 } else if (category === 'country' || category === 'gender') {
-                    return sortOrder[category] === 'asc' ? a[category].localeCompare(b[category]) : b[category].localeCompare(a[category]);
+                    return sortOrder[category] === 'asc' ? a[category].toLowerCase().localeCompare(b[category].toLowerCase()) : b[category].toLowerCase().localeCompare(a[category].toLowerCase());
                 } else {
-                    return sortOrder[category] === 'asc' ? a[category].localeCompare(b[category]) : b[category].localeCompare(a[category]);
+                    return sortOrder[category] === 'asc' ? a[category].toLowerCase().localeCompare(b[category].toLowerCase()) : b[category].toLowerCase().localeCompare(a[category].toLowerCase());
                 }
             });
 
