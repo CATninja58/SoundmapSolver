@@ -1368,26 +1368,27 @@
             const sortOrderIcon = sortOrder[category] === 'asc' ? 'v' : '^';
             const headers = document.querySelectorAll('th');
             headers.forEach(header => {
-            if (header.dataset.category === category) {
-                header.textContent = header.textContent.replace(/[\^v]/, '') + ' ' + sortOrderIcon;
-            } else {
-                header.textContent = header.textContent.replace(/[\^v]/, '');
-            }
+                if (header.dataset.category === category) {
+                    header.textContent = header.textContent.replace(/[\^v]/, '') + ' ' + sortOrderIcon;
+                } else {
+                    header.textContent = header.textContent.replace(/[\^v]/, '');
+                }
             });
 
             filteredArtists.sort((a, b) => {
-            if (category === 'debut' || category === 'popularity') {
-                return sortOrder[category] === 'asc' ? a[category] - b[category] : b[category] - a[category];
-            } else if (category === 'members') {
-                const order = ['Solo', 'Group'];
-                return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
-            } else if (category === 'genre') {
-                const order = ['Pop', 'Hip Hop', 'Indie', 'Rock', 'R&B'];
-                return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
-            
-            } else {
-                return sortOrder[category] === 'asc' ? a[category].localeCompare(b[category]) : b[category].localeCompare(a[category]);
-            }
+                if (category === 'debut' || category === 'popularity') {
+                    return sortOrder[category] === 'asc' ? a[category] - b[category] : b[category] - a[category];
+                } else if (category === 'members') {
+                    const order = ['Solo', 'Group'];
+                    return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
+                } else if (category === 'genre') {
+                    const order = ['Pop', 'Hip Hop', 'Indie', 'Rock', 'R&B'];
+                    return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
+                } else if (category === 'country' || category === 'gender') {
+                    return sortOrder[category] === 'asc' ? a[category].localeCompare(b[category]) : b[category].localeCompare(a[category]);
+                } else {
+                    return sortOrder[category] === 'asc' ? a[category].localeCompare(b[category]) : b[category].localeCompare(a[category]);
+                }
             });
 
             sortOrder[category] = sortOrder[category] === 'asc' ? 'desc' : 'asc';
