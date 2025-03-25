@@ -1023,13 +1023,13 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="min-width: 300px;">Artist</th>
-                        <th style="min-width: 200px;">Debut</th>
-                        <th style="min-width: 250px;">Popularity</th>
-                        <th style="min-width: 200px;">Members</th>
-                        <th style="min-width: 200px;">Genre</th>
-                        <th style="min-width: 200px;">Country</th>
-                        <th style="min-width: 200px;">Gender</th>
+                        <th style="min-width: 300px;" data-category="artist">Artist</th>
+                        <th style="min-width: 200px;" data-category="debut">Debut</th>
+                        <th style="min-width: 250px;" data-category="popularity">Popularity</th>
+                        <th style="min-width: 200px;" data-category="members">Members</th>
+                        <th style="min-width: 200px;" data-category="genre">Genre</th>
+                        <th style="min-width: 200px;" data-category="country">Country</th>
+                        <th style="min-width: 200px;" data-category="gender">Gender</th>
                     </tr>
                 </thead>
                 <tbody id="artistList"></tbody>
@@ -1395,12 +1395,12 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const headers = document.querySelectorAll('th');
+            const headers = document.querySelectorAll('th[data-category]');
             headers.forEach(header => {
-            header.addEventListener('click', () => {
-                const category = header.dataset.category;
-                sortArtists(category);
-            });
+                header.addEventListener('click', () => {
+                    const category = header.dataset.category;
+                    sortArtists(category);
+                });
             });
         });
 
