@@ -1352,6 +1352,58 @@
             });
         }
 
+        let sortOrder = {
+            artist: 'asc',
+            debut: 'asc',
+            popularity: 'asc',
+            members: 'asc',
+            genre: 'asc',
+            country: 'asc',
+            gender: 'asc'
+        };
+
+        function sortArtists(category) {
+            const sortOrderIcon = sortOrder[category] === 'asc' ? 'v' : '^';
+            const headers = document.querySelectorAll('th');
+            headers.forEach(header => {
+            if (header.dataset.category === category) {
+                header.textContent = header.textContent.replace(/[\^v]/, '') + ' ' + sortOrderIcon;
+            } else {
+                header.textContent = header.textContent.replace(/[\^v]/, '');
+            }
+            });
+
+            filteredArtists.sort((a, b) => {
+            if (category === 'debut' || category === 'popularity') {
+                return sortOrder[category] === 'asc' ? a[category] - b[category] : b[category] - a[category];
+            } else if (category === 'members') {
+                const order = ['Solo', 'Group'];
+                return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
+            } else if (category === 'genre') {
+                const order = ['Pop', 'Hip Hop', 'Indie', 'Rock', 'R&B'];
+                return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
+            } else if (category === 'gender') {
+                const order = ['Male', 'Female', 'Mixed'];
+                return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
+            } else {
+                return sortOrder[category] === 'asc' ? a[category].localeCompare(b[category]) : b[category].localeCompare(a[category]);
+            }
+            });
+
+            sortOrder[category] = sortOrder[category] === 'asc' ? 'desc' : 'asc';
+            displayArtists();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const headers = document.querySelectorAll('th');
+            headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const category = header.dataset.category;
+                sortArtists(category);
+            });
+            });
+        });
+
         function calculateEntropy(artists) {
             const genreCounts = artists.reduce((acc, artist) => {
                 acc[artist.genre] = (acc[artist.genre] || 0) + 1;
@@ -1467,8 +1519,6 @@
                 chanceContainer.textContent = 'No remaining artists';
             }
         }        
-
-        
 
         function resetSolver() {
             // Clear the search input
@@ -1587,6 +1637,8 @@
                 console.error('Error fetching manifest:', error);
             });
         });
+
+        
     </script>
 
 </body>
