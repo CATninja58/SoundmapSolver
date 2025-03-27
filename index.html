@@ -1120,14 +1120,6 @@
             filteredArtistsSorted = [...artistsDataSorted];
         }
 
-        function getPercentFor(artist, guessCount) {
-            const artistData = artistsDataSorted.find(data => data.Artist === artist.artist);
-            if (artistData) {
-                return guessCount === 2 ? artistData.TwoGuesses : artistData.ThreeGuesses;
-            }
-            return "";
-        }
-
         function searchArtist() {
             const query = document.getElementById("artistSearch").value.toLowerCase();
             const searchResults = document.getElementById("searchResults");
@@ -1188,6 +1180,14 @@
                     revealOverlayText(artist.artist, TwoPercent, ThreePercent);
                 }
             }
+        }
+
+        function getPercentFor(artist, guessCount) {
+            const artistData = filteredArtistsSorted.find(data => data.Artist === artist.artist);
+            if (artistData) {
+                return guessCount === 2 ? artistData.TwoGuesses : artistData.ThreeGuesses;
+            }
+            return "";
         }
 
         function revealOverlayText(firstGuess, TwoPercent, ThreePercent) {
