@@ -986,6 +986,30 @@
         </div>
     </div>
 
+    <div id="helpOverlay">
+        <div id="helpOverlayContent">
+            <p>Your first guess being <b>${firstGuess}</b> is really inefficient because your chance to get the correct artist in 3 guesses is <b>${ThreePercent}%</b> and your chance to get it in 2 guesses is just <b>${TwoPercent}%</b>.</p>
+            <p>If you want to get more gems per day, I would suggest making your first guess one of these 5 artists:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Artist</th>
+                        <th>2 Guesses</th>
+                        <th>3 Guesses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Yuridia</td><td>8.44%</td><td>37.14%</td></tr>
+                    <tr><td>INNA</td><td>8.24%</td><td>37.44%</td></tr>
+                    <tr><td>Stromae</td><td>8.14%</td><td>37.84%</td></tr>
+                    <tr><td>Zara Larsson</td><td>7.94%</td><td>36.25%</td></tr>
+                    <tr><td>Alessia Cara</td><td>7.85%</td><td>36.44%</td></tr>
+                </tbody>
+            </table>
+            <button onclick="closeHelpOverlay()">Close</button>
+        </div>
+      </div>
+
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
     <h1>Soundmap Artist Guesser Solver</h1>
 
@@ -1043,6 +1067,11 @@
         let artistsData = [];
         let artistInfo = {};
         let filteredArtists = [];
+
+        let artistsDataSorted = [];
+        let artistInfoSorted = {};
+        let filteredArtistsSorted = [];
+
         let guesses = [];
         let guessCount = 0;
 
@@ -1050,8 +1079,7 @@
             return /Android/i.test(navigator.userAgent);
         }
 
-        function loadCSV() {
-            const csvUrl = "https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/MasterArtistList.csv";
+        function loadCSV(csvUrl) {
             fetch(csvUrl)
                 .then(response => response.text())
                 .then(csvText => parseCSV(csvText))
@@ -1067,6 +1095,31 @@
             });
             filteredArtists = [...artistsData];
             displayArtists();
+        }
+
+        function loadSortedCSV(csvUrl) {
+            fetch(csvUrl)
+                .then(response => response.text())
+                .then(csvText => parseSortedCSV(csvText))
+                .catch(error => console.error("Error loading Sorted CSV file:", error));
+        }
+
+        function parseSortedCSV(csvText) {
+            const rows = csvText.split("\n");
+            rows.shift();
+            artistsDataSorted = rows.map(row => {
+                const [Artist, TwoGuesses, ThreeGuesses] = row.split(",");
+                return { Artist, TwoGuesses, ThreeGuesses };
+            });
+            filteredArtistsSorted = [...artistsDataSorted];
+        }
+
+        function getPercentFor(artist, guessCount) {
+            const artistData = artistsDataSorted.find(data => data.Artist === artist.artist);
+            if (artistData) {
+                return guessCount === 2 ? artistData.TwoGuesses : artistData.ThreeGuesses;
+            }
+            return "";
         }
 
         function searchArtist() {
@@ -1122,7 +1175,26 @@
             guesses.push(guess);
 
             createButtons(artist, guessBoxes, guess);
+            if(guessCount === 1){
+                TwoPercent = getPercentFor(artist, 2);
+                ThreePercent = getPercentFor(artist, 3);
+                if (TwoPercent < 5.00 || ThreePercent < 30.00){
+                    revealOverlayText();
+                }
+            }
         }
+
+        function revealOverlayText(firstGuess, TwoPercent, ThreePercent) {
+            const helpOverlay = document.getElementById("helpOverlay");
+            const helpContent = document.querySelector(".help-content");
+            
+            helpOverlay.style.display = "flex";
+        }
+
+        function closeHelpOverlay() {
+            document.getElementById("helpOverlay").style.display = "none";
+        }
+
 
         function createButtons(artist, container, guess) {
             const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
@@ -1623,7 +1695,7 @@
         // Initialize light mode preference on page load
         document.addEventListener('DOMContentLoaded', checkLightModePreference);
 
-        loadCSV();
+        loadCSV("https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/MasterArtistList.csv");
 
         window.addEventListener('load', () => {
             fetch('/SoundmapSolver/manifest.json')
