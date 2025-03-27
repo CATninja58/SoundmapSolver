@@ -1105,17 +1105,17 @@
 
         function loadSortedCSV(csvUrl) {
             fetch(csvUrl)
-                .then(response => response.text())
-                .then(csvText => parseSortedCSV(csvText))
-                .catch(error => console.error("Error loading Sorted CSV file:", error));
+            .then(response => response.text())
+            .then(csvText => parseSortedCSV(csvText))
+            .catch(error => console.error("Error loading Sorted CSV file:", error));
         }
 
         function parseSortedCSV(csvText) {
             const rows = csvText.split("\n");
             rows.shift();
             artistsDataSorted = rows.map(row => {
-                const [Artist, TwoGuesses, ThreeGuesses] = row.split(",");
-                return { Artist, TwoGuesses, ThreeGuesses };
+            const [Artist, TwoGuesses, ThreeGuesses] = row.split(",");
+            return { Artist, TwoGuesses, ThreeGuesses };
             });
             filteredArtistsSorted = [...artistsDataSorted];
         }
@@ -1126,17 +1126,17 @@
             searchResults.innerHTML = '';
 
             if (query) {
-                const matches = artistsData.filter(artist => artist.artist.toLowerCase().includes(query));
-                matches.forEach(match => {
-                    const resultDiv = document.createElement("div");
-                    resultDiv.textContent = match.artist;
-                    resultDiv.onclick = () => {
-                        displayArtistInfo(match.artist);
-                        document.getElementById("artistSearch").value = '';
-                        searchResults.innerHTML = '';
-                    };
-                    searchResults.appendChild(resultDiv);
-                });
+            const matches = artistsData.filter(artist => artist.artist.toLowerCase().includes(query));
+            matches.forEach(match => {
+                const resultDiv = document.createElement("div");
+                resultDiv.textContent = match.artist;
+                resultDiv.onclick = () => {
+                displayArtistInfo(match.artist);
+                document.getElementById("artistSearch").value = '';
+                searchResults.innerHTML = '';
+                };
+                searchResults.appendChild(resultDiv);
+            });
             }
         }
 
@@ -1174,23 +1174,23 @@
 
             createButtons(artist, guessBoxes, guess);
             if(guessCount === 1){
-                const TwoPercent = getPercentFor(artist, 2) || 0; // Default to 0 if undefined
-                const ThreePercent = getPercentFor(artist, 3) || 0; // Default to 0 if undefined
-                if (parseFloat(TwoPercent) < 5.00 || parseFloat(ThreePercent) < 30.00) {
-                    revealOverlayText(artist.artist, TwoPercent, ThreePercent);
-                }
+            const TwoPercent = getPercentFor(artist, 2) || 0; // Default to 0 if undefined
+            const ThreePercent = getPercentFor(artist, 3) || 0; // Default to 0 if undefined
+            if (parseFloat(TwoPercent) < 5.00 || parseFloat(ThreePercent) < 30.00) {
+                revealOverlayText(artist.artist, TwoPercent, ThreePercent);
+            }
             }
         }
 
         function getPercentFor(artist, guessCount) {
             if (!filteredArtistsSorted || filteredArtistsSorted.length === 0) {
-                console.error("filteredArtistsSorted is empty or not loaded.");
-                return 0;
+            console.error("filteredArtistsSorted is empty or not loaded.");
+            return 0;
             }
 
             const artistData = filteredArtistsSorted.find(data => data.Artist.trim().toLowerCase() === artist.artist.trim().toLowerCase());
             if (artistData) {
-                return guessCount === 2 ? parseFloat(artistData.TwoGuesses) || 0 : parseFloat(artistData.ThreeGuesses) || 0;
+            return guessCount === 2 ? parseFloat(artistData.TwoGuesses) || 0 : parseFloat(artistData.ThreeGuesses) || 0;
             }
 
             console.warn(`Artist "${artist.artist}" not found in filteredArtistsSorted.`);
@@ -1202,11 +1202,45 @@
             document.getElementById('firstGuess').textContent = firstGuess;
             document.getElementById('TwoPercent').textContent = `${TwoPercent}%`;
             document.getElementById('ThreePercent').textContent = `${ThreePercent}%`;
-            overlay.classList.add('open');
+            overlay.style.display = "block"; // Ensure the overlay is visible
         }
 
         function closeHelpOverlay() {
-            document.getElementById("firstGuessOverlay").style.display = "none";
+            const overlay = document.getElementById("firstGuessOverlay");
+            overlay.style.display = "none";
+        }
+
+        function resetSolver() {
+            // Clear the search input
+            document.getElementById("artistSearch").value = '';
+
+            // Clear the search results
+            document.getElementById("searchResults").innerHTML = '';
+
+            // Clear the guesses
+            document.getElementById("guessesContainer").innerHTML = '';
+
+            // Clear the best guess
+            document.getElementById("bestGuessContainer").innerHTML = '';
+
+            // Clear the chance container
+            document.getElementById("chanceContainer").innerHTML = '';
+
+            // Reset the guesses array and count
+            guesses = [];
+            guessCount = 0;
+
+            // Reset the filtered artists to the full list
+            filteredArtists = [...artistsData];
+            filteredArtistsSorted = [...artistsDataSorted]; // Reload the sorted artists data
+            displayArtists();
+
+            // Recalculate the best guess
+            calculateBestGuess();
+
+            // Reset the first guess overlay
+            const overlay = document.getElementById("firstGuessOverlay");
+            overlay.style.display = "none";
         }
 
         function createButtons(artist, container, guess) {
