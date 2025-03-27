@@ -986,27 +986,31 @@
         </div>
     </div>
 
-    <div id="helpOverlay">
-        <div id="helpOverlayContent">
-            <p>Your first guess being <b>${firstGuess}</b> is really inefficient because your chance to get the correct artist in 3 guesses is <b>${ThreePercent}%</b> and your chance to get it in 2 guesses is just <b>${TwoPercent}%</b>.</p>
-            <p>If you want to get more gems per day, I would suggest making your first guess one of these 5 artists:</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Artist</th>
-                        <th>2 Guesses</th>
-                        <th>3 Guesses</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Yuridia</td><td>8.44%</td><td>37.14%</td></tr>
-                    <tr><td>INNA</td><td>8.24%</td><td>37.44%</td></tr>
-                    <tr><td>Stromae</td><td>8.14%</td><td>37.84%</td></tr>
-                    <tr><td>Zara Larsson</td><td>7.94%</td><td>36.25%</td></tr>
-                    <tr><td>Alessia Cara</td><td>7.85%</td><td>36.44%</td></tr>
-                </tbody>
-            </table>
-            <button onclick="closeHelpOverlay()">Close</button>
+    <div class="help-overlay" id="firstGuessOverlay">
+        <div class="tutorial-container">
+            <div class="tutorial-box">
+                <div class="help-contect">
+                    <p>Your first guess being <b>${firstGuess}</b> is really inefficient because your chance to get the correct artist in 3 guesses is <b>${ThreePercent}%</b> and your chance to get it in 2 guesses is just <b>${TwoPercent}%</b>.</p>
+                    <p>If you want to get more gems per day, I would suggest making your first guess one of these 5 artists:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Artist</th>
+                                <th>2 Guesses</th>
+                                <th>3 Guesses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Yuridia</td><td>8.44%</td><td>37.14%</td></tr>
+                            <tr><td>INNA</td><td>8.24%</td><td>37.44%</td></tr>
+                            <tr><td>Stromae</td><td>8.14%</td><td>37.84%</td></tr>
+                            <tr><td>Zara Larsson</td><td>7.94%</td><td>36.25%</td></tr>
+                            <tr><td>Alessia Cara</td><td>7.85%</td><td>36.44%</td></tr>
+                        </tbody>
+                    </table>
+                    <button onclick="closeHelpOverlay()">Close</button>
+                </div>
+            </div>
         </div>
       </div>
 
@@ -1185,16 +1189,15 @@
         }
 
         function revealOverlayText(firstGuess, TwoPercent, ThreePercent) {
-            const helpOverlay = document.getElementById("helpOverlay");
-            const helpContent = document.querySelector(".help-content");
-            
-            helpOverlay.style.display = "flex";
+            const overlay = document.getElementById('firstGuessOverlay');
+            const helpButton = document.querySelector('.help-button');
+            overlay.classList.toggle('open');
+            helpButton.classList.toggle('open');
         }
 
         function closeHelpOverlay() {
-            document.getElementById("helpOverlay").style.display = "none";
+            document.getElementById("firstGuessOverlay").style.display = "none";
         }
-
 
         function createButtons(artist, container, guess) {
             const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
