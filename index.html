@@ -1182,9 +1182,9 @@
 
             createButtons(artist, guessBoxes, guess);
             if(guessCount === 1){
-                TwoPercent = getPercentFor(artist, 2);
-                ThreePercent = getPercentFor(artist, 3);
-                if (TwoPercent < 5.00 || ThreePercent < 30.00){
+                const TwoPercent = getPercentFor(artist, 2) || 0; // Default to 0 if undefined
+                const ThreePercent = getPercentFor(artist, 3) || 0; // Default to 0 if undefined
+                if (parseFloat(TwoPercent) < 5.00 || parseFloat(ThreePercent) < 30.00) {
                     revealOverlayText(artist.artist, TwoPercent, ThreePercent);
                 }
             }
