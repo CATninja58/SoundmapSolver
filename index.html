@@ -1650,34 +1650,7 @@
             }
         }        
 
-        function resetSolver() {
-            // Clear the search input
-            document.getElementById("artistSearch").value = '';
-
-            // Clear the search results
-            document.getElementById("searchResults").innerHTML = '';
-
-            // Clear the guesses
-            document.getElementById("guessesContainer").innerHTML = '';
-
-            // Clear the best guess
-            document.getElementById("bestGuessContainer").innerHTML = '';
-
-            // Clear the chance container
-            document.getElementById("chanceContainer").innerHTML = '';
-
-            // Reset the guesses array and count
-            guesses = [];
-            guessCount = 0;
-
-            // Reset the filtered artists to the full list
-            filteredArtists = [...artistsData];
-            filteredArtistsSorted = [...artistsDataSorted]; // Reload the sorted artists data
-            displayArtists();
-
-            // Recalculate the best guess
-            calculateBestGuess();
-        }
+        
 
         // Function to toggle the sidebar
         function toggleSidebar() {
