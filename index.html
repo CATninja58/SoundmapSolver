@@ -1251,6 +1251,8 @@
             // Reset the first guess overlay
             const overlay = document.getElementById("firstGuessOverlay");
             overlay.style.display = "none";
+            bestGuessContainer.style.display = 'none';
+            bestGuessButton.style.display = 'none';
         }
 
         function createButtons(artist, container, guess) {
@@ -1649,8 +1651,6 @@
                 chanceContainer.textContent = 'No remaining artists';
             }
         }        
-
-        
 
         // Function to toggle the sidebar
         function toggleSidebar() {
