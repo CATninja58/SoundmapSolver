@@ -1628,7 +1628,11 @@
 
             // Reset the filtered artists to the full list
             filteredArtists = [...artistsData];
+            filteredArtistsSorted = [...artistsDataSorted]; // Reload the sorted artists data
             displayArtists();
+
+            // Recalculate the best guess
+            calculateBestGuess();
         }
 
         // Function to toggle the sidebar
