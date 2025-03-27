@@ -1183,11 +1183,18 @@
         }
 
         function getPercentFor(artist, guessCount) {
-            const artistData = filteredArtistsSorted.find(data => data.Artist === artist.artist);
-            if (artistData) {
-                return guessCount === 2 ? artistData.TwoGuesses : artistData.ThreeGuesses;
+            if (!filteredArtistsSorted || filteredArtistsSorted.length === 0) {
+                console.error("filteredArtistsSorted is empty or not loaded.");
+                return 0;
             }
-            return "";
+
+            const artistData = filteredArtistsSorted.find(data => data.Artist.trim().toLowerCase() === artist.artist.trim().toLowerCase());
+            if (artistData) {
+                return guessCount === 2 ? parseFloat(artistData.TwoGuesses) || 0 : parseFloat(artistData.ThreeGuesses) || 0;
+            }
+
+            console.warn(`Artist "${artist.artist}" not found in filteredArtistsSorted.`);
+            return 0;
         }
 
         function revealOverlayText(firstGuess, TwoPercent, ThreePercent) {
