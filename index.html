@@ -1708,7 +1708,9 @@
         // Initialize light mode preference on page load
         document.addEventListener('DOMContentLoaded', checkLightModePreference);
 
+        loadSortedCSV("https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/SortedFirstGuessResults.csv");
         loadCSV("https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/MasterArtistList.csv");
+        
 
         window.addEventListener('load', () => {
             fetch('/SoundmapSolver/manifest.json')
