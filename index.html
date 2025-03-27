@@ -613,6 +613,7 @@
             position: relative;
             left: -5px;
         }
+
     </style> 
 </head>
 <body>
@@ -990,7 +991,8 @@
         <div class="tutorial-container">
             <div class="tutorial-box">
                 <div class="help-contect">
-                    <p>Your first guess being <b>${firstGuess}</b> is really inefficient because your chance to get the correct artist in 3 guesses is <b>${ThreePercent}%</b> and your chance to get it in 2 guesses is just <b>${TwoPercent}%</b>.</p>
+                    <span class="close-help" onclick="closeHelpOverlay()">&times;</span>
+                    <p>Your first guess being <b id="firstGuess"></b> is really inefficient because your chance to get the correct artist in 3 guesses is <b id="ThreePercent"></b> and your chance to get it in 2 guesses is just <b id="TwoPercent"></b>.</p>
                     <p>If you want to get more gems per day, I would suggest making your first guess one of these 5 artists:</p>
                     <table>
                         <thead>
@@ -1180,19 +1182,20 @@
 
             createButtons(artist, guessBoxes, guess);
             if(guessCount === 1){
-                TwoPercent = getPercentFor(artist, 2);
-                ThreePercent = getPercentFor(artist, 3);
+                const TwoPercent = getPercentFor(artist, 2);
+                const ThreePercent = getPercentFor(artist, 3);
                 if (TwoPercent < 5.00 || ThreePercent < 30.00){
-                    revealOverlayText();
+                    revealOverlayText(artist.artist, TwoPercent, ThreePercent);
                 }
             }
         }
 
         function revealOverlayText(firstGuess, TwoPercent, ThreePercent) {
             const overlay = document.getElementById('firstGuessOverlay');
-            const helpButton = document.querySelector('.help-button');
-            overlay.classList.toggle('open');
-            helpButton.classList.toggle('open');
+            document.getElementById('firstGuess').textContent = firstGuess;
+            document.getElementById('TwoPercent').textContent = `${TwoPercent}%`;
+            document.getElementById('ThreePercent').textContent = `${ThreePercent}%`;
+            overlay.classList.add('open');
         }
 
         function closeHelpOverlay() {
