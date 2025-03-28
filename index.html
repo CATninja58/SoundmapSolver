@@ -1622,6 +1622,21 @@
             return;
             }
 
+            if (filteredArtists.length === 1) {
+            const correctArtist = filteredArtists[0].artist;
+            bestGuessContainer.innerHTML = `Correct artist is ${correctArtist}`;
+            bestGuessButton.classList.add("hidden");
+            return;
+            }
+
+            if (filteredArtists.length === 2) {
+            const artist1 = filteredArtists[0].artist;
+            const artist2 = filteredArtists[1].artist;
+            bestGuessContainer.innerHTML = `Either ${artist1} or ${artist2}`;
+            bestGuessButton.classList.add("hidden");
+            return;
+            }
+
             // Step 1: Find the most common genre
             const genreCounts = filteredArtists.reduce((acc, artist) => {
             acc[artist.genre] = (acc[artist.genre] || 0) + 1;
@@ -1666,7 +1681,7 @@
             updateBestGuessName();
 
             bestGuessButton.classList.remove("hidden");
-            updateChance()
+            updateChance();
         }
 
         function updateBestGuessName() {
@@ -1683,7 +1698,7 @@
             const bestGuessName = bestGuessElement ? bestGuessElement.textContent.replace("Best Guess: ", "") : "";
 
             if (bestGuessName) {
-                displayArtistInfo(bestGuessName);
+            displayArtistInfo(bestGuessName);
             }
         }
 
