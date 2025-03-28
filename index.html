@@ -1246,6 +1246,23 @@
             document.addEventListener("click", () => dropdown.remove(), { once: true });
         }
 
+        function getOptionsForCategory(category) {
+            switch (category) {
+                case "debut":
+                    return ["Earlier", "Later", "Close", "Correct"];
+                case "popularity":
+                    return ["Higher", "Lower", "Close", "Correct"];
+                case "members":
+                case "genre":
+                case "gender":
+                    return ["Correct", "Wrong"];
+                case "country":
+                    return ["Correct", "Wrong", "Close"];
+                default:
+                    return [];
+            }
+        }
+
         function filterArtists(category, option, guessValue) {
             filteredArtists = filteredArtists.filter(artist => {
             const artistValue = artist[category];
