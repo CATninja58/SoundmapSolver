@@ -1302,6 +1302,7 @@
                 button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(${selectedOption === "empty" ? "Choose Option" : selectedOption})</span>`;
                 filterArtists();
                 updateChance(); // Update chance immediately after selection
+                calculateBestGuess(); // Recalculate the best guess
                 }
                 button.removeChild(dropdown); // Remove the dropdown after selection
             };
