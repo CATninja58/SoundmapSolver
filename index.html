@@ -1453,58 +1453,56 @@
 
         function filterDebut(option, artistValue, guessValue) {
             if (option === 'correct') {
-            return artistValue === guessValue;
+                return artistValue === guessValue;
             } else if (option === 'later ^') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
+                return parseInt(artistValue) > parseInt(guessValue);
             } else if (option === 'earlier v') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
+                return parseInt(artistValue) < parseInt(guessValue);
             } else if (option === 'close ^') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
+                return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
             } else if (option === 'close v') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
+                return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
             } else {
-            return false;
+                return false;
             }
         }
 
         function filterPopularity(option, artistValue, guessValue) {
             if (option === 'correct') {
-            return artistValue === guessValue;
+                return artistValue === guessValue;
             } else if (option === 'higher ^') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
+                return parseInt(artistValue) < parseInt(guessValue);
             } else if (option === 'lower v') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
+                return parseInt(artistValue) > parseInt(guessValue);
             } else if (option === 'close ^') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
+                return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
             } else if (option === 'close v') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
+                return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
             } else {
-            return false;
+                return false;
             }
         }
 
         function filterCountry(option, artistValue, guessValue) {
             const continentMap = {
-            'NA': ['US', 'CA', 'MX', 'GT', 'HN', 'SV', 'NI', 'CR', 'PA', 'BS', 'CU', 'HT', 'DO', 'JM', 'TT', 'BB', 'LC', 'VC', 'GD', 'AG', 'DM', 'KN'],
-            'SA': ['BR', 'AR', 'CL', 'CO', 'VE', 'PE', 'BO', 'PY', 'UY', 'GY', 'SR', 'EC'],
-            'EU': ['UK', 'GB', 'FR', 'DE', 'IT', 'ES', 'PL', 'RO', 'NL', 'BE', 'GR', 'CZ', 'PT', 'HU', 'SE', 'AT', 'CH', 'BG', 'DK', 'FI', 'SK', 'NO', 'IE', 'HR', 'SI', 'LV', 'EE', 'CY', 'LU', 'MT', 'IS', 'LI', 'MC', 'SM', 'VA', 'RU', 'UA', 'BY', 'MD', 'BA', 'ME', 'MK', 'AL', 'RS', 'XK'],
-            'AS': ['CN', 'JP', 'IN', 'ID', 'PK', 'BD', 'PH', 'VN', 'TR', 'IR', 'TH', 'MM', 'KR', 'IQ', 'SA', 'UZ', 'MY', 'YE', 'NP', 'LK', 'KZ', 'SY', 'KH', 'JO', 'AZ', 'AE', 'IL', 'TJ', 'LA', 'LB', 'KG', 'TM', 'SG', 'OM', 'KW', 'GE', 'MN', 'AM', 'QA', 'BH', 'BT', 'MV', 'BN'],
-            'AF': ['ZA', 'NG', 'EG', 'DZ', 'MA', 'ET', 'TZ', 'KE', 'UG', 'SD', 'GH', 'CM', 'CI', 'ML', 'BF', 'NE', 'MW', 'ZM', 'SN', 'ZW', 'TD', 'SO', 'GN', 'RW', 'BI', 'BJ', 'SL', 'TG', 'SS', 'LY', 'LR', 'MR', 'GA', 'GM', 'GW', 'LS', 'SZ', 'KM', 'CV', 'ST', 'SC', 'DJ', 'ER'],
-            'OC': ['AU', 'NZ', 'FJ', 'PG', 'SB', 'VU', 'NC', 'PF', 'WS', 'KI', 'TO', 'TV', 'NR', 'FM', 'MH', 'PW']
+                'NA': ['US', 'CA', 'MX', 'GT', 'HN', 'SV', 'NI', 'CR', 'PA', 'BS', 'CU', 'HT', 'DO', 'JM', 'TT', 'BB', 'LC', 'VC', 'GD', 'AG', 'DM', 'KN'],
+                'SA': ['BR', 'AR', 'CL', 'CO', 'VE', 'PE', 'BO', 'PY', 'UY', 'GY', 'SR', 'EC'],
+                'EU': ['UK', 'GB', 'FR', 'DE', 'IT', 'ES', 'PL', 'RO', 'NL', 'BE', 'GR', 'CZ', 'PT', 'HU', 'SE', 'AT', 'CH', 'BG', 'DK', 'FI', 'SK', 'NO', 'IE', 'HR', 'SI', 'LV', 'EE', 'CY', 'LU', 'MT', 'IS', 'LI', 'MC', 'SM', 'VA', 'RU', 'UA', 'BY', 'MD', 'BA', 'ME', 'MK', 'AL', 'RS', 'XK'],
+                'AS': ['CN', 'JP', 'IN', 'ID', 'PK', 'BD', 'PH', 'VN', 'TR', 'IR', 'TH', 'MM', 'KR', 'IQ', 'SA', 'UZ', 'MY', 'YE', 'NP', 'LK', 'KZ', 'SY', 'KH', 'JO', 'AZ', 'AE', 'IL', 'TJ', 'LA', 'LB', 'KG', 'TM', 'SG', 'OM', 'KW', 'GE', 'MN', 'AM', 'QA', 'BH', 'BT', 'MV', 'BN'],
+                'AF': ['ZA', 'NG', 'EG', 'DZ', 'MA', 'ET', 'TZ', 'KE', 'UG', 'SD', 'GH', 'CM', 'CI', 'ML', 'BF', 'NE', 'MW', 'ZM', 'SN', 'ZW', 'TD', 'SO', 'GN', 'RW', 'BI', 'BJ', 'SL', 'TG', 'SS', 'LY', 'LR', 'MR', 'GA', 'GM', 'GW', 'LS', 'SZ', 'KM', 'CV', 'ST', 'SC', 'DJ', 'ER'],
+                'OC': ['AU', 'NZ', 'FJ', 'PG', 'SB', 'VU', 'NC', 'PF', 'WS', 'KI', 'TO', 'TV', 'NR', 'FM', 'MH', 'PW']
             };
-
+        
             if (option === 'correct') {
-            return artistValue === guessValue;
+                return artistValue === guessValue;
             } else if (option === 'close') {
-            const guessContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(guessValue));
-            const artistContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(artistValue));
-            return guessContinent === artistContinent && guessValue !== artistValue;
+                const guessContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(guessValue));
+                const artistContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(artistValue));
+                return guessContinent === artistContinent;
             } else if (option === 'wrong') {
-            const guessContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(guessValue));
-            const artistContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(artistValue));
-            return artistValue !== guessValue && guessContinent !== artistContinent;
+                return artistValue !== guessValue;
             } else {
-            return false;
+                return false;
             }
         }
 
