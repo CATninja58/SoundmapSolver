@@ -1365,18 +1365,23 @@
 
             // Ensure the close button works
             const closeModal = document.getElementsByClassName("close")[0];
-            closeModal.onclick = () => {
-            button.innerHTML = previousText; // Revert to previous text if no selection is made
-            modal.classList.add("hidden");
-            };
-
-            // Ensure clicking outside the modal closes it
-            window.addEventListener('click', (event) => {
-            if (event.target === modal) {
+            const closeModalHandler = () => {
                 button.innerHTML = previousText; // Revert to previous text if no selection is made
                 modal.classList.add("hidden");
-            }
-            });
+                closeModal.removeEventListener("click", closeModalHandler); // Remove listener
+                window.removeEventListener("click", outsideClickHandler); // Remove listener
+            };
+            closeModal.addEventListener("click", closeModalHandler);
+
+            const outsideClickHandler = (event) => {
+                if (event.target === modal) {
+                    button.innerHTML = previousText; // Revert to previous text if no selection is made
+                    modal.classList.add("hidden");
+                    closeModal.removeEventListener("click", closeModalHandler); // Remove listener
+                    window.removeEventListener("click", outsideClickHandler); // Remove listener
+                }
+            };
+            window.addEventListener("click", outsideClickHandler);
 
             // Ensure modal is focused for accessibility
             modal.focus();
