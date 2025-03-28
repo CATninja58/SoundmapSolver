@@ -1155,6 +1155,7 @@
             if (artist) {
             artistInfo = artist;
             addGuess(artist);
+            updateChance(); // Update chance after adding a guess
             }
         }
 
@@ -1183,78 +1184,27 @@
             guesses.push(guess);
 
             createButtons(artist, guessBoxes, guess);
-            if(guessCount === 1){
+            if (guessCount === 1) {
             const TwoPercent = getPercentFor(artist, 2) || 0; // Default to 0 if undefined
             const ThreePercent = getPercentFor(artist, 3) || 0; // Default to 0 if undefined
             if (parseFloat(TwoPercent) < 5.00 || parseFloat(ThreePercent) < 30.00) {
                 revealOverlayText(artist.artist, TwoPercent, ThreePercent);
             }
             }
+            updateChance(); // Ensure chance is updated after adding a guess
         }
 
-        function getPercentFor(artist, guessCount) {
-            if (!filteredArtistsSorted || filteredArtistsSorted.length === 0) {
-            console.error("filteredArtistsSorted is empty or not loaded.");
-            return 0;
+        function updateChance() {
+            const chanceContainer = document.getElementById("chanceContainer");
+            const remainingArtists = filteredArtists.length;
+            if (remainingArtists > 0) {
+            const chance = (1 / remainingArtists) * 100;
+            chanceContainer.textContent = `1 in ${remainingArtists} chance (${chance.toFixed(2)}%)`;
+            } else {
+            chanceContainer.textContent = 'No remaining artists';
             }
-
-            const artistData = filteredArtistsSorted.find(data => data.Artist.trim().toLowerCase() === artist.artist.trim().toLowerCase());
-            if (artistData) {
-            return guessCount === 2 ? parseFloat(artistData.TwoGuesses) || 0 : parseFloat(artistData.ThreeGuesses) || 0;
-            }
-
-            console.warn(`Artist "${artist.artist}" not found in filteredArtistsSorted.`);
-            return 0;
         }
 
-        function revealOverlayText(firstGuess, TwoPercent, ThreePercent) {
-            const overlay = document.getElementById('firstGuessOverlay');
-            document.getElementById('firstGuess').textContent = firstGuess;
-            document.getElementById('TwoPercent').textContent = `${TwoPercent}%`;
-            document.getElementById('ThreePercent').textContent = `${ThreePercent}%`;
-            overlay.style.display = "block"; // Ensure the overlay is visible
-        }
-
-        function closeHelpOverlay() {
-            const overlay = document.getElementById("firstGuessOverlay");
-            overlay.style.display = "none";
-        }
-
-        function resetSolver() {
-            // Clear the search input
-            document.getElementById("artistSearch").value = '';
-
-            // Clear the search results
-            document.getElementById("searchResults").innerHTML = '';
-
-            // Clear the guesses
-            document.getElementById("guessesContainer").innerHTML = '';
-
-            // Clear the best guess
-            document.getElementById("bestGuessContainer").innerHTML = '';
-
-            // Clear the chance container
-            document.getElementById("chanceContainer").innerHTML = '';
-
-            // Reset the guesses array and count
-            guesses = [];
-            guessCount = 0;
-
-            // Reset the filtered artists to the full list
-            filteredArtists = [...artistsData];
-            filteredArtistsSorted = [...artistsDataSorted]; // Reload the sorted artists data
-            displayArtists();
-
-            // Recalculate the best guess
-            calculateBestGuess();
-
-            // Reset the first guess overlay
-            const overlay = document.getElementById("firstGuessOverlay");
-            overlay.style.display = "none";
-            bestGuessContainer.style.display = 'none';
-            bestGuessButton.style.display = 'none';
-        }
-        
         function createButtons(artist, container, guess) {
             const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
             categories.forEach(category => {
@@ -1269,252 +1219,49 @@
             });
         }
 
-        function filterDebut(option, artistValue, guessValue) {
-            if (option === 'correct') {
-            return artistValue === guessValue;
-            } else if (option === 'later ^') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
-            } else if (option === 'earlier v') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 5;
-            } else if (option === 'close ^') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
-            } else if (option === 'close v') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 5;
-            } else {
-            return false;
-            }
-        }
+        function showDropdown(button, category, artistValue, guess) {
+            const dropdown = document.createElement("div");
+            dropdown.classList.add("dropdown");
+            dropdown.style.position = "absolute";
+            dropdown.style.zIndex = "1000";
 
-        function filterPopularity(option, artistValue, guessValue) {
-            if (option === 'correct') {
-            return artistValue === guessValue;
-            } else if (option === 'higher ^') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
-            } else if (option === 'lower v') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) > 50;
-            } else if (option === 'close ^') {
-            return parseInt(artistValue) < parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
-            } else if (option === 'close v') {
-            return parseInt(artistValue) > parseInt(guessValue) && Math.abs(parseInt(artistValue) - parseInt(guessValue)) <= 50;
-            } else {
-            return false;
-            }
-        }
-
-        function filterCountry(option, artistValue, guessValue) {
-            const continentMap = {
-            'NA': ['US', 'CA', 'MX', 'GT', 'HN', 'SV', 'NI', 'CR', 'PA', 'BS', 'CU', 'HT', 'DO', 'JM', 'TT', 'BB', 'LC', 'VC', 'GD', 'AG', 'DM', 'KN'],
-            'SA': ['BR', 'AR', 'CL', 'CO', 'VE', 'PE', 'BO', 'PY', 'UY', 'GY', 'SR', 'EC'],
-            'EU': ['UK', 'GB', 'FR', 'DE', 'IT', 'ES', 'PL', 'RO', 'NL', 'BE', 'GR', 'CZ', 'PT', 'HU', 'SE', 'AT', 'CH', 'BG', 'DK', 'FI', 'SK', 'NO', 'IE', 'HR', 'SI', 'LV', 'EE', 'CY', 'LU', 'MT', 'IS', 'LI', 'MC', 'SM', 'VA', 'RU', 'UA', 'BY', 'MD', 'BA', 'ME', 'MK', 'AL', 'RS', 'XK'],
-            'AS': ['CN', 'JP', 'IN', 'ID', 'PK', 'BD', 'PH', 'VN', 'TR', 'IR', 'TH', 'MM', 'KR', 'IQ', 'SA', 'UZ', 'MY', 'YE', 'NP', 'LK', 'KZ', 'SY', 'KH', 'JO', 'AZ', 'AE', 'IL', 'TJ', 'LA', 'LB', 'KG', 'TM', 'SG', 'OM', 'KW', 'GE', 'MN', 'AM', 'QA', 'BH', 'BT', 'MV', 'BN'],
-            'AF': ['ZA', 'NG', 'EG', 'DZ', 'MA', 'ET', 'TZ', 'KE', 'UG', 'SD', 'GH', 'CM', 'CI', 'ML', 'BF', 'NE', 'MW', 'ZM', 'SN', 'ZW', 'TD', 'SO', 'GN', 'RW', 'BI', 'BJ', 'SL', 'TG', 'SS', 'LY', 'LR', 'MR', 'GA', 'GM', 'GW', 'LS', 'SZ', 'KM', 'CV', 'ST', 'SC', 'DJ', 'ER'],
-            'OC': ['AU', 'NZ', 'FJ', 'PG', 'SB', 'VU', 'NC', 'PF', 'WS', 'KI', 'TO', 'TV', 'NR', 'FM', 'MH', 'PW']
+            const options = getOptionsForCategory(category);
+            options.forEach(option => {
+            const optionElement = document.createElement("div");
+            optionElement.textContent = option;
+            optionElement.onclick = () => {
+                guess.selectedOptions[category] = option;
+                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${artistValue}</span><br><span class="button-text">(${option})</span>`;
+                filterArtists(category, option, artistValue);
+                updateChance(); // Update chance after filtering
+                dropdown.remove();
             };
+            dropdown.appendChild(optionElement);
+            });
 
-            if (option === 'correct') {
-            return artistValue === guessValue;
-            } else if (option === 'close') {
-            const guessContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(guessValue));
-            const artistContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(artistValue));
-            return guessContinent === artistContinent && guessValue !== artistValue;
-            } else if (option === 'wrong') {
-            const guessContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(guessValue));
-            const artistContinent = Object.keys(continentMap).find(continent => continentMap[continent].includes(artistValue));
-            return artistValue !== guessValue && guessContinent !== artistContinent;
+            document.body.appendChild(dropdown);
+            const rect = button.getBoundingClientRect();
+            dropdown.style.left = `${rect.left}px`;
+            dropdown.style.top = `${rect.bottom}px`;
+
+            document.addEventListener("click", () => dropdown.remove(), { once: true });
+        }
+
+        function filterArtists(category, option, guessValue) {
+            filteredArtists = filteredArtists.filter(artist => {
+            const artistValue = artist[category];
+            if (category === "debut") {
+                return filterDebut(option, artistValue, guessValue);
+            } else if (category === "popularity") {
+                return filterPopularity(option, artistValue, guessValue);
+            } else if (category === "country") {
+                return filterCountry(option, artistValue, guessValue);
             } else {
-            return false;
-            }
-        }
-
-        function displayArtists() {
-            const artistList = document.getElementById("artistList");
-            artistList.innerHTML = '';
-
-            filteredArtists.forEach(artist => {
-            if (artist.artist) { // Filter out artists without a name
-                const artistItem = document.createElement("tr");
-
-                artistItem.innerHTML = `
-                <td>${artist.artist}</td>
-                <td>${artist.debut}</td>
-                <td>${artist.popularity}</td>
-                <td>${artist.members}</td>
-                <td>${artist.genre}</td>
-                <td>${artist.country}</td>
-                <td>${artist.gender}</td>
-                `;
-
-                artistList.appendChild(artistItem);
+                return option === "correct" ? artistValue === guessValue : artistValue !== guessValue;
             }
             });
-        }
-
-        let sortOrder = {
-            artist: 'asc',
-            debut: 'asc',
-            popularity: 'asc',
-            members: 'asc',
-            genre: 'asc',
-            country: 'asc',
-            gender: 'asc'
-        };
-
-        function sortArtists(category) {
-            const sortOrderIcon = sortOrder[category] === 'asc' ? 'v' : '^';
-            const headers = document.querySelectorAll('th');
-            headers.forEach(header => {
-                if (header.dataset.category === category) {
-                    header.textContent = header.textContent.replace(/[\^v]/, '') + ' ' + sortOrderIcon;
-                } else {
-                    header.textContent = header.textContent.replace(/[\^v]/, '');
-                }
-            });
-
-            filteredArtists.sort((a, b) => {
-                if (category === 'debut' || category === 'popularity') {
-                    return sortOrder[category] === 'asc' ? a[category] - b[category] : b[category] - a[category];
-                } else if (category === 'members') {
-                    const order = ['Solo', 'Group'];
-                    return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
-                } else if (category === 'genre') {
-                    const order = ['Pop', 'Hip Hop', 'Indie', 'Rock', 'R&B'];
-                    return sortOrder[category] === 'asc' ? order.indexOf(a[category]) - order.indexOf(b[category]) : order.indexOf(b[category]) - order.indexOf(a[category]);
-                } else if (category === 'country' || category === 'gender') {
-                    return sortOrder[category] === 'asc' ? a[category].toLowerCase().localeCompare(b[category].toLowerCase()) : b[category].toLowerCase().localeCompare(a[category].toLowerCase());
-                } else {
-                    return sortOrder[category] === 'asc' ? a[category].toLowerCase().localeCompare(b[category].toLowerCase()) : b[category].toLowerCase().localeCompare(a[category].toLowerCase());
-                }
-            });
-
-            sortOrder[category] = sortOrder[category] === 'asc' ? 'desc' : 'asc';
             displayArtists();
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const headers = document.querySelectorAll('th[data-category]');
-            headers.forEach(header => {
-                header.addEventListener('click', () => {
-                    const category = header.dataset.category;
-                    sortArtists(category);
-                });
-            });
-        });
-
-        function calculateEntropy(artists) {
-            const genreCounts = artists.reduce((acc, artist) => {
-                acc[artist.genre] = (acc[artist.genre] || 0) + 1;
-                return acc;
-            }, {});
-            
-            const total = artists.length;
-            let entropy = 0;
-
-            for (const genre in genreCounts) {
-                const probability = genreCounts[genre] / total;
-                entropy -= probability * Math.log2(probability);
-            }
-
-            return entropy;
-        }
-
-        function calculateInformationGain(artists, category) {
-            const uniqueValues = [...new Set(artists.map(artist => artist[category]))];
-            let totalEntropy = calculateEntropy(artists);
-
-            let weightedEntropy = 0;
-            uniqueValues.forEach(value => {
-                const subset = artists.filter(artist => artist[category] === value);
-                weightedEntropy += (subset.length / artists.length) * calculateEntropy(subset);
-            });
-
-            return totalEntropy - weightedEntropy;
-        }
-
-        function calculateBestGuess() {
-            const bestGuessButton = document.getElementById("bestGuessButton");
-            const bestGuessContainer = document.getElementById("bestGuessContainer");
-
-            if (filteredArtists.length === 0) {
-            bestGuessButton.classList.add("hidden");
-            bestGuessContainer.innerHTML = 'Error';
-            return;
-            }
-
-            // Step 1: Find the most common genre
-            const genreCounts = filteredArtists.reduce((acc, artist) => {
-            acc[artist.genre] = (acc[artist.genre] || 0) + 1;
-            return acc;
-            }, {});
-
-            const mostCommonGenre = Object.keys(genreCounts).reduce((a, b) => genreCounts[a] > genreCounts[b] ? a : b);
-            const artistsInMostCommonGenre = filteredArtists.filter(artist => artist.genre === mostCommonGenre);
-
-            // Step 2: Find the median popularity for all artists
-            const sortedByPopularity = [...filteredArtists].sort((a, b) => parseInt(a.popularity) - parseInt(b.popularity));
-            const medianPopularityIndex = Math.floor(sortedByPopularity.length / 2);
-            const medianPopularity = sortedByPopularity[medianPopularityIndex].popularity;
-
-            // Step 3: Filter artists with the median popularity within the most common genre
-            const medianPopularityArtists = artistsInMostCommonGenre.filter(artist => artist.popularity === medianPopularity);
-
-            // Step 4: Calculate the median debut year for all artists
-            const allArtistsSortedByDebut = [...filteredArtists].sort((a, b) => parseInt(a.debut) - parseInt(b.debut));
-            const medianDebutIndex = Math.floor(allArtistsSortedByDebut.length / 2);
-            const medianDebut = allArtistsSortedByDebut[medianDebutIndex].debut;
-
-            // Step 5: Among the median popularity artists, find the one with the debut year closest to the median debut year
-            let closestArtist = medianPopularityArtists[0];
-            let closestDifference = Math.abs(parseInt(closestArtist.debut) - medianDebut);
-
-            for (let i = 1; i < medianPopularityArtists.length; i++) {
-            const currentDifference = Math.abs(parseInt(medianPopularityArtists[i].debut) - medianDebut);
-            if (currentDifference < closestDifference) {
-                closestArtist = medianPopularityArtists[i];
-                closestDifference = currentDifference;
-            }
-            }
-
-            const bestGuessArtist = closestArtist;
-
-            const bestGuessElement = document.createElement("div");
-            bestGuessElement.textContent = `Best Guess: ${bestGuessArtist.artist}`;
-            bestGuessElement.style.color = "#f4f4f4";
-            bestGuessContainer.innerHTML = '';
-            bestGuessContainer.appendChild(bestGuessElement);
-            updateBestGuessName();
-
-            bestGuessButton.classList.remove("hidden");
-            updateChance()
-        }
-
-        function updateBestGuessName() {
-            const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
-            const bestGuessName = bestGuessElement ? bestGuessElement.textContent.replace("Best Guess: ", "") : "";
-            document.getElementById("bestGuessName").textContent = bestGuessName;
-            document.getElementById("bestGuessButton").innerHTML = `Click to make <span id="bestGuessName">${bestGuessName}</span> your next guess!`;
-        }
-
-        function makeBestGuessNext() {
-            if (filteredArtists.length === 0) return;
-
-            const bestGuessElement = document.getElementById("bestGuessContainer").querySelector("div");
-            const bestGuessName = bestGuessElement ? bestGuessElement.textContent.replace("Best Guess: ", "") : "";
-
-            if (bestGuessName) {
-                displayArtistInfo(bestGuessName);
-            }
-        }
-
-        function updateChance() {
-            const chanceContainer = document.getElementById("chanceContainer");
-            const remainingArtists = filteredArtists.length;
-            if (remainingArtists > 0) {
-                const chance = (1 / remainingArtists) * 100;
-                chanceContainer.textContent = `1 in ${remainingArtists} chance (${chance.toFixed(2)}%)`;
-            } else {
-                chanceContainer.textContent = 'No remaining artists';
-            }
-        }        
 
         // Function to toggle the sidebar
         function toggleSidebar() {
