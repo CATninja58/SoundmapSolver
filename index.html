@@ -1254,12 +1254,16 @@
             bestGuessContainer.style.display = 'none';
             bestGuessButton.style.display = 'none';
         }
+
         function createButtons(artist, container, guess) {
             const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
             categories.forEach(category => {
             const button = document.createElement("button");
             button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${artist[category]}</span><br><span class="button-text">(${guess.selectedOptions[category] || "Choose Option"})</span>`;
-            button.onclick = () => showDropdown(button, category, artist[category], guess);
+            button.addEventListener('click', (event) => {
+                event.stopPropagation(); // Prevent event bubbling
+                showDropdown(button, category, artist[category], guess);
+            });
             container.appendChild(button);
             });
         }
