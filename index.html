@@ -1267,36 +1267,57 @@
     
         function showDropdown(button, category, value, guess) {
             if (isAndroid()) {
-                showModal(button, category, value, guess);
-            }  else {
-                const dropdown = document.createElement("select");
-                const options = getCategoryOptions(category);
+            showModal(button, category, value, guess);
+            } else {
+            const dropdown = document.createElement("select");
+            const options = getCategoryOptions(category);
 
-                const defaultOption = document.createElement("option");
-                defaultOption.value = "";
-                defaultOption.textContent = "Choose an option";
-                dropdown.appendChild(defaultOption);
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.textContent = "Choose an option";
+            dropdown.appendChild(defaultOption);
 
-                options.forEach(option => {
-                    const optionElement = document.createElement("option");
-                    optionElement.value = option;
-                    optionElement.textContent = option;
-                    dropdown.appendChild(optionElement);
-                });
+            options.forEach(option => {
+                const optionElement = document.createElement("option");
+                optionElement.value = option;
+                optionElement.textContent = option;
+                dropdown.appendChild(optionElement);
+            });
 
-                dropdown.onchange = () => {
-                    const selectedOption = dropdown.value;
-                    guess.selectedOptions[category] = selectedOption;
-                    changeButtonColor(button, selectedOption);
-                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(${selectedOption})</span>`;
-                    filterArtists();
-                    button.removeChild(dropdown); // Remove the dropdown after selection
-                };
+            dropdown.onchange = () => {
+                const selectedOption = dropdown.value;
+                if (selectedOption) {
+                guess.selectedOptions[category] = selectedOption;
+                changeButtonColor(button, selectedOption);
+                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(${selectedOption})</span>`;
+                filterArtists();
+                }
+                button.removeChild(dropdown); // Remove the dropdown after selection
+            };
 
-                dropdown.size = options.length;
+            dropdown.size = options.length;
+            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(Choose Option)</span>`;
+            button.appendChild(dropdown);
+            dropdown.focus();
+
+            // Close dropdown if clicked outside
+            const closeDropdown = (event) => {
+                if (!button.contains(event.target)) {
+                button.removeChild(dropdown);
+                document.removeEventListener("click", closeDropdown);
+                }
+            };
+
+            // Reset to nothing if dropdown is closed without selection
+            dropdown.addEventListener("blur", () => {
+                if (!dropdown.value) {
+                guess.selectedOptions[category] = null;
                 button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(Choose Option)</span>`;
-                button.appendChild(dropdown);
-                dropdown.focus();
+                }
+                button.removeChild(dropdown);
+            });
+
+            document.addEventListener("click", closeDropdown);
             }
         }
 
@@ -1322,29 +1343,34 @@
 
             modal.classList.remove("hidden"); // Show the modal
 
+            // Ensure the close button works
             const closeModal = document.getElementsByClassName("close")[0];
             closeModal.onclick = () => {
                 modal.classList.add("hidden");
             };
 
-            window.onclick = (event) => {
-                if (event.target == modal) {
+            // Ensure clicking outside the modal closes it
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
                     modal.classList.add("hidden");
                 }
-            };
+            });
+
+            // Ensure modal is focused for accessibility
+            modal.focus();
         }
 
         function revealModal(){
-            const myModal1 = document.getElementById("myModal");
+            const myModal = document.getElementById("myModal");
 
             // Show the button if a best guess is found
-            myModal1.classList.remove("hidden");
+            myModal.classList.remove("hidden");
         }
 
         function hideModal(){
-            const myModal2 = document.getElementById("myModal");
+            const myModal = document.getElementById("myModal");
 
-            myModal2.classList.add("hidden");
+            myModal.classList.add("hidden");
         }
 
         function getCategoryOptions(category) {
