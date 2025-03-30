@@ -1247,6 +1247,7 @@
 
             // Recalculate the best guess
             calculateBestGuess();
+            updateChance();
 
             // Reset the first guess overlay
             const overlay = document.getElementById("firstGuessOverlay");
@@ -1266,6 +1267,8 @@
         }
     
         function showDropdown(button, category, value, guess) {
+            calculateBestGuess();
+            updateChance();
             if (isAndroid()) {
             showModal(button, category, value, guess);
             } else {
@@ -1294,6 +1297,7 @@
 
                 // Add your code here for actions after the user has selected an option
                 calculateBestGuess();
+                updateChance();
                 console.log(`User selected: ${selectedOption} for category: ${category}`);
             };
 
@@ -1323,6 +1327,7 @@
 
                 // Add your code here for actions after the user has selected an option
                 calculateBestGuess();
+                updateChance();
                 console.log(`User selected: ${option} for category: ${category}`);
             };
             modalOptions.appendChild(optionDiv);
@@ -1653,7 +1658,7 @@
             } else {
                 chanceContainer.textContent = 'No remaining artists';
             }
-        }        
+        }    
 
         // Function to toggle the sidebar
         function toggleSidebar() {
