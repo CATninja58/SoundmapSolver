@@ -1260,76 +1260,43 @@
             categories.forEach(category => {
             const button = document.createElement("button");
             button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${artist[category]}</span><br><span class="button-text">(${guess.selectedOptions[category] || "Choose Option"})</span>`;
-            button.addEventListener('click', (event) => {
-                event.stopPropagation(); // Prevent event bubbling
-                showDropdown(button, category, artist[category], guess);
-            });
+            button.onclick = () => showDropdown(button, category, artist[category], guess);
             container.appendChild(button);
             });
         }
-
+    
         function showDropdown(button, category, value, guess) {
             if (isAndroid()) {
-            showModal(button, category, value, guess);
-            } else {
-            const dropdown = document.createElement("select");
-            const options = getCategoryOptions(category);
+                showModal(button, category, value, guess);
+            }  else {
+                const dropdown = document.createElement("select");
+                const options = getCategoryOptions(category);
 
-            const defaultOption = document.createElement("option");
-            defaultOption.value = "";
-            defaultOption.textContent = "Choose an option";
-            dropdown.appendChild(defaultOption);
+                const defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = "Choose an option";
+                dropdown.appendChild(defaultOption);
 
-            options.forEach(option => {
-                const optionElement = document.createElement("option");
-                optionElement.value = option;
-                optionElement.textContent = option;
-                dropdown.appendChild(optionElement);
-            });
+                options.forEach(option => {
+                    const optionElement = document.createElement("option");
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    dropdown.appendChild(optionElement);
+                });
 
-            const emptyOption = document.createElement("option");
-            emptyOption.value = "empty";
-            emptyOption.textContent = "Empty";
-            dropdown.appendChild(emptyOption);
+                dropdown.onchange = () => {
+                    const selectedOption = dropdown.value;
+                    guess.selectedOptions[category] = selectedOption;
+                    changeButtonColor(button, selectedOption);
+                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(${selectedOption})</span>`;
+                    filterArtists();
+                    button.removeChild(dropdown); // Remove the dropdown after selection
+                };
 
-            const previousText = button.innerHTML;
-
-            dropdown.onchange = () => {
-                const selectedOption = dropdown.value;
-                if (selectedOption) {
-                guess.selectedOptions[category] = selectedOption === "empty" ? null : selectedOption;
-                changeButtonColor(button, selectedOption);
-                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(${selectedOption === "empty" ? "Choose Option" : selectedOption})</span>`;
-                filterArtists();
-                updateChance(); // Update chance immediately after selection
-                calculateBestGuess(); // Recalculate the best guess
-                }
-                button.removeChild(dropdown); // Remove the dropdown after selection
-            };
-
-            dropdown.size = options.length + 1;
-            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(Choose Option Below)</span>`;
-            button.appendChild(dropdown);
-            dropdown.focus();
-
-            // Close dropdown if clicked outside
-            const closeDropdown = (event) => {
-                if (!button.contains(event.target)) {
-                button.innerHTML = previousText; // Revert to previous text if no selection is made
-                button.removeChild(dropdown);
-                document.removeEventListener("click", closeDropdown);
-                }
-            };
-
-            // Reset to previous text if dropdown is closed without selection
-            dropdown.addEventListener("blur", () => {
-                if (!dropdown.value) {
-                button.innerHTML = previousText;
-                }
-                button.removeChild(dropdown);
-            });
-
-            document.addEventListener("click", closeDropdown);
+                dropdown.size = options.length;
+                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(Choose Option)</span>`;
+                button.appendChild(dropdown);
+                dropdown.focus();
             }
         }
 
@@ -1339,58 +1306,45 @@
             modalOptions.innerHTML = '';
 
             const options = getCategoryOptions(category);
-            const previousText = button.innerHTML;
-
             options.forEach(option => {
-            const optionDiv = document.createElement("div");
-            optionDiv.classList.add("modal-option");
-            optionDiv.textContent = option;
-            optionDiv.onclick = () => {
-                guess.selectedOptions[category] = option === "empty" ? null : option;
-                changeButtonColor(button, option);
-                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${option === "empty" ? "Choose Option" : option})</span>`;
-                filterArtists();
-                modal.classList.add("hidden"); // Hide the modal after selection
-            };
-            modalOptions.appendChild(optionDiv);
+                const optionDiv = document.createElement("div");
+                optionDiv.classList.add("modal-option");
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => {
+                    guess.selectedOptions[category] = option;
+                    changeButtonColor(button, option);
+                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${option})</span>`;
+                    filterArtists();
+                    modal.classList.add("hidden"); // Hide the modal after selection
+                };
+                modalOptions.appendChild(optionDiv);
             });
-
-            const emptyOptionDiv = document.createElement("div");
-            emptyOptionDiv.classList.add("modal-option");
-            emptyOptionDiv.textContent = "Empty";
-            emptyOptionDiv.onclick = () => {
-            guess.selectedOptions[category] = null;
-            changeButtonColor(button, "empty");
-            button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (Choose Option)</span>`;
-            filterArtists();
-            modal.classList.add("hidden");
-            };
-            modalOptions.appendChild(emptyOptionDiv);
 
             modal.classList.remove("hidden"); // Show the modal
 
-            // Ensure the close button works
             const closeModal = document.getElementsByClassName("close")[0];
-            const closeModalHandler = () => {
-                button.innerHTML = previousText; // Revert to previous text if no selection is made
+            closeModal.onclick = () => {
                 modal.classList.add("hidden");
-                closeModal.removeEventListener("click", closeModalHandler); // Remove listener
-                window.removeEventListener("click", outsideClickHandler); // Remove listener
             };
-            closeModal.addEventListener("click", closeModalHandler);
 
-            const outsideClickHandler = (event) => {
-                if (event.target === modal) {
-                    button.innerHTML = previousText; // Revert to previous text if no selection is made
+            window.onclick = (event) => {
+                if (event.target == modal) {
                     modal.classList.add("hidden");
-                    closeModal.removeEventListener("click", closeModalHandler); // Remove listener
-                    window.removeEventListener("click", outsideClickHandler); // Remove listener
                 }
             };
-            window.addEventListener("click", outsideClickHandler);
+        }
 
-            // Ensure modal is focused for accessibility
-            modal.focus();
+        function revealModal(){
+            const myModal1 = document.getElementById("myModal");
+
+            // Show the button if a best guess is found
+            myModal1.classList.remove("hidden");
+        }
+
+        function hideModal(){
+            const myModal2 = document.getElementById("myModal");
+
+            myModal2.classList.add("hidden");
         }
 
         function getCategoryOptions(category) {
@@ -1417,34 +1371,32 @@
             button.className = 'orange';
             } else if (option === 'wrong' || option === 'later ^' || option === 'earlier v' || option === 'higher ^' || option === 'lower v') {
             button.className = 'grey';
-            } else if (option === 'empty') {
-            button.className = ''; // Reset to default
             }
         }
 
         function filterArtists() {
             filteredArtists = artistsData.filter(artist => {
             return guesses.every(guess => {
-            return Object.keys(guess.selectedOptions).every(category => {
-            const option = guess.selectedOptions[category];
-            const artistValue = artist[category];
+                return Object.keys(guess.selectedOptions).every(category => {
+                const option = guess.selectedOptions[category];
+                const artistValue = artist[category];
 
-            if (!option || option === 'empty') return true; // Handle empty option
+                if (!option) return true;
 
-            if (option === 'correct') {
-                return artistValue === guess.artist[category];
-            } else if (category === 'debut') {
-                return filterDebut(option, artistValue, guess.artist[category]);
-            } else if (category === 'popularity') {
-                return filterPopularity(option, artistValue, guess.artist[category]);
-            } else if (category === 'country') {
-                return filterCountry(option, artistValue, guess.artist[category]);
-            } else if (option === 'wrong') {
-                return artistValue !== guess.artist[category];
-            } else {
-                return false;
-            }
-            });
+                if (option === 'correct') {
+                    return artistValue === guess.artist[category];
+                } else if (category === 'debut') {
+                    return filterDebut(option, artistValue, guess.artist[category]);
+                } else if (category === 'popularity') {
+                    return filterPopularity(option, artistValue, guess.artist[category]);
+                } else if (category === 'country') {
+                    return filterCountry(option, artistValue, guess.artist[category]);
+                } else if (option === 'wrong') {
+                    return artistValue !== guess.artist[category];
+                } else {
+                    return false;
+                }
+                });
             });
             });
 
@@ -1624,21 +1576,6 @@
             return;
             }
 
-            if (filteredArtists.length === 1) {
-            const correctArtist = filteredArtists[0].artist;
-            bestGuessContainer.innerHTML = `Correct artist is ${correctArtist}`;
-            bestGuessButton.classList.add("hidden");
-            return;
-            }
-
-            if (filteredArtists.length === 2) {
-            const artist1 = filteredArtists[0].artist;
-            const artist2 = filteredArtists[1].artist;
-            bestGuessContainer.innerHTML = `Either ${artist1} or ${artist2}`;
-            bestGuessButton.classList.add("hidden");
-            return;
-            }
-
             // Step 1: Find the most common genre
             const genreCounts = filteredArtists.reduce((acc, artist) => {
             acc[artist.genre] = (acc[artist.genre] || 0) + 1;
@@ -1683,7 +1620,7 @@
             updateBestGuessName();
 
             bestGuessButton.classList.remove("hidden");
-            updateChance();
+            updateChance()
         }
 
         function updateBestGuessName() {
@@ -1700,7 +1637,7 @@
             const bestGuessName = bestGuessElement ? bestGuessElement.textContent.replace("Best Guess: ", "") : "";
 
             if (bestGuessName) {
-            displayArtistInfo(bestGuessName);
+                displayArtistInfo(bestGuessName);
             }
         }
 
