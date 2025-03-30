@@ -1267,8 +1267,6 @@
         }
     
         function showDropdown(button, category, value, guess) {
-            calculateBestGuess();
-            updateChance();
             if (isAndroid()) {
             showModal(button, category, value, guess);
             } else {
@@ -1401,8 +1399,8 @@
             });
 
             displayArtists();
-            calculateBestGuess();
             updateChance();
+            calculateBestGuess(); // Ensure this is called after updating the filtered artists
         }
 
         function filterDebut(option, artistValue, guessValue) {
