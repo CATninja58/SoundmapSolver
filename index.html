@@ -1599,18 +1599,23 @@
             const medianDebut = allArtistsSortedByDebut[medianDebutIndex].debut;
 
             // Step 5: Among the median popularity artists, find the one with the debut year closest to the median debut year
-            let closestArtist = medianPopularityArtists[0];
-            let closestDifference = Math.abs(parseInt(closestArtist.debut) - medianDebut);
+            let closestArtist = null;
+            let closestDifference = Infinity;
 
-            for (let i = 1; i < medianPopularityArtists.length; i++) {
-            const currentDifference = Math.abs(parseInt(medianPopularityArtists[i].debut) - medianDebut);
-            if (currentDifference < closestDifference) {
-                closestArtist = medianPopularityArtists[i];
-                closestDifference = currentDifference;
-            }
+            if (medianPopularityArtists.length > 0) {
+                closestArtist = medianPopularityArtists[0];
+                closestDifference = Math.abs(parseInt(closestArtist.debut) - medianDebut);
+
+                for (let i = 1; i < medianPopularityArtists.length; i++) {
+                    const currentDifference = Math.abs(parseInt(medianPopularityArtists[i].debut) - medianDebut);
+                    if (currentDifference < closestDifference) {
+                        closestArtist = medianPopularityArtists[i];
+                        closestDifference = currentDifference;
+                    }
+                }
             }
 
-            const bestGuessArtist = closestArtist;
+            const bestGuessArtist = closestArtist || filteredArtists[0]; // Fallback to the first artist if no closest artist is found
 
             const bestGuessElement = document.createElement("div");
             if (filteredArtists.length === 1) {
