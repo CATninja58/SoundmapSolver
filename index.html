@@ -1519,6 +1519,8 @@
 
             sortOrder[category] = sortOrder[category] === 'asc' ? 'desc' : 'asc';
             displayArtists();
+            calculateBestGuess();
+            updateChance();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -1608,7 +1610,13 @@
             const bestGuessArtist = closestArtist;
 
             const bestGuessElement = document.createElement("div");
-            bestGuessElement.textContent = `Best Guess: ${bestGuessArtist.artist}`;
+            if (filteredArtists.length === 1) {
+                bestGuessElement.textContent = `Correct Artist: ${filteredArtists[0].artist}`;
+            } else if (filteredArtists.length === 2) {
+                bestGuessElement.textContent = `Either ${filteredArtists[0].artist} or ${filteredArtists[1].artist}`;
+            } else {
+                bestGuessElement.textContent = `Best Guess: ${bestGuessArtist.artist}`;
+            }
             bestGuessElement.style.color = "#f4f4f4";
             bestGuessContainer.innerHTML = '';
             bestGuessContainer.appendChild(bestGuessElement);
