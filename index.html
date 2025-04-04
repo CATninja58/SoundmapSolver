@@ -1252,8 +1252,16 @@
             // Reset the first guess overlay
             const overlay = document.getElementById("firstGuessOverlay");
             overlay.style.display = "none";
-            bestGuessContainer.style.display = 'none';
-            bestGuessButton.style.display = 'none';
+
+            // Hide the best guess button and container
+            const bestGuessButton = document.getElementById("bestGuessButton");
+            bestGuessButton.classList.add("hidden");
+            document.getElementById("bestGuessContainer").style.display = 'none';
+
+            // Reset the best guess container color and content
+            const bestGuessContainer = document.getElementById("bestGuessContainer");
+            bestGuessContainer.style.color = "#f4f4f4";
+            bestGuessContainer.innerHTML = '';
         }
 
         function createButtons(artist, container, guess) {
