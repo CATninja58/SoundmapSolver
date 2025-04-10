@@ -1092,7 +1092,7 @@
         let guessCount = 0;
 
         function isAndroid() {
-            return /Android/i.test(navigator.userAgent);
+            return /Android/i.test(navigator.userAgent) || /Silk/i.test(navigator.userAgent);
         }
 
         function loadCSV(csvUrl) {
@@ -1262,6 +1262,8 @@
             const bestGuessContainer = document.getElementById("bestGuessContainer");
             bestGuessContainer.style.color = "#f4f4f4";
             bestGuessContainer.innerHTML = '';
+
+            // Hide chance container
             const chanceContainer = document.getElementById("chanceContainer");
             chanceContainer.textContent = '';
         }
@@ -1359,6 +1361,9 @@
             modalOptions.onclick = (event) => {
                 event.stopPropagation();
             };
+
+            // Ensure modal is scrollable for Android users
+            modal.style.overflowY = "auto";
         }
 
         function getCategoryOptions(category) {
