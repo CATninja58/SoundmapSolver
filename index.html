@@ -210,55 +210,55 @@
         }
 
         /* Modal styles */
-        .hidden {
+        #myModal {
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: rgba(0, 0, 0, 0.6);
             display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
 
-        .modal {
-            display: none; /* Hide modal by default */
-            position: fixed; /* Fixed positioning */
-            z-index: 1000; /* Set z-index */
-            left: 0; /* Align to left */
-            top: 0; /* Align to top */
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scrolling */
-            background-color: rgba(0, 0, 0, 0.4); /* Modal background color */
-        }
-
-        .modal-content {
-            background-color: #fefefe; /* Modal content background color */
-            margin: 15% auto; /* Center align */
-            padding: 20px; /* Add padding */
-            border: 1px solid #888; /* Border */
-            width: 80%; /* Set width */
-            max-width: 300px; /* Max width */
-        }
-
-        .close {
-            color: #aaa; /* Close button color */
-            float: right; /* Float to right */
-            font-size: 28px; /* Set font size */
-            font-weight: bold; /* Bold text */
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black; /* Close button hover color */
-            text-decoration: none; /* Remove text decoration */
-            cursor: pointer; /* Pointer cursor */
+        #modalOptions {
+            background: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
         }
 
         .modal-option {
-            margin: 10px 0; /* Add vertical margin */
-            padding: 10px; /* Add padding */
-            background-color: #ddd; /* Modal option background color */
-            cursor: pointer; /* Pointer cursor */
+            padding: 12px;
+            margin: 8px 0;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            transition: background-color 0.2s ease;
         }
 
         .modal-option:hover {
-            background-color: #ccc; /* Modal option hover color */
+            background-color: #eaeaea;
         }
+
+        .close {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
         
         /* Search result styles */
         #searchResults div {
@@ -1047,12 +1047,10 @@
     <div id="searchResults"></div>
 
     <!-- Modal structure -->
-    <div id="myModal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modalOptions"></div>
-        </div>
-    </div>
+    <div id="myModal" class="hidden">
+        <div id="modalOptions"></div>
+        <span class="close">&times;</span>
+    </div>      
 
     <div id="guessesContainer" class="guess-container" style="margin-top: 40px; margin-bottom: 20px; gap: 20px;">
         <!-- Guesses will be dynamically added here -->
@@ -1368,45 +1366,38 @@
                 const optionDiv = document.createElement("div");
                 optionDiv.classList.add("modal-option");
                 optionDiv.textContent = option;
-                optionDiv.onclick = () => {
+                optionDiv.onclick = (e) => {
+                    e.stopPropagation();
                     guess.selectedOptions[category] = option;
                     changeButtonColor(button, option);
-                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${option})</span>`;
+                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(${option})</span>`;
+                    modal.classList.add("hidden");
+                    modal.style.display = "none";
                     filterArtists();
-                    modal.classList.add("hidden"); // Hide the modal after selection
-
-                    // Add your code here for actions after the user has selected an option
                     calculateBestGuess();
                     updateChance();
-                    console.log(`User selected: ${option} for category: ${category}`);
                 };
                 modalOptions.appendChild(optionDiv);
             });
 
-            modal.classList.remove("hidden"); // Show the modal
-            modal.style.display = "block"; // Ensure the modal is visible
+            modal.classList.remove("hidden");
+            modal.style.display = "flex";
 
-            const closeModal = document.getElementsByClassName("close")[0];
-            closeModal.onclick = () => {
-                modal.style.display = "none"; // Ensure the modal is hidden
-                modal.classList.add("hidden");
-            };
-
-            // Ensure modal closes when clicking outside of it
-            window.onclick = (event) => {
-                if (event.target == modal) {
+            // Close on outside click
+            window.onclick = function (event) {
+                if (event.target === modal) {
                     modal.classList.add("hidden");
+                    modal.style.display = "none";
                 }
             };
 
-            // Prevent modal from blocking interaction
-            modalOptions.onclick = (event) => {
-                event.stopPropagation();
+            // Close with "X"
+            document.querySelector('.close').onclick = () => {
+                modal.classList.add("hidden");
+                modal.style.display = "none";
             };
-
-            // Ensure modal is scrollable for Android users
-            modal.style.overflowY = "auto";
         }
+
 
         function getCategoryOptions(category) {
             switch (category) {
