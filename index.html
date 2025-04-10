@@ -634,6 +634,13 @@
                 <span class="slider"></span>
             </label>
         </div>
+        <div class="toggle-switch">
+            <span>Android phone</span>
+            <label class="switch">
+                <input type="checkbox" id="androidToggle" onchange="toggleAndoid()">
+                <span class="slider"></span>
+            </label>
+        </div>
     </div>
 
     <!-- Changed help button -->
@@ -1028,7 +1035,6 @@
 
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
     <h1>Soundmap Artist Guesser Solver</h1>
-    <h1>DEBUGGING</h1>
     <script>
         if (isAndroid()) {
             document.write('<h1>Android version</h1>');
@@ -1126,9 +1132,8 @@
         console.log("User is on:", getPlatform());
 
         function isAndroid() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            const platform = navigator.platform || "Unknown";
-            return /android/i.test(userAgent) || /android/i.test(platform);
+            const isAndroidMode = localStorage.getItem('androidMode') === 'true';
+            return isAndroidMode;
         }
 
         function loadCSV(csvUrl) {
@@ -1759,6 +1764,21 @@
             if (isLightMode) {
                 document.body.classList.add('light-mode');
                 document.getElementById('lightModeToggle').checked = true;
+            }
+        }
+
+        function toggleAndroid() {
+            const body = document.body;
+            body.classList.toggle('android-mode');
+            const isAndroidMode = body.classList.contains('android-mode');
+            localStorage.setItem('androidMode', isAndroidMode);
+        }
+
+        function checkAndroidPreference() {
+            const isAndroidMode = localStorage.getItem('androidMode') === 'true';
+            if (isAndroidMode) {
+                document.body.classList.add('android-mode');
+                document.getElementById('androidModeToggle').checked = true;
             }
         }
 
