@@ -1384,9 +1384,11 @@
             });
 
             modal.classList.remove("hidden"); // Show the modal
+            modal.style.display = "block"; // Ensure the modal is visible
 
             const closeModal = document.getElementsByClassName("close")[0];
-            closeModal.onclick = () => {
+                modal.classList.add("hidden");
+                modal.style.display = "none"; // Ensure the modal is hidden
                 modal.classList.add("hidden");
             };
 
