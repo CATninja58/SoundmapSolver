@@ -1096,8 +1096,35 @@
         let guesses = [];
         let guessCount = 0;
 
+        function getPlatform() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if (/android/i.test(userAgent)) {
+                return "Android";
+            }
+
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "iOS";
+            }
+
+            if (/Win(dows)?/i.test(userAgent)) {
+                return "Windows";
+            }
+
+            if (/Mac/i.test(userAgent)) {
+                return "MacOS";
+            }
+
+            if (/Linux/i.test(userAgent)) {
+                return "Linux";
+            }
+
+            return "Unknown";
+        }
+        console.log("User is on:", getPlatform());
+
         function isAndroid() {
-            return /Android/i.test(navigator.userAgent) || /Silk/i.test(navigator.userAgent);
+            return /android/i.test(userAgent);
         }
 
         function loadCSV(csvUrl) {
