@@ -1098,8 +1098,9 @@
 
         function getPlatform() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const platform = navigator.platform || "Unknown";
 
-            if (/android/i.test(userAgent)) {
+            if (/android/i.test(userAgent) || /android/i.test(platform)) {
                 return "Android";
             }
 
@@ -1107,15 +1108,15 @@
                 return "iOS";
             }
 
-            if (/Win(dows)?/i.test(userAgent)) {
+            if (/Win(dows)?/i.test(userAgent) || /Win(dows)?/i.test(platform)) {
                 return "Windows";
             }
 
-            if (/Mac/i.test(userAgent)) {
+            if (/Mac/i.test(userAgent) || /Mac/i.test(platform)) {
                 return "MacOS";
             }
 
-            if (/Linux/i.test(userAgent)) {
+            if (/Linux/i.test(userAgent) || /Linux/i.test(platform)) {
                 return "Linux";
             }
 
@@ -1125,7 +1126,8 @@
 
         function isAndroid() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            return /android/i.test(userAgent);
+            const platform = navigator.platform || "Unknown";
+            return /android/i.test(userAgent) || /android/i.test(platform);
         }
 
         function loadCSV(csvUrl) {
