@@ -1361,32 +1361,49 @@
         function showModal(button, category, value, guess) {
             const modal = document.getElementById("myModal");
             const modalOptions = document.getElementById("modalOptions");
-            modalOptions.innerHTML = ""; // Clear previous options
+            modalOptions.innerHTML = '';
 
             const options = getCategoryOptions(category);
             options.forEach(option => {
-            const optionDiv = document.createElement("div");
-            optionDiv.className = "modal-option";
-            optionDiv.textContent = option;
-            optionDiv.onclick = () => {
-                guess.selectedOptions[category] = option;
-                changeButtonColor(button, option);
-                button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value}</span><br><span class="button-text">(${option})</span>`;
-                filterArtists();
-                calculateBestGuess();
-                updateChance();
-                modal.classList.add("hidden"); // Hide the modal
-                console.log(`User selected: ${option} for category: ${category}`);
-            };
-            modalOptions.appendChild(optionDiv);
+                const optionDiv = document.createElement("div");
+                optionDiv.classList.add("modal-option");
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => {
+                    guess.selectedOptions[category] = option;
+                    changeButtonColor(button, option);
+                    button.innerHTML = `<span class="button-text">${category.charAt(0).toUpperCase() + category.slice(1)}: ${value} (${option})</span>`;
+                    filterArtists();
+                    modal.classList.add("hidden"); // Hide the modal after selection
+
+                    // Add your code here for actions after the user has selected an option
+                    calculateBestGuess();
+                    updateChance();
+                    console.log(`User selected: ${option} for category: ${category}`);
+                };
+                modalOptions.appendChild(optionDiv);
             });
 
-            const closeModal = modal.querySelector(".close");
+            modal.classList.remove("hidden"); // Show the modal
+
+            const closeModal = document.getElementsByClassName("close")[0];
             closeModal.onclick = () => {
-            modal.classList.add("hidden");
+                modal.classList.add("hidden");
             };
 
-            modal.classList.remove("hidden"); // Show the modal
+            // Ensure modal closes when clicking outside of it
+            window.onclick = (event) => {
+                if (event.target == modal) {
+                    modal.classList.add("hidden");
+                }
+            };
+
+            // Prevent modal from blocking interaction
+            modalOptions.onclick = (event) => {
+                event.stopPropagation();
+            };
+
+            // Ensure modal is scrollable for Android users
+            modal.style.overflowY = "auto";
         }
 
         function getCategoryOptions(category) {
