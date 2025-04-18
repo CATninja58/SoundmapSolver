@@ -1036,11 +1036,11 @@
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
     <h1>Soundmap Artist Guesser Solver</h1>
 
-    <div style="display: flex; justify-content: center; align-items: center; gap: 10px;"></div>
-        <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
-        <button onclick="openHintBox()">Add hint info</button>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; max-width: 600px; margin: 0 auto;">
+        <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()" style="flex: 4; padding: 10px; font-size: 14px;">
+        <button onclick="addHintInfo()" style="flex: 1; padding: 10px; font-size: 14px;">Hint</button>
     </div>
-    <div id="searchResults"></div>
+    <div id="searchResults" style="margin-top: 10px;"></div>
 
     <!-- Hint Box -->
     <div id="hintBox" class="hidden" style="display: none; margin-top: 20px; text-align: center;"></div>
