@@ -1035,22 +1035,17 @@
 
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
     <h1>Soundmap Artist Guesser Solver</h1>
-    <script>
-        if (isAndroid()) {
-            document.write('<h1>Android version</h1>');
-        }
-    </script>
 
-    <button onclick="resetSolver()">Reset</button>
-
-    <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 10px;"></div>
+        <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
+        <button onclick="openHintBox()">Add hint info</button>
+    </div>
     <div id="searchResults"></div>
 
-    <!-- Modal structure -->
-    <div id="myModal" class="hidden">
-        <div id="modalOptions"></div>
+    <!-- Hint Box -->
+    <div id="hintBox" class="hidden" style="display: none; margin-top: 20px; text-align: center;"></div>
         <span class="close">&times;</span>
-    </div>      
+    </div>
 
     <div id="guessesContainer" class="guess-container" style="margin-top: 40px; margin-bottom: 20px; gap: 20px;">
         <!-- Guesses will be dynamically added here -->
@@ -1167,6 +1162,72 @@
             return { Artist, TwoGuesses, ThreeGuesses };
             });
             filteredArtistsSorted = [...artistsDataSorted];
+        }
+
+        function addHintInfo() {
+            const hintBox = document.getElementById("hintBox");
+            hintBox.innerHTML = ''; // Clear previous content
+            hintBox.style.display = "block";
+
+            // Create input for the value
+            const inputField = document.createElement("input");
+            inputField.type = "text";
+            inputField.placeholder = "Enter value (e.g., 2004, Solo, etc.)";
+            inputField.id = "hintInputValue";
+            hintBox.appendChild(inputField);
+
+            // Create dropdown for the category
+            const dropdown = document.createElement("select");
+            dropdown.id = "hintCategoryDropdown";
+
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.textContent = "Select category";
+            dropdown.appendChild(defaultOption);
+
+            const categories = ["debut", "popularity", "members", "genre", "country", "gender"];
+            categories.forEach(category => {
+            const option = document.createElement("option");
+            option.value = category;
+            option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+            dropdown.appendChild(option);
+            });
+
+            hintBox.appendChild(dropdown);
+
+            // Create Enter button
+            const enterButton = document.createElement("button");
+            enterButton.textContent = "Enter";
+            enterButton.onclick = () => applyHintFilter();
+            hintBox.appendChild(enterButton);
+        }
+
+        function applyHintFilter() {
+            const inputValue = document.getElementById("hintInputValue").value.trim();
+            const selectedCategory = document.getElementById("hintCategoryDropdown").value;
+
+            if (!inputValue || !selectedCategory) {
+                alert("Please enter a value and select a category.");
+                return;
+            }
+
+            // Filter artists based on the hint
+            filteredArtists = filteredArtists.filter(artist => {
+                if (selectedCategory === "debut" || selectedCategory === "popularity") {
+                    return parseInt(artist[selectedCategory]) === parseInt(inputValue);
+                } else {
+                    return artist[selectedCategory].toLowerCase() === inputValue.toLowerCase();
+                }
+            });
+
+            // Update the UI and calculations
+            displayArtists();
+            calculateBestGuess();
+            updateChance();
+
+            // Hide the hint box after applying the filter
+            const hintBox = document.getElementById("hintBox");
+            hintBox.style.display = "none";
         }
 
         function searchArtist() {
