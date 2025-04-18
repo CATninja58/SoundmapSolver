@@ -633,6 +633,8 @@
             border-radius: 5px 0 0 5px;
             height: 50px; /* Match button height */
             box-sizing: border-box; /* Ensure padding is included in height */
+            display: flex; /* Ensure alignment */
+            align-items: center; /* Center content vertically */
         }
 
         #addHintButton {
@@ -646,6 +648,8 @@
             cursor: pointer;
             height: 50px; /* Match search bar height */
             box-sizing: border-box; /* Ensure padding is included in height */
+            display: flex; /* Ensure alignment */
+            align-items: center; /* Center content vertically */
         }
 
         #addHintButton:hover {
@@ -1142,11 +1146,11 @@
     <div id="searchResults"></div>
 
     <!-- Hint Popup -->
-    <div class="hint-popup" id="hintPopup">
+    <div class="hint-popup" id="hintPopup" style="margin: 50px;">
         <div class="hint-content">
             <h2>Add Hint Information</h2>
             <input type="text" id="hintInput" placeholder="Enter value (e.g., 1992)">
-            <select id="hintCategory" style="margin-bottom: 40px; width: 100%; margin-top: 10px;">
+            <select id="hintCategory" style="width: 100%;"></select>
                 <option value="">Select category</option>
                 <option value="debut">Debut</option>
                 <option value="popularity">Popularity</option>
@@ -1155,8 +1159,8 @@
                 <option value="country">Country</option>
                 <option value="gender">Gender</option>
             </select>
-            <button onclick="applyHint()" style="margin-top: 40px;">Enter</button>
-            <button class="close-hint" onclick="closeHintPopup()">Close</button>
+            <button onclick="applyHint()">Enter</button>
+            <button class="close-hint">Close</button>
         </div>
     </div>
 
