@@ -1037,8 +1037,9 @@
     <h1>Soundmap Artist Guesser Solver</h1>
 
     <div style="display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; max-width: 600px; margin: 0 auto;">
-        <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()" style="flex: 1; padding: 10px; font-size: 14px; height: 40px;">
-        <button onclick="openHintPopup()" style="padding: 10px; font-size: 14px; height: 40px;">Hint</button>
+        <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()" style="flex: 1; padding: 10px; font-size: 14px; height: 40px; box-sizing: border-box;">
+        <button onclick="openHintPopup()" style="padding: 0 10px; font-size: 14px; height: 40px; box-sizing: border-box;">Hint</button>
+        <button onclick="searchArtist()" style="padding: 0 10px; font-size: 14px; height: 40px; box-sizing: border-box;">Enter</button>
     </div>
     <div id="searchResults" style="margin-top: 10px;"></div>
 
