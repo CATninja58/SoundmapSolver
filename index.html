@@ -614,7 +614,7 @@
             left: -5px;
         }
 
-        /* Search bar and button container */
+        /* Search bar and button container NEW STUFF --------------------------*/
         .search-container {
             display: flex;
             justify-content: center;
@@ -631,21 +631,23 @@
             color: #f4f4f4;
             border: none;
             border-radius: 5px 0 0 5px;
+            height: 50px; /* Match button height */
         }
 
         #addHintButton {
             width: 15%;
             padding: 10px;
             font-size: 14px;
-            background-color: #159643;
+            background-color: #1c1c1c;
             color: #f4f4f4;
             border: none;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
+            height: 50px; /* Match search bar height */
         }
 
         #addHintButton:hover {
-            background-color: #1c8c3a;
+            background-color: grey;
         }
 
         /* Hint popup styles */
@@ -655,7 +657,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.6);
             display: none;
             justify-content: center;
             align-items: center;
@@ -669,11 +671,12 @@
         .hint-content {
             background-color: #1c1c1c;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             width: 90%;
             max-width: 400px;
             text-align: center;
             color: #f4f4f4;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
 
         .hint-content input,
@@ -684,27 +687,18 @@
             padding: 10px;
             font-size: 14px;
             border: none;
-            border-radius: 5px;
-        }
-
-        .hint-content input {
-            background-color: #2d2d2d;
-            color: #f4f4f4;
-        }
-
-        .hint-content select {
+            border-radius: 6px;
             background-color: #2d2d2d;
             color: #f4f4f4;
         }
 
         .hint-content button {
-            background-color: #159643;
-            color: #f4f4f4;
+            background-color: #1c1c1c;
             cursor: pointer;
         }
 
         .hint-content button:hover {
-            background-color: #1c8c3a;
+            background-color: grey;
         }
 
         .hint-content .close-hint {
