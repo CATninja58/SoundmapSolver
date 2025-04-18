@@ -1037,9 +1037,8 @@
     <h1>Soundmap Artist Guesser Solver</h1>
 
     <div style="display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; max-width: 600px; margin: 0 auto;">
-        <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()" style="flex: 1; padding: 10px; font-size: 14px; height: 40px; box-sizing: border-box;">
-        <button onclick="openHintPopup()" style="padding: 0 10px; font-size: 14px; height: 40px; box-sizing: border-box;">Hint</button>
-        <button onclick="searchArtist()" style="padding: 0 10px; font-size: 14px; height: 40px; box-sizing: border-box;">Enter</button>
+        <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()" style="flex: 1; padding: 10px; font-size: 14px; height: 40px;">
+        <button onclick="openHintPopup()" style="padding: 10px; font-size: 14px; height: 40px;">Hint</button>
     </div>
     <div id="searchResults" style="margin-top: 10px;"></div>
 
@@ -1049,7 +1048,7 @@
             <span class="close-help" onclick="closeHintPopup()">&times;</span>
             <h2>Enter Hint Information</h2>
             <input type="text" id="hintInputValue" placeholder="Enter value (e.g., 2004, Solo, etc.)" style="width: 100%; padding: 10px; margin-bottom: 10px; font-size: 14px;">
-            <select id="hintCategoryDropdown" style="width: 100%; padding: 10px; margin-bottom: 20px; font-size: 14px;">
+            <select id="hintCategoryDropdown" style="width: 100%; padding: 10px; margin-bottom: 10px; font-size: 14px;"></select>
                 <option value="">Select category</option>
                 <option value="debut">Debut</option>
                 <option value="popularity">Popularity</option>
@@ -1058,7 +1057,7 @@
                 <option value="country">Country</option>
                 <option value="gender">Gender</option>
             </select>
-            <button onclick="applyHintFilter()" style="padding: 10px; font-size: 14px; width: 100%;">Enter</button>
+            <button onclick="applyHintFilter()" style="padding: 10px; font-size: 14px; width: 100%; margin-top: 10px;">Enter</button>
         </div>
     </div>
 
