@@ -711,6 +711,14 @@
             background-color: #d1a800;
         }
 
+        #artistSearch,
+        #addHintButton {
+            vertical-align: middle; /* Fix vertical misalignment */
+            display: inline-flex; /* Ensure consistent alignment */
+            align-items: center;  /* Center content vertically */
+        }
+
+
     </style> 
 </head>
 <body>
@@ -1155,7 +1163,7 @@
                 <option value="country">Country</option>
                 <option value="gender">Gender</option>
             </select>
-            <button onclick="applyHint()">Enter</button>
+            <button onclick="applyHint()" style="margin-top: 50px;">Enter</button>
             <button class="close-hint" onclick="closeHintPopup()">Close</button>
         </div>
     </div>
@@ -1166,19 +1174,19 @@
         <span class="close">&times;</span>
     </div>      
 
-    <div id="guessesContainer" class="guess-container">
+    <div id="guessesContainer" class="guess-container" style="margin-top: 40px; margin-bottom: 20px; gap: 20px;">
         <!-- Guesses will be dynamically added here -->
     </div>
 
     <div style="height: 60px;"></div> <!-- Added space between the two containers -->
 
-    <div id="bestGuessContainer" class="guess-container">
+    <div id="bestGuessContainer" class="guess-container" style="margin-top: 40px; margin-bottom: 20px;">
         <!-- Best guess will be dynamically added here -->
     </div>
 
     <button id="bestGuessButton" class="hidden" onclick="makeBestGuessNext()">Click to make <span id="bestGuessName">best guess</span> your next guess</button>
     
-    <div id="chanceContainer" class="footer-text"></div>
+    <div id="chanceContainer" class="footer-text" style="margin-top: 20px;"></div>
 
     <div class="results-container">
         <div class="footer-text" style="font-size: 16px;">List of possible artists</div>
