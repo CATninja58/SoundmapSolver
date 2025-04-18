@@ -617,10 +617,10 @@
         /* Search bar and button container NEW STUFF --------------------------*/
         .search-container {
             display: flex;
+            align-items: stretch; 
             justify-content: center;
-            align-items: center;
-            margin-top: 20px;
             width: 90%;
+            margin-top: 20px;
         }
 
         #artistSearch {
@@ -713,9 +713,14 @@
 
         #artistSearch,
         #addHintButton {
-            vertical-align: middle; /* Fix vertical misalignment */
-            display: inline-flex; /* Ensure consistent alignment */
-            align-items: center;  /* Center content vertically */
+            height: 50px;
+            padding: 0 10px;
+            font-size: 14px;
+            border: none;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
 
