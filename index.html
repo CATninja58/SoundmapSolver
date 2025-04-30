@@ -617,7 +617,7 @@
         /* Search bar and button container NEW STUFF --------------------------*/
         .search-container {
             display: flex;
-            align-items: stretch; 
+            align-items: center; /* Ensures both elements are vertically aligned */
             justify-content: center;
             width: 90%;
             margin-top: 20px;
@@ -633,6 +633,8 @@
             border-radius: 5px 0 0 5px;
             height: 50px; /* Match button height */
             box-sizing: border-box; /* Ensure padding is included in height */
+            display: flex;
+            align-items: center; /* Ensures content inside is vertically centered */
         }
 
         #addHintButton {
@@ -646,6 +648,8 @@
             cursor: pointer;
             height: 50px; /* Match search bar height */
             box-sizing: border-box; /* Ensure padding is included in height */
+            display: flex;
+            align-items: center; /* Ensures content inside is vertically centered */
         }
 
         #addHintButton:hover {
@@ -743,7 +747,7 @@
         }
 
         body.light-mode .hint-content button:hover {
-            background-color: #eaeaea;
+            background-color: #159643;
         }
 
         body.light-mode .hint-content .close-hint {
@@ -751,7 +755,7 @@
         }
 
         body.light-mode .hint-content .close-hint:hover {
-            background-color: #d6d6d6;
+            background-color: #b19600;
         }
 
         #artistSearch,
