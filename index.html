@@ -1364,12 +1364,12 @@
                 if (hintCategory === 'debut' || hintCategory === 'popularity') {
                     return parseInt(artist[hintCategory]) === parseInt(hintValue);
                 } else {
-                    return String(artist[hintCategory]).toLowerCase() === String(hintValue).toLowerCase();
+                    return String(artist[hintCategory]).trim().toLowerCase() === String(hintValue).trim().toLowerCase();
                 }
             });
 
             if (filteredArtists == 0){
-                alert('No artists match the hint provided. Please try again.');
+                alert('No artists match the hint provided. Please try again. Text: ', hintValue, ' Category: ', hintCategory);
                 filteredArtists = [...filteredArtistsWithoutHint]; // Reset to original filtered artists
                 return;
             }
