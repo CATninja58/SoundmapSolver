@@ -614,46 +614,45 @@
             left: -5px;
         }
 
-        /* Search bar and button container --------------------------*/
+        /* Search bar and button container NEW STUFF --------------------------*/
         .search-container {
             display: flex;
+            align-items: stretch; 
             justify-content: center;
-            align-items: center;
             width: 90%;
-            max-width: 600px;
-            margin: 20px auto 0 auto;
+            margin-top: 20px;
         }
 
         #artistSearch {
-            flex: 1;
-            padding: 0 12px;
-            height: 50px;
+            width: 80%;
+            padding: 10px;
             font-size: 14px;
             background-color: #1c1c1c;
             color: #f4f4f4;
             border: none;
             border-radius: 5px 0 0 5px;
-            box-sizing: border-box;
+            height: 50px; /* Match button height */
+            box-sizing: border-box; /* Ensure padding is included in height */
         }
 
         #addHintButton {
-            width: 120px;
-            height: 50px;
+            width: 15%;
+            padding: 10px;
             font-size: 14px;
             background-color: #1c1c1c;
             color: #f4f4f4;
             border: none;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
-            box-sizing: border-box;
-            transition: background-color 0.2s ease;
+            height: 50px; /* Match search bar height */
+            box-sizing: border-box; /* Ensure padding is included in height */
         }
 
         #addHintButton:hover {
             background-color: grey;
         }
 
-        /* Light mode */
+        /* Light mode for search bar and hint button */
         body.light-mode #artistSearch {
             background-color: #ffffff;
             color: #1c1c1c;
@@ -669,7 +668,6 @@
         body.light-mode #addHintButton:hover {
             background-color: #eaeaea;
         }
-
 
         /* Hint popup styles */
         .hint-popup {
@@ -745,7 +743,7 @@
         }
 
         body.light-mode .hint-content button:hover {
-            background-color: #159643;
+            background-color: #eaeaea;
         }
 
         body.light-mode .hint-content .close-hint {
@@ -753,10 +751,20 @@
         }
 
         body.light-mode .hint-content .close-hint:hover {
-            background-color: #b19600;
+            background-color: #d6d6d6;
         }
 
-        
+        #artistSearch,
+        #addHintButton {
+            height: 50px;
+            padding: 0 10px;
+            font-size: 14px;
+            border: none;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
 
     </style> 
