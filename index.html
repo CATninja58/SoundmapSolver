@@ -1318,7 +1318,7 @@
                 if (hintCategory === 'debut' || hintCategory === 'popularity') {
                     return parseInt(artist[hintCategory]) === parseInt(hintValue);
                 } else {
-                    return artist[hintCategory].toLowerCase() === hintValue.toLowerCase();
+                    return String(artist[hintCategory]).toLowerCase() === String(hintValue).toLowerCase();
                 }
             });
 
@@ -1559,7 +1559,6 @@
                 modal.style.display = "none";
             };
         }
-
 
         function getCategoryOptions(category) {
             switch (category) {
