@@ -652,6 +652,23 @@
             background-color: grey;
         }
 
+        /* Light mode for search bar and hint button */
+        body.light-mode #artistSearch {
+            background-color: #ffffff;
+            color: #1c1c1c;
+            border: 1px solid #ccc;
+        }
+
+        body.light-mode #addHintButton {
+            background-color: #ffffff;
+            color: #1c1c1c;
+            border: 1px solid #ccc;
+        }
+
+        body.light-mode #addHintButton:hover {
+            background-color: #eaeaea;
+        }
+
         /* Hint popup styles */
         .hint-popup {
             position: fixed;
@@ -695,20 +712,46 @@
         }
 
         .hint-content button {
-            background-color: #1c1c1c;
+            background-color: grey;
             cursor: pointer;
         }
 
         .hint-content button:hover {
-            background-color: grey;
+            background-color: #159643;
         }
 
         .hint-content .close-hint {
-            background-color: #b19600;
+            background-color: grey;
         }
 
         .hint-content .close-hint:hover {
-            background-color: #d1a800;
+            background-color: #b19600;
+        }
+
+        /* Light mode for hint popup */
+        body.light-mode .hint-content {
+            background-color: #ffffff;
+            color: #1c1c1c;
+        }
+
+        body.light-mode .hint-content input,
+        body.light-mode .hint-content select,
+        body.light-mode .hint-content button {
+            background-color: #f0f0f0;
+            color: #1c1c1c;
+            border: 1px solid #ccc;
+        }
+
+        body.light-mode .hint-content button:hover {
+            background-color: #eaeaea;
+        }
+
+        body.light-mode .hint-content .close-hint {
+            background-color: #eaeaea;
+        }
+
+        body.light-mode .hint-content .close-hint:hover {
+            background-color: #d6d6d6;
         }
 
         #artistSearch,
@@ -1220,6 +1263,7 @@
         let artistsData = [];
         let artistInfo = {};
         let filteredArtists = [];
+        let filteredArtistsWithoutHint = [];
 
         let artistsDataSorted = [];
         let artistInfoSorted = {};
@@ -1313,6 +1357,8 @@
                 return;
             }
 
+            filteredArtistsWithoutHint = [...filteredArtists]; // Store the original filtered artists before applying the hint
+            
             // Apply the hint filter
             filteredArtists = filteredArtists.filter(artist => {
                 if (hintCategory === 'debut' || hintCategory === 'popularity') {
@@ -1321,6 +1367,12 @@
                     return String(artist[hintCategory]).toLowerCase() === String(hintValue).toLowerCase();
                 }
             });
+
+            if (filteredArtists == 0){
+                alert('No artists match the hint provided. Please try again.');
+                filteredArtists = [...filteredArtistsWithoutHint]; // Reset to original filtered artists
+                return;
+            }
 
             // Update the UI
             displayArtists();
@@ -1436,6 +1488,10 @@
 
             // Clear the chance container
             document.getElementById("chanceContainer").innerHTML = '';
+
+            // Reset the hint input and category select
+            document.getElementById('hintInput').value = '';
+            document.getElementById('hintCategory').value = '';
 
             // Reset the guesses array and count
             guesses = [];
