@@ -624,7 +624,7 @@
         }
 
         #artistSearch {
-            width: 80%;
+            flex: 1; /* Ensures the search bar takes up available space */
             padding: 10px;
             font-size: 14px;
             background-color: #1c1c1c;
@@ -636,7 +636,7 @@
         }
 
         #addHintButton {
-            width: 15%;
+            flex: 0; /* Prevents the button from stretching */
             padding: 10px;
             font-size: 14px;
             background-color: #1c1c1c;
@@ -646,6 +646,13 @@
             cursor: pointer;
             height: 50px; /* Match search bar height */
             box-sizing: border-box; /* Ensure padding is included in height */
+        }
+
+        #artistSearch,
+        #addHintButton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #addHintButton:hover {
@@ -754,17 +761,7 @@
             background-color: #b19600;
         }
 
-        #artistSearch,
-        #addHintButton {
-            height: 50px;
-            padding: 0 10px;
-            font-size: 14px;
-            border: none;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        
 
 
     </style> 
@@ -2049,3 +2046,5 @@
 
 </body>
 </html>
+
+    
