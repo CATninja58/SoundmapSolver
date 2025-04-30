@@ -614,52 +614,46 @@
             left: -5px;
         }
 
-        /* Search bar and button container NEW STUFF --------------------------*/
+        /* Search bar and button container --------------------------*/
         .search-container {
             display: flex;
-            align-items: center; /* Ensures both elements are vertically aligned */
             justify-content: center;
+            align-items: center;
             width: 90%;
-            margin-top: 20px;
+            max-width: 600px;
+            margin: 20px auto 0 auto;
         }
 
         #artistSearch {
-            flex: 1; /* Ensures the search bar takes up available space */
-            padding: 10px;
+            flex: 1;
+            padding: 0 12px;
+            height: 50px;
             font-size: 14px;
             background-color: #1c1c1c;
             color: #f4f4f4;
             border: none;
             border-radius: 5px 0 0 5px;
-            height: 50px; /* Match button height */
-            box-sizing: border-box; /* Ensure padding is included in height */
+            box-sizing: border-box;
         }
 
         #addHintButton {
-            flex: 0; /* Prevents the button from stretching */
-            padding: 10px;
+            width: 120px;
+            height: 50px;
             font-size: 14px;
             background-color: #1c1c1c;
             color: #f4f4f4;
             border: none;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
-            height: 50px; /* Match search bar height */
-            box-sizing: border-box; /* Ensure padding is included in height */
-        }
-
-        #artistSearch,
-        #addHintButton {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            box-sizing: border-box;
+            transition: background-color 0.2s ease;
         }
 
         #addHintButton:hover {
             background-color: grey;
         }
 
-        /* Light mode for search bar and hint button */
+        /* Light mode */
         body.light-mode #artistSearch {
             background-color: #ffffff;
             color: #1c1c1c;
@@ -675,6 +669,7 @@
         body.light-mode #addHintButton:hover {
             background-color: #eaeaea;
         }
+
 
         /* Hint popup styles */
         .hint-popup {
@@ -2046,5 +2041,3 @@
 
 </body>
 </html>
-
-    
