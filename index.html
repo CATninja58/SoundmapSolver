@@ -1436,7 +1436,7 @@
             // Close the popup
             closeHintPopup();
         }
-
+        
         function uploadStatChange() {
             const artistInfo = changedArtistInfo;
             const category = document.getElementById('statChangeCategory').value;
@@ -1449,7 +1449,7 @@
             let members = artistInfo.members;
             let genre = artistInfo.genre;
             let country = artistInfo.country;
-            let gender = artistInfo;
+            let gender = artistInfo.gender;
 
             switch (category) {
                 case 'debut':
@@ -1483,7 +1483,7 @@
                 gender
             });
 
-            fetch("https://script.google.com/macros/s/AKfycbzIVxt9eKnJfHBtwIdVH7OzjUdCdjCHfjccDlccHibfHDa8rspDpIWoXpQ4_gsgbGvQ/exec", { //web app URL
+            fetch("https://script.google.com/macros/s/AKfycbxjJMZfMw7xvjy7EWymyMOi4YJNy4WDOWdNZnp_JnAAbtFUYGszdrlW7bOapkQygsk/exec", { //web app URL
                 method: "POST",
                 body: params
             })
