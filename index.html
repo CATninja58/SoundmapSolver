@@ -770,6 +770,7 @@
     </style> 
 </head>
 <body>
+    
     <i class="fas fa-cog cog-icon" onclick="toggleSidebar()"></i>
     <div class="sidebar" id="sidebar">
         <h2>Settings</h2>
@@ -1254,6 +1255,7 @@
             </select>
             <button onclick="uploadStatChange()" style="margin-top: 50px;">Enter</button>
             <button class="close-hint" onclick="closeStatChangePopup()">Close</button>
+            <p id="submitStatus" style="margin-top: 15px; font-weight: bold; color: red;"></p>
         </div>
     </div>
 
@@ -1297,8 +1299,10 @@
             </table>
         </div>
         <!-- Artists matching the guess will be displayed here -->
+         
     </div>
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
+    
       
     <script>
         let artistsData = [];
@@ -1398,8 +1402,8 @@
         // Store the changed artist in a global variable for later use
         let changedArtistInfo = null;
         function openStatChangePopup(changedArtist){
-            document.getElementById('changedArtist').textContent = changedArtist.artist;
-            changedArtistInfo = changedArtist;
+            document.getElementById('changedArtist').textContent = changedArtist.artist; // show artist name in popup header
+            changedArtistInfo = changedArtist; // store full artist info object globally for submit
             document.getElementById('statChangePopup').classList.add('open');
         }
 
@@ -1445,15 +1449,26 @@
         async function uploadStatChange() {
             const artistInfo = changedArtistInfo;
             const category = document.getElementById('statChangeCategory').value;
-            const changedInfo = document.getElementById('statChangeInput').value;
+            const changedInfo = document.getElementById('statChangeInput').value.trim();
 
-            if (!artistInfo || !artistInfo.name) {
+            if (!artistInfo || !artistInfo.artist) {
                 console.error("❌ No artist info found");
-                document.getElementById("submitStatus").textContent = "❌ No artist selected.";
+                const statusBox = document.getElementById("submitStatus");
+                if (statusBox) statusBox.textContent = "❌ No artist selected.";
                 return;
             }
 
-            let artist = artistInfo.name;
+            if (!category) {
+                alert("Please select a category.");
+                return;
+            }
+            if (!changedInfo) {
+                alert("Please enter a value.");
+                return;
+            }
+
+            // Get current values
+            let artist = artistInfo.artist;
             let debut = artistInfo.debut;
             let popularity = artistInfo.popularity;
             let members = artistInfo.members;
@@ -1461,6 +1476,7 @@
             let country = artistInfo.country;
             let gender = artistInfo.gender;
 
+            // Update the changed category value
             switch (category) {
                 case 'debut': debut = changedInfo; break;
                 case 'popularity': popularity = changedInfo; break;
@@ -1502,15 +1518,24 @@
                 }
 
                 console.log("✅ Upload successful!");
-                document.getElementById("submitStatus").textContent = "✅ Submission successful!";
+                const statusBox = document.getElementById("submitStatus");
+                if (statusBox) {
+                    statusBox.style.color = "green";
+                    statusBox.textContent = "✅ Submission successful!";
+                }
             } catch (error) {
                 console.error("❌ Upload failed:", error);
                 const statusBox = document.getElementById("submitStatus");
-                if (statusBox) statusBox.textContent = "❌ Submission failed. Try again.";
+                if (statusBox) {
+                    statusBox.style.color = "red";
+                    statusBox.textContent = "❌ Submission failed. Try again.";
+                }
             }
 
-            closeStatChangePopup();
+            // Close popup after a short delay so user can see the message
+            setTimeout(closeStatChangePopup, 1500);
         }
+
 
 
         function searchArtist() {
