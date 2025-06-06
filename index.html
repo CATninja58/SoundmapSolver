@@ -1193,7 +1193,7 @@
         </div>
     </div>
 
-    <div class="alert-overlay" id="alertOverlay">
+    <div class="help-overlay" id="alertOverlay">
         <div class="tutorial-container">
             <div class="tutorial-box">
                 <div class="help-contect">
@@ -1361,7 +1361,7 @@
             return { Artist, TwoGuesses, ThreeGuesses };
             });
             filteredArtistsSorted = [...artistsDataSorted];
-        }
+        }   
 
         function openHintPopup() {
             document.getElementById('hintPopup').classList.add('open');
@@ -1459,14 +1459,15 @@
             guesses.push(guess);
 
             createButtons(artist, guessBoxes, guess);
-            if(guessCount === 1){
-            const TwoPercent = getPercentFor(artist, 2) || 0; // Default to 0 if undefined
-            const ThreePercent = getPercentFor(artist, 3) || 0; // Default to 0 if undefined
-            if (parseFloat(TwoPercent) < 5.00 || parseFloat(ThreePercent) < 30.00) {
-                if (!isPopupMode){
-                    revealOverlayText(artist.artist, TwoPercent, ThreePercent);
+            if(guessCount === 1){ //if its the first guess
+                revealAlertOverlayText();
+                const TwoPercent = getPercentFor(artist, 2) || 0; // Default to 0 if undefined
+                const ThreePercent = getPercentFor(artist, 3) || 0; // Default to 0 if undefined
+                if (parseFloat(TwoPercent) < 5.00 || parseFloat(ThreePercent) < 30.00) {
+                    if (!isPopupMode){
+                        revealOverlayText(artist.artist, TwoPercent, ThreePercent);
+                    }
                 }
-            }
             }
         }
 
