@@ -1346,6 +1346,11 @@
             return isAndroidMode;
         }
 
+        function isPopupMode() {
+            const isPopupMode= localStorage.getItem('popupMode') === 'true';
+            return isPopupMode;
+        }
+
         function loadCSV(csvUrl) {
             fetch(csvUrl)
                 .then(response => response.text())
@@ -1437,7 +1442,7 @@
             closeHintPopup();
         }
         
-        function uploadStatChange() {
+        async function uploadStatChange() {
             const artistInfo = changedArtistInfo;
             const category = document.getElementById('statChangeCategory').value;
             const changedInfo = document.getElementById('statChangeInput').value;
@@ -1451,6 +1456,7 @@
             let country = artistInfo.country;
             let gender = artistInfo.gender;
 
+            // Apply change to selected field
             switch (category) {
                 case 'debut':
                     debut = changedInfo;
@@ -1472,34 +1478,42 @@
                     break;
             }
 
-            // ⬇️ Send to Google Apps Script
-            const params = new URLSearchParams({
-                artist,
-                debut,
-                popularity,
-                members,
-                genre,
-                country,
-                gender
-            });
+            // ✅ Supabase endpoint
+            const SUPABASE_URL = 'https://jkouakuoktcuzplfnvtw.supabase.co'; // Replace with your project URL
+            const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprb3Vha3Vva3RjdXpwbGZudnR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkxODQzNzAsImV4cCI6MjA2NDc2MDM3MH0.1wsH4OTKydE9T55rgen0TKCAQIgreb8wlm5xwPYZwKc'; // Replace with your anon public key
 
-            fetch("https://script.google.com/macros/s/AKfycbxjJMZfMw7xvjy7EWymyMOi4YJNy4WDOWdNZnp_JnAAbtFUYGszdrlW7bOapkQygsk/exec", { //web app URL
-                method: "POST",
-                body: params
-            })
-            .then(response => response.text())
-            .then(result => {
+            try {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/artist_changes`, {
+                    method: 'POST',
+                    headers: {
+                        'apikey': SUPABASE_API_KEY,
+                        'Authorization': `Bearer ${SUPABASE_API_KEY}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal' // skip returning data
+                    },
+                    body: JSON.stringify({
+                        artist,
+                        debut: parseInt(debut),
+                        popularity: parseInt(popularity),
+                        members: parseInt(members),
+                        genre,
+                        country,
+                        gender
+                    })
+                });
+
+                if (!response.ok) throw new Error(await response.text());
+
                 console.log("✅ Upload successful!");
-                // Optional: show to user
                 document.getElementById("submitStatus").textContent = "✅ Submission successful!";
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error("❌ Upload failed:", error);
                 document.getElementById("submitStatus").textContent = "❌ Submission failed. Try again.";
-            });
+            }
 
             closeStatChangePopup();
         }
+
 
 
         function searchArtist() {
