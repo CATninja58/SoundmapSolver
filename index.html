@@ -1547,13 +1547,7 @@
             changedArtistName.textContent = artist.artist;
             changedArtistName.appendChild(changeInfoButton);
 
-            guessesContainer.appendChild(artistName);
-
-            //Guesses container
-            const artistName = document.createElement("div");
-            artistName.textContent = artist.artist;
-            
-            guessesContainer.appendChild(artistName);
+            guessesContainer.appendChild(changedArtistName);
 
             const guessBoxes = document.createElement("div");
             guessBoxes.style.height = "50px"; /* Set fixed height */
