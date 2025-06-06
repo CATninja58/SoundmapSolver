@@ -794,6 +794,13 @@
                 <span class="slider"></span>
             </label>
         </div>
+        <div class="toggle-switch">
+            <span>Disable Pop-ups</span>
+            <label class="switch">
+                <input type="checkbox" id="popupToggle" onchange="togglePopups()">
+                <span class="slider"></span>
+            </label>
+        </div>
     </div>
 
     <!-- Changed help button -->
@@ -1184,7 +1191,22 @@
                 </div>
             </div>
         </div>
-      </div>
+    </div>
+
+    <div class="alert-overlay" id="alertOverlay">
+        <div class="tutorial-container">
+            <div class="tutorial-box">
+                <div class="help-contect">
+                    <span class="close-help" onclick="closeHelpOverlay()">&times;</span>
+                    <h1><b>⚠️IMPORTANT PLEASE READ⚠️</b>></h1>>
+                    <p>Soundmap has updated its data on artists for the artist guesser, this unfortunately makes the solver less efficient</p>>
+                    <p>In order to fix my solver, if you see incorrent information on the solver, please cick the button at the top left of the boxes and fill in the correct info and press enter.</p>
+                    <p>For now, simply do not choose an option (Eg: Close, lower, higher etc) for the popularity</p>
+                    <button onclick="closeHelpOverlay()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="footer-text">Made by u/CATninja58. Soundmap user: jeddosterives</div>
     <h1>Soundmap Artist Guesser Solver</h1>
@@ -1321,6 +1343,7 @@
             });
             filteredArtists = [...artistsData];
             displayArtists();
+            revealAlertOverlayText();
         }
 
         function loadSortedCSV(csvUrl) {
@@ -1440,7 +1463,9 @@
             const TwoPercent = getPercentFor(artist, 2) || 0; // Default to 0 if undefined
             const ThreePercent = getPercentFor(artist, 3) || 0; // Default to 0 if undefined
             if (parseFloat(TwoPercent) < 5.00 || parseFloat(ThreePercent) < 30.00) {
-                revealOverlayText(artist.artist, TwoPercent, ThreePercent);
+                if (!isPopupMode){
+                    revealOverlayText(artist.artist, TwoPercent, ThreePercent);
+                }
             }
             }
         }
@@ -1470,6 +1495,16 @@
 
         function closeHelpOverlay() {
             const overlay = document.getElementById("firstGuessOverlay");
+            overlay.style.display = "none";
+        }
+
+        function revealAlertOverlayText() {
+            const overlay = document.getElementById('alertOverlay');
+            overlay.style.display = "block"; // Ensure the overlay is visible
+        }
+
+        function closeAlertOverlay() {
+            const overlay = document.getElementById("alertOverlay");
             overlay.style.display = "none";
         }
 
@@ -2009,6 +2044,21 @@
             }
         }
 
+        function togglePopups() {
+            const body = document.body;
+            body.classList.toggle('popup-mode');
+            const isPopupMode = body.classList.contains('popup-mode');
+            localStorage.setItem('popupMode', isPopupMode);
+        }
+
+        function checkPopupsPreference() {
+            const isPopupMode = localStorage.getItem('popupMode') === 'true';
+            if (isPopupMode) {
+                document.body.classList.add('popup-mode');
+                document.getElementById('popupModeToggle').checked = true;
+            }
+        }
+
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker
@@ -2025,6 +2075,8 @@
         
         // Initialize light mode preference on page load
         document.addEventListener('DOMContentLoaded', checkLightModePreference);
+        document.addEventListener('DOMContentLoaded', checkAndroidPreference);
+        document.addEventListener('DOMContentLoaded', checkPopupsPreference);
 
         loadSortedCSV("https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/SortedFirstGuessResults.csv");
         loadCSV("https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/MasterArtistList.csv");
