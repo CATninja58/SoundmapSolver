@@ -1458,29 +1458,16 @@
 
             // Apply change to selected field
             switch (category) {
-                case 'debut':
-                    debut = changedInfo;
-                    break;
-                case 'popularity':
-                    popularity = changedInfo;
-                    break;
-                case 'members':
-                    members = changedInfo;
-                    break;
-                case 'genre':
-                    genre = changedInfo;
-                    break;
-                case 'country':
-                    country = changedInfo;
-                    break;
-                case 'gender':
-                    gender = changedInfo;
-                    break;
+                case 'debut': debut = changedInfo; break;
+                case 'popularity': popularity = changedInfo; break;
+                case 'members': members = changedInfo; break;
+                case 'genre': genre = changedInfo; break;
+                case 'country': country = changedInfo; break;
+                case 'gender': gender = changedInfo; break;
             }
 
-            // ✅ Supabase endpoint
-            const SUPABASE_URL = 'https://jkouakuoktcuzplfnvtw.supabase.co'; // Replace with your project URL
-            const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprb3Vha3Vva3RjdXpwbGZudnR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkxODQzNzAsImV4cCI6MjA2NDc2MDM3MH0.1wsH4OTKydE9T55rgen0TKCAQIgreb8wlm5xwPYZwKc'; // Replace with your anon public key
+            const SUPABASE_URL = 'https://jkouakuoktcuzplfnvtw.supabase.co';
+            const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprb3Vha3Vva3RjdXpwbGZudnR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkxODQzNzAsImV4cCI6MjA2NDc2MDM3MH0.1wsH4OTKydE9T55rgen0TKCAQIgreb8wlm5xwPYZwKc';
 
             try {
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/artist_changes`, {
@@ -1500,20 +1487,11 @@
                         country,
                         gender
                     })
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        return response.text().then(err => { throw new Error(err) });
-                    }
-                    console.log("✅ Upload successful!");
-                    document.getElementById("submitStatus").textContent = "✅ Submission successful!";
-                })
-                .catch(error => {
-                    console.error("❌ Upload failed:", error);
-                    document.getElementById("submitStatus").textContent = "❌ Submission failed. Try again.";
                 });
 
-                if (!response.ok) throw new Error(await response.text());
+                if (!response.ok) {
+                    throw new Error(await response.text());
+                }
 
                 console.log("✅ Upload successful!");
                 document.getElementById("submitStatus").textContent = "✅ Submission successful!";
@@ -1524,8 +1502,6 @@
 
             closeStatChangePopup();
         }
-
-
 
         function searchArtist() {
             const query = document.getElementById("artistSearch").value.toLowerCase();
