@@ -1390,9 +1390,11 @@
             document.getElementById('hintPopup').classList.remove('open');
         }
 
+        // Store the changed artist in a global variable for later use
+        let changedArtistInfo = null;
         function openStatChangePopup(changedArtist){
             document.getElementById('changedArtist').textContent = changedArtist.artist;
-            document.getElementById('changedArtistInfo') = changedArtist;
+            changedArtistInfo = changedArtist;
             document.getElementById('statChangePopup').classList.add('open');
         }
 
@@ -1436,7 +1438,7 @@
         }
 
         function uploadStatChange() {
-            const artistInfo = document.getElementById('changedArtistInfo').value;
+            const artistInfo = changedArtistInfo;
             const category = document.getElementById('statChangeCategory').value;
             const changedInfo = document.getElementById('statChangeInput').value;
 
