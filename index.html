@@ -1197,11 +1197,11 @@
     <div class="help-overlay" id="alertOverlay">
         <div class="tutorial-container">
             <div class="tutorial-box">
-                <div class="help-contect">
+                <div class="help-content">
                     <span class="close-help" onclick="closeAlertOverlay()">&times;</span>
-                    <h1><b>⚠️IMPORTANT PLEASE READ⚠️</b>></h1>>
-                    <p>Soundmap has updated its data on artists for the artist guesser, this unfortunately makes the solver less efficient</p>>
-                    <p>In order to fix my solver, if you see incorrent information on the solver, please cick the button at the top left of the boxes and fill in the correct info and press enter.</p>
+                    <h1><b>⚠️IMPORTANT PLEASE READ⚠️</b></h1>
+                    <p>Soundmap has updated its data on artists for the artist guesser, this unfortunately makes the solver less efficient</p>
+                    <p>In order to fix my solver, if you see incorrect information on the solver, please click the button at the top left of the boxes and fill in the correct info and press enter.</p>
                     <p>For now, simply do not choose an option (Eg: Close, lower, higher etc) for the popularity</p>
                     <button onclick="closeAlertOverlay()">Close</button>
                 </div>
@@ -1371,7 +1371,6 @@
             });
             filteredArtists = [...artistsData];
             displayArtists();
-            revealAlertOverlayText();
         }
 
         function loadSortedCSV(csvUrl) {
