@@ -1238,6 +1238,25 @@
         </div>
     </div>
 
+    <div class="hint-popup" id="statChangePopup">
+        <div class="hint-content">
+            <h2>Change <b id="changedArtist"></b>'s information</h2>
+            <p>Fill in what soundmap says in their game into the text box</p>
+            <input type="text" id="statChangeInput" placeholder="Enter value (e.g., 1992)">
+            <select id="statChangeCategory">
+                <option value="">Select category</option>
+                <option value="debut">Debut</option>
+                <option value="popularity">Popularity</option>
+                <option value="members">Members</option>
+                <option value="genre">Genre</option>
+                <option value="country">Country</option>
+                <option value="gender">Gender</option>
+            </select>
+            <button onclick="uploadStatChange()" style="margin-top: 50px;">Enter</button>
+            <button class="close-hint" onclick="closeStatChangePopup()">Close</button>
+        </div>
+    </div>
+
     <!-- Modal structure -->
     <div id="myModal" class="hidden">
         <div id="modalOptions"></div>
@@ -1371,6 +1390,16 @@
             document.getElementById('hintPopup').classList.remove('open');
         }
 
+        function openStatChangePopup(changedArtist){
+            document.getElementById('changedArtist').textContent = changedArtist.artist;
+            document.getElementById('changedArtistInfo') = changedArtist;
+            document.getElementById('statChangePopup').classList.add('open');
+        }
+
+        function closeStatChangePopup() {
+            document.getElementById('statChangePopup').classList.remove('open');
+        }
+
         function applyHint() {
             const hintValue = document.getElementById('hintInput').value.trim();
             const hintCategory = document.getElementById('hintCategory').value;
@@ -1405,6 +1434,71 @@
             // Close the popup
             closeHintPopup();
         }
+
+        function uploadStatChange() {
+            const artistInfo = document.getElementById('changedArtistInfo').value;
+            const category = document.getElementById('statChangeCategory').value;
+            const changedInfo = document.getElementById('statChangeInput').value;
+
+            // ✅ Define your 7 fields
+            const artist = artistInfo.name;
+            const debut = artistInfo.debut;
+            const popularity = artistInfo.popularity;
+            const members = artistInfo.members;
+            const genre = artistInfo.genre;
+            const country = artistInfo.country;
+            const gender = artistInfo;
+
+            switch (category) {
+                case 'debut':
+                    debut = changedInfo;
+                    break;
+                case 'popularity':
+                    popularity = changedInfo;
+                    break;
+                case 'members':
+                    members = changedInfo;
+                    break;
+                case 'genre':
+                    genre = changedInfo;
+                    break;
+                case 'country':
+                    country = changedInfo;
+                    break;
+                case 'gender':
+                    gender = changedInfo;
+                    break;
+            }
+
+            // ⬇️ Send to Google Apps Script
+            const params = new URLSearchParams({
+                artist,
+                debut,
+                popularity,
+                members,
+                genre,
+                country,
+                gender
+            });
+
+            fetch("https://script.google.com/macros/s/AKfycbzIVxt9eKnJfHBtwIdVH7OzjUdCdjCHfjccDlccHibfHDa8rspDpIWoXpQ4_gsgbGvQ/exec", { //web app URL
+                method: "POST",
+                body: params
+            })
+            .then(response => response.text())
+            .then(result => {
+                console.log("✅ Upload successful!");
+                // Optional: show to user
+                document.getElementById("submitStatus").textContent = "✅ Submission successful!";
+            })
+            .catch(error => {
+                console.error("❌ Upload failed:", error);
+                document.getElementById("submitStatus").textContent = "❌ Submission failed. Try again.";
+            });
+
+            closeStatChangePopup();
+        }
+
 
         function searchArtist() {
             const query = document.getElementById("artistSearch").value.toLowerCase();
@@ -1443,6 +1537,19 @@
             guessTitle.textContent = `Guess #${guessCount}`;
             guessesContainer.appendChild(guessTitle);
 
+            // Add "Change Info" button next to the artist name
+            const changeInfoButton = document.createElement("button");
+            changeInfoButton.textContent = "Change Info";
+            changeInfoButton.style.marginLeft = "10px";
+            changeInfoButton.onclick = () => openStatChangePopup(artist);
+
+            const changedArtistName = document.createElement("div");
+            changedArtistName.textContent = artist.artist;
+            changedArtistName.appendChild(changeInfoButton);
+
+            guessesContainer.appendChild(artistName);
+
+            //Guesses container
             const artistName = document.createElement("div");
             artistName.textContent = artist.artist;
             
