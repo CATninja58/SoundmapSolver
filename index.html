@@ -1484,22 +1484,33 @@
 
             try {
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/artist_changes`, {
-                    method: 'POST',
+                    method: "POST",
                     headers: {
-                        'apikey': SUPABASE_API_KEY,
-                        'Authorization': `Bearer ${SUPABASE_API_KEY}`,
-                        'Content-Type': 'application/json',
-                        'Prefer': 'return=minimal' // skip returning data
+                        "apikey": SUPABASE_API_KEY,
+                        "Authorization": `Bearer ${SUPABASE_API_KEY}`,
+                        "Content-Type": "application/json",
+                        "Prefer": "return=minimal"
                     },
                     body: JSON.stringify({
                         artist,
-                        debut: parseInt(debut),
-                        popularity: parseInt(popularity),
-                        members: parseInt(members),
+                        debut,
+                        popularity,
+                        members,
                         genre,
                         country,
                         gender
                     })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(err => { throw new Error(err) });
+                    }
+                    console.log("✅ Upload successful!");
+                    document.getElementById("submitStatus").textContent = "✅ Submission successful!";
+                })
+                .catch(error => {
+                    console.error("❌ Upload failed:", error);
+                    document.getElementById("submitStatus").textContent = "❌ Submission failed. Try again.";
                 });
 
                 if (!response.ok) throw new Error(await response.text());
