@@ -1,0 +1,435 @@
+id,artist,debut,popularity,members,genre,country,gender
+95,Yuridia,2005,101,Solo,Pop,MX,"Female"
+96,Lyodra,2017,161,Solo,Pop,ID,"Female"
+97,Luther Vandross,1979,66,Solo,R&B,US,"Male"
+99,Playboi Carti,2016,14,Solo,Hip Hop,US,"Male"
+101,Post Malone,2016,4,Solo,Hip Hop,US,"Male"
+106,Kesha,2009,61,Solo,Pop,US,"Female"
+107,Brandy,1994,67,Solo,R&B,US,"Female"
+110,GloRila,2019,46,Solo,Hip Hop,US,"Female"
+112,Kaash Paige,2019,157,Solo,R&B,US,"Female"
+114,Maroon 5,2002,19,Group,Pop,US,"Male"
+117,Kid Cudi,2009,111,Solo,Hip Hop,US,"Male"
+119,Matt Hansen,2021,113,Solo,Indie,US,"Male"
+120,Zara Larsson,2012,90,Solo,Pop,SE,"Female"
+122,Masego,2016,113,Solo,R&B,US,"Male"
+123,LANY,2015,178,Group,Indie,US,"Male"
+124,Payung Teduh,2010,143,Group,Indie,ID,"Mixed"
+128,Cigarettes After Sex,2012,6,Group,Indie,US,"Male"
+130,Shawn Mendes,2015,26,Solo,Pop,CA,"Male"
+131,Sufjan Stevens,2003,117,Solo,Indie,US,"Male"
+132,John Legend,2003,9,Solo,R&B,US,"Male"
+133,Anthony Hamilton,2003,128,Solo,R&B,US,"Male"
+134,CeeLo Green,2002,136,Solo,R&B,US,"Male"
+135,Trey Songz,2005,30,Solo,R&B,US,"Male"
+136,Cassie,2006,71,Solo,R&B,US,"f"
+137,Doechii,2019,8,Solo,Hip Hop,US,"Female"
+139,Stromae,2009,82,Solo,Pop,BE,"Male"
+140,August Alsina,2013,99,Solo,R&B,US,"Male"
+143,Faith Evans,1995,165,Solo,R&B,US,"Female"
+148,LP,2007,70,Solo,Rock,US,"Female"
+149,Frank Sinatra,1946,109,Solo,Pop,US,"Male"
+150,YUNGBLUD,2018,82,Solo,Rock,GB,"Male"
+152,Alessia Cara,2015,110,Solo,Pop,CA,"Female"
+153,Dr. Dre,1992,31,Solo,Hip Hop,US,"Male"
+157,INNA,2010,91,Solo,Pop,RO,"Female"
+158,Lil Nas X,2019,35,Solo,Hip Hop,US,"Male"
+160,6ix9ine,2017,73,Solo,Hip Hop,US,"Male"
+168,BigXthaPlug,2020,84,Solo,Hip Hop,US,"Male"
+169,Victoria Monet,2014,103,Solo,R&B,US,"Female"
+175,Tinashe,2014,58,Solo,R&B,US,"Female"
+177,Tory Lanez,2012,52,Solo,Hip Hop,CA,"Male"
+181,Taylor Swift,2006,5,Solo,Pop,US,"Female"
+188,Mark Ronson,2003,92,Solo,Pop,GB,"Male"
+190,Oh Wonder,2015,194,Group,Indie,GB,"Mixed"
+191,A$AP Ferg,2013,192,Solo,Hip Hop,US,"Male"
+193,bbno$,2016,28,Solo,Hip Hop,CA,"Male"
+195,Ren,2016,101,Solo,Hip Hop,GB,"Male"
+196,Dave,2016,159,Solo,Hip Hop,GB,"Male"
+198,Wu-Tang Clan,1992,184,Group,Hip Hop,US,"Male"
+199,Charlie Wilson,1992,199,Solo,R&B,US,"Male"
+207,HAIM,2012,94,Group,Indie,US,"Female"
+210,Ben&Ben,2016,43,Group,Indie,PH,"Mixed"
+213,WILLOW,2010,140,Solo,Rock,US,"Female"
+214,A$AP Rocky,2011,21,Solo,Hip Hop,US,"Male"
+216,Olivia Rodrigo,2016,23,Solo,Pop,US,"Female"
+218,Imogen Heap,1998,26,Solo,Indie,GB,"Female"
+220,Logic,2014,177,Solo,Hip Hop,US,"Male"
+221,Conan Gray,2018,15,Solo,Indie,US,"Male"
+224,Keyshia Cole,2004,51,Solo,R&B,US,"Female"
+231,Duki,1996,54,Solo,Hip Hop,AR,"Male"
+232,Leona Lewis,2007,198,Solo,Pop,GB,"Female"
+233,Weezer,1996,78,Group,Rock,US,"Male"
+237,Em Beihold,2017,112,Solo,Indie,US,"Female"
+239,King Von,2018,47,Solo,Hip Hop,US,"Male"
+244,Barry White,1973,94,Solo,R&B,US,"Male"
+245,Stevie Wonder,1962,34,Solo,R&B,US,"Male"
+247,Khalid,2016,58,Solo,Pop,US,"Male"
+249,YoungBoy Never Broke Again,2016,27,Solo,Hip Hop,US,"Male"
+250,Julieta Venegas,1998,23,Solo,Indie,MX,"Female"
+251,Diana Ross,1970,95,Solo,R&B,US,"Female"
+252,Janet Jackson,1982,44,Solo,R&B,US,"Female"
+253,Brent Faiyaz,2015,29,Solo,R&B,US,"Male"
+255,Doja Cat,2014,31,Solo,Pop,US,"Female"
+257,Metro Boomin,2014,22,Solo,Hip Hop,US,"Male"
+259,ScHoolboy Q,2011,190,Solo,Hip Hop,US,"Male"
+261,Kanye West,2004,13,Solo,Hip Hop,US,"Male"
+262,Iggy Azalea,2013,121,Solo,Hip Hop,AU,"Female"
+265,Diamond Platnumz,2012,127,Solo,Pop,TZ,"Male"
+267,Lil Yachty,2015,117,Solo,Hip Hop,US,"Male"
+269,Nick Jonas,2012,120,Solo,Pop,US,"Male"
+271,Tyrese,1998,100,Solo,R&B,US,"Male"
+272,Teddy Swims,2019,33,Solo,Pop,US,"Male"
+273,Daryl Hall & John Oates,1970,148,Group,Rock,US,"Male"
+274,Kendrick Lamar,2010,3,Solo,Hip Hop,US,"Male"
+275,mxmtoon,2017,193,Solo,Indie,US,"Female"
+278,Keemokazi,2020,135,Solo,Hip Hop,US,"Male"
+279,Sofia Carson,2015,151,Solo,Pop,US,"Female"
+283,Pop Smoke,2019,67,Solo,Hip Hop,US,"Male"
+285,NF,2014,90,Solo,Hip Hop,US,"Male"
+286,Foo Fighters,1995,32,Group,Rock,US,"Male"
+294,Outkast,1993,124,Group,Hip Hop,US,"Mixed"
+295,KC & The Sunshine Band,1974,142,Group,R&B,US,"Mixed"
+299,Paris Paloma,2020,56,Solo,Indie,GB,"Female"
+304,Sam Smith,2013,40,Solo,Pop,GB,"Male"
+307,Sleepy Hallow,2018,152,Solo,Hip Hop,US,"Male"
+308,Bruno Mars,2010,7,Solo,Pop,US,"Male"
+310,Keith Sweat,1987,116,Solo,R&B,US,"Male"
+313,Two Door Cinema Club,2009,196,Group,Rock,GB,"Male"
+315,Russ,2012,127,Solo,Hip Hop,US,"Male"
+316,Harry Styles,2017,37,Solo,Pop,GB,"Male"
+320,Chris Grey,2018,85,Solo,R&B,CA,"Male"
+322,Sam Fender,2017,188,Solo,Rock,GB,"Male"
+323,Oasis,1994,15,Group,Rock,GB,"Male"
+327,Christina Perry,2011,110,Solo,Pop,US,"Female"
+329,Bakar,2017,187,Solo,Indie,GB,"Male"
+330,William Singe,2015,164,Solo,R&B,AU,"Male"
+332,Tyler The Creator,2011,19,Solo,Hip Hop,US,"Male"
+333,Pixies,1987,172,Group,Rock,US,"mixed"
+334,The Smashing Pumpkins,1991,88,Group,Rock,US,"Mixed"
+337,Niall Horan,2017,97,Solo,Pop,IE,"Male"
+338,Eros Ramazzotti,140,140,Solo,Pop,IT,"Male"
+340,Idgitaf,2020,178,Solo,Indie,ID,"Female"
+342,Men I Trust,2014,102,Group,Indie,CA,"Mixed"
+348,Lil Wayne,1999,12,Solo,Hip Hop,US,"Male"
+350,Men at Work,1981,151,Group,Rock,AU,"Male"
+351,Madonna,1983,55,Solo,Pop,US,"Female"
+352,Def Leppard,1979,109,Group,Rock,GB,"Male"
+353,Céline Dion,1984,59,Solo,Pop,CA,"Female"
+356,Kings of Leon,2003,55,Group,Rock,US,"Male"
+362,Forrest Frank,2023,8,Solo,Indie,US,"Male"
+367,Marvin Gaye,1961,38,Solo,R&B,US,"Male"
+369,Bizarrap,2018,40,Solo,Hip Hop,AR,"Male"
+371,Billie Eilish,2016,1,Solo,Indie,Japan,"Female"
+376,Ken Carson,2018,134,Solo,Hip Hop,US,"Male"
+379,Chance the Rapper,2012,194,Solo,Hip Hop,US,"Male"
+385,Sevdaliza,2015,52,Solo,Indie,NL,"Female"
+387,Cardi B,2015,17,Solo,Hip Hop,US,"Female"
+388,Juice WRLD,2018,16,Solo,Hip Hop,US,"Male"
+391,Leon Bridges,2015,101,Solo,R&B,US,"Male"
+395,Keri Hilson,2008,83,Solo,R&B,US,"Female"
+396,Twenty One Pilots,2009,3,Group,Indie,US,"Male"
+400,Pentatonix,2012,153,Group,Pop,US,"Mixed"
+402,Fourtwnty,2015,33,Group,Indie,ID,"Male"
+407,PNL,2015,141,Group,Hip Hop,FR,"Male"
+409,Ricky Montgomery,2014,83,Solo,Indie,US,"Male"
+410,Marilyn Manson,1994,79,Solo,Rock,US,"Male"
+420,Mötley Crue,1981,108,Group,Rock,US,"Male"
+423,XO Team,2021,160,Group,Pop,US,"Mixed"
+424,BoyWithUke,2021,170,Solo,Indie,US,"Male"
+427,Redbone,1970,183,Group,R&B,US,"Male"
+429,The Isley Brothers,1959,154,Group,R&B,US,"Male"
+436,T.I.,2001,125,Solo,Hip Hop,US,"Male"
+438,inigo quintero,2022,139,Solo,Indie,ES,"Male"
+439,Renee Rapp,2022,121,Solo,Indie,US,"Female"
+443,Royel Otis,2021,159,Group,Indie,AU,"Male"
+444,alt-J,2012,183,Group,Rock,GB,"Male"
+446,girl in red,2018,40,Solo,Indie,NO,"Female"
+448,Don Toliver,2017,42,Solo,Hip Hop,US,"Male"
+450,ROLE MODEL,2017,62,Solo,Indie,US,"Male"
+453,Rotimi,2009,191,Solo,R&B,US,"Male"
+455,Genesis,1969,173,Group,Rock,GB,"Male"
+456,d4vd,2021,9,Solo,Indie,US,"Male"
+458,Travis Scott,2013,4,Solo,Hip Hop,US,"Male"
+460,Addison Rae,2021,114,Solo,Pop,US,"Female"
+464,Ava Max,2018,77,Solo,Pop,US,"Female"
+466,David Kushner,2022,32,Solo,Indie,US,"Male"
+474,Sub Urban,2019,74,Solo,Indie,US,"Male"
+477,Dax,2017,63,Solo,Hip Hop,US,"Male"
+481,Lil Baby,2017,18,Solo,Hip Hop,US,"Male"
+482,James Charles,2024,154,Solo,Pop,US,"Male"
+483,benny blanco,2018,69,Solo,Pop,US,"Male"
+484,Snoop Dogg,1993,11,Solo,Hip Hop,US,"Male"
+486,The Marías,2017,11,Group,Indie,US,"Mixed"
+488,Evanescence,2003,20,Group,Rock,US,"Mixed"
+490,Wale,2008,148,Solo,Hip Hop,US,"Male"
+491,Julia Michaels,2017,193,Solo,Pop,US,"Female"
+494,Three Days Grace,2003,50,Group,Rock,CA,"Male"
+496,The Who,1965,158,Group,Rock,GB,"Male"
+505,The Weeknd,2011,1,Solo,Pop,CA,"Male"
+506,Jack Harlow,2015,82,Solo,Hip Hop,US,"Male"
+507,John Mayer,2001,129,Solo,Pop,US,"Male"
+518,Mariah Carey,1990,44,Solo,Pop,US,"Female"
+519,Ninho,2017,91,Solo,Hip Hop,FR,"Male"
+525,gunna,2016,48,Solo,Hip Hop,US,"Male"
+526,TOOL,1992,122,Group,Rock,US,"Male"
+527,will.i.am,2001,122,Solo,Pop,US,"Male"
+530,Majid Jordan,2014,173,Group,R&B,CA,"Male"
+534,Two Feet,2016,93,Solo,Indie,US,"Male"
+541,Ben E. King,1961,90,Solo,R&B,US,"Male"
+549,Yeat,2018,160,Solo,Hip Hop,US,"Male"
+551,Tommy Richman,2016,172,Solo,Hip Hop,US,"Male"
+553,Montell Fish,2016,0,Solo,Hip Hop,US,"Male"
+554,Moneybagg Yo,2016,110,Solo,Hip Hop,US,"Male"
+560,Nelly,2000,69,Solo,Hip Hop,US,"Male"
+565,B.o.B.,2008,129,Solo,Hip Hop,US,"Male"
+566,Young Dolph,2010,179,Solo,Hip Hop,US,"Male"
+567,YG,2010,168,Solo,Hip Hop,US,"Male"
+568,2 Chainz,2010,130,Solo,Hip Hop,US,"Male"
+576,Quavo,2017,120,Solo,Hip Hop,US,"Male"
+578,Steve Lacy,2015,16,Solo,R&B,US,"Male"
+585,Gucci Mane,2005,105,Solo,Hip Hop,US,"Male"
+587,Werenoi,2021,105,Solo,Hip Hop,FR,"Male"
+593,Lil Pump,2017,116,Solo,Hip Hop,US,"Male"
+597,The White Stripes,1998,131,Group,Rock,US,"mixed"
+599,Incubus,1997,143,Group,Rock,US,"Male"
+600,Fantasia,2003,97,Solo,R&B,US,"Female"
+603,Breaking Benjamin,2002,123,Group,Rock,US,"Male"
+604,Rage Against The Machine,1992,97,Group,Rock,US,"Male"
+605,Lynyrd Skynyrd,1973,75,Group,Rock,US,"Male"
+608,Odetari,2023,92,Solo,Hip Hop,US,"Male"
+612,hannah bahng,2023,173,Solo,Indie,AU,"Female"
+615,Jessie J,2011,66,Solo,Pop,GB,"Female"
+619,My Chemical Romance,2002,48,Group,Rock,US,"Male"
+621,Aerosmith,1973,21,Group,Rock,US,"Male"
+624,Wallows,2014,143,Group,Rock,US,"Male"
+630,central cee,2017,23,Solo,Hip Hop,gb,"Male"
+633,Maneskin,2017,29,Group,Rock,IT,"Mixed"
+640,Tee Grizzley,2017,196,Solo,Hip Hop,US,"Male"
+641,Ariana Grande,2011,6,Solo,Pop,US,"Female"
+644,Jonas Brothers,2006,79,Group,Pop,US,"Male"
+646,Kimbra,2011,57,Solo,Indie,US,"Female"
+650,Lana Del Rey,2012,16,Solo,Indie,US,"Female"
+652,Chappell Roan,2017,1,Solo,Indie,US,"Female"
+654,Ed Maverick,2018,69,Solo,Indie,Mx,"Male"
+664,Sonder,2017,108,Group,R&B,US,"Male"
+666,Disturbed,2000,41,Group,Rock,US,"Male"
+667,George Harrison,1968,109,Solo,Rock,us,"Male"
+669,Nirvana,1989,12,Group,Rock,US,"Male"
+673,Dean Lewis,2017,70,Solo,Pop,AU,"Male"
+675,Migos,2011,60,Group,Hip Hop,US,"Male"
+678,Meek Mill,2011,109,Solo,Hip Hop,US,"Male"
+679,TIAGO IORC,2008,119,Solo,Indie,BR,"Male"
+685,Rosa Linn,2021,135,Solo,Indie,AM,"Female"
+687,Bebe Rexha,2014,75,Solo,Pop,US,"Female"
+690,CoComelon,2019,183,Group,Pop,US,"Mixed"
+694,Shinedown,2003,132,Group,Rock,US,"Male"
+698,The Black Keys,2002,146,Group,Rock,US,"Male"
+702,Gwen Stefani,2004,104,Solo,Pop,US,"Female"
+703,Bebefinn,2022,69,Solo,Pop,US,"Male"
+706,Lyna,2018,148,Solo,Pop,ES,"Female"
+722,Sting,1985,79,Solo,Rock,GB,"Male"
+730,Noah Kahan,2017,11,Solo,Pop,US,"Male"
+738,Alex G,2010,73,Solo,Indie,US,"Male"
+742,Big Time Rush,2010,196,Group,Pop,US,"Male"
+745,Pitbull,2004,21,Solo,Pop,US,"Male"
+749,Sevyn Streeter,2012,171,Solo,R&B,US,"Female"
+750,Rachel Platten,2011,138,Solo,Indie,US,"Female"
+751,Justine Skye,2013,159,Solo,R&B,US,"Female"
+752,Meghan Trainor,2014,63,Solo,Pop,US,"Female"
+754,Taio Cruz,2006,181,Solo,Pop,GB,"Male"
+755,Pierce The Veil,2007,125,Group,Rock,US,"Male"
+756,Mac DeMarco,2012,86,Solo,Rock,US,"Male"
+759,Eagles,1772,37,Group,Rock,US,"Male"
+763,Jason Derulo,2010,15,Solo,Pop,US,"Male"
+764,Blackstreet,1993,144,Group,R&B,US,"Male"
+768,Ludacris,2000,86,Solo,Hip Hop,US,"Male"
+780,*nsync,1997,92,group,Pop,US,"Male"
+796,Belanova,2003,25,Group,Indie,MX,"Mixed"
+798,Jaymes Young,2013,120,Solo,Indie,US,"Male"
+800,BossMan Dlow,2020,181,Solo,Hip Hop,US,"Male"
+804,John Newman,2013,186,Solo,Pop,GB,"Male"
+817,Elton John,1969,50,Solo,Pop,GB,"Male"
+818,Paolo Nutini,2007,156,Solo,Indie,GB,"Male"
+829,Clairo,2017,17,Solo,Indie,US,"Female"
+831,Labrinth,2010,131,Solo,Pop,GB,"Male"
+840,Phoebe Bridgers,2017,76,Solo,Indie,US,"Female"
+842,Hozier,2013,5,Solo,R&B,IE,"Male"
+844,RAYE,2016,86,Solo,Pop,GB,"Female"
+847,Benson Boone,2021,25,Solo,Pop,US,"Male"
+848,JVKE,2020,86,Solo,Pop,US,"Male"
+850,Dhruv,2020,145,Solo,Indie,Korea,"Male"
+852,Blur,1991,159,Group,Rock,GB,"Male"
+854,Will Smith,1997,39,Solo,Hip Hop,US,"Male"
+861,Lloyd,2004,43,Solo,R&B,US,"Male"
+868,Van Halen,1978,98,Group,Rock,US,"Male"
+874,Hoobastank,2001,160,Group,Rock,US,"Male"
+875,Madison Beer,2013,81,Solo,Pop,US,"Female"
+880,Mary J. Blige,1992,25,Solo,R&B,US,"Female"
+883,Survivor,1979,112,Group,Rock,US,"Male"
+885,Mac Miller,2010,76,Solo,Hip Hop,US,"Male"
+888,Latto,2016,119,Solo,Hip Hop,US,"Female"
+890,Coco Jones,2011,54,Solo,R&B,US,"Female"
+892,Empire of Thr Sun,2008,18,Group,Indie,AU,"Male"
+895,The Kid LAROI,2019,72,Solo,Pop,AU,"Male"
+907,Of Monsters and Men,2012,65,Group,Indie,IS,"Mixed"
+910,Foreigner,1977,101,Group,Rock,US,"Male"
+913,Alice In Chains,1990,59,Group,Rock,US,"Male"
+915,The Goo Goo Dolls,1987,73,Group,Rock,US,"Male"
+927,4batz,2023,186,Solo,R&B,US,"Male"
+930,DJ FKU,2023,135,Solo,R&B,US,"Male"
+941,Bastille,2012,84,Group,Rock,GB,"Male"
+946,Aitana,2017,147,Solo,Pop,ES,"Female"
+950,Shubh,2021,33,Solo,Hip Hop,CA,"Male"
+952,Busta Rhymes,1996,151,Solo,Hip Hop,US,"Male"
+958,Chief Keef,2012,144,Solo,Hip Hop,US,"Male"
+963,88rising,2018,55,Group,R&B,US,"Mixed"
+970,Muse,1999,51,Group,Rock,GB,"Male"
+976,3 Doors Down,2000,77,Group,Rock,US,"Male"
+978,One Direction,2010,27,Group,Pop,GB,"Male"
+979,The Cranberries,1990,37,Group,Rock,IE,"Female"
+984,Chloe,2021,155,Solo,R&B,US,"Female"
+986,Rick Ross,2006,97,Solo,Hip Hop,US,"Male"
+988,Donna Summer,1974,123,Solo,R&B,US,"Female"
+992,Young Thug,2011,30,Solo,Hip Hop,US,"Male"
+996,Timbaland,1997,87,Solo,Hip Hop,US,"Male"
+1001,Rod Wave,2018,78,Solo,Hip Hop,US,"Male"
+1006,FKA twigs,2012,125,Solo,R&B,GB,"Female"
+1011,Lykke Li,2008,75,Solo,Indie,SE,"Female"
+1021,Bon Iver,2008,50,Group,Indie,US,"Male"
+1023,AJR,2013,50,Group,Indie,US,"Male"
+1026,Gotye,2006,152,Solo,Indie,AU,"Male"
+1033,Capital Cities,2010,60,Group,Indie,US,"Male"
+1035,Alec Benjamin,2018,145,Solo,Indie,US,"Male"
+1046,JID,2015,176,Solo,Hip Hop,US,"Male"
+1059,John Lennon,1968,105,Solo,Rock,GB,"Male"
+1062,sombr,2021,13,Solo,Indie,US,"Male"
+1066,Calum Scott,2017,107,Solo,Pop,GB,"Male"
+1078,A Boogie Wit da Hoodie,2016,123,Solo,Hip Hop,US,"Male"
+1084,Wiz Khalifa,2006,15,Solo,Hip Hop,US,"Male"
+1086,Soulja Boy,2007,143,Solo,Hip Hop,US,"Male"
+1090,Electric Light Orchestra,1971,117,Group,Rock,GB,"Male"
+1094,R.E.M,1981,83,Group,Rock,US,"Male"
+1097,Danny Go!,2019,48,Solo,Indie,US,"Male"
+1112,Swae Lee,2018,85,Solo,Hip Hop,US,"Male"
+1114,Lil Tjay,2018,100,Solo,Hip Hop,US,"Male"
+1116,Jacquees,2014,46,Solo,R&B,US,"Male"
+1138,Chicago,1969,141,Group,Rock,US,"Male"
+1140,Audioslave,2002,94,Group,Rock,US,"Male"
+1144,MGMT,2005,92,Group,Rock,US,"Male"
+1146,Soundgarden,1989,127,Group,Rock,US,"Male"
+1148,Tame Impala,2008,38,Solo,Rock,AU,"Male"
+1151,Tamia,1998,134,Solo,R&B,CA,"Female"
+1163,Iniko,2018,153,Solo,Indie,US,"Male"
+1165,NAV,2015,198,Solo,Hip Hop,CA,"Male"
+1197,Jorja Smith,2016,56,Solo,R&B,GB,"Female"
+1199,Duran Duran,1981,103,Group,Rock,GB,"Male"
+1204,Laura Pausini,1993,158,Solo,Pop,IT,"Female"
+1206,Kodak Black,2014,41,Solo,Hip Hop,US,"Male"
+1216,Ed Sheeran,2009,13,Solo,Pop,GB,"Male"
+1217,Jul,2013,50,Solo,Hip Hop,FR,"Male"
+1218,Belle Mariano,2021,134,Anne Marie,Indie,PH,"Female"
+1232,Alex Warren,2021,2,Solo,Indie,US,"Male"
+1237,Carly Rae Jepsen,2008,112,Solo,Pop,CA,"Female"
+1241,Jess Glynne,2014,148,Solo,Pop,GB,"Female"
+1243,Eminem,1996,1,Solo,Hip Hop,US,"Male"
+1254,New Edition,1982,161,Group,R&B,US,"Male"
+1255,Chaka Khan,1978,107,Solo,R&B,US,"Female"
+1257,Aaliyah,1994,106,Solo,R&B,US,"Female"
+1266,Kevin Gates,2009,95,Solo,Hip Hop,US,"Male"
+1271,Novo Amor,2014,114,Solo,Indie,GB,"Male"
+1273,Sasha Alex Sloan,2018,87,Solo,Indie,US,"Female"
+1274,Natalie Jane,2021,116,Solo,Indie,US,"Female"
+1275,Lizzy McAlpine,2019,71,Solo,Indie,US,"Female"
+1292,Declan McKenna,2015,190,Solo,Indie,GB,"Male"
+1294,Offset,2015,106,Solo,Hip Hop,US,"Male"
+1298,Çilgin Dondurmaci,2021,142,Solo,Indie,TR,"Male"
+1303,Pink Sweat$,2018,138,Solo,R&B,US,"Male"
+1313,The Game,2003,142,Solo,Hip Hop,US,"Male"
+1321,Jessie Reyez,2017,45,Solo,R&B,CA,"Female"
+1324,Spice Girls,1996,189,Group,Pop,GB,"Female"
+1326,Pearl Jam,1991,39,Group,Rock,US,"Male"
+1328,Cavetown,2015,110,Solo,Indie,GB,"Male"
+1343,Bazzi,2016,77,Solo,R&B,US,"Male"
+1345,Passenger,2007,89,Solo,Rock,GB,"Male"
+1347,Fifth Harmony,2013,94,Group,Pop,US,"Female"
+1349,Paramore,2005,27,Group,Rock,US,"mixed"
+1350,Cults,2011,164,Group,Indie,US,"Mixed"
+1362,Mario,1982,48,Solo,R&B,US,"Male"
+1363,Bronski Beat,1984,188,Group,Indie,GB,"Male"
+1372,Lenny Kravitz,1989,76,Solo,Rock,US,"Male"
+1374,Ray Charles,1957,91,Solo,R&B,US,"Male"
+1377,Jack Stauber,2013,85,Solo,Indie,US,"Male"
+1378,Leon Thomas,2018,39,Solo,R&B,US,"Male"
+1381,AC/DC,1976,5,Group,Rock,AU,"Male"
+1384,Solange,2002,147,Solo,R&B,US,"Female"
+1387,SCH,2015,146,Solo,Hip Hop,FR,"Male"
+1393,Mete Kayagil,2023,150,Solo,Pop,TR,"Male"
+1394,Rich The Kid,2014,183,Solo,Hip Hop,US,"Male"
+1400,KISS,1974,49,Group,Rock,US,"Male"
+1410,Karina y Marina,2019,188,Group,Pop,ES,"Female"
+1412,Van Morrison,1967,161,Solo,Rock,GB,"Male"
+1418,Zeeba,2016,172,Solo,Indie,BR,"Male"
+1419,Halle,2023,197,Solo,R&B,US,"Female"
+1423,Bernadya,2023,21,Solo,Indie,ID,"Female"
+1425,Monde des Titounis,2017,134,Group,Indie,FR,"Mixed"
+1436,Raim Laode,2018,182,Solo,Pop,ID,"Male"
+1440,Louis Tomlinson,2017,184,Solo,Indie,GB,"Male"
+1443,Staind,1999,177,Group,Rock,US,"Male"
+1444,The Jacksons,1976,132,Group,R&B,US,"Male"
+1446,Kelis,1999,114,Solo,R&B,US,"Female"
+1447,5 Seconds of Summer,2012,83,Group,Pop,AU,"Male"
+1450,Joe Dwet File,2018,59,Solo,R&B,FR,"Male"
+1451,REO Speedwagon,1971,199,Group,Rock,US,"Male"
+1467,Joe,1993,175,Solo,R&B,US,"Male"
+1479,beabadoobee,2017,44,Solo,Rock,GB,"Female"
+1483,Sabrina Carpenter,2014,12,Solo,Pop,US,"Female"
+1488,Birdy,2011,51,Solo,Indie,GB,"Female"
+1508,IV Of Spades,2016,33,Group,Indie,PH,"Male"
+1510,Creed,1997,69,Group,Rock,US,"Male"
+1511,Robbie Williams,1997,102,Solo,Pop,GB,"Male"
+1514,Jennifer Hudson,2008,127,Solo,R&B,US,"Female"
+1521,OneRepublic,2007,42,Group,Pop,US,"Male"
+1522,Black Eyed Peas,1998,36,Group,Pop,US,"Mixed"
+1525,Backstreet Boys,1996,62,Group,Pop,US,"Male"
+1526,Vedo,2013,182,Solo,R&B,US,"Male"
+1528,Rihanna,2005,8,Solo,Pop,BB,"Female"
+1531,Lauv,2017,119,Solo,Pop,US,"Male"
+1532,Otis Redding,1964,111,Solo,R&B,US,"Male"
+1534,Future,2011,10,Solo,Hip Hop,US,"Male"
+1535,Train,1998,85,Group,Rock,US,"Male"
+1536,Nine Inch Nails,1989,193,Group,Rock,US,"Male"
+1537,The Doobie Brothers,1971,153,Group,Rock,US,"Male"
+1543,charli d'amelio,2022,176,Solo,Pop,US,"Female"
+1546,Childish Gambino,2011,62,Solo,Hip Hop,US,"Male"
+1548,Ginuwine,1996,145,Solo,R&B,US,"Male"
+1569,Giveon,2018,24,Solo,R&B,US,"Male"
+1576,Caloncho,2015,167,Solo,Indie,MX,"Male"
+1579,Fetty Wap,2015,113,Solo,Hip Hop,US,"Male"
+1581,Simon & Garfunkel,1964,152,Group,Rock,US,"Male"
+1582,RIck Astley,1987,187,Solo,Pop,GB,"Male"
+1591,Owl City,2007,179,Solo,Pop,US,"Male"
+1594,Frank Ocean,2011,8,Solo,R&B,US,"Male"
+1617,Clean Bandit,2013,78,Group,Pop,GB,"Mixed"
+1619,Amy Winehouse,2003,16,Solo,R&B,GB,"Female"
+1625,21 Savage,2015,18,Solo,Hip Hop,GB,"Male"
+1635,Tems,2018,33,Solo,R&B,NG,"Female"
+1639,Tyga,2009,38,Solo,Hip Hop,US,"Male"
+1640,Seal,1991,120,Solo,R&B,GB,"Male"
+1646,Prince,1978,41,Solo,R&B,US,"Male"
+1647,Craig David,2000,81,Solo,R&B,GB,"Male"
+1649,Booba,2002,178,Solo,Hip Hop,FR,"Male"
+1655,Sushant KC,2016,126,Solo,Indie,NP,"Male"
+1679,Charli xcx,2012,43,Solo,Pop,GB,"Female"
+1680,Led Zeppelin,1969,33,Group,Rock,GB,"Male"
+1693,The 1975,2012,81,Group,Rock,GB,"Male"
+1695,The Strokes,2001,87,Group,Rock,US,"Male"
+1697,Panic! At The Disco,2005,61,Group,Rock,US,"Male"
+1700,Juicy J,2002,180,Solo,Hip Hop,US,"Male"
+1705,PARTYNEXTDOOR,2013,7,Solo,R&B,CA,"Male"
+1710,Lil Uzi Vert,2014,51,Solo,Hip Hop,US,"Male"
+1711,Lil Peep,2015,49,Solo,Hip Hop,US,"Male"
+1712,Roxette,1986,123,Group,Pop,SE,"Mixed"
+1720,Nas,1994,166,Solo,Hip Hop,US,"Male"
+1733,Paul Simon,1965,184,Solo,Rock,US,"Male"
+1743,Ken Carson,2018,134,Solo,Hip Hop,US,"Male"
