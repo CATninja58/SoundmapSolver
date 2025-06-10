@@ -1642,7 +1642,6 @@
             document.getElementById('newGenreInput').value = '';
             document.getElementById('newCountryInput').value = '';
             document.getElementById('newGenderInput').value = '';
-            document.getElementById('addArtistStatus').textContent = '';
         }
 
         function closeAddArtistPopup() {
@@ -1688,6 +1687,8 @@
             const SUPABASE_URL = 'https://jkouakuoktcuzplfnvtw.supabase.co';
             const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprb3Vha3Vva3RjdXpwbGZudnR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkxODQzNzAsImV4cCI6MjA2NDc2MDM3MH0.1wsH4OTKydE9T55rgen0TKCAQIgreb8wlm5xwPYZwKc';
 
+            closeAddArtistPopup(); // Immediately close the popup so user can't spam
+            
             try {
                 const postData = {
                     artist,
@@ -1714,14 +1715,10 @@
                     throw new Error(await response.text());
                 }
 
-                statusBox.style.color = "green";
-                statusBox.textContent = "✅ New artist submitted!";
+                showBottomPopup("✅ Submission successful!", "green");
             } catch (error) {
-                statusBox.style.color = "red";
-                statusBox.textContent = "❌ Submission failed. Try again.";
+                showBottomPopup("❌ Submission failed. Try again.", "red");
             }
-
-            setTimeout(closeAddArtistPopup, 1500);
         }
 
 
