@@ -1273,16 +1273,37 @@
         <div class="hint-content">
             <p>Fill in <b>EXACTLY</b> what soundmap says in their game into the text box</p>
             <p>Please fill in all boxes for it to work.</p>
-            <input type="text" id="newArtistInput" placeholder="Enter artist name (e.g., Kanye West)">
-            <input type="text" id="newDebutInput" placeholder="Enter debut year (e.g., 2004)">
-            <input type="text" id="newPopularityInput" placeholder="Enter popularity (e.g., 13)">
-            <input type="text" id="newMembersInput" placeholder="Enter members (e.g., Solo)">
-            <input type="text" id="newGenreInput" placeholder="Enter genre (e.g., Hip Hop)">
-            <input type="text" id="newCountryInput" placeholder="Enter country (e.g., US)">
-            <input type="text" id="newGenderInput" placeholder="Enter gender (e.g., Male)">
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <label style="width: 90px; text-align: left;">Artist:</label>
+                <input type="text" id="newArtistInput" placeholder="Enter artist name (e.g., Kanye West)">
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <label style="width: 90px; text-align: left;">Debut:</label>
+                <input type="text" id="newDebutInput" placeholder="Enter debut year (e.g., 2004)">
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <label style="width: 90px; text-align: left;">Popularity:</label>
+                <input type="text" id="newPopularityInput" placeholder="Enter popularity (e.g., 13)">
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <label style="width: 90px; text-align: left;">Members:</label>
+                <input type="text" id="newMembersInput" placeholder="Enter members (e.g., Solo)">
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <label style="width: 90px; text-align: left;">Genre:</label>
+                <input type="text" id="newGenreInput" placeholder="Enter genre (e.g., Hip Hop)">
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <label style="width: 90px; text-align: left;">Country:</label>
+                <input type="text" id="newCountryInput" placeholder="Enter country (e.g., US)">
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <label style="width: 90px; text-align: left;">Gender:</label>
+                <input type="text" id="newGenderInput" placeholder="Enter gender (e.g., Male)">
+            </div>
             <button onclick="UploadNewArtist()" style="margin-top: 50px;">Enter</button>
             <button class="close-hint" onclick="closeAddArtistPopup()">Close</button>
-            <p id="addArtistStatus style="margin-top: 15px; font-weight: bold; color: red;"></p>
+            <p id="addArtistStatus" style="margin-top: 15px; font-weight: bold; color: red;"></p>
         </div>
     </div>
 
@@ -1632,6 +1653,29 @@
         }
 
         // Add New Artist Popup logic
+        function openChangeArtistPopup() {
+            document.getElementById('addArtistPopup').classList.add('open');
+            // Clear previous values/status
+            const artistInfo = changedArtistInfo;
+
+            // Get current values
+            let artist = artistInfo.artist;
+            let debut = artistInfo.debut;
+            let popularity = artistInfo.popularity;
+            let members = artistInfo.members;
+            let genre = artistInfo.genre;
+            let country = artistInfo.country;
+            let gender = artistInfo.gender;
+
+            document.getElementById('newArtistInput').value = artist || '';
+            document.getElementById('newDebutInput').value = debut || '';
+            document.getElementById('newPopularityInput').value = popularity || '';
+            document.getElementById('newMembersInput').value = members || '';
+            document.getElementById('newGenreInput').value = genre || '';
+            document.getElementById('newCountryInput').value = country || '';
+            document.getElementById('newGenderInput').value = gender ||'';
+        }
+
         function openAddArtistPopup() {
             document.getElementById('addArtistPopup').classList.add('open');
             // Clear previous values/status
@@ -1688,7 +1732,7 @@
             const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprb3Vha3Vva3RjdXpwbGZudnR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkxODQzNzAsImV4cCI6MjA2NDc2MDM3MH0.1wsH4OTKydE9T55rgen0TKCAQIgreb8wlm5xwPYZwKc';
 
             closeAddArtistPopup(); // Immediately close the popup so user can't spam
-            
+
             try {
                 const postData = {
                     artist,
@@ -1763,7 +1807,8 @@
             const changeInfoButton = document.createElement("button");
             changeInfoButton.textContent = "Change Info";
             changeInfoButton.style.marginLeft = "10px";
-            changeInfoButton.onclick = () => openStatChangePopup(artist);
+            //changeInfoButton.onclick = () => openStatChangePopup(artist); 
+            changeInfoButton.onclick = () => openChangeArtistPopup(artist); 
 
             const changedArtistName = document.createElement("div");
             changedArtistName.textContent = artist.artist;
