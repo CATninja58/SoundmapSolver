@@ -1656,7 +1656,7 @@
             const popularity = document.getElementById('newPopularityInput').value.trim();
             const members = document.getElementById('newMembersInput').value.trim();
             const genre = document.getElementById('newGenreInput').value.trim();
-            const country = document.getElementById('newCountryInput').value.trim();
+            const country = document.getElementById('newCountryInput').value.trim().toUpperCase();
             const gender = document.getElementById('newGenderInput').value.trim();
 
             const statusBox = document.getElementById('addArtistStatus');
@@ -1666,37 +1666,23 @@
                 return;
             }
 
-            //Common wrong inputs
-            const HipHop = ['hiphop'];
-            const RandB = ['r and b', 'randb', 'rand b', 'r andb'];
-
-            //Fix
-            if (HipHop.includes(genre.toLowerCase())) { genre = "Hip Hop" }
-            if (RandB.includes(genre.toLowerCase())) { genre = "R&B" }
-
             // If gender isn't Female, Male, or Mixed give an alert
-            if (category === 'gender') {
-                const validGenders = ['Female', 'Male', 'Mixed'];
-                if (!validGenders.includes(changedInfo)) {
-                    showBottomPopup('❌ Gender must be "Female", "Male", or "Mixed".', "red");
-                    return;
-                }
+            const validGenders = ['Female', 'Male', 'Mixed'];
+            if (!validGenders.includes(gender)) {
+                showBottomPopup('❌ Gender must be "Female", "Male", or "Mixed".', "red");
+                return;
             }
             // If members isn't Solo or Group give an alert
-            if (category === 'members') {
-                const validMembers = ['Solo', 'Group'];
-                if (!validMembers.includes(changedInfo)) {
-                    showBottomPopup('❌ Members must be "Solo" or "Group".', "red");
-                    return;
-                }
+            const validMembers = ['Solo', 'Group'];
+            if (!validMembers.includes(members)) {
+                showBottomPopup('❌ Members must be "Solo" or "Group".', "red");
+                return;
             }
             // If genre isn't Pop, Hip Hop, Indie, Rock or R&B give an alert
-            if (category === 'genre') {
-                const validGenres = ['Pop', 'Hip Hop', 'Indie', 'Rock', 'R&B'];
-                if (!validGenres.includes(changedInfo)) {
-                    showBottomPopup('❌ Genre must be "Pop", "Hip Hop", "Indie", "Rock", or "R&B".', "red");
-                    return;
-                }
+            const validGenres = ['Pop', 'Hip Hop', 'Indie', 'Rock', 'R&B'];
+            if (!validGenres.includes(changedInfo)) {
+                showBottomPopup('❌ Genre must be "Pop", "Hip Hop", "Indie", "Rock", or "R&B".', "red");
+                return;
             }
 
             const SUPABASE_URL = 'https://jkouakuoktcuzplfnvtw.supabase.co';
