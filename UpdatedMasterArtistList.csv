@@ -1,4 +1,4 @@
-ARTIST,DEBUT,POPULARITY,MEMBERS,GENRE,COUNTRY,GENDER
+artist,debut,popularity,members,genre,country,gender
 Natalie Jane,2021,116,Solo,Indie,US,Female
 Raim Laode,2018,182,Solo,Pop,ID,Male
 JAY-Z,1996,32,Solo,Hip Hop,US,Male
@@ -55,16 +55,18 @@ The Beach Boys,1962,135,Group,Rock,US,Male
 The Doobie Brothers,1971,153,Group,Rock,US,Male
 Timbaland,1997,87,Solo,Hip Hop,US,Male
 Keemokazi,2020,135,Solo,Hip Hop,US,Male
+6LACK,2016,68,Solo,R&B,US,Male
 Wu-Tang Clan,1992,184,Group,Hip Hop,US,Male
 Rage Against The Machine,1992,97,Group,Rock,US,Male
 NF,2014,90,Solo,Hip Hop,US,Male
-Cassie,2006,71,Solo,R&B,US,Female
+Katy Perry,2007,10,Solo,Pop,US,Female
 Ty Dolla $ign,2011,58,Solo,Hip Hop,US,Male
+Cassie,2006,71,Solo,R&B,US,Female
 Evanescence,2003,20,Group,Rock,US,Mixed
 Dax,2017,63,Solo,Hip Hop,US,Male
 Idgitaf,2020,178,Solo,Indie,ID,Female
 R.E.M,1981,83,Group,Rock,US,Male
-Earth Wind & Fire,1971,20,Group,R&B,US,Male
+"""Earth Wind & Fire""",1971,20,Group,R&B,US,Male
 Flo Rida,2007,34,Solo,Hip Hop,US,Male
 50 Cent,2003,6,Solo,Hip Hop,US,Male
 Chappell Roan,2017,1,Solo,Indie,US,Female
@@ -158,6 +160,7 @@ Steve Lacy,2015,16,Solo,R&B,US,Male
 Def Leppard,1979,109,Group,Rock,GB,Male
 Joe Dwet File,2018,59,Solo,R&B,FR,Male
 Men I Trust,2014,102,Group,Indie,CA,Mixed
+Seether,2002,147,Group,Rock,ZA,Male
 John Mayer,2001,129,Solo,Pop,US,Male
 Bon Iver,2008,50,Group,Indie,US,Male
 Kings of Leon,2003,55,Group,Rock,US,Male
@@ -210,7 +213,7 @@ Ben E. King,1961,90,Solo,R&B,US,Male
 Pearl Jam,1991,39,Group,Rock,US,Male
 Offset,2015,106,Solo,Hip Hop,US,Male
 Tate McRae,2017,29,Solo,Pop,CA,Female
-Paramore,2005,27,Group,Rock,US,Mixed
+Paramore,2005,27,Group,Rock,US,mixed
 Iggy Azalea,2013,121,Solo,Hip Hop,AU,Female
 Snow Patrol,1998,150,Group,Rock,GB,Male
 Rich The Kid,2014,183,Solo,Hip Hop,US,Male
@@ -286,6 +289,7 @@ David Kushner,2022,32,Solo,Indie,US,Male
 hannah bahng,2023,173,Solo,Indie,AU,Female
 Estelle,2004,169,Solo,R&B,GB,Female
 Fourtwnty,2015,33,Group,Indie,ID,Male
+Natalia Lafourcade,2002,28,Solo,Indie,MX,Femal
 Mete Kayagil,2023,150,Solo,Pop,TR,Male
 Lyodra,2017,161,Solo,Pop,ID,Female
 Bebe Rexha,2014,75,Solo,Pop,US,Female
@@ -302,7 +306,7 @@ Bastille,2012,84,Group,Rock,GB,Male
 Alanis Morissette,1995,139,Solo,Rock,CA,Female
 Karina y Marina,2019,188,Group,Pop,ES,Female
 Omarion,2005,93,Solo,R&B,US,Male
-The White Stripes,1998,131,Group,Rock,US,Mixed
+The White Stripes,1998,131,Group,Rock,US,mixed
 Donna Summer,1974,123,Solo,R&B,US,Female
 Sonder,2017,108,Group,R&B,US,Male
 The Jacksons,1976,132,Group,R&B,US,Male
@@ -361,6 +365,7 @@ Janet Jackson,1982,44,Solo,R&B,US,Female
 CoComelon,2019,183,Group,Pop,US,Mixed
 Maneskin,2017,29,Group,Rock,IT,Mixed
 girl in red,2018,40,Solo,Indie,NO,Female
+Dua Lipa,2015,14,Solo,Pop,GB,Female
 Beach Weather,2016,128,Group,Indie,US,Male
 Olivia Rodrigo,2016,23,Solo,Pop,US,Female
 The Fray,2005,134,Group,Rock,US,Male
@@ -419,6 +424,7 @@ Charli xcx,2012,43,Solo,Pop,GB,Female
 U2,1980,25,Group,Rock,IE,Male
 Ben&Ben,2016,43,Group,Indie,PH,Mixed
 Frank Ocean,2011,8,Solo,R&B,US,Male
+Chris Brown,2005,20,Solo,Pop,US,Male
 M83,2001,54,Group,Indie,FR,Mixed
 *nsync,1997,92,group,Pop,US,Male
 Ed Maverick,2018,69,Solo,Indie,Mx,Male
@@ -436,6 +442,7 @@ Ricky Montgomery,2014,83,Solo,Indie,US,Male
 INNA,2010,91,Solo,Pop,RO,Female
 Jason Derulo,2010,15,Solo,Pop,US,Male
 Jess Glynne,2014,148,Solo,Pop,GB,Female
+Selena Gomez,2011,11,Solo,Pop,US,Female
 Etta James,2010,99,Solo,R&B,US,Female
 Melanie Martinez,2012,12,Solo,Indie,US,Female
 Bernadya,2023,21,Solo,Indie,ID,Female
@@ -494,7 +501,7 @@ Lil Baby,2017,18,Solo,Hip Hop,US,Male
 2 Chainz,2010,130,Solo,Hip Hop,US,Male
 alt-J,2012,183,Group,Rock,GB,Male
 Lyna,2018,148,Solo,Pop,ES,Female
-Simple Minds,1979,137,Group,Rock,GB,Mixed
+Simple Minds,1979,137,Group,Rock,GB,mixed
 Rotimi,2009,191,Solo,R&B,US,Male
 Conor Maynard,2012,185,Solo,Pop,GB,Male
 Lil Wayne,1999,12,Solo,Hip Hop,US,Male
@@ -534,7 +541,7 @@ Eric Bellinger,2013,188,Solo,R&B,US,Male
 mxmtoon,2017,193,Solo,Indie,US,Female
 Justine Skye,2013,159,Solo,R&B,US,Female
 Druski,2024,55,Solo,Hip Hop,US,Male
-Pixies,1987,172,Group,Rock,US,Mixed
+Pixies,1987,172,Group,Rock,US,mixed
 Breaking Benjamin,2002,123,Group,Rock,US,Male
 Elvis Presley,1956,80,Solo,Pop,US,Male
 Jungle,2013,84,Group,R&B,GB,Male
