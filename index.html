@@ -1680,7 +1680,7 @@
             }
             // If genre isn't Pop, Hip Hop, Indie, Rock or R&B give an alert
             const validGenres = ['Pop', 'Hip Hop', 'Indie', 'Rock', 'R&B'];
-            if (!validGenres.includes(changedInfo)) {
+            if (!validGenres.includes(genre)) {
                 showBottomPopup('❌ Genre must be "Pop", "Hip Hop", "Indie", "Rock", or "R&B".', "red");
                 return;
             }
