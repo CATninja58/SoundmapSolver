@@ -2295,6 +2295,10 @@
             const isHidden = localStorage.getItem('hideBestGuess') === 'true';
             document.getElementById('hideBestGuessToggle').checked = isHidden;
             toggleBestGuessVisibility();
+            checkLightModePreference();
+            checkAndroidPreference();
+            checkPopupsPreference();
+            checkUpdatedCSVPreference();
         });
 
         function toggleHelpOverlay() {
@@ -2309,14 +2313,21 @@
             body.classList.toggle('light-mode');
             const isLightMode = body.classList.contains('light-mode');
             localStorage.setItem('lightMode', isLightMode);
+            // Always update the toggle
+            const toggle = document.getElementById('lightModeToggle');
+            if (toggle) toggle.checked = isLightMode;
         }
 
         function checkLightModePreference() {
             const isLightMode = localStorage.getItem('lightMode') === 'true';
             if (isLightMode) {
                 document.body.classList.add('light-mode');
-                document.getElementById('lightModeToggle').checked = true;
+            } else {
+                document.body.classList.remove('light-mode');
             }
+            // Always set the toggle's checked property
+            const toggle = document.getElementById('lightModeToggle');
+            if (toggle) toggle.checked = isLightMode;
         }
 
         function toggleAndroid() {
@@ -2324,14 +2335,20 @@
             body.classList.toggle('android-mode');
             const isAndroidMode = body.classList.contains('android-mode');
             localStorage.setItem('androidMode', isAndroidMode);
+            // Always update the toggle
+            const toggle = document.getElementById('androidToggle');
+            if (toggle) toggle.checked = isAndroidMode;
         }
 
         function checkAndroidPreference() {
             const isAndroidMode = localStorage.getItem('androidMode') === 'true';
             if (isAndroidMode) {
                 document.body.classList.add('android-mode');
-                document.getElementById('androidModeToggle').checked = true;
+            } else {
+                document.body.classList.remove('android-mode');
             }
+            const toggle = document.getElementById('androidToggle');
+            if (toggle) toggle.checked = isAndroidMode;
         }
 
         function togglePopups() {
@@ -2339,14 +2356,20 @@
             body.classList.toggle('popup-mode');
             const isPopupMode = body.classList.contains('popup-mode');
             localStorage.setItem('popupMode', isPopupMode);
+            // Always update the toggle
+            const toggle = document.getElementById('popupToggle');
+            if (toggle) toggle.checked = isPopupMode;
         }
 
         function checkPopupsPreference() {
             const isPopupMode = localStorage.getItem('popupMode') === 'true';
             if (isPopupMode) {
                 document.body.classList.add('popup-mode');
-                document.getElementById('popupModeToggle').checked = true;
+            } else {
+                document.body.classList.remove('popup-mode');
             }
+            const toggle = document.getElementById('popupToggle');
+            if (toggle) toggle.checked = isPopupMode;
         }
 
         function toggleUpdatedCSV() {
@@ -2355,14 +2378,20 @@
             body.classList.toggle('updatedCSV-mode');
             const isUpdatedCSVMode = body.classList.contains('updatedCSV-mode');
             localStorage.setItem('updatedCSVMode', isUpdatedCSVMode);
+            // Always update the toggle
+            const toggle = document.getElementById('updatedCSVToggle');
+            if (toggle) toggle.checked = isUpdatedCSVMode;
         }
 
         function checkUpdatedCSVPreference() {
             const isUpdatedCSVMode = localStorage.getItem('updatedCSVMode') === 'true';
             if (isUpdatedCSVMode) {
                 document.body.classList.add('updatedCSV-mode');
-                document.getElementById('updatedCSVModeToggle').checked = true;
+            } else {
+                document.body.classList.remove('updatedCSV-mode');
             }
+            const toggle = document.getElementById('updatedCSVToggle');
+            if (toggle) toggle.checked = isUpdatedCSVMode;
         }
 
         if ('serviceWorker' in navigator) {
