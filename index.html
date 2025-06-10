@@ -770,7 +770,6 @@
     </style> 
 </head>
 <body>
-    
     <i class="fas fa-cog cog-icon" onclick="toggleSidebar()"></i>
     <div class="sidebar" id="sidebar">
         <h2>Settings</h2>
@@ -799,6 +798,13 @@
             <span>Disable Pop-ups</span>
             <label class="switch">
                 <input type="checkbox" id="popupToggle" onchange="togglePopups()">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="toggle-switch">
+            <span>Use updated CSV (beta)</span>
+            <label class="switch">
+                <input type="checkbox" id="updatedCSVToggle" onchange="toggleUpdatedCSV()">
                 <span class="slider"></span>
             </label>
         </div>
@@ -1351,23 +1357,74 @@
         }
 
         function isPopupMode() {
-            const isPopupMode= localStorage.getItem('popupMode') === 'true';
+            const isPopupMode = localStorage.getItem('popupMode') === 'true';
             return isPopupMode;
         }
 
+        function isUpdatedCSVMode() {
+            const isUpdatedCSVMode = localStorage.getItem('updatedCSVMode') === 'true';
+            return isUpdatedCSVMode;
+        }
+
+        // Load the main CSV and, if needed, merge with the updated CSV
         function loadCSV(csvUrl) {
             fetch(csvUrl)
-                .then(response => response.text())
-                .then(csvText => parseCSV(csvText))
-                .catch(error => console.error("Error loading CSV file:", error));
+            .then(response => response.text())
+            .then(csvText => {
+                if (isUpdatedCSVMode()) {
+                // If updated CSV mode, load the updated CSV and merge
+                fetch("https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/UpdatedMasterArtistList.csv")
+                    .then(resp => resp.text())
+                    .then(updatedText => {
+                    parseCSVWithUpdates(csvText, updatedText);
+                    })
+                    .catch(error => {
+                    console.error("Error loading updated CSV file:", error);
+                    // Fallback to just the main CSV if update fails
+                    parseCSV(csvText);
+                    });
+                } else {
+                parseCSV(csvText);
+                }
+            })
+            .catch(error => console.error("Error loading CSV file:", error));
+        }
+
+        // Parse the main CSV and merge with the updated CSV if present
+        function parseCSVWithUpdates(mainCSV, updatedCSV) {
+            // Parse updated CSV into a map for quick lookup
+            const updatedRows = updatedCSV.split("\n").filter(row => row.trim());
+            updatedRows.shift(); // Remove header
+            const updatedMap = {};
+            updatedRows.forEach(row => {
+            const [artist, debut, popularity, members, genre, country, gender] = row.split(",");
+            if (artist) {
+                updatedMap[artist.trim().toLowerCase()] = { artist, debut, popularity, members, genre, country, gender };
+            }
+            });
+
+            // Parse main CSV, replace with updated if available
+            const mainRows = mainCSV.split("\n").filter(row => row.trim());
+            mainRows.shift(); // Remove header
+            artistsData = mainRows.map(row => {
+            const [artist, debut, popularity, members, genre, country, gender] = row.split(",");
+            const key = artist ? artist.trim().toLowerCase() : "";
+            if (key && updatedMap[key]) {
+                return updatedMap[key];
+            }
+            return { artist, debut, popularity, members, genre, country, gender };
+            });
+
+            filteredArtists = [...artistsData];
+            displayArtists();
         }
 
         function parseCSV(csvText) {
-            const rows = csvText.split("\n");
+            const rows = csvText.split("\n").filter(row => row.trim());
             rows.shift();
             artistsData = rows.map(row => {
-                const [artist, debut, popularity, members, genre, country, gender] = row.split(",");
-                return { artist, debut, popularity, members, genre, country, gender };
+            const [artist, debut, popularity, members, genre, country, gender] = row.split(",");
+            return { artist, debut, popularity, members, genre, country, gender };
             });
             filteredArtists = [...artistsData];
             displayArtists();
@@ -2198,6 +2255,21 @@
             }
         }
 
+        function toggleUpdatedCSV() {
+            const body = document.body;
+            body.classList.toggle('updatedCSV-mode');
+            const isUpdatedCSVMode = body.classList.contains('updatedCSV-mode');
+            localStorage.setItem('updatedCSVMode', isUpdatedCSVMode);
+        }
+
+        function checkUpdatedCSVPreference() {
+            const isUpdatedCSVMode = localStorage.getItem('updatedCSVMode') === 'true';
+            if (isUpdatedCSVMode) {
+                document.body.classList.add('updatedCSV-mode');
+                document.getElementById('updatedCSVModeToggle').checked = true;
+            }
+        }
+
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker
@@ -2216,6 +2288,7 @@
         document.addEventListener('DOMContentLoaded', checkLightModePreference);
         document.addEventListener('DOMContentLoaded', checkAndroidPreference);
         document.addEventListener('DOMContentLoaded', checkPopupsPreference);
+        document.addEventListener('DOMContentLoaded', checkUpdatedCSVPreference);
 
         loadSortedCSV("https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/SortedFirstGuessResults.csv");
         loadCSV("https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/MasterArtistList.csv");
