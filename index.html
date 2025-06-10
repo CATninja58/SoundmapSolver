@@ -1208,7 +1208,9 @@
                     <h1><b>⚠️IMPORTANT PLEASE READ⚠️</b></h1>
                     <p>Soundmap has updated its data on artists for the artist guesser, this unfortunately makes the solver less efficient</p>
                     <p>In order to fix my solver, if you see incorrect information on the solver, please click the button at the top left of the boxes and fill in the correct info and press enter.</p>
-                    <p>For now, simply do not choose an option (Eg: Close, lower, higher etc) for the popularity</p>
+                    <p>And if you see an artist that isn't on my solver, use the Add New Artist button.</p>
+                    <p>For now, simply do not choose an option (Eg: Close, lower, higher etc) for the popularity or </p>
+                    <p>go to the settings at the top left and turn on updated CSV (might not work too well)</p>
                     <button onclick="closeAlertOverlay()">Close</button>
                 </div>
             </div>
@@ -1219,6 +1221,7 @@
     <h1>Soundmap Artist Guesser Solver</h1>
 
     <button onclick="resetSolver()">Reset</button>
+    <button onclick="openAddArtistPopup()">Add New Artist</button>
 
     <div class="search-container">
         <input type="text" id="artistSearch" placeholder="Enter artist name" oninput="searchArtist()">
@@ -1262,6 +1265,23 @@
             <button onclick="uploadStatChange()" style="margin-top: 50px;">Enter</button>
             <button class="close-hint" onclick="closeStatChangePopup()">Close</button>
             <p id="submitStatus" style="margin-top: 15px; font-weight: bold; color: red;"></p>
+        </div>
+    </div>
+
+    <div class="hint-popup" id="addArtistPopup">
+        <div class="hint-content">
+            <p>Fill in <b>EXACTLY</b> what soundmap says in their game into the text box</p>
+            <p>Please fill in all boxes for it to work.</p>
+            <input type="text" id="newArtistInput" placeholder="Enter artist name (e.g., Kanye West)">
+            <input type="text" id="newDebutInput" placeholder="Enter debut year (e.g., 2004)">
+            <input type="text" id="newPopularityInput" placeholder="Enter popularity (e.g., 13)">
+            <input type="text" id="newMembersInput" placeholder="Enter members (e.g., Solo)">
+            <input type="text" id="newGenreInput" placeholder="Enter genre (e.g., Hip Hop)">
+            <input type="text" id="newCountryInput" placeholder="Enter country (e.g., US)">
+            <input type="text" id="newGenderInput" placeholder="Enter gender (e.g., Male)">
+            <button onclick="addNewArtist()" style="margin-top: 50px;">Enter</button>
+            <button class="close-hint" onclick="closeAddArtistPopup()">Close</button>
+            <p id="addArtistStatus style="margin-top: 15px; font-weight: bold; color: red;"></p>
         </div>
     </div>
 
@@ -1592,6 +1612,80 @@
             setTimeout(closeStatChangePopup, 1500);
         }
 
+        // Add New Artist Popup logic
+        function openAddArtistPopup() {
+            document.getElementById('addArtistPopup').classList.add('open');
+            // Clear previous values/status
+            document.getElementById('newArtistInput').value = '';
+            document.getElementById('newDebutInput').value = '';
+            document.getElementById('newPopularityInput').value = '';
+            document.getElementById('newMembersInput').value = '';
+            document.getElementById('newGenreInput').value = '';
+            document.getElementById('newCountryInput').value = '';
+            document.getElementById('newGenderInput').value = '';
+            document.getElementById('addArtistStatus').textContent = '';
+        }
+
+        function closeAddArtistPopup() {
+            document.getElementById('addArtistPopup').classList.remove('open');
+        }
+
+        // Upload new artist to Supabase
+        async function UploadNewArtist() {
+            const artist = document.getElementById('newArtistInput').value.trim();
+            const debut = document.getElementById('newDebutInput').value.trim();
+            const popularity = document.getElementById('newPopularityInput').value.trim();
+            const members = document.getElementById('newMembersInput').value.trim();
+            const genre = document.getElementById('newGenreInput').value.trim();
+            const country = document.getElementById('newCountryInput').value.trim();
+            const gender = document.getElementById('newGenderInput').value.trim();
+
+            const statusBox = document.getElementById('addArtistStatus');
+
+            if (!artist || !debut || !popularity || !members || !genre || !country || !gender) {
+                statusBox.style.color = "red";
+                statusBox.textContent = "❌ Please fill in all fields.";
+                return;
+            }
+
+            const SUPABASE_URL = 'https://jkouakuoktcuzplfnvtw.supabase.co';
+            const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprb3Vha3Vva3RjdXpwbGZudnR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkxODQzNzAsImV4cCI6MjA2NDc2MDM3MH0.1wsH4OTKydE9T55rgen0TKCAQIgreb8wlm5xwPYZwKc';
+
+            try {
+                const postData = {
+                    artist,
+                    debut,
+                    popularity,
+                    members,
+                    genre,
+                    country,
+                    gender
+                };
+
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/artist_changes`, {
+                    method: "POST",
+                    headers: {
+                        "apikey": SUPABASE_API_KEY,
+                        "Authorization": `Bearer ${SUPABASE_API_KEY}`,
+                        "Content-Type": "application/json",
+                        "Prefer": "return=minimal"
+                    },
+                    body: JSON.stringify(postData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(await response.text());
+                }
+
+                statusBox.style.color = "green";
+                statusBox.textContent = "✅ New artist submitted!";
+            } catch (error) {
+                statusBox.style.color = "red";
+                statusBox.textContent = "❌ Submission failed. Try again.";
+            }
+
+            setTimeout(closeAddArtistPopup, 1500);
+        }
 
 
         function searchArtist() {
@@ -2256,6 +2350,7 @@
         }
 
         function toggleUpdatedCSV() {
+            alert("Please refresh the page for the updated CSV to take effect.");
             const body = document.body;
             body.classList.toggle('updatedCSV-mode');
             const isUpdatedCSVMode = body.classList.contains('updatedCSV-mode');
