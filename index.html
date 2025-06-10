@@ -1566,6 +1566,9 @@
             const SUPABASE_URL = 'https://jkouakuoktcuzplfnvtw.supabase.co';
             const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprb3Vha3Vva3RjdXpwbGZudnR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkxODQzNzAsImV4cCI6MjA2NDc2MDM3MH0.1wsH4OTKydE9T55rgen0TKCAQIgreb8wlm5xwPYZwKc';
 
+            // Immediately close the popup so user can't spam
+            closeStatChangePopup();
+
             try {
                 const postData = {
                     artist,
@@ -1576,8 +1579,6 @@
                     country,
                     gender
                 };
-
-                console.log("Sending data:", postData);
 
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/artist_changes`, {
                     method: "POST",
@@ -1594,23 +1595,40 @@
                     throw new Error(await response.text());
                 }
 
-                console.log("✅ Upload successful!");
-                const statusBox = document.getElementById("submitStatus");
-                if (statusBox) {
-                    statusBox.style.color = "green";
-                    statusBox.textContent = "✅ Submission successful!";
-                }
+                showBottomPopup("✅ Submission successful!", "green");
             } catch (error) {
-                console.error("❌ Upload failed:", error);
-                const statusBox = document.getElementById("submitStatus");
-                if (statusBox) {
-                    statusBox.style.color = "red";
-                    statusBox.textContent = "❌ Submission failed. Try again.";
-                }
+                showBottomPopup("❌ Submission failed. Try again.", "red");
             }
+        }
 
-            // Close popup after a short delay so user can see the message
-            setTimeout(closeStatChangePopup, 1500);
+        // Bottom popup utility
+        function showBottomPopup(message, color) {
+            let popup = document.getElementById('bottomStatusPopup');
+            if (!popup) {
+                popup = document.createElement('div');
+                popup.id = 'bottomStatusPopup';
+                popup.style.position = 'fixed';
+                popup.style.left = '50%';
+                popup.style.bottom = '30px';
+                popup.style.transform = 'translateX(-50%)';
+                popup.style.background = '#222';
+                popup.style.color = color || '#fff';
+                popup.style.padding = '16px 32px';
+                popup.style.borderRadius = '8px';
+                popup.style.fontWeight = 'bold';
+                popup.style.fontSize = '16px';
+                popup.style.zIndex = '99999';
+                popup.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
+                popup.style.pointerEvents = 'none';
+                document.body.appendChild(popup);
+            }
+            popup.textContent = message;
+            popup.style.color = color || '#fff';
+            popup.style.display = 'block';
+            clearTimeout(popup._timeout);
+            popup._timeout = setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2500);
         }
 
         // Add New Artist Popup logic
