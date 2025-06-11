@@ -1741,7 +1741,7 @@
 
             const statusBox = document.getElementById('addArtistStatus');
 
-            const continued = False;
+            const continued = false;
             if (!artist || !debut || !popularity || !members || !genre || !country || !gender) {
                 showBottomPopup("❌ Please fill in all fields.", "red");
                 return;
@@ -1754,7 +1754,7 @@
             }
             else if (artist === originalArtist && debut === originalDebut && members === originalMembers && genre === originalGenre && country === originalCountry) {
                 showBottomPopup("✅ Submitted. ⚠️ We already have that artist, however we have a different popularity. If you have double checked it, press submit again. If you got it wrong, don't do anything ⚠️", "red");
-                continued = True;
+                continued = true;
             }
 
             // If gender isn't Female, Male, or Mixed give an alert
