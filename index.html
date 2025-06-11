@@ -1413,21 +1413,32 @@
             fetch(csvUrl)
             .then(response => response.text())
             .then(csvText => {
-                if (isUpdatedCSVMode()) {
+            if (isUpdatedCSVMode()) {
                 // If updated CSV mode, load the updated CSV and merge
                 fetch("https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/UpdatedMasterArtistList.csv")
-                    .then(resp => resp.text())
-                    .then(updatedText => {
-                    parseCSVWithUpdates(csvText, updatedText);
-                    })
-                    .catch(error => {
-                    console.error("Error loading updated CSV file:", error);
-                    // Fallback to just the main CSV if update fails
-                    parseCSV(csvText);
-                    });
-                } else {
+                .then(resp => resp.text())
+                .then(updatedText => {
+                parseCSVWithUpdates(csvText, updatedText);
+                // Also load the updated CSV separately for new functions
+                parseUpdatedCSV(updatedText);
+                })
+                .catch(error => {
+                console.error("Error loading updated CSV file:", error);
+                // Fallback to just the main CSV if update fails
                 parseCSV(csvText);
-                }
+                });
+            } else {
+                parseCSV(csvText);
+                // Still load the updated CSV separately for new functions
+                fetch("https://raw.githubusercontent.com/CATninja58/Soundmapsolver/main/UpdatedMasterArtistList.csv")
+                .then(resp => resp.text())
+                .then(updatedText => {
+                parseUpdatedCSV(updatedText);
+                })
+                .catch(error => {
+                console.error("Error loading updated CSV file:", error);
+                });
+            }
             })
             .catch(error => console.error("Error loading CSV file:", error));
         }
@@ -1470,6 +1481,18 @@
             });
             filteredArtists = [...artistsData];
             displayArtists();
+        }
+
+        // Store the updated CSV (non-merged) for use in new functions
+        let updatedArtistsData = [];
+        function parseUpdatedCSV(csvText) {
+            const rows = csvText.split("\n").filter(row => row.trim());
+            rows.shift(); // Remove header
+            updatedArtistsData = rows.map(row => {
+            const [artist, debut, popularity, members, genre, country, gender] = row.split(",");
+            return { artist, debut, popularity, members, genre, country, gender };
+            });
+            // Now updatedArtistsData is available globally for new functions
         }
 
         function loadSortedCSV(csvUrl) {
@@ -1657,7 +1680,7 @@
             document.getElementById('addArtistPopup').classList.add('open');
             // Clear previous values/status
             changedArtistInfo = changedArtist; // Store the artist info globally for later use
-            const artistInfo = changedArtistInfo;
+            artistInfo = changedArtistInfo;
 
             // Get current values
             let artist = artistInfo.artist;
@@ -1695,6 +1718,19 @@
 
         // Upload new artist to Supabase
         async function UploadNewArtist() {
+            // Only check the updated CSV for the original artist info
+            let updatedArtistObj = null;
+            if (artistInfo && artistInfo.artist) {
+                updatedArtistObj = updatedArtistsData.find(a => a.artist && a.artist.trim().toLowerCase() === artistInfo.artist.trim().toLowerCase());
+            }
+            let originalArtist = updatedArtistObj ? updatedArtistObj.artist : "";
+            let originalDebut = updatedArtistObj ? updatedArtistObj.debut : "";
+            let originalPopularity = updatedArtistObj ? updatedArtistObj.popularity : "";
+            let originalMembers = updatedArtistObj ? updatedArtistObj.members : "";
+            let originalGenre = updatedArtistObj ? updatedArtistObj.genre : "";
+            let originalCountry = updatedArtistObj ? updatedArtistObj.country : "";
+            let originalGender = updatedArtistObj ? updatedArtistObj.gender : "";
+
             const artist = document.getElementById('newArtistInput').value.trim();
             const debut = document.getElementById('newDebutInput').value.trim();
             const popularity = document.getElementById('newPopularityInput').value.trim();
@@ -1705,8 +1741,15 @@
 
             const statusBox = document.getElementById('addArtistStatus');
 
+
             if (!artist || !debut || !popularity || !members || !genre || !country || !gender) {
                 showBottomPopup("❌ Please fill in all fields.", "red");
+                return;
+            }
+
+            // Check if the artist already exists with the same details
+            if (artist = originalArtist && debut === originalDebut && popularity === originalPopularity && members === originalMembers && genre === originalGenre && country === originalCountry) {
+                showBottomPopup("❌ Your submission matches an existing entry - thank you for helping us keep our records complete.", "red");
                 return;
             }
 
