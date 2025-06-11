@@ -732,7 +732,7 @@
         }
 
         .hint-popup.open {
-            display: flex;
+            display: flex !important;
         }
 
         .hint-content {
@@ -812,6 +812,83 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        #messagePopup textarea {
+            width: 100%;
+            min-height: 80px;
+            max-height: 300px;
+            resize: vertical;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2d2d2d;
+            color: #f4f4f4;
+            box-sizing: border-box;
+        }
+        #messagePopup input[type="text"] {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2d2d2d;
+            color: #f4f4f4;
+        }
+        #messagePopup select {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2d2d2d;
+            color: #f4f4f4;
+        }
+        #messagePopup button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            background-color: grey;
+            color: #f4f4f4;
+            cursor: pointer;
+        }
+        #messagePopup button:hover {
+            background-color: #159643;
+        }
+        #messagePopup .close-hint {
+            background-color: grey;
+        }
+        #messagePopup .close-hint:hover {
+            background-color: #b19600;
+        }
+        /* Light mode for message popup */
+        body.light-mode #messagePopup .hint-content {
+            background-color: #ffffff;
+            color: #1c1c1c;
+        }
+        body.light-mode #messagePopup textarea,
+        body.light-mode #messagePopup input[type="text"],
+        body.light-mode #messagePopup select,
+        body.light-mode #messagePopup button {
+            background-color: #f0f0f0;
+            color: #1c1c1c;
+            border: 1px solid #ccc;
+        }
+        body.light-mode #messagePopup button:hover {
+            background-color: #eaeaea;
+        }
+        body.light-mode #messagePopup .close-hint {
+            background-color: #eaeaea;
+        }
+        body.light-mode #messagePopup .close-hint:hover {
+            background-color: #d6d6d6;
         }
 
 
@@ -1371,9 +1448,7 @@
                 <option value="members">General message/question</option>
             </select>
             <textarea id="messageInput" placeholder="Message goes here (e.g., I found a bug)" rows="4" maxlength="750"
-                style="width: 100%; margin: 10px 0; font-size: 14px; border-radius: 6px; background-color: #2d2d2d; color: #f4f4f4; border: none; resize: none; overflow-y: hidden;"
-                oninput="autoExpandTextarea(this)">
-            </textarea>
+                oninput="autoExpandTextarea(this)"></textarea>
             <div id="charCount" style="text-align: right; font-size: 12px; color: #888;">0 / 750</div>
             <button onclick="SendMessage()" style="margin-top: 50px;">Send</button>
             <button class="close-hint" onclick="closeMessagePopup()">Close</button>
