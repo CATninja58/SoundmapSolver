@@ -304,38 +304,6 @@
             color: #159643; /* Green on hover */
         }
 
-        /* Message icon styles */
-        .fa-paper-plane.message-icon {
-            position: fixed;
-            top: 20px;
-            left: 70px; /* Adjusted so it doesn't overlap with the cog icon */
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 1000;
-            color: #f4f4f4;
-            transition: color 0.3s ease;
-        }
-
-        .fa-paper-plane.message-icon:hover {
-            color: #159643; /* Green on hover */
-        }
-
-        /* Help icon styles */
-        .fa-question-circle.help-icon {
-            position: fixed;
-            top: 20px;
-            left: 70px; /* Adjusted so it doesn't overlap with the cog icon */
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 1000;
-            color: #f4f4f4;
-            transition: color 0.3s ease;
-        }
-
-        .fa-question-circle.help-icon:hover {
-            color: #159643; /* Green on hover */
-        }
-
         /* Sidebar styles */
         .sidebar {
             position: fixed;
@@ -462,22 +430,6 @@
         }
 
         body.light-mode .cog-icon:hover {
-            color: #159643; /* Green on hover */
-        }
-
-        body.light-mode .fa-paper-plane.message-icon {
-            color: #1c1c1c; /* Black in light mode */
-        }
-
-        body.light-mode .fa-paper-plane.message-icon:hover {
-            color: #159643; /* Green on hover */
-        }
-
-        body.light-mode .fa-question-circle.help-icon {
-            color: #1c1c1c; /* Black in light mode */
-        }
-
-        body.light-mode .fa-question-circle.help-icon:hover {
             color: #159643; /* Green on hover */
         }
 
@@ -732,7 +684,7 @@
         }
 
         .hint-popup.open {
-            display: flex !important;
+            display: flex;
         }
 
         .hint-content {
@@ -814,83 +766,6 @@
             justify-content: center;
         }
 
-        #messagePopup textarea {
-            width: 100%;
-            min-height: 80px;
-            max-height: 300px;
-            resize: vertical;
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 14px;
-            border: none;
-            border-radius: 6px;
-            background-color: #2d2d2d;
-            color: #f4f4f4;
-            box-sizing: border-box;
-        }
-        #messagePopup input[type="text"] {
-            width: 100%;
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 14px;
-            border: none;
-            border-radius: 6px;
-            background-color: #2d2d2d;
-            color: #f4f4f4;
-        }
-        #messagePopup select {
-            width: 100%;
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 14px;
-            border: none;
-            border-radius: 6px;
-            background-color: #2d2d2d;
-            color: #f4f4f4;
-        }
-        #messagePopup button {
-            width: 100%;
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 14px;
-            border: none;
-            border-radius: 6px;
-            background-color: grey;
-            color: #f4f4f4;
-            cursor: pointer;
-        }
-        #messagePopup button:hover {
-            background-color: #159643;
-        }
-        #messagePopup .close-hint {
-            background-color: grey;
-        }
-        #messagePopup .close-hint:hover {
-            background-color: #b19600;
-        }
-        /* Light mode for message popup */
-        body.light-mode #messagePopup .hint-content {
-            background-color: #ffffff;
-            color: #1c1c1c;
-        }
-        body.light-mode #messagePopup textarea,
-        body.light-mode #messagePopup input[type="text"],
-        body.light-mode #messagePopup select,
-        body.light-mode #messagePopup button {
-            background-color: #f0f0f0;
-            color: #1c1c1c;
-            border: 1px solid #ccc;
-        }
-        body.light-mode #messagePopup button:hover {
-            background-color: #eaeaea;
-        }
-        body.light-mode #messagePopup .close-hint {
-            background-color: #eaeaea;
-        }
-        body.light-mode #messagePopup .close-hint:hover {
-            background-color: #d6d6d6;
-        }
-
 
     </style> 
 </head>
@@ -935,9 +810,8 @@
         </div>
     </div>
 
-    <!-- Help button on far right, message button slightly to the left -->
-    <i class="fa fa-question-circle help-icon" style="right: 20px; left: auto; top: 20px; position: fixed;" onclick="toggleHelpOverlay()"></i>
-    <i class="fa fa-paper-plane message-icon" style="right: 70px; left: auto; top: 20px; position: fixed;" onclick="openMessagePopup()"></i>
+    <!-- Changed help button -->
+    <button class="help-button" onclick="toggleHelpOverlay()">?</button>
 
     <!-- Tutorial Overlay -->
     <div class="help-overlay" id="helpOverlay">
@@ -1433,34 +1307,6 @@
         </div>
     </div>
 
-    <div class="hint-popup" id="messagePopup">
-        <div class="hint-content">
-            <h2><b>Contact me</b></h2>
-            <p>Fill in your soundmap username, select message type and type your message below</p>
-            <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                <label style="width: 90px; text-align: left;">Username:</label>
-                <input type="text" id="soundmapUsernameInput" placeholder="Soundmap Username">
-            </div>
-            <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                <label style="width: 90px; text-align: left;">Message type:</label>
-                <select id="messageCategory" style="flex: 1;">
-                    <option value="">Select message type</option>
-                    <option value="Wrong information">Wrong information</option>
-                    <option value="Bug">Bug</option>
-                    <option value="General message/question">General message/question</option>
-                </select>
-            </div>
-            <div style="margin-bottom: 8px;">
-                <textarea id="messageInput" placeholder="Message goes here (e.g., I found a bug)" rows="4" maxlength="750"
-                    oninput="autoExpandTextarea(this)" style="width: 100%; margin-top: 8px;"></textarea>
-                <div id="charCount" style="text-align: right; font-size: 12px; color: #888;">0 / 750</div>
-            </div>
-            <button onclick="SendMessage()" style="margin-top: 50px;">Send</button>
-            <button class="close-hint" onclick="closeMessagePopup()">Close</button>
-            <p id="submitStatus" style="margin-top: 15px; font-weight: bold; color: red;"></p>
-        </div>
-    </div>
-
     <!-- Modal structure -->
     <div id="myModal" class="hidden">
         <div id="modalOptions"></div>
@@ -1686,26 +1532,6 @@
             document.getElementById('statChangePopup').classList.remove('open');
         }
 
-        function openMessagePopup() {
-            document.getElementById('messagePopup').classList.add('open');
-        }
-
-        function closeMessagePopup() {
-            document.getElementById('messagePopup').classList.remove('open');
-        }
-
-        function autoExpandTextarea(textarea) {
-            textarea.style.height = 'auto';
-            textarea.style.height = (textarea.scrollHeight) + 'px';
-            // Character count
-            const charCount = document.getElementById('charCount');
-            charCount.textContent = textarea.value.length + ' / 750';
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            const textarea = document.getElementById('messageInput');
-            if (textarea) autoExpandTextarea(textarea);
-        });
-
         function applyHint() {
             const hintValue = document.getElementById('hintInput').value.trim();
             const hintCategory = document.getElementById('hintCategory').value;
@@ -1915,7 +1741,7 @@
 
             const statusBox = document.getElementById('addArtistStatus');
 
-
+            const continued = False;
             if (!artist || !debut || !popularity || !members || !genre || !country || !gender) {
                 showBottomPopup("❌ Please fill in all fields.", "red");
                 return;
@@ -1925,6 +1751,10 @@
             if (artist === originalArtist && debut === originalDebut && popularity === originalPopularity && members === originalMembers && genre === originalGenre && country === originalCountry) {
                 showBottomPopup("❌ Your submission matches an existing entry - thank you for helping us keep our records complete.", "red");
                 return;
+            }
+            else if (artist === originalArtist && debut === originalDebut && members === originalMembers && genre === originalGenre && country === originalCountry) {
+                showBottomPopup("✅ Submitted. ⚠️ We already have that artist, however we have a different popularity. If you have double checked it, press submit again. If you got it wrong, don't do anything ⚠️", "red");
+                continued = True;
             }
 
             // If gender isn't Female, Male, or Mixed give an alert
@@ -1949,7 +1779,7 @@
             const SUPABASE_URL = 'https://jkouakuoktcuzplfnvtw.supabase.co';
             const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprb3Vha3Vva3RjdXpwbGZudnR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkxODQzNzAsImV4cCI6MjA2NDc2MDM3MH0.1wsH4OTKydE9T55rgen0TKCAQIgreb8wlm5xwPYZwKc';
 
-            closeAddArtistPopup(); // Immediately close the popup so user can't spam
+            if (!continued) { closeAddArtistPopup(); } // Immediately close the popup so user can't spam
 
             try {
                 const postData = {
@@ -1983,50 +1813,6 @@
             }
         }
 
-        async function SendMessage(){
-            const username = document.getElementById('soundmapUsernameInput').value.trim();
-            const messageType = document.getElementById('messageCategory').value.trim();
-            const message = document.getElementById('messageInput').value.trim();
-
-            const statusBox = document.getElementById('submitStatus');
-
-            if (!username || !messageType || !message) {
-                showBottomPopup("❌ Please fill in all fields.", "red");
-                return;
-            }
-
-            const SUPABASE_URL = 'https://jkouakuoktcuzplfnvtw.supabase.co';
-            const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprb3Vha3Vva3RjdXpwbGZudnR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkxODQzNzAsImV4cCI6MjA2NDc2MDM3MH0.1wsH4OTKydE9T55rgen0TKCAQIgreb8wlm5xwPYZwKc';
-
-            closeMessagePopup(); // Immediately close the popup so user can't spam
-
-            try {
-                const postData = {
-                    message,
-                    message_type: messageType,
-                    username
-                };
-
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/messages`, {
-                    method: "POST",
-                    headers: {
-                        "apikey": SUPABASE_API_KEY,
-                        "Authorization": `Bearer ${SUPABASE_API_KEY}`,
-                        "Content-Type": "application/json",
-                        "Prefer": "return=minimal"
-                    },
-                    body: JSON.stringify(postData)
-                });
-
-                if (!response.ok) {
-                    throw new Error(await response.text());
-                }
-
-                showBottomPopup("✅ Message Sent!", "green");
-            } catch (error) {
-                showBottomPopup("❌ Message failed to send. Try again.", "red");
-            }
-        }
 
         function searchArtist() {
             const query = document.getElementById("artistSearch").value.toLowerCase();
