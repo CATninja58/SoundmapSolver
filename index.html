@@ -1441,18 +1441,20 @@
                 <label style="width: 90px; text-align: left;">Username:</label>
                 <input type="text" id="soundmapUsernameInput" placeholder="Soundmap Username">
             </div>
-            <div style="margin-bottom: 8px; width: 100%;">
-                <label style="width: 100%; text-align: left; display: block; margin-bottom: 4px;">Message type:</label>
-                <select id="messageCategory" style="width: 100%;">
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <label style="width: 90px; text-align: left;">Message type:</label>
+                <select id="messageCategory" style="flex: 1;">
                     <option value="">Select message type</option>
                     <option value="debut">Wrong information</option>
                     <option value="popularity">Bug</option>
                     <option value="members">General message/question</option>
                 </select>
             </div>
-            <textarea id="messageInput" placeholder="Message goes here (e.g., I found a bug)" rows="4" maxlength="750"
-                oninput="autoExpandTextarea(this)" style="margin-top: 8px;"></textarea>
-            <div id="charCount" style="text-align: right; font-size: 12px; color: #888;">0 / 750</div>
+            <div style="margin-bottom: 8px;">
+                <textarea id="messageInput" placeholder="Message goes here (e.g., I found a bug)" rows="4" maxlength="750"
+                    oninput="autoExpandTextarea(this)" style="width: 100%; margin-top: 8px;"></textarea>
+                <div id="charCount" style="text-align: right; font-size: 12px; color: #888;">0 / 750</div>
+            </div>
             <button onclick="SendMessage()" style="margin-top: 50px;">Send</button>
             <button class="close-hint" onclick="closeMessagePopup()">Close</button>
             <p id="submitStatus" style="margin-top: 15px; font-weight: bold; color: red;"></p>
