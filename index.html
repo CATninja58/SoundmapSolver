@@ -320,6 +320,22 @@
             color: #159643; /* Green on hover */
         }
 
+        /* Help icon styles */
+        .fa-question-circle.help-icon {
+            position: fixed;
+            top: 20px;
+            left: 70px; /* Adjusted so it doesn't overlap with the cog icon */
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            color: #f4f4f4;
+            transition: color 0.3s ease;
+        }
+
+        .fa-question-circle.help-icon:hover {
+            color: #159643; /* Green on hover */
+        }
+
         /* Sidebar styles */
         .sidebar {
             position: fixed;
@@ -446,6 +462,22 @@
         }
 
         body.light-mode .cog-icon:hover {
+            color: #159643; /* Green on hover */
+        }
+
+        body.light-mode .fa-paper-plane.message-icon {
+            color: #1c1c1c; /* Black in light mode */
+        }
+
+        body.light-mode .fa-paper-plane.message-icon:hover {
+            color: #159643; /* Green on hover */
+        }
+
+        body.light-mode .fa-question-circle.help-icon {
+            color: #1c1c1c; /* Black in light mode */
+        }
+
+        body.light-mode .fa-question-circle.help-icon:hover {
             color: #159643; /* Green on hover */
         }
 
@@ -826,9 +858,9 @@
         </div>
     </div>
 
-    <!-- Changed help button -->
-    <button class="help-button" style="left: 20px; right: auto; top: 20px; position: fixed;" onclick="toggleHelpOverlay()">?</button>
-    <i class="fa fa-paper-plane message-icon" style="left: 70px; right: auto; top: 20px; position: fixed;" onclick="openMessagePopup()"></i>
+    <!-- Help button on far right, message button slightly to the left -->
+    <i class="fa fa-question-circle help-icon" style="right: 20px; left: auto; top: 20px; position: fixed;" onclick="toggleHelpOverlay()"></i>
+    <i class="fa fa-paper-plane message-icon" style="right: 70px; left: auto; top: 20px; position: fixed;" onclick="openMessagePopup()"></i>
 
     <!-- Tutorial Overlay -->
     <div class="help-overlay" id="helpOverlay">
@@ -1338,7 +1370,11 @@
                 <option value="popularity">Bug</option>
                 <option value="members">General message/question</option>
             </select>
-            <input type="text" id="messageInput" placeholder="Message goes here (e.g., I found a bug)">
+            <textarea id="messageInput" placeholder="Message goes here (e.g., I found a bug)" rows="4" maxlength="750"
+                style="width: 100%; margin: 10px 0; font-size: 14px; border-radius: 6px; background-color: #2d2d2d; color: #f4f4f4; border: none; resize: none; overflow-y: hidden;"
+                oninput="autoExpandTextarea(this)">
+            </textarea>
+            <div id="charCount" style="text-align: right; font-size: 12px; color: #888;">0 / 750</div>
             <button onclick="SendMessage()" style="margin-top: 50px;">Send</button>
             <button class="close-hint" onclick="closeMessagePopup()">Close</button>
             <p id="submitStatus" style="margin-top: 15px; font-weight: bold; color: red;"></p>
@@ -1577,6 +1613,18 @@
         function closeMessagePopup() {
             document.getElementById('messagePopup').classList.remove('open');
         }
+
+        function autoExpandTextarea(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight) + 'px';
+            // Character count
+            const charCount = document.getElementById('charCount');
+            charCount.textContent = textarea.value.length + ' / 750';
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const textarea = document.getElementById('messageInput');
+            if (textarea) autoExpandTextarea(textarea);
+        });
 
         function applyHint() {
             const hintValue = document.getElementById('hintInput').value.trim();
