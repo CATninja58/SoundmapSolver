@@ -304,6 +304,22 @@
             color: #159643; /* Green on hover */
         }
 
+        /* Message icon styles */
+        .fa-paper-plane.message-icon {
+            position: fixed;
+            top: 20px;
+            left: 70px; /* Adjusted so it doesn't overlap with the cog icon */
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            color: #f4f4f4;
+            transition: color 0.3s ease;
+        }
+
+        .fa-paper-plane.message-icon:hover {
+            color: #159643; /* Green on hover */
+        }
+
         /* Sidebar styles */
         .sidebar {
             position: fixed;
@@ -811,7 +827,8 @@
     </div>
 
     <!-- Changed help button -->
-    <button class="help-button" onclick="toggleHelpOverlay()">?</button>
+    <button class="help-button" style="left: 20px; right: auto; top: 20px; position: fixed;" onclick="toggleHelpOverlay()">?</button>
+    <i class="fa fa-paper-plane message-icon" style="left: 70px; right: auto; top: 20px; position: fixed;" onclick="openMessagePopup()"></i>
 
     <!-- Tutorial Overlay -->
     <div class="help-overlay" id="helpOverlay">
@@ -1307,6 +1324,27 @@
         </div>
     </div>
 
+    <div class="hint-popup" id="messagePopup">
+        <div class="hint-content">
+            <h2><b>Contact me</b></h2>
+            <p>Fill in your soundmap username, select message type and type your message below</p>
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <label style="width: 90px; text-align: left;">Username:</label>
+                <input type="text" id="soundmapUsernameInput" placeholder="Soundmap Username">
+            </div>
+            <select id="messageCategory">
+                <option value="">Select message type</option>
+                <option value="debut">Wrong information</option>
+                <option value="popularity">Bug</option>
+                <option value="members">General message/question</option>
+            </select>
+            <input type="text" id="messageInput" placeholder="Message goes here (e.g., I found a bug)">
+            <button onclick="SendMessage()" style="margin-top: 50px;">Send</button>
+            <button class="close-hint" onclick="closeMessagePopup()">Close</button>
+            <p id="submitStatus" style="margin-top: 15px; font-weight: bold; color: red;"></p>
+        </div>
+    </div>
+
     <!-- Modal structure -->
     <div id="myModal" class="hidden">
         <div id="modalOptions"></div>
@@ -1530,6 +1568,14 @@
 
         function closeStatChangePopup() {
             document.getElementById('statChangePopup').classList.remove('open');
+        }
+
+        function openMessagePopup() {
+            document.getElementById('messagePopup').classList.add('open');
+        }
+
+        function closeMessagePopup() {
+            document.getElementById('messagePopup').classList.remove('open');
         }
 
         function applyHint() {
@@ -1809,6 +1855,50 @@
             }
         }
 
+        async function SendMessage(){
+            const username = document.getElementById('soundmapUsernameInput').value.trim();
+            const messageType = document.getElementById('messageCategory').value.trim();
+            const message = document.getElementById('messageInput').value.trim();
+
+            const statusBox = document.getElementById('submitStatus');
+
+            if (!username || !messageType || !message) {
+                showBottomPopup("❌ Please fill in all fields.", "red");
+                return;
+            }
+
+            const SUPABASE_URL = 'https://jkouakuoktcuzplfnvtw.supabase.co';
+            const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprb3Vha3Vva3RjdXpwbGZudnR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkxODQzNzAsImV4cCI6MjA2NDc2MDM3MH0.1wsH4OTKydE9T55rgen0TKCAQIgreb8wlm5xwPYZwKc';
+
+            closeAddArtistPopup(); // Immediately close the popup so user can't spam
+
+            try {
+                const postData = {
+                    message,
+                    message_type: messageType,
+                    username
+                };
+
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/messages`, {
+                    method: "POST",
+                    headers: {
+                        "apikey": SUPABASE_API_KEY,
+                        "Authorization": `Bearer ${SUPABASE_API_KEY}`,
+                        "Content-Type": "application/json",
+                        "Prefer": "return=minimal"
+                    },
+                    body: JSON.stringify(postData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(await response.text());
+                }
+
+                showBottomPopup("✅ Message Sent!", "green");
+            } catch (error) {
+                showBottomPopup("❌ Message failed to send. Try again.", "red");
+            }
+        }
 
         function searchArtist() {
             const query = document.getElementById("artistSearch").value.toLowerCase();
