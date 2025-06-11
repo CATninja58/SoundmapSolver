@@ -1459,13 +1459,22 @@
             // Parse main CSV, replace with updated if available
             const mainRows = mainCSV.split("\n").filter(row => row.trim());
             mainRows.shift(); // Remove header
+            const mainArtistKeys = new Set();
             artistsData = mainRows.map(row => {
             const [artist, debut, popularity, members, genre, country, gender] = row.split(",");
             const key = artist ? artist.trim().toLowerCase() : "";
+            if (key) mainArtistKeys.add(key);
             if (key && updatedMap[key]) {
                 return updatedMap[key];
             }
             return { artist, debut, popularity, members, genre, country, gender };
+            });
+
+            // Add any artists from updatedMap that are NOT in the main CSV
+            Object.keys(updatedMap).forEach(key => {
+            if (!mainArtistKeys.has(key)) {
+                artistsData.push(updatedMap[key]);
+            }
             });
 
             filteredArtists = [...artistsData];
